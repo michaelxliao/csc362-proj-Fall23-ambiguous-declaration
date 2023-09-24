@@ -1,5 +1,13 @@
 # WIP Mission Statement
 
+## Candidate Statement
+The purpose of the Therpston County Public Library database is to maintain the data required for the library's operations and bookkeeping.
+
+It also will supply information that helps the library support services for the community and other patrons.
+
+(DELETE?)
+### This enables further interaction and deeper exploration of the library's selection
+
 ## Example mission statement
 The purpose of the Mike’s Bikes database is to maintain the data we need to support our retail sales business and our customer service operations.
 
@@ -12,8 +20,6 @@ operations connecting users with our services and materials.  It also aims to hi
 
 The purpose of the database is to allow for insightful connections within the library's wealth of multimedia materials. <- too specific like an objective
 
-## Candidate Statement
-The purpose of the database is to maintain the data required for the library's operations and services for the community. 
 
 ### Notes
 - deeper exploration of library data
