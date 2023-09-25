@@ -4,8 +4,8 @@
 The purpose of the Therpston County Public Library database is to maintain the data required for the library's operations and bookkeeping.
 
 It also will supply information that helps the library support services for the community and other patrons.
+# services for our patrons (DELETE?)
 
-(DELETE?)
 ### This enables further interaction and deeper exploration of the library's selection
 
 ## Example mission statement

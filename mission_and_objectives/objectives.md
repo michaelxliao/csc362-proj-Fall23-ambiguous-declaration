@@ -8,6 +8,8 @@
 - Maintain information on stored materials.
 - Highlight connections between print and multimedia.
 
+- Sometghing to do with placing a hold on books
+
 ### EXAMPLE OBJECTIVES
 Maintain complete patient address information.
 Keep track of all customer sales.
