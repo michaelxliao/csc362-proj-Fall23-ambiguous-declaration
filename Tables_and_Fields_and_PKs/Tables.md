@@ -1,1 +1,5 @@
-This is the start of the design tables. We can merge this with the other one if we think we should. 
+###EXAMPLE FORMAT
+Table Name:
+Table Type(Linking, Validation, etc.):
+Table Purpose:
+(We can add or take away. This was just to get us starting and thinking about what we need)
