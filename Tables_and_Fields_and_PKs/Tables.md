@@ -9,25 +9,38 @@ Feed)
 - Authors
     - Validation
     - Stores information on an author
+
 - Genres
     - Validation
     - Stores information about media genre
+
 - Demographics
+    - Validation
     - Stores groups of people that would be interested in stored media
+
 - Languages
+    -Validation
     - Stores languages used in media stored by library
+
 - Media-Demographics
     - Linking
     - This is for highlighting which books are popular or written for certain demographics.
 
 - Media-Authors
+    - Linking
+    - This is for showing all the possible authors that could've worked on a piece of media
+
 - Media-Genres
+    - Linking
+    - This is for showing all of the genres a piece of media falls under
 
 - Media
     - Linking(? i think this would be a data table)
     - This is for storing information about each book in the system such as type, ownership status, names, etc.
+
 - Books
     - subset table of media
+
 - Films
     - subset table of media
 
@@ -39,6 +52,7 @@ Feed)
 - Clubs
     - Validation
     - Store information such as club names
+
 - Club_Members
     - Linking(Patrons & Clubs)
     - Store information on the members within each club 
@@ -47,12 +61,16 @@ Feed)
     - Validation
     - Store infromation such as patron name, address
 
-- Patron-Book Interactions?
+- Patron-Media Interactions?
+    - Linking
+    - Store the media that has been checked out. Can be used to make sure nobody checks out more than 10 books
+
 - Patron-Resource Interactions? for rooms etc
 
 - Loans
     - Linking (Patrons & Media)
     - Store information on the amount of loans on a book, 
+    
 - Holds
     - Linking (Patrons & Media)
     - Store information on which patron is in que for which piece of media

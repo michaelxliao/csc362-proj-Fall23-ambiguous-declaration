@@ -9,6 +9,26 @@ Publisher
 Fiction
 Language
 
+Media_Authors:
+Media ID
+Author ID
+
+Media_Genre:
+Media ID
+Author ID
+
+Media_Demographic:
+Media ID
+Demographic
+
+Patron_Media_Interactions:
+Media ID
+Patron ID
+Check_Out Date
+Check_In Date
+Return Date
+
+
 Patron:
 Patron ID
 Patron Name
@@ -16,25 +36,35 @@ Patron Email
 Patron Phone
 
 Clubs:
+Club ID
 Club Name
 
+Club_Members:
+Club ID
+Patron ID
+
+
 Loans:
+Patron ID
+Media ID
 Loan Beginning Date
 Loan Ending Date
 Loan Return Date
 
 Holds:
+Hold ID
 Held Book
 Held Patron
 Hold Beginning Date
 
 Genre:
+Genre ID
 Genre Name
 
 Demographic:
-
-
+Demographic
 
 
 Author:
+Author ID
 Author Name
