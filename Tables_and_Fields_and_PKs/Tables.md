@@ -72,3 +72,9 @@ Feed)
 - is there a limit on how many things a patron can reserve?
 - new books to review: what info do we have about them? Patron, etc?
 - ILL: what are we expected to store with this?
+
+# Notes
+Patrons: we need to store name, email, phone; email & phone are required
+Media types are all listed in email as well as periodicals (magazines, newspapers)
+no ebooks
+for the media we store -- we need to keep track of author/producer/director etc
