@@ -8,6 +8,7 @@ Print/Digital Status
 Publisher
 Fiction
 Language
+Periodical
 
 Media_Authors:
 Media ID

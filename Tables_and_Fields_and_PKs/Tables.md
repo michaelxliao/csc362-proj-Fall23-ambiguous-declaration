@@ -1,98 +1,62 @@
-###EXAMPLE FORMAT
-Table Name:
-Table Type(Linking, Validation, etc.):
-Table Purpose:
-(We can add or take away. This was just to get us starting and thinking about what we n
-Feed)
+# Tables
 
+## List Format
+- Table Name
+    - Table Type
+    - Table Description
 
-- Authors
+### Example List Item
+Hernandez: A table description provides a clear definition of the subject represented by the table and states why the subject is important to the organization. 
+
+- Classrooms
+    - Data
+    - The spaces or areas within a facility reserved for the **purpose** of conducting class proceedings. **Information** regarding the physical aspects, on-site resources, and availability of these areas **is useful because** it allows us to assign classes to the facility that can make the best use of these areas.
+
+- Courses
+    - Data
+    - The programs of instruction conducted through courses offered by this institution. Course information **must always** reflect the addtion of new courses, the deletion of old courses, and the continuing evolution of existing courses.
+
+## Final Table List
+
+### To do with materials stored by library & their connections
+- Selection
+    - Data
+    - The materials (both current and soon-to-be) held by the library meant to be loaned out. This will reflect only the materials the library has currently or soon will have; past materials are not of importance. Storing this information is key to managing the collection of materials the library can lend out.
+
+- Print Materials
+    - Subset (of Selection)
+    - The printed materials like traditional and comic books or magazines, journals, and other periodicals that are (both current and soon-to-be) held by the library meant to be loaned out. This will reflect only the materials the library has currently or soon will have; past materials are not of importance. Storing this information is key to managing the collection of materials the library can lend out.
+
+- Multimedia
+    - Subset (of Selection)
+    - The materials that are not printed or otherwise are nontraditional items the library has or will have for loaning; like films, TV show episodes, audiobooks, etc. This will reflect only the materials the library has currently or soon will have; past materials are not of importance. Storing this information is key to managing the collection of materials the library can lend out.
+
+- Narratives
     - Validation
-    - Stores information on an author
+    - 
 
-- Genres
-    - Validation
-    - Stores information about media genre
+- Adaptations
+    - Linking (Narratives & Selection)
+    - 
 
-- Demographics
-    - Validation
-    - Stores groups of people that would be interested in stored media
+### To do with patrons of library & their interactions
 
-- Languages
-    -Validation
-    - Stores languages used in media stored by library
-
-- Media-Demographics
-    - Linking
-    - This is for highlighting which books are popular or written for certain demographics.
-
-- Media-Authors
-    - Linking
-    - This is for showing all the possible authors that could've worked on a piece of media
-
-- Media-Genres
-    - Linking
-    - This is for showing all of the genres a piece of media falls under
-
-- Media
-    - Linking(? i think this would be a data table)
-    - This is for storing information about each book in the system such as type, ownership status, names, etc.
-
-- Books
-    - subset table of media
-
-- Films
-    - subset table of media
-
-- Adaptations/Media-Media (Versions?Adaptations?)
-    - Validation
-    - Stores information about media adaptations
-    - need to link different tables in subsets of media to each other? The # of tales we need grows quadratically as we add new media tables, i think media-media is general for that reason
-
-- Clubs
-    - Validation
-    - Store information such as club names
-
-- Club_Members
-    - Linking(Patrons & Clubs)
-    - Store information on the members within each club 
-    
 - Patrons
-    - Validation
+    - Data
     - Store infromation such as patron name, address
 
-- Patron-Media Interactions?
-    - Linking
-    - Store the media that has been checked out. Can be used to make sure nobody checks out more than 10 books
-
-- Patron-Resource Interactions? for rooms etc
+- Patron-Selection Interactions
+    - Linking (Patrons & Selection)
+    - 
 
 - Loans
-    - Linking (Patrons & Media)
+    - Subset (of Patron Interactions)
     - Store information on the amount of loans on a book, 
     
 - Holds
-    - Linking (Patrons & Media)
-    - Store information on which patron is in que for which piece of media
+    - Subset (of Patron Interactions)
+    - Store information on which patron is in queue for which piece of media
 
-
-# BIG THINGS TO STILL LOOK OVER
-- interlibrary loan
-- 'reviewing' books on a rolling basis (should this be a separate table?) - this is a part of application-oriented design, we just need to make sure we can track dates. That makes sense for deselection, what about new books to review?
-
-# Qs
-- what data do we need about a patron? library card number, contact info, demographics? Maybe we track age
-- what data do we need to track about books? author, genre, audience, etc.
-- what kinds of multimedia is stored? 
-- what to do with data on deselected books
-- are we allowing multiple ppl to put a hold on a book, etc.
-- how do late fees? Are late fees something calculated based on the amount of time it has been gone(calculated field) or is it a flat fee?
-- is there a limit on how many things a patron can reserve?
-- new books to review: what info do we have about them? Patron, etc?
-- ILL: what are we expected to store with this?
-
-# Notes
-Patrons: we need to store name, email, phone; email & phone are required
-Media types are all listed in email as well as periodicals (magazines, newspapers)
-no ebooks
-for the media we store -- we need to keep track of author/producer/director etc
+- Clubs
+    - Data
+    - Store information such as club names
