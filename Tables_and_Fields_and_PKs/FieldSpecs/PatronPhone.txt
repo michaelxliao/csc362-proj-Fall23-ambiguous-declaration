@@ -1,0 +1,33 @@
+GENERAL ELEMENTS
+
+Field Name: Patron Phone
+Parent Table: Patrons
+Alias: N/a
+Specification Type: Generic
+Source Specification:N/a
+Shared By: N/A
+Description: This field will hold the patorns phone number
+
+
+
+PHYSICAL ELEMENTS
+
+Data Type: INT
+Length: 11
+Decimal Places: N/A
+Character Support: Numbers (0-9)
+
+
+
+LOGICAL ELEMENTS
+
+Key Type: Non
+Key Structure: Simple
+Uniqueness: Non-Unique
+Null Support: No Nulls
+Values Entered By: User
+Required Value: Yes
+Range of Values: Any combination of numbers thats 11 numbers long
+Edit Rule: Enter now, edits allowed
+
+Notes: We will leave edits allowed incase a patron wants to ever change their phone number
