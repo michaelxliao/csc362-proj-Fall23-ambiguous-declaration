@@ -2,7 +2,7 @@ FIELD SPECIFICATIONS
 
 GENERAL ELEMENTS
 
-Field Name:           Email
+Field Name:           Patron Email
 Parent Table:         Patrons
 Alias(es):            _ 
 Specification Type:
@@ -39,7 +39,7 @@ Key Structure: Simple:     _
 Uniqueness:    Non-unique: X
                Unique:     _ 
 
-Null Support:  Nulls OK:   X
+Null Support:  Nulls OK:   _
                No nulls:   _ 
 
 Values Entered By: User:   X
@@ -57,4 +57,4 @@ Edit Rule:
   Enter later, edits not allowed: _ 
   Not determined at this time:    _ 
 
-NOTES: _
+NOTES: Only one of Patron.Email or Patron.Phone can be null.

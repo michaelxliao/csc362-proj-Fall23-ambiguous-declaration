@@ -1,33 +1,60 @@
+FIELD SPECIFICATIONS
+
 GENERAL ELEMENTS
 
-Field Name: Patron First Name
-Parent Table: Patrons
-Alias: N/A
-Specification Type: Generic
-Source Specification: N/A
-Shared By: N/A
-Description: This field will hold the patron's first name. It is not a primary key because patrons can have the same name but be different people.
-
+Field Name:           Patron First Name
+Parent Table:         Patrons
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            _ 
+Description:          The first name of a patron.
 
 
 PHYSICAL ELEMENTS
 
-Data Type: VARCHAR
-Length: 64
-Decimal Places: N/A
-Character Support: Letters (A-Z) Keyboard (.,/$#%) Special (©®™Σπ)
-
+Data Type:            VARCHAR
+Length:               128
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      X
+  Numbers (0-9):      _ 
+  Keyboard (.,/$#%):  X
+  Special (©®™Σπ):    _ 
 
 
 LOGICAL ELEMENTS
 
-Key Type: Non
-Key Structure: Simple
-Uniqueness: Non-Unique
-Null Support: No Nulls
-Values Entered By: User
-Required Value: Yes
-Range of Values: Anything <64 characters
-Edit Rule: Enter now, edits allowed
+Key Type:      Non:        X
+               Primary:    _ 
+               Foreign:    _ 
+               Alternate:  _ 
 
-Notes:
+Key Structure: Simple:     _ 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Any valid string within the length.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _

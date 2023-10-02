@@ -1,33 +1,60 @@
+FIELD SPECIFICATIONS
+
 GENERAL ELEMENTS
 
-Field Name: Patron Phone
-Parent Table: Patrons
-Alias: N/A
-Specification Type: Generic
-Source Specification: N/A
-Shared By: N/A
-Description: This field will hold the patorns phone number.
-
+Field Name:           Patron Phone
+Parent Table:         Patrons
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            _ 
+Description:          A phone number used to contact a patron of the library.
 
 
 PHYSICAL ELEMENTS
 
-Data Type: INT
-Length: 11
-Decimal Places: N/A
-Character Support: Numbers (0-9)
-
+Data Type:            VARCHAR
+Length:               14
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  X
+  Special (©®™Σπ):    _ 
 
 
 LOGICAL ELEMENTS
 
-Key Type: Non
-Key Structure: Simple
-Uniqueness: Non-Unique
-Null Support: No Nulls
-Values Entered By: User
-Required Value: Yes
-Range of Values: Any combination of numbers thats 11 numbers long
-Edit Rule: Enter now, edits allowed
+Key Type:      Non:        X
+               Primary:    _ 
+               Foreign:    _ 
+               Alternate:  _ 
 
-Notes: We will leave edits allowed incase a patron wants to ever change their phone number
+Key Structure: Simple:     _ 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   X
+               No nulls:   _ 
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   A valid ten-digit phone number, in the format (XXX) XXX-XXXX.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: Only one of Patron.Email or Patron.Phone can be null.
