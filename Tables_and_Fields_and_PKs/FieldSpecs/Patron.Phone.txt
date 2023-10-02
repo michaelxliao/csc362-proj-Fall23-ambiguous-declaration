@@ -2,9 +2,9 @@ GENERAL ELEMENTS
 
 Field Name: Patron Phone
 Parent Table: Patrons
-Alias: N/a
+Alias: N/A
 Specification Type: Generic
-Source Specification:N/a
+Source Specification: N/A
 Shared By: N/A
 Description: This field will hold the patorns phone number
 

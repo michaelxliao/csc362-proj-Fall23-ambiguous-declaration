@@ -1,19 +1,19 @@
 GENERAL ELEMENTS
 
-Field Name: Patron_Email
+Field Name: Patron_Last_Name
 Parent Table: Patrons
-Alias: N/a
+Alias: N/A
 Specification Type: Generic
-Source Specification:N/a
+Source Specification: N/A
 Shared By: N/A
-Description: This field will hold the patorns Email
+Description: This field will hold the patron's lame name.
 
 
 
 PHYSICAL ELEMENTS
 
 Data Type: VARCHAR
-Length: 100
+Length: 64
 Decimal Places: N/A
 Character Support: Letters (A-Z) Keyboard (.,/$#%) Special (©®™Σπ)
 
@@ -27,7 +27,7 @@ Uniqueness: Non-Unique
 Null Support: No Nulls
 Values Entered By: User
 Required Value: Yes
-Range of Values: Anything <100 characters
+Range of Values: Anything <64 characters
 Edit Rule: Enter now, edits allowed
 
-Notes: People can change their emails so we will allow for posts edits incase a patron wants to change emails
+Notes:  It is not a primary key because patrons can have the same name but be different people.

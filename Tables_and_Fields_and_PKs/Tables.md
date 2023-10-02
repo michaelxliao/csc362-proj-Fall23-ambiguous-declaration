@@ -16,7 +16,7 @@ Hernandez: A table description provides a clear definition of the subject repres
     - Data
     - The programs of instruction conducted through courses offered by this institution. Course information **must always** reflect the addtion of new courses, the deletion of old courses, and the continuing evolution of existing courses.
 
-## Final Table List
+## Table List
 
 ### To do with materials stored by library & their connections
 - Selection
@@ -33,11 +33,11 @@ Hernandez: A table description provides a clear definition of the subject repres
 
 - Narratives
     - Validation
-    - 
+    - The core stories behind or depicted by the materials the library has stored. This is vital to maintaining connections of different versions of the same story, as identifying the underlying original narrative can help in that regard.
 
 - Adaptations
     - Linking (Narratives & Selection)
-    - 
+    - The connections between items in the library and their narratives. This depicts the connections between print stories and their different multimedia versions, or indeed between print and other print versions, multimedia and other multimedia versions.
 
 ### To do with patrons of library & their interactions
 

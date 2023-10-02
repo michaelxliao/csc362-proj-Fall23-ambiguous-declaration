@@ -1,12 +1,12 @@
 GENERAL ELEMENTS
 
-Field Name: Patron_First_Name
+Field Name: Patron First Name
 Parent Table: Patrons
-Alias: N/a
+Alias: N/A
 Specification Type: Generic
-Source Specification:N/a
+Source Specification: N/A
 Shared By: N/A
-Description: This field will hold the patorns first name. It is not a primary key because patrons can have the same name but be different people.
+Description: This field will hold the patron's first name. It is not a primary key because patrons can have the same name but be different people.
 
 
 

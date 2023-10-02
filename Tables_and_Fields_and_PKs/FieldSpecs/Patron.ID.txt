@@ -2,11 +2,11 @@ GENERAL ELEMENTS
 
 Field Name: PatronID
 Parent Table: Patrons
-Alias: N/a
+Alias: N/A
 Specification Type: Unique
-Source Specification:N/a
+Source Specification: N/A
 Shared By: "Patron Selection Interactions" 
-Description: This is the unique id we will use to identify each patron. 
+Description: This is the unique ID we will use to identify each patron. 
 
 
 
