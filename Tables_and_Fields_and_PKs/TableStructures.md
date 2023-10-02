@@ -5,7 +5,7 @@
 - Material Title 
 - Material Date Received
 - Material Date Created
-- Material Availability
+- Material isPending
 
 ## Print Materials
 - Material ID **(PK/FK)**
@@ -47,6 +47,8 @@
 
 ## Holds
 - Interaction ID **(PK/FK)**
+- Material ID **(FK)**
+- Customer ID **(FK)**
 - Hold Date Requested
 
 ## Clubs

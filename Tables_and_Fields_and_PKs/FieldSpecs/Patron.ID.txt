@@ -28,6 +28,6 @@ Null Support: No Nulls
 Values Entered By: System
 Required Value: Yes
 Range of Values: 0-*
-Edit Rule: Enter now, edits allowed
+Edit Rule: Enter now, edits not allowed
 
 Notes:

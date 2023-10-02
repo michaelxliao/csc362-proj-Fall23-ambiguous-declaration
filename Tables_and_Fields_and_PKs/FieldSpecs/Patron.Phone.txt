@@ -6,7 +6,7 @@ Alias: N/A
 Specification Type: Generic
 Source Specification: N/A
 Shared By: N/A
-Description: This field will hold the patorns phone number
+Description: This field will hold the patorns phone number.
 
 
 
