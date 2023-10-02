@@ -1,0 +1,60 @@
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Holds Interaction ID
+Parent Table:         Holds
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: X 
+  Replica: _ 
+Source Specification: N/A
+Shared By:            Loans, Patrons Selection Interactions
+Description:          Stores the ID of the interaction between patron and media
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            INT
+Length:               N/A
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    X
+               Foreign:    X 
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X 
+               Unique:     _
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   _ 
+                   System: X
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Valid number in the list of interaction ID's 
+
+Edit Rule:
+  Enter now, edits allowed:       _ 
+  Enter now, edits not allowed:   X
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
