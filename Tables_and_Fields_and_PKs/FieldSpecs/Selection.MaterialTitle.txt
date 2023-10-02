@@ -1,0 +1,61 @@
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Material Title
+Parent Table:         Selection
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: X 
+  Replica: _ 
+Source Specification: N/A
+Shared By:            Print Materials, Multimedia
+Description:          The full title of the material. This is important as it is the colloquial identifier for
+                      most books, and so it will be a common way to recognize/search for a book.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            VARCHAR
+Length:               128
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      X
+  Numbers (0-9):      X 
+  Keyboard (.,/$#%):  X 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X
+               Primary:    _ 
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     X 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X 
+               Unique:     _ 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X 
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Anything <128 characters that isn't the empty string
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
