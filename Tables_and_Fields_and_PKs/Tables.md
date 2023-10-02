@@ -1,4 +1,4 @@
-# Tables
+# Tables WIP
 
 ## List Format
 - Table Name
@@ -37,26 +37,26 @@ Hernandez: A table description provides a clear definition of the subject repres
 
 - Adaptations
     - Linking (Narratives & Selection)
-    - The connections between items in the library and their narratives. This depicts the connections between print stories and their different multimedia versions, or indeed between print and other print versions, multimedia and other multimedia versions.
+    - The connections between items in the library and their narratives. This depicts the connections between print stories and their different multimedia versions, or indeed between print and other print versions, multimedia and other multimedia versions, important to the goals set out by the library.
 
 ### To do with patrons of library & their interactions
 
 - Patrons
     - Data
-    - Store infromation such as patron name, address
+    - The individuals who have accounts with the library and can access its services. Information stored here is useful to the library for identifying who may check out what materials and for contacting them regarding those materials.
 
 - Patron-Selection Interactions
     - Linking (Patrons & Selection)
-    - 
+    - The interactions between patrons of the library and the materials held by the library. This kind of information is important to store in so that there is an active and ongoing record of exchanges of materials with patrons, for maintenance of the services the library can provide.
 
 - Loans
     - Subset (of Patron Interactions)
-    - Store information on the amount of loans on a book, 
+    - The specific checkings-out of materials the library holds to the patrons at the library. This kind of information is important to store in so that there is an active and ongoing record of exchanges of materials with patrons, for maintenance of the services the library can provide.
     
 - Holds
     - Subset (of Patron Interactions)
-    - Store information on which patron is in queue for which piece of media
+    - The people waiting for materials that are already checked out. Storing this information allows the library to determine who is next in line for high-demand materials and enable a smooth transfer process between them.
 
 - Clubs
     - Data
-    - Store information such as club names
+    - The groups of people that meet at the library to engage in various activities. This information allows the library to see what their patrons are actively engaged in and better support their needs.
