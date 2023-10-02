@@ -7,8 +7,8 @@ Parent Table:         Patron Selection Interactions
 Alias(es):            _ 
 Specification Type:
   Unique:  _
-  Generic: X 
-  Replica: _ 
+  Generic: _ 
+  Replica: X 
 Source Specification: N/A
 Shared By:            Patrons   
 Description:          Stores the ID of a patron for identifying who had this interaction.
