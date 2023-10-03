@@ -1,0 +1,60 @@
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Material ID
+Parent Table:         Print Materials
+Alias(es):            _ 
+Specification Type:
+  Unique:  _ 
+  Generic: _ 
+  Replica: X
+Source Specification: _ 
+Shared By:            Selection
+Description:          The ID of a material stored by the library, which can be used to identify it.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            INT
+Length:               _ 
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    X
+               Foreign:    X
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: _ 
+               Unique:     X
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _

@@ -1,0 +1,60 @@
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Type
+Parent Table:         _ 
+Alias(es):            _ 
+Specification Type:
+  Unique:  _ 
+  Generic: X
+  Replica: _ 
+Source Specification: _ 
+Shared By:            _ 
+Description:          An indicator of role or category to help delineate between kinds of some subject that do not substantially change the characteristic -- mostly for organizing sections of data for filtering reasons.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            VARCHAR
+Length:               32
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      X
+  Numbers (0-9):      _ 
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X
+               Primary:    _ 
+               Foreign:    X
+               Alternate:  _ 
+
+Key Structure: Simple:     _ 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Will be used only in relation to validation tables - limited to values established there
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
