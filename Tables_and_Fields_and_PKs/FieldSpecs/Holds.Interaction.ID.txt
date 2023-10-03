@@ -42,8 +42,8 @@ Uniqueness:    Non-unique: X
 Null Support:  Nulls OK:   _ 
                No nulls:   X
 
-Values Entered By: User:   _ 
-                   System: X
+Values Entered By: User:   X 
+                   System: _
 
 Required Value:    No:     _ 
                    Yes:    X
