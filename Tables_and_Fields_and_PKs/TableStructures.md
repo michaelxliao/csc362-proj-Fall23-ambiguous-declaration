@@ -47,8 +47,6 @@
 
 ## Holds
 - Interaction ID **(PK/FK)**
-- Material ID **(FK)**
-- Customer ID **(FK)**
 - Hold Date Requested
 
 ## Clubs
