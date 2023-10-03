@@ -1,20 +1,9 @@
-# Tables WIP
+# Tables
 
 ## List Format
 - Table Name
     - Table Type
     - Table Description
-
-### Example List Item
-Hernandez: A table description provides a clear definition of the subject represented by the table and states why the subject is important to the organization. 
-
-- Classrooms
-    - Data
-    - The spaces or areas within a facility reserved for the **purpose** of conducting class proceedings. **Information** regarding the physical aspects, on-site resources, and availability of these areas **is useful because** it allows us to assign classes to the facility that can make the best use of these areas.
-
-- Courses
-    - Data
-    - The programs of instruction conducted through courses offered by this institution. Course information **must always** reflect the addtion of new courses, the deletion of old courses, and the continuing evolution of existing courses.
 
 ## Table List
 
