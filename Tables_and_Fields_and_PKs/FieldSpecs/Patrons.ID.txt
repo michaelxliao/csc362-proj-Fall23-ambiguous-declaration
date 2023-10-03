@@ -2,26 +2,26 @@ FIELD SPECIFICATIONS
 
 GENERAL ELEMENTS
 
-Field Name:           Interaction ID 
-Parent Table:         Patron Selection Interactions 
+Field Name:           Patron ID
+Parent Table:         Patrons
 Alias(es):            _ 
 Specification Type:
-  Unique:  X 
+  Unique:  X
   Generic: _ 
   Replica: _ 
 Source Specification: _ 
-Shared By:            Loans     Holds 
-Description:          This will track every interaction of holds and loans from the library
+Shared By:            _ 
+Description:          A number used to uniquely identify each patron of the library.
 
 
 PHYSICAL ELEMENTS
 
-Data Type:            Int 
+Data Type:            INT
 Length:               _ 
-Decimal Places:       _  
+Decimal Places:       None
 Character Support:
   Letters (A-Z):      _ 
-  Numbers (0-9):      X 
+  Numbers (0-9):      X
   Keyboard (.,/$#%):  _ 
   Special (©®™Σπ):    _ 
 
@@ -29,30 +29,30 @@ Character Support:
 LOGICAL ELEMENTS
 
 Key Type:      Non:        _ 
-               Primary:    X 
+               Primary:    X
                Foreign:    _ 
                Alternate:  _ 
 
-Key Structure: Simple:     X 
+Key Structure: Simple:     X
                Composite:  _ 
 
 Uniqueness:    Non-unique: _ 
-               Unique:     X 
+               Unique:     X
 
 Null Support:  Nulls OK:   _ 
-               No nulls:   X 
+               No nulls:   X
 
 Values Entered By: User:   _ 
-                   System: X 
+                   System: X
 
 Required Value:    No:     _ 
-                   Yes:    X 
+                   Yes:    X
 
-Range of Values:   1 to any number 
+Range of Values:   Any valid integer from 1 onwards.
 
 Edit Rule:
   Enter now, edits allowed:       _ 
-  Enter now, edits not allowed:   X 
+  Enter now, edits not allowed:   X
   Enter later, edits allowed:     _ 
   Enter later, edits not allowed: _ 
   Not determined at this time:    _ 
