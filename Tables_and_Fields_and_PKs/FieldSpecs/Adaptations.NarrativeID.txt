@@ -1,0 +1,60 @@
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Adaptations Narrative ID
+Parent Table:         Adaptations
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: _ 
+  Replica: X 
+Source Specification: N/A
+Shared By:            Narratives
+Description:          Stores the ID of the narrative to know it's Adaptations.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            INT
+Length:               N/A
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    X
+               Foreign:    X 
+               Alternate:  _ 
+
+Key Structure: Simple:     _
+               Composite:  X 
+
+Uniqueness:    Non-unique: _ 
+               Unique:     X
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X 
+                   System: _
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Any valid number in the list of narrative id's
+
+Edit Rule:
+  Enter now, edits allowed:       _
+  Enter now, edits not allowed:   X
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
