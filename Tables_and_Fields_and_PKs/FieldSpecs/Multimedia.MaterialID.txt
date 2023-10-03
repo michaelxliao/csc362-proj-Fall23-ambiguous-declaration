@@ -3,7 +3,7 @@ FIELD SPECIFICATIONS
 GENERAL ELEMENTS
 
 Field Name:           Material ID
-Parent Table:         Print Materials
+Parent Table:         Multimedia
 Alias(es):            _ 
 Specification Type:
   Unique:  _ 
