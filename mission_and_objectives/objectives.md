@@ -8,3 +8,6 @@
 - Maintain information on stored materials.
 - Keep track of reservations placed on rooms.
 - Highlight connections between print and multimedia.
+
+## Comments
+These are all good, and quite clear. Nice work.
