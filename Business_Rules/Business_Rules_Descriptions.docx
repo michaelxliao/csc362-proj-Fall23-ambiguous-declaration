@@ -1,0 +1,18 @@
+Business Rule List:
+    - Selection cascade delete
+    - patron cascade delete
+    - space deny delete
+    - end_date must be after start_date 
+        space reservation
+        loans
+    - patron_email or patron_phone_number must be non-null 
+    - hold_date_requested can't be in the future
+    - loan_return_date can't be in the future
+    - Can only renew a loan for print media four times
+    - Can only renew a loan for multimedia two times
+    - Club name must be unique
+
+
+email shint
+
+- loan_end_date: when are they needed?
