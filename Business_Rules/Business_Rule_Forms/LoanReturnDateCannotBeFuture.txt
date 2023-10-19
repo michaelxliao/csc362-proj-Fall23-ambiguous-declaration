@@ -1,0 +1,56 @@
+BUSINESS RULE SPECIFICATIONS
+
+RULE INFORMATION
+
+Statement:  A loaned-out material cannot be returned in the future; the patron must
+actually bring the material to the library and have it be processed in order for
+the return to be logged. It is not a promised date; it is the actual return date.
+
+Constraint: LoanReturnDate cannot be in the future.
+
+Type:     Database Oriented:     _ 
+          Application Oriented   X
+
+Category: Field Specific:        _ 
+          Relationship Specific: _ 
+
+Test On:  Insert:                X
+          Delete:                _ 
+          Update:                X
+
+
+STRUCTURES AFFECTED
+
+Field Names: _ 
+
+Table Names: _
+
+
+FIELD ELEMENTS AFFECTED
+
+Physical Elements: Data Type:           _ 
+                   Length:              _ 
+                   Character Support:   _ 
+
+Logical Elements:  Key Type:            _ 
+                   Key Structure:       _ 
+                   Uniqueness:          _ 
+                   Null Support:        _ 
+                   Values Entered By:   _ 
+                   Range of Values:     X
+                   Edit Rule:           _ 
+
+
+RELATIONSHIP CHARACTERISTICS AFFECTED
+
+    Deletion rule:              _
+    Type of participation:      _
+    Degree of participation:    _
+
+    
+ACTION TAKEN
+
+Allowed range of values is maxed out at TODAY.
+
+NOTES: _
+
