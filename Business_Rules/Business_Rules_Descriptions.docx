@@ -2,7 +2,12 @@ Business Rule List:
     [X] Selection cascade delete
     [X] patron cascade delete
     [X] space deny delete
+<<<<<<< HEAD
     [X] space reservation end_date must be after start_date 
+=======
+    [X] end_date must be after start_date 
+        space reservation
+>>>>>>> 5ec1ba04eaa2ad5166a878841bb0fd89272daecc
     [X] patron_email or patron_phone_number must be non null 
     [X] hold_date_requested can't be in the future // MICHAEL: are these database-oriented or app-oriented? i could see arguments for either.
     [X] loan_return_date can't be in the future     // pls review
@@ -11,6 +16,7 @@ Business Rule List:
     [X] Club name must be unique
     [X] Patrons can check out up to 10 print materials at a time
     [X] Patrons can check out up to 4 multimedia materials at a time
+<<<<<<< HEAD
 
 BR Descriptions:
     - Selection cascade delete: If any material from our selection is deselected, we want to delete all records relating to that material. We have no more need for that information because we no longer have that piece of material. If there is a hold or an active loan on a material, we will avoid deselecting it.
@@ -18,6 +24,10 @@ BR Descriptions:
     - Patron cascade delete: Under most circumstances, we will implement a deny deletion for inactive patrons. This way we can reactivate their account if needed. However, if asked, we will delete all records pertaining to a certain patron and then records in related tables that relate to that patron.
     
     - Space deny delete: If the library is ever renovated and a room is removed or changed, we want to keep hold of the data stored on that room. This allows us to keep track of which clubs and patrons have reserved these rooms. Furthermore, this allows us to keep track of how much each room is getting reserved. 
+=======
+    
+email shint
+>>>>>>> 5ec1ba04eaa2ad5166a878841bb0fd89272daecc
 
     - Space Reservation End Date must be after Start Date: This rule is in place to prevent time paradoxes. It wouldn't be of use to any patron if the start of their reservation was tomorrow but the reservation ended yesterday. This rule helps with making a reservations easier as patrons don't have to worry about dates in the past.
 
