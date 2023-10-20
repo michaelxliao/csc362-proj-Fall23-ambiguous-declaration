@@ -24,10 +24,10 @@ BR Descriptions:
     - Space deny delete: If the library is ever renovated and a room is removed or changed, we want to keep data on that room. This allows us to keep track of which clubs and patrons have reserved these rooms. Furthermore, this allows us to keep track of how much each room is getting reserved. 
     - Space Reservation End Date:
     - patron_emailor patron_phone_number must be non null:
-    - hold_date_requested can't be in the future:
+    - hold_date_requested can't be in the future: THe date 
     - loan_return_date can't be in the future:
     - Can only renew a loan for print media four times:
     - Can only renew a loan for multimedia two times:
     - Club name must be unique:
     - Patrons can check out up to 10 print materials at a time:
-    - Patrons can check out up to 4 multimedia materials at a time:
+    - Patrons can check out up to 4 multimedia materials at a time: 
