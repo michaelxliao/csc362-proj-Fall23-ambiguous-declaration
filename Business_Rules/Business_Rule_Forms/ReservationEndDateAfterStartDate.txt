@@ -45,7 +45,7 @@ RELATIONSHIP CHARACTERISTICS AFFECTED
     Type of participation:      _
     Degree of participation:    _
 
-    
+
 ACTION TAKEN
 
 We will have a CHECK start_reservation< end_reservation
