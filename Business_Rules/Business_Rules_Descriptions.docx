@@ -4,7 +4,6 @@ Business Rule List:
     [X] space deny delete
     [X] end_date must be after start_date 
         space reservation
-        loans
     [X] patron_email or patron_phone_number must be non null 
     [X] hold_date_requested can't be in the future // MICHAEL: are these database-oriented or app-oriented? i could see arguments for either.
     [X] loan_return_date can't be in the future     // pls review
