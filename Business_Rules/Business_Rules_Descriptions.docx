@@ -1,7 +1,7 @@
 Business Rule List:
-    [ ] Selection cascade delete
+    [X] Selection cascade delete
     [X] patron cascade delete
-    [ ] space deny delete
+    [X] space deny delete
     [ ] end_date must be after start_date 
         space reservation
         loans
