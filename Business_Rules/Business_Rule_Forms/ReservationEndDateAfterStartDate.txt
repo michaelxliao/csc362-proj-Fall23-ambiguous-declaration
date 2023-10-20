@@ -1,0 +1,54 @@
+BUSINESS RULE SPECIFICATIONS
+
+RULE INFORMATION
+
+Statement:  The date when a room will no longer be reserved must be after the start date for that reservation
+
+Constraint: start_reservation < end_reservation
+
+Type:     Database Oriented:     _
+          Application Oriented   X 
+
+Category: Field Specific:        X
+          Relationship Specific: _ 
+
+Test On:  Insert:                X
+          Delete:                _ 
+          Update:                X
+
+
+STRUCTURES AFFECTED
+
+Field Names: start_reservation, end_reservation
+
+Table Names: space_reservations
+
+
+FIELD ELEMENTS AFFECTED
+
+Physical Elements: Data Type:           _ 
+                   Length:              _ 
+                   Character Support:   _ 
+
+Logical Elements:  Key Type:            _ 
+                   Key Structure:       _ 
+                   Uniqueness:          _
+                   Null Support:        _ 
+                   Values Entered By:   _ 
+                   Range of Values:     X 
+                   Edit Rule:           _ 
+
+
+RELATIONSHIP CHARACTERISTICS AFFECTED
+
+    Deletion rule:              _
+    Type of participation:      _
+    Degree of participation:    _
+
+    
+ACTION TAKEN
+
+We will have a CHECK start_reservation< end_reservation
+
+NOTES: _
+
