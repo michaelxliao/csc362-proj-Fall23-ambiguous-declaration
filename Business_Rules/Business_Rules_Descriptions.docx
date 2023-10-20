@@ -8,12 +8,12 @@ Business Rule List:
     [X] patron_email or patron_phone_number must be non null 
     [X] hold_date_requested can't be in the future // MICHAEL: are these database-oriented or app-oriented? i could see arguments for either.
     [X] loan_return_date can't be in the future     // pls review
-    [ ] Can only renew a loan for print media four times
-    [ ] Can only renew a loan for multimedia two times
+    [X] Can only renew a loan for print media four times
+    [X] Can only renew a loan for multimedia two times
     [X] Club name must be unique
     [X] Patrons can check out up to 10 print materials at a time
     [X] Patrons can check out up to 4 multimedia materials at a time
-
+    
 email shint
 
 [ ] loan_end_date: when are they needed? // MICHAEL: if it's a standard 3weeks, each renewal adds 3 weeks... probably a calculated field that can be dropped
