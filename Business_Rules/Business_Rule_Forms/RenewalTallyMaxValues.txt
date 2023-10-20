@@ -7,8 +7,8 @@ Statement:  A print book can be renewed four times before being returned, and a
 
 Constraint: Maximum on renewal_tally for print and multimedia.
 
-Type:     Database Oriented:     _ 
-          Application Oriented   X
+Type:     Database Oriented:     X
+          Application Oriented   _
 
 Category: Field Specific:        X
           Relationship Specific: _ 
