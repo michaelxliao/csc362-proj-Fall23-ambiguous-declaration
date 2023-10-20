@@ -21,9 +21,9 @@ Test On:  Insert:                X
 
 STRUCTURES AFFECTED
 
-Field Names: Loan_Start_Date, Loan_End_Date, Start_Reservation, End_Reservation
+Field Names: Start_Reservation, End_Reservation
 
-Table Names: _
+Table Names: space_reservations
 
 
 FIELD ELEMENTS AFFECTED
@@ -51,7 +51,7 @@ RELATIONSHIP CHARACTERISTICS AFFECTED
 ACTION TAKEN
 
 Check constraint on addition and update that these values are consistent per record. 
-
+end_date > start_date
 
 NOTES: _
 
