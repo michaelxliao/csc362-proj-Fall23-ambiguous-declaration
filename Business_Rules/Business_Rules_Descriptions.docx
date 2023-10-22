@@ -1,19 +1,37 @@
-Business Rule List:
-    [ ] Selection cascade delete
-    [ ] patron cascade delete
-    [ ] space deny delete
-    [ ] end_date must be after start_date 
-        space reservation
-        loans
-    [ ] patron_email or patron_phone_number must be non null 
-    [X] hold_date_requested can't be in the future // MICHAEL: are these database-oriented or app-oriented? i could see arguments for either.
-    [X] loan_return_date can't be in the future     // pls review
-    [ ] Can only renew a loan for print media four times
-    [ ] Can only renew a loan for multimedia two times
-    [X] Club name must be unique
-    [X] Patrons can check out up to 10 print materials at a time
-    [X] Patrons can check out up to 4 multimedia materials at a time
+Business Rule Descriptions:
 
-email shint
+Selection cascade delete:
+    If any material from our selection is deselected, we want to delete all records relating to that material. We have no more need for that information because we no longer have that piece of material. If there is a hold or an active loan on a material, we will avoid deselecting it.
+    
+Patron cascade delete: 
+    Under most circumstances, we will implement a deny deletion for inactive patrons. This way we can reactivate their account if needed. However, if asked, we will delete all records pertaining to a certain patron and then records in related tables that relate to that patron.
+    
+Space deny delete: 
+    If the library is ever renovated and a room is removed or changed, we want to keep hold of the data stored on that room. This allows us to keep track of which clubs and patrons have reserved these rooms. Furthermore, this allows us to keep track of how much each room is getting reserved. 
 
-[ ] loan_end_date: when are they needed? // MICHAEL: if it's a standard 3weeks, each renewal adds 3 weeks... probably a calculated field that can be dropped
+Space Reservation End Date must be after Start Date:
+    This rule is in place to prevent time paradoxes. It wouldn't be of use to any patron if the start of their reservation was tomorrow but the reservation ended yesterday. This rule helps with making a reservations easier as patrons don't have to worry about dates in the past.
+
+Patron Email or Phone Number must be non-null:
+    This rule is in place to ensure that the library has some way of contacting any patron for notifications and reminders of returns. These fields don't have to be unique, as multiple patrons can be tied to a single email or number. Furthermore, we can allow both to be filled; as the more ways to contact a patron, the better.
+
+Hold Date Requested can't be in the future: 
+    This rule is in place to keep the possible queue for patron in order. We want to specifically know when a patron submitted a request and nothing else. Allowing this time to be in the future simply disadvantages any patron who would want to put a hold in for some material.
+
+Loan Return Date can't be in the future:
+    This rule is in place to prevent time paradoxes. The library has no way of knowing for certain when a loan will be returned, or indeed if it will be returned at all. As such we aren't allowing this field to be filled with times in the future, and will only fill in the date when the materials are actually returned and properly processed by a librarian.
+
+Can only renew a loan for print media four times: 
+    This rule is in place to maintain the circulation of print materials. We want to give patron plenty of time to embrace the content in a material, but also ensure that other patrons will be able to get the material in a timely fashion. The number of renewals is greater than multimedia as it typically takes longer to finish.
+
+Can only renew a loan for multimedia two times:
+    This rule is in place to maintain the circulation of multimedia materials. We want to give patron plenty of time to embrace the content in a material, but also ensure that other patrons will be able to get the material in a timely fashion. The number of renewals is lower for multimedia because it typically takes less time to consume. 
+    
+Club name must be unique:
+    This rule is in place to prevent two clubs from having the same name. In most circumstances, if two clubs have the same name, they serve the same purpose. So here we want club names to accurately reflect what the club does. This also will prevent confusion amongst patrons when they go to see what clubs are available.
+
+Patrons can check out up to 10 print materials at a time:
+    This rule is in place to prevent a single patron from checking out too many print materials. While we encourge patrons to read as much as they can, checking out anything over 10 print materials makes it harder for other patrons to find materials that they want. Furthermore, it means there is a higher chance of materials being lost or damaged the longer it takes for materials to be returned.
+
+Patrons can check out up to 4 multimedia materials at a time:
+    This rule is in place to prevent a single patron from checking out too many multimedia materials. While we encourge patrons to access our materials as much as they can, checking out anything over 4 multimeedia materials makes it harder for other patrons to find materials that they want. Furthermore, it means there is a higher chance of materials being lost or damaged the longer it takes for materials to be returned. The number of materials is lower in this rule because multimedia materials are typically more expensive to replace multimedia material than print material.
