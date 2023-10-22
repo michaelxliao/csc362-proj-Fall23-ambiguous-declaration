@@ -1,5 +1,64 @@
 # Table Structures
 
+# TEMP: new tables, fields; when done change ? to -
+
+## Multimedia Types
+? Multimedia Type **(PK)**
+
+## Print Types
+? Print Type **(PK)**
+
+## Selection Languages
+? Material ID **(CPK/FK)**
+? Language Name **(CPK/FK)**
+
+## Languages
+? Language Name **(PK)**
+
+## Selection Creators
+? Material ID **(CPK/FK)**
+? Creator ID **(CPK/FK)**
+? Creator Role **(CPK/FK)**
+
+## Creators
+? Creator ID **(PK)**
+? Creator First Name
+? Creator Last Name
+
+## Creator Roles
+? Creator Role **(PK)**
+
+## Selection Genres
+? Material ID **(CPK/FK)**
+? Genre Name **(CPK/FK)**
+
+## Genres
+? Genre Name **(PK)**
+
+## Club Members
+? Club ID **(CPK/FK)**
+? Patron ID **(CPK/FK)**
+? Member Info
+? Member isLeader
+
+## Club Reservations
+? Reservation ID **(PK/FK)**
+? Club ID **(FK)**
+
+## Spaces
+? Space ID **(PK)**
+? Space Name
+? Space Room Number
+? Space Capacity
+
+## Space Reservations
+? Reservation ID **(PK)**
+? Patron ID **(FK)**
+? Space ID **(FK)**
+? Start Reservation
+? End Reservation
+? Reservation Notes
+
 ## Selection
 - Material ID **(PK)**
 - Material Title 
