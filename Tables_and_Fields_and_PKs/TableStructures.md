@@ -6,7 +6,7 @@
 - Multimedia Type **(PK)**
 
 ## Print Types
-? Print Type **(PK)**
+- Print Type **(PK)**
 
 ## Selection Languages
 - Material ID **(CPK/FK)**
@@ -65,7 +65,7 @@
 - Material Date Received
 - Material Date Created
 - Material isPending
-? Material Price
+- Material Price
 
 ## Print Materials
 - Material ID **(PK/FK)**
