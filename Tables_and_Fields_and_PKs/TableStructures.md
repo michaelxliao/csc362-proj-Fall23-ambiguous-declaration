@@ -65,6 +65,7 @@
 - Material Date Received
 - Material Date Created
 - Material isPending
+? Material Price
 
 ## Print Materials
 - Material ID **(PK/FK)**
