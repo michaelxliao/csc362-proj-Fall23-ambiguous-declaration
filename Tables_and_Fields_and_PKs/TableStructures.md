@@ -46,10 +46,10 @@
 ? Club ID **(FK)**
 
 ## Spaces
-? Space ID **(PK)**
-? Space Name
-? Space Room Number
-? Space Capacity
+- Space ID **(PK)**
+- Space Name
+- Space Room Number
+- Space Capacity
 
 ## Space Reservations
 ? Reservation ID **(PK)**
