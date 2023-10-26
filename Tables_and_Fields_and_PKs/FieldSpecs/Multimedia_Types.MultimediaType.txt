@@ -3,15 +3,15 @@ FIELD SPECIFICATIONS
 GENERAL ELEMENTS
 
 Field Name:           Multimedia Type
-Parent Table:         Multimedia
+Parent Table:         Multimedia Types
 Alias(es):            _ 
 Specification Type:
-  Unique:  _ 
+  Unique:  X 
   Generic: _
-  Replica: X 
+  Replica: _ 
 Source Specification: Type
-Shared By:            Multimedia Types
-Description:          An indicator of what type of multimedia a particular material is -- mostly for organizing sections of data for filtering reasons.
+Shared By:            _ 
+Description:          An indicator of role or category to help delineate between kinds of some subject that do not substantially change the characteristic -- mostly for organizing sections of data for filtering reasons.
 
 
 PHYSICAL ELEMENTS
@@ -29,15 +29,15 @@ Character Support:
 LOGICAL ELEMENTS
 
 Key Type:      Non:        _
-               Primary:    _ 
-               Foreign:    X
+               Primary:    X 
+               Foreign:    _
                Alternate:  _ 
 
 Key Structure: Simple:     X
                Composite:  _ 
 
-Uniqueness:    Non-unique: X
-               Unique:     _
+Uniqueness:    Non-unique: _
+               Unique:     X 
 
 Null Support:  Nulls OK:   _ 
                No nulls:   X
@@ -48,7 +48,7 @@ Values Entered By: User:   X
 Required Value:    No:     _ 
                    Yes:    X
 
-Range of Values:    Strings in multimedia_types table.
+Range of Values:    Valid strings in the character limit.
 
 Edit Rule:
   Enter now, edits allowed:       X
