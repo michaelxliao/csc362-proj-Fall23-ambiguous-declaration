@@ -69,12 +69,12 @@
 
 ## Print Materials
 - Material ID **(PK/FK)**
-- Print Type
+- Print Type **(FK)**
 - Page Count
 
 ## Multimedia
 - Material ID **(PK/FK)**
-- Multimedia Type
+- Multimedia Type **(FK)**
 - Duration
 
 ## Narratives
