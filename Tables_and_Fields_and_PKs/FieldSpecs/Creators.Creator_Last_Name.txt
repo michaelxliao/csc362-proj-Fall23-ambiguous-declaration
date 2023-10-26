@@ -2,17 +2,16 @@ FIELD SPECIFICATIONS
 
 GENERAL ELEMENTS
 
-Field Name:           Patron Last Name
-Parent Table:         Patrons
+Field Name:           Creator Last Name
+Parent Table:         Creators
 Alias(es):            _ 
 Specification Type:
   Unique:  _
   Generic: X 
   Replica: _ 
-Source Specification: _ 
+Source Specification: _
 Shared By:            _ 
-Description:          The last name of a patron.
-
+Description:          The last name of a creator of a particular material. Helpful for colloquial identification.
 
 PHYSICAL ELEMENTS
 
@@ -21,7 +20,7 @@ Length:               128
 Decimal Places:       None
 Character Support:
   Letters (A-Z):      X
-  Numbers (0-9):      X
+  Numbers (0-9):      X 
   Keyboard (.,/$#%):  X
   Special (©®™Σπ):    X 
 

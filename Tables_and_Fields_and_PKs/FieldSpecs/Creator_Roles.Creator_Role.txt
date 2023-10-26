@@ -2,53 +2,53 @@ FIELD SPECIFICATIONS
 
 GENERAL ELEMENTS
 
-Field Name:           Patron Last Name
-Parent Table:         Patrons
+Field Name:           Creator Role
+Parent Table:         Creator Roles
 Alias(es):            _ 
 Specification Type:
-  Unique:  _
-  Generic: X 
-  Replica: _ 
+  Unique:  X
+  Generic: _ 
+  Replica: _
 Source Specification: _ 
-Shared By:            _ 
-Description:          The last name of a patron.
+Shared By:            _
+Description:          The role a creator filled in creating the content of a material.
 
 
 PHYSICAL ELEMENTS
 
 Data Type:            VARCHAR
-Length:               128
-Decimal Places:       None
+Length:               32
+Decimal Places:       _
 Character Support:
   Letters (A-Z):      X
-  Numbers (0-9):      X
-  Keyboard (.,/$#%):  X
-  Special (©®™Σπ):    X 
+  Numbers (0-9):      _
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
 
 
 LOGICAL ELEMENTS
 
-Key Type:      Non:        X
-               Primary:    _ 
-               Foreign:    _ 
+Key Type:      Non:        _ 
+               Primary:    X
+               Foreign:    _
                Alternate:  _ 
 
-Key Structure: Simple:     _ 
+Key Structure: Simple:     X
                Composite:  _ 
 
-Uniqueness:    Non-unique: X
-               Unique:     _ 
+Uniqueness:    Non-unique: _ 
+               Unique:     X
 
 Null Support:  Nulls OK:   _ 
                No nulls:   X
 
 Values Entered By: User:   X
-                   System: _ 
+                   System: _
 
 Required Value:    No:     _ 
                    Yes:    X
 
-Range of Values:   Any valid string within the length.
+Range of Values:   Any alphabetical string.
 
 Edit Rule:
   Enter now, edits allowed:       X
