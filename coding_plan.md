@@ -42,6 +42,14 @@ Files we will need(Names are in the works):
 - Club_Info.php(X)
 - Current_Holds.php(X)
 
+## Email
+In thinking about views, I start by imaging what web pages I want to see, and writing views which I will display more or less directly. It may also be helpful to use views internally, as you implement the database. I don't expect you to put those on your ER diagram, because the client hasn't asked for them.
+
+I can think of a few nice web pages which you will probably want:
+- One showing all the information about an individual patron's interactions with the library. All checked out items, hold requests, fines, etc.
+-Another showing all the information about an individual club.
+- a list of all current holds, for librarians to see.
+These won't all translate directly into views, but some may.
 
 
 ## Task Categories (from Moodle Assignment)
