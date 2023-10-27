@@ -2,33 +2,33 @@ FIELD SPECIFICATIONS
 
 GENERAL ELEMENTS
 
-Field Name:           _ 
-Parent Table:         _ 
+Field Name:           Reservation Notes
+Parent Table:         Space Reservations
 Alias(es):            _ 
 Specification Type:
-  Unique:  _ 
+  Unique:  X
   Generic: _ 
   Replica: _ 
 Source Specification: _ 
 Shared By:            _ 
-Description:          _ 
+Description:          A note that allows the space-reserving patron to request certain things or warn ahead of time of special needs.
 
 
 PHYSICAL ELEMENTS
 
-Data Type:            _ 
-Length:               _ 
-Decimal Places:       _  
+Data Type:            VARCHAR
+Length:               256
+Decimal Places:       None
 Character Support:
-  Letters (A-Z):      _ 
-  Numbers (0-9):      _ 
-  Keyboard (.,/$#%):  _ 
-  Special (©®™Σπ):    _ 
+  Letters (A-Z):      X
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  X 
+  Special (©®™Σπ):    X 
 
 
 LOGICAL ELEMENTS
 
-Key Type:      Non:        _ 
+Key Type:      Non:        X
                Primary:    _ 
                Foreign:    _ 
                Alternate:  _ 
@@ -36,22 +36,22 @@ Key Type:      Non:        _
 Key Structure: Simple:     _ 
                Composite:  _ 
 
-Uniqueness:    Non-unique: _ 
+Uniqueness:    Non-unique: X
                Unique:     _ 
 
-Null Support:  Nulls OK:   _ 
+Null Support:  Nulls OK:   X
                No nulls:   _ 
 
-Values Entered By: User:   _ 
+Values Entered By: User:   X
                    System: _ 
 
-Required Value:    No:     _ 
+Required Value:    No:     X
                    Yes:    _ 
 
-Range of Values:   _ 
+Range of Values:   Any valid string.
 
 Edit Rule:
-  Enter now, edits allowed:       _ 
+  Enter now, edits allowed:       X
   Enter now, edits not allowed:   _ 
   Enter later, edits allowed:     _ 
   Enter later, edits not allowed: _ 

@@ -1,7 +1,5 @@
 # Table Structures
 
-# TEMP: SPACE_RESERVATIONS LAST TABLE
-
 ## Multimedia Types
 - Multimedia Type **(PK)**
 
@@ -52,11 +50,11 @@
 - Space Capacity
 
 ## Space Reservations
-? Reservation ID **(PK)**
-? Patron ID **(FK)**
-? Space ID **(FK)**
-? Start Reservation
-? End Reservation
+- Reservation ID **(PK)**
+- Patron ID **(FK)**
+- Space ID **(FK)**
+- Start Reservation
+- End Reservation
 ? Reservation Notes
 
 ## Selection
@@ -85,6 +83,7 @@
 ## Adaptations
 - Narrative ID **(CPK/FK)**
 - Material ID **(CPK/FK)**
+- Material isSource
 
 ## Patrons
 - Patron ID **(PK)**
