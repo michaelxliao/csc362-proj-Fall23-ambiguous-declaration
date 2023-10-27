@@ -47,7 +47,7 @@ In thinking about views, I start by imaging what web pages I want to see, and wr
 
 I can think of a few nice web pages which you will probably want:
 - One showing all the information about an individual patron's interactions with the library. All checked out items, hold requests, fines, etc.
--Another showing all the information about an individual club.
+- Another showing all the information about an individual club.
 - a list of all current holds, for librarians to see.
 These won't all translate directly into views, but some may.
 
