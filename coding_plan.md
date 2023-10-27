@@ -1,9 +1,48 @@
 # Coding Plan
+
+## Files
+
+### SQL Files
 Files we will need(Names are in the works):
-- TherpstonDB.sql(X)
+- SetupTherpstonDB.sql(X)
+- Selection.sql
+- ActiveSelection.sql (VIEW)
+- PrintMaterials.sql
+- PrintTypes.sql
+- Multimedia.sql
+- MultiMediaTypes.sql
+- Narratives.sql
+- ActiveNarratives.sql (VIEW)
+- Adaptations.sql
+- SelectionLanguages.sql
+- Languages.sql
+- SelectionCreators.sql
+- Creators.sql
+- CreatorRoles.sql
+- SelectionGenres.sql
+- Genres.sql
+- Patrons.sql
+- Patron-SelectionInteractions.sql
+- ActivePatron-SelectionInteractions.sql (VIEW)
+- Loans.sql
+- CurrentLoans.sql (VIEW)
+- Holds.sql
+- CurrentHolds.sql (VIEW)
+- Clubs.sql
+- ActiveClubs.sql (VIEW)
+- ClubMembers.sql
+- Spaces.sql
+- ActiveSpaces.sql (VIEW)
+- SpaceReservations.sql
+- CurrentReservations.sql (VIEW) // Need to consider what "range" of currency this encompasses. The current week? Just today? Only reservations that are ongoing?
+- ClubReservations.sql
+
+### PHP Files and related SQL files
 - Patron_Interactions.php(X)
 - Club_Info.php(X)
 - Current_Holds.php(X)
+
+
 
 ## Task Categories (from Moodle Assignment)
 - SQL scripts, including:
