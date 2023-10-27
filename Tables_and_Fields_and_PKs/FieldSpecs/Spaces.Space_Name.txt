@@ -2,8 +2,8 @@ FIELD SPECIFICATIONS
 
 GENERAL ELEMENTS
 
-Field Name:           Patron Last Name
-Parent Table:         Patrons
+Field Name:           Space Name
+Parent Table:         Spaces
 Alias(es):            _ 
 Specification Type:
   Unique:  _
@@ -11,7 +11,7 @@ Specification Type:
   Replica: _ 
 Source Specification: _ 
 Shared By:            _ 
-Description:          The last name of a patron.
+Description:          The name of the space, if it has a more specific one than its room number.
 
 
 PHYSICAL ELEMENTS
@@ -21,9 +21,9 @@ Length:               128
 Decimal Places:       None
 Character Support:
   Letters (A-Z):      X
-  Numbers (0-9):      X
+  Numbers (0-9):      X 
   Keyboard (.,/$#%):  X
-  Special (©®™Σπ):    X 
+  Special (©®™Σπ):    _
 
 
 LOGICAL ELEMENTS
@@ -39,14 +39,14 @@ Key Structure: Simple:     _
 Uniqueness:    Non-unique: X
                Unique:     _ 
 
-Null Support:  Nulls OK:   _ 
-               No nulls:   X
+Null Support:  Nulls OK:   X
+               No nulls:   _
 
 Values Entered By: User:   X
                    System: _ 
 
 Required Value:    No:     _ 
-                   Yes:    X
+                   Yes:    X (b/c null)
 
 Range of Values:   Any valid string within the length.
 

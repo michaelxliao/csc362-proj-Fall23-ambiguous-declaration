@@ -3,15 +3,15 @@ FIELD SPECIFICATIONS
 GENERAL ELEMENTS
 
 Field Name:           Print Type
-Parent Table:         Print Materials
+Parent Table:         Prin
 Alias(es):            _ 
 Specification Type:
   Unique:  _ 
-  Generic: _ 
-  Replica: X
+  Generic: _
+  Replica: X 
 Source Specification: Type
-Shared By:            _ 
-Description:          An indicator of role or category to help delineate between kinds of some subject that do not substantially change the characteristic -- mostly for organizing sections of data for filtering reasons.
+Shared By:            Print Types
+Description:          An indicator of what type of multimedia a particular material is -- mostly for organizing sections of data for filtering reasons.
 
 
 PHYSICAL ELEMENTS
@@ -28,16 +28,16 @@ Character Support:
 
 LOGICAL ELEMENTS
 
-Key Type:      Non:        X
+Key Type:      Non:        _
                Primary:    _ 
                Foreign:    X
                Alternate:  _ 
 
-Key Structure: Simple:     _ 
+Key Structure: Simple:     X
                Composite:  _ 
 
 Uniqueness:    Non-unique: X
-               Unique:     _ 
+               Unique:     _
 
 Null Support:  Nulls OK:   _ 
                No nulls:   X
@@ -48,7 +48,7 @@ Values Entered By: User:   X
 Required Value:    No:     _ 
                    Yes:    X
 
-Range of Values:   Limited to "Print" and "Periodical".
+Range of Values:    Strings in multimedia_types table.
 
 Edit Rule:
   Enter now, edits allowed:       X
@@ -57,4 +57,4 @@ Edit Rule:
   Enter later, edits not allowed: _ 
   Not determined at this time:    _ 
 
-NOTES: Could potentially expand valid values in the future.
+NOTES: _

@@ -3,37 +3,37 @@
 # TEMP: new tables, fields; when done change ? to -
 
 ## Multimedia Types
-? Multimedia Type **(PK)**
+- Multimedia Type **(PK)**
 
 ## Print Types
-? Print Type **(PK)**
+- Print Type **(PK)**
 
 ## Selection Languages
-? Material ID **(CPK/FK)**
-? Language Name **(CPK/FK)**
+- Material ID **(CPK/FK)**
+- Language Name **(CPK/FK)**
 
 ## Languages
-? Language Name **(PK)**
+- Language Name **(PK)**
 
 ## Selection Creators
-? Material ID **(CPK/FK)**
-? Creator ID **(CPK/FK)**
-? Creator Role **(CPK/FK)**
+- Material ID **(CPK/FK)**
+- Creator ID **(CPK/FK)**
+- Creator Role **(CPK/FK)**
 
 ## Creators
-? Creator ID **(PK)**
-? Creator First Name
-? Creator Last Name
+- Creator ID **(PK)**
+- Creator First Name
+- Creator Last Name
 
 ## Creator Roles
-? Creator Role **(PK)**
+- Creator Role **(PK)**
 
 ## Selection Genres
-? Material ID **(CPK/FK)**
-? Genre Name **(CPK/FK)**
+- Material ID **(CPK/FK)**
+- Genre Name **(CPK/FK)**
 
 ## Genres
-? Genre Name **(PK)**
+- Genre Name **(PK)**
 
 ## Club Members
 ? Club ID **(CPK/FK)**
@@ -46,10 +46,10 @@
 ? Club ID **(FK)**
 
 ## Spaces
-? Space ID **(PK)**
-? Space Name
-? Space Room Number
-? Space Capacity
+- Space ID **(PK)**
+- Space Name
+- Space Room Number
+- Space Capacity
 
 ## Space Reservations
 ? Reservation ID **(PK)**
@@ -65,15 +65,16 @@
 - Material Date Received
 - Material Date Created
 - Material isPending
+- Material Price
 
 ## Print Materials
 - Material ID **(PK/FK)**
-- Print Type
+- Print Type **(FK)**
 - Page Count
 
 ## Multimedia
 - Material ID **(PK/FK)**
-- Multimedia Type
+- Multimedia Type **(FK)**
 - Duration
 
 ## Narratives
@@ -100,7 +101,6 @@
 ## Loans
 - Interaction ID **(PK/FK)**
 - Loan Start Date
-- Loan End Date
 - Loan Return Date
 - Loan Renewal Tally 
 

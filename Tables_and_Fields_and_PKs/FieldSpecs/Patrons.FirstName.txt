@@ -6,8 +6,8 @@ Field Name:           Patron First Name
 Parent Table:         Patrons
 Alias(es):            _ 
 Specification Type:
-  Unique:  X
-  Generic: _ 
+  Unique:  _
+  Generic: X 
   Replica: _ 
 Source Specification: _ 
 Shared By:            _ 
@@ -21,9 +21,9 @@ Length:               128
 Decimal Places:       None
 Character Support:
   Letters (A-Z):      X
-  Numbers (0-9):      _ 
+  Numbers (0-9):      X 
   Keyboard (.,/$#%):  X
-  Special (©®™Σπ):    _ 
+  Special (©®™Σπ):    X 
 
 
 LOGICAL ELEMENTS

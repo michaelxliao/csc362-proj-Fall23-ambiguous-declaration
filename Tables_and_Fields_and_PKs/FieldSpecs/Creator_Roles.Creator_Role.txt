@@ -2,53 +2,53 @@ FIELD SPECIFICATIONS
 
 GENERAL ELEMENTS
 
-Field Name:           Multimedia Type
-Parent Table:         Multimedia
+Field Name:           Creator Role
+Parent Table:         Creator Roles
 Alias(es):            _ 
 Specification Type:
-  Unique:  _ 
-  Generic: _
-  Replica: X 
-Source Specification: Type
-Shared By:            Multimedia Types
-Description:          An indicator of what type of multimedia a particular material is -- mostly for organizing sections of data for filtering reasons.
+  Unique:  X
+  Generic: _ 
+  Replica: _
+Source Specification: _ 
+Shared By:            _
+Description:          The role a creator filled in creating the content of a material.
 
 
 PHYSICAL ELEMENTS
 
 Data Type:            VARCHAR
 Length:               32
-Decimal Places:       None
+Decimal Places:       _
 Character Support:
   Letters (A-Z):      X
-  Numbers (0-9):      _ 
+  Numbers (0-9):      _
   Keyboard (.,/$#%):  _ 
   Special (©®™Σπ):    _ 
 
 
 LOGICAL ELEMENTS
 
-Key Type:      Non:        _
-               Primary:    _ 
-               Foreign:    X
+Key Type:      Non:        _ 
+               Primary:    X
+               Foreign:    _
                Alternate:  _ 
 
 Key Structure: Simple:     X
                Composite:  _ 
 
-Uniqueness:    Non-unique: X
-               Unique:     _
+Uniqueness:    Non-unique: _ 
+               Unique:     X
 
 Null Support:  Nulls OK:   _ 
                No nulls:   X
 
 Values Entered By: User:   X
-                   System: _ 
+                   System: _
 
 Required Value:    No:     _ 
                    Yes:    X
 
-Range of Values:    Strings in multimedia_types table.
+Range of Values:   Any alphabetical string.
 
 Edit Rule:
   Enter now, edits allowed:       X

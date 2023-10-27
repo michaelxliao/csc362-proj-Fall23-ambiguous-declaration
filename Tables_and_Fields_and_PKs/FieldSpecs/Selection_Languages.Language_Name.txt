@@ -1,0 +1,60 @@
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Language Name
+Parent Table:         Selection Languages
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: _ 
+  Replica: X 
+Source Specification: N/A
+Shared By:            Languages
+Description:          Stores the language for which the linked material can be consumed in.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            Varchar
+Length:               32
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      X 
+  Numbers (0-9):      _
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    _
+               Foreign:    X
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X 
+               Unique:     _
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   _ 
+                   System: X
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Valid value in the list of Languages
+
+Edit Rule:
+  Enter now, edits allowed:       _ 
+  Enter now, edits not allowed:   X
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _

@@ -2,42 +2,41 @@ FIELD SPECIFICATIONS
 
 GENERAL ELEMENTS
 
-Field Name:           Multimedia Type
-Parent Table:         Multimedia
+Field Name:           Creator Last Name
+Parent Table:         Creators
 Alias(es):            _ 
 Specification Type:
-  Unique:  _ 
-  Generic: _
-  Replica: X 
-Source Specification: Type
-Shared By:            Multimedia Types
-Description:          An indicator of what type of multimedia a particular material is -- mostly for organizing sections of data for filtering reasons.
-
+  Unique:  _
+  Generic: X 
+  Replica: _ 
+Source Specification: _
+Shared By:            _ 
+Description:          The last name of a creator of a particular material. Helpful for colloquial identification.
 
 PHYSICAL ELEMENTS
 
 Data Type:            VARCHAR
-Length:               32
+Length:               128
 Decimal Places:       None
 Character Support:
   Letters (A-Z):      X
-  Numbers (0-9):      _ 
-  Keyboard (.,/$#%):  _ 
-  Special (©®™Σπ):    _ 
+  Numbers (0-9):      X 
+  Keyboard (.,/$#%):  X
+  Special (©®™Σπ):    X 
 
 
 LOGICAL ELEMENTS
 
-Key Type:      Non:        _
+Key Type:      Non:        X
                Primary:    _ 
-               Foreign:    X
+               Foreign:    _ 
                Alternate:  _ 
 
-Key Structure: Simple:     X
+Key Structure: Simple:     _ 
                Composite:  _ 
 
 Uniqueness:    Non-unique: X
-               Unique:     _
+               Unique:     _ 
 
 Null Support:  Nulls OK:   _ 
                No nulls:   X
@@ -48,7 +47,7 @@ Values Entered By: User:   X
 Required Value:    No:     _ 
                    Yes:    X
 
-Range of Values:    Strings in multimedia_types table.
+Range of Values:   Any valid string within the length.
 
 Edit Rule:
   Enter now, edits allowed:       X

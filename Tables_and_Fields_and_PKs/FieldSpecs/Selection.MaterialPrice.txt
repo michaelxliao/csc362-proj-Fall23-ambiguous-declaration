@@ -2,28 +2,28 @@ FIELD SPECIFICATIONS
 
 GENERAL ELEMENTS
 
-Field Name:           Patron Last Name
-Parent Table:         Patrons
+Field Name:           Material Price
+Parent Table:         Selection
 Alias(es):            _ 
 Specification Type:
   Unique:  _
   Generic: X 
   Replica: _ 
-Source Specification: _ 
-Shared By:            _ 
-Description:          The last name of a patron.
+Source Specification: N/A
+Shared By:            Print Materials, Multimedia
+Description:          The price of the material. This is important when computing fees for losing items.
 
 
 PHYSICAL ELEMENTS
 
-Data Type:            VARCHAR
-Length:               128
-Decimal Places:       None
+Data Type:            DECIMAL
+Length:               _
+Decimal Places:       2
 Character Support:
-  Letters (A-Z):      X
-  Numbers (0-9):      X
-  Keyboard (.,/$#%):  X
-  Special (©®™Σπ):    X 
+  Letters (A-Z):      _
+  Numbers (0-9):      X 
+  Keyboard (.,/$#%):  _
+  Special (©®™Σπ):    _ 
 
 
 LOGICAL ELEMENTS
@@ -33,14 +33,14 @@ Key Type:      Non:        X
                Foreign:    _ 
                Alternate:  _ 
 
-Key Structure: Simple:     _ 
+Key Structure: Simple:     X 
                Composite:  _ 
 
-Uniqueness:    Non-unique: X
+Uniqueness:    Non-unique: X 
                Unique:     _ 
 
 Null Support:  Nulls OK:   _ 
-               No nulls:   X
+               No nulls:   X 
 
 Values Entered By: User:   X
                    System: _ 
@@ -48,7 +48,7 @@ Values Entered By: User:   X
 Required Value:    No:     _ 
                    Yes:    X
 
-Range of Values:   Any valid string within the length.
+Range of Values:   Any valid price (nonnegative)
 
 Edit Rule:
   Enter now, edits allowed:       X
