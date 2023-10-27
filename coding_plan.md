@@ -1,10 +1,10 @@
 # Coding Plan
 
 ## Files
-
+// remind me to make all bullets checkboxes
 ### SQL Files
-Files we will need(Names are in the works):
-- SetupTherpstonDB.sql(X)
+- **FILENAME** (optional note)                **ASSIGNED NAME**
+- SetupTherpstonDB.sql                                 
 - Selection.sql
 - ActiveSelection.sql (VIEW)
 - PrintMaterials.sql
@@ -38,9 +38,10 @@ Files we will need(Names are in the works):
 - ClubReservations.sql
 
 ### PHP Files and related SQL files
-- Patron_Interactions.php(X)
-- Club_Info.php(X)
-- Current_Holds.php(X)
+- Patron_Interactions.php
+    - Patron_Interactions_modification_functions.sql (name pending)
+- Club_Info.php
+- Current_Holds.php
 
 ## Email
 In thinking about views, I start by imaging what web pages I want to see, and writing views which I will display more or less directly. It may also be helpful to use views internally, as you implement the database. I don't expect you to put those on your ER diagram, because the client hasn't asked for them.
