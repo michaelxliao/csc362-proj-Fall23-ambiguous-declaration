@@ -1,6 +1,6 @@
 # Table Structures
 
-# TEMP: new tables, fields; when done change ? to -
+# TEMP: SPACE_RESERVATIONS LAST TABLE
 
 ## Multimedia Types
 - Multimedia Type **(PK)**
@@ -36,14 +36,14 @@
 - Genre Name **(PK)**
 
 ## Club Members
-? Club ID **(CPK/FK)**
-? Patron ID **(CPK/FK)**
-? Member Info
-? Member isLeader
+- Club ID **(CPK/FK)**
+- Patron ID **(CPK/FK)**
+- Member Info
+- Member isLeader
 
 ## Club Reservations
-? Reservation ID **(PK/FK)**
-? Club ID **(FK)**
+- Reservation ID **(PK/FK)**
+- Club ID **(FK)**
 
 ## Spaces
 - Space ID **(PK)**
