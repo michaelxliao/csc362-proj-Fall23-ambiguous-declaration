@@ -1,10 +1,10 @@
 # Coding Plan
 
 ## Files
-- [Done?] **FILENAME** (optional note)                                          **ASSIGNED NAME**
-
 ### Database Definitions
-- [ ] SetupTherpstonDB.sql (webuser, SOURCE other sql files)                Michael
+| Done? | **Filename** | (optional note) | **Assigned to** |
+| ----- | -------- | --------------- | --------------- |
+| - [ ] | SetupTherpstonDB.sql | (webuser, SOURCE other sql files) | Michael |
 - [ ] Selection.sql                                                         Michael
 - [ ] ActiveSelection.sql (VIEW, for DENY deletion)                         Michael
 - [ ] PrintMaterials.sql                                                    Michael
