@@ -101,7 +101,6 @@
 ## Loans
 - Interaction ID **(PK/FK)**
 - Loan Start Date
-- Loan End Date
 - Loan Return Date
 - Loan Renewal Tally 
 
