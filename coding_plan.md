@@ -19,25 +19,25 @@ Paste `☑` over the `☐` boxes when done.
 | ☐    | Narratives.sql                         | Michael         |                                              |
 | ☐    | ActiveNarratives.sql                   | Michael         | VIEW, for DENY deletion                      |
 | ☐    | Adaptations.sql                        | Michael         |                                              |
-| ☐    | SelectionLanguages.sql                 |                 |                                              |
-| ☐    | Languages.sql                          |                 |                                              |
-| ☐    | SelectionCreators.sql                  |                 |                                              |
-| ☐    | Creators.sql                           |                 |                                              |
-| ☐    | CreatorRoles.sql                       |                 |                                              |
-| ☐    | SelectionGenres.sql                    |                 |                                              |
-| ☐    | Genres.sql                             |                 |                                              |
-| ☐    | Patrons.sql                            |                 |                                              |
-| ☐    | Patron-SelectionInteractions.sql       |                 |                                              |
-| ☐    | ActivePatron-SelectionInteractions.sql |                 | VIEW, for DENY deletion                      |
-| ☐    | Loans.sql                              |                 |                                              |
-| ☐    | CurrentLoans.sql                       |                 | VIEW                                         |
-| ☐    | Holds.sql                              |                 |                                              |
-| ☐    | CurrentHolds.sql                       |                 | VIEW                                         |
-| ☐    | Clubs.sql                              |                 |                                              |
-| ☐    | ActiveClubs.sql                        |                 |                                              |
-| ☐    | ClubMembers.sql                        |                 |                                              |
-| ☐    | Spaces.sql                             |                 |                                              |
-| ☐    | ActiveSpaces.sql                       |                 |                                              |
+| ☐    | SelectionLanguages.sql                 | Pierce          |                                              |
+| ☐    | Languages.sql                          | Pierce          |                                              |
+| ☐    | SelectionCreators.sql                  | Pierce          |                                              |
+| ☐    | Creators.sql                           | Pierce          |                                              |
+| ☐    | CreatorRoles.sql                       | Pierce          |                                              |
+| ☐    | SelectionGenres.sql                    | Pierce          |                                              |
+| ☐    | Genres.sql                             | Pierce          |                                              |
+| ☐    | Patrons.sql                            | Rashawn         |                                              |
+| ☐    | Patron-SelectionInteractions.sql       | Rashawn         |                                              |
+| ☐    | ActivePatron-SelectionInteractions.sql | Rashawn         | VIEW, for DENY deletion                      |
+| ☐    | Loans.sql                              | Rashawn         |                                              |
+| ☐    | CurrentLoans.sql                       | Rashawn         | VIEW                                         |
+| ☐    | Holds.sql                              | Rashawn         |                                              |
+| ☐    | CurrentHolds.sql                       | Rashawn         | VIEW                                         |
+| ☐    | Clubs.sql                              | Rashawn         |                                              |
+| ☐    | ActiveClubs.sql                        | Rashawn         | VIEW                                         |
+| ☐    | ClubMembers.sql                        | Rashawn         |                                              |
+| ☐    | Spaces.sql                             | Pierce          |                                              |
+| ☐    | ActiveSpaces.sql                       |                 | VIEW                                         |
 | ☐    | SpaceReservations.sql                  |                 |                                              |
 | ☐    | CurrentReservations.sql                |                 | VIEW, range? the current week/today/ongoing? |
 | ☐    | ClubReservations.sql                   |                 |                                              |
@@ -48,37 +48,42 @@ Paste `☑` over the `☐` boxes when done.
 | Done? | **Filename**       | **Assigned to** | Notes                                                          |
 | ------- | -------------------- | ----------------- | ---------------------------------------------------------------- |
 | ☐    | Patron_Profile.php |                 | All checked out items, hold requests, fines, etc. for 1 person |
-| ☐    | Club_Profile.php   |                 | All info about a club                                          |
+| ☐    | Club_Profile.php   | Rashawn         | All info about a club                                          |
 | ☐    | Current_Holds.php  |                 | should also show the queue of users waiting for it             |
 
 ### Data Management
 
-Note that each ManageX.sql script holds the appropriate INSERT/DELETE/UPDATE queries as needed per page.
+Note that each `ManageX.sql` script holds the appropriate INSERT/DELETE/UPDATE queries as needed per page.
 
 
 | Done? | **Filename**               | **Assigned to** | Notes                                          |
 | ------- | ---------------------------- | ----------------- | ------------------------------------------------ |
 | ☐    | UpdateValidationTables.sql |                 | infrequently run; left as script               |
 | ☐    | ManageSpaces.sql           |                 | infrequently updated; left as script           |
-| ☐    | ManageSelection.php        |                 | can modify selection/deselect things from page |
-| ☐    | ManageSelection.sql        |                 | will likely also interface with Adaptations    |
-| ☐    | ManageClubs.php            |                 |                                                |
-| ☐    | ManageClubs.sql            |                 |                                                |
-| ☐    | ManagePatrons.php          |                 |                                                |
-| ☐    | ManagePatrons.sql          |                 |                                                |
+| ☐    | ManageSelection.php        | Pierce          | can modify selection/deselect things from page |
+| ☐    | ManageSelection.sql        | Pierce          | will likely also interface with Adaptations    |
+| ☐    | ManageClubs.php            | Rashawn         |                                                |
+| ☐    | ManageClubs.sql            | Rashawn         |                                                |
+| ☐    | ManagePatrons.php          | Rashawn         |                                                |
+| ☐    | ManagePatrons.sql          | Rashawn         |                                                |
 | ☐    | ManageInteractions.php     |                 |                                                |
 | ☐    | ManageInteractions.sql     |                 | will have to interface with subset tables      |
-| ☐    | ManageReservations.php     |                 |                                                |
-| ☐    | ManageReservations.sql     |                 |                                                |
+| ☐    | ManageReservations.php     | Pierce          |                                                |
+| ☐    | ManageReservations.sql     | Pierce          |                                                |
 
 ### Other Useful Reports
 
 
 | Done? | **Filename**            | **Assigned to** | Notes                                                 |
 | ------- | ------------------------- | ----------------- | ------------------------------------------------------- |
+| ☐    | Index.php               |                 |   Links to all other pages                            |
 | ☐    | Catalog.php             |                 | shows all materials in selection, probably can filter |
-| ☐    | CurrentLoans.php        |                 | for librarians                                        |
+| ☐    | CurrentLoans.php        | Rashawn         | for librarians                                        |
 | ☐    | CurrentReservations.php |                 | for librarians                                        |
+| ☐    | CurrentHolds.php        |                 | for librarians                                        |
+| ☐    | ClubDetails.php         |                 | for librarians (active clubs)                         |
+| ☐    | PatronLookup.php        |                 | for librarians                                        |
+
 
 ## Final Deliverables
 
