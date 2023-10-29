@@ -1,0 +1,692 @@
+### ReservationEndDateAfterStartDate.txt
+BUSINESS RULE SPECIFICATIONS
+
+RULE INFORMATION
+
+Statement:  The date when a room will no longer be reserved must be after the start date for that reservation
+
+Constraint: start_reservation < end_reservation
+
+Type:     Database Oriented:     _
+          Application Oriented   X 
+
+Category: Field Specific:        X
+          Relationship Specific: _ 
+
+Test On:  Insert:                X
+          Delete:                _ 
+          Update:                X
+
+
+STRUCTURES AFFECTED
+
+Field Names: start_reservation, end_reservation
+
+Table Names: space_reservations
+
+
+FIELD ELEMENTS AFFECTED
+
+Physical Elements: Data Type:           _ 
+                   Length:              _ 
+                   Character Support:   _ 
+
+Logical Elements:  Key Type:            _ 
+                   Key Structure:       _ 
+                   Uniqueness:          _
+                   Null Support:        _ 
+                   Values Entered By:   _ 
+                   Range of Values:     X 
+                   Edit Rule:           _ 
+
+
+RELATIONSHIP CHARACTERISTICS AFFECTED
+
+    Deletion rule:              _
+    Type of participation:      _
+    Degree of participation:    _
+
+
+ACTION TAKEN
+
+We will have a CHECK start_reservation< end_reservation
+
+NOTES: _
+
+
+### EndDateAfterStartDate.txt
+BUSINESS RULE SPECIFICATIONS
+
+RULE INFORMATION
+
+Statement: For space reservations and loans from our selection, they must have
+           a valid time interval for insertion, i.e. they will be returned after
+           initially given.
+
+Constraint: end_date must be a datetime succeeding start_date for all relevant fields.
+
+Type:     Database Oriented:     _ 
+          Application Oriented   X
+
+Category: Field Specific:        X
+          Relationship Specific: _ 
+
+Test On:  Insert:                X
+          Delete:                _ 
+          Update:                X
+
+
+STRUCTURES AFFECTED
+
+Field Names: Start_Reservation, End_Reservation
+
+Table Names: space_reservations
+
+
+FIELD ELEMENTS AFFECTED
+
+Physical Elements: Data Type:           _ 
+                   Length:              _ 
+                   Character Support:   _ 
+
+Logical Elements:  Key Type:            _ 
+                   Key Structure:       _ 
+                   Uniqueness:          _ 
+                   Null Support:        _ 
+                   Values Entered By:   _ 
+                   Range of Values:     X
+                   Edit Rule:           _ 
+
+
+RELATIONSHIP CHARACTERISTICS AFFECTED
+
+    Deletion rule:              _
+    Type of participation:      _
+    Degree of participation:    _
+
+    
+ACTION TAKEN
+
+Check constraint on addition and update that these values are consistent per record. 
+end_date > start_date
+
+NOTES: _
+
+
+### SpaceDenyDelete.txt
+BUSINESS RULE SPECIFICATIONS
+
+RULE INFORMATION
+
+Statement:  Incase the library is ever renovated in the future, we want to keep track of data which references old rooms which may no longer be in use. 
+
+Constraint: We will have a field in spaces which tells the database if the space is active or not. 
+Type:     Database Oriented:     X 
+          Application Oriented   _ 
+
+Category: Field Specific:        _ 
+          Relationship Specific: X 
+
+Test On:  Insert:                _ 
+          Delete:                X 
+          Update:                _
+
+
+STRUCTURES AFFECTED
+
+Field Names: 
+Table Names: Spaces
+
+
+FIELD ELEMENTS AFFECTED
+
+Physical Elements: Data Type:           _ 
+                   Length:              _ 
+                   Character Support:   _ 
+
+Logical Elements:  Key Type:            _ 
+                   Key Structure:       _ 
+                   Uniqueness:          _ 
+                   Null Support:        _ 
+                   Values Entered By:   _ 
+                   Range of Values:     _ 
+                   Edit Rule:           _ 
+
+
+RELATIONSHIP CHARACTERISTICS AFFECTED
+
+    Deletion rule:              X
+    Type of participation:      _
+    Degree of participation:    _
+
+    
+ACTION TAKEN
+
+We will add a field called "Space_Is_Active" which will be a boolean that reflects if a space is active or not. 
+
+NOTES:
+
+
+### PatronEmailOrNumberCannotBeNull.txt
+BUSINESS RULE SPECIFICATIONS
+
+RULE INFORMATION
+
+Statement:  patron_email or patron_phone_number cannot be null in order to have some way to contact a patron
+
+Constraint: patron_email or patron_phone_number cannot be null 
+
+Type:     Database Oriented:     _ 
+          Application Oriented   X 
+
+Category: Field Specific:        X 
+          Relationship Specific: _ 
+
+Test On:  Insert:                X 
+          Delete:                _ 
+          Update:                X
+
+
+STRUCTURES AFFECTED
+
+Field Names: patron_email, patron_phone_number 
+
+Table Names: patrons
+
+
+FIELD ELEMENTS AFFECTED
+
+Physical Elements: Data Type:           _ 
+                   Length:              _ 
+                   Character Support:   _ 
+
+Logical Elements:  Key Type:            _ 
+                   Key Structure:       _ 
+                   Uniqueness:          _ 
+                   Null Support:        _ 
+                   Values Entered By:   _ 
+                   Range of Values:     X 
+                   Edit Rule:           _ 
+
+
+RELATIONSHIP CHARACTERISTICS AFFECTED
+
+    Deletion rule:              _
+    Type of participation:      _
+    Degree of participation:    _
+
+    
+ACTION TAKEN
+
+Putting a NOT NULL during declaration 
+
+
+NOTES: _
+
+
+### MaxFourMultimediaAtATime.txt
+BUSINESS RULE SPECIFICATIONS
+
+RULE INFORMATION
+
+Statement:  A patron can have at most four multimedia materials checked out
+from the library at a time.
+
+Constraint: A single Patron can only be related to four Multimedia where
+the LoanStartDate and LoanReturnDate overlap.
+
+Type:     Database Oriented:     _ 
+          Application Oriented   X
+
+Category: Field Specific:        _ 
+          Relationship Specific: _ 
+
+Test On:  Insert:                X
+          Delete:                _ 
+          Update:                X
+
+
+STRUCTURES AFFECTED
+
+Field Names: _ 
+
+Table Names: _
+
+
+FIELD ELEMENTS AFFECTED
+
+Physical Elements: Data Type:           _ 
+                   Length:              _ 
+                   Character Support:   _ 
+
+Logical Elements:  Key Type:            _ 
+                   Key Structure:       _ 
+                   Uniqueness:          _ 
+                   Null Support:        _ 
+                   Values Entered By:   _ 
+                   Range of Values:     X
+                   Edit Rule:           _ 
+
+
+RELATIONSHIP CHARACTERISTICS AFFECTED
+
+    Deletion rule:              _
+    Type of participation:      _
+    Degree of participation:    X
+
+    
+ACTION TAKEN
+
+New Loan records involving Multimedia with the same PatronID
+cannot have a LoanStartDate that is between another record's
+(with the same PatronID) LoanStartDate and LoanReturnDate if there
+are already four records with such requirements in the table.
+
+NOTES: _
+
+
+### ClubNamesUnique.txt
+BUSINESS RULE SPECIFICATIONS
+
+RULE INFORMATION
+
+Statement:  Club names must be unique in order to minimize confusion amongst patrons.
+
+Constraint: ClubName must be unique.
+
+Type:     Database Oriented:     X
+          Application Oriented   _ 
+
+Category: Field Specific:        X
+          Relationship Specific: _ 
+
+Test On:  Insert:                X
+          Delete:                _ 
+          Update:                X
+
+
+STRUCTURES AFFECTED
+
+Field Names: ClubName
+
+Table Names: _
+
+
+FIELD ELEMENTS AFFECTED
+
+Physical Elements: Data Type:           _ 
+                   Length:              _ 
+                   Character Support:   _ 
+
+Logical Elements:  Key Type:            _ 
+                   Key Structure:       _ 
+                   Uniqueness:          X
+                   Null Support:        _ 
+                   Values Entered By:   _ 
+                   Range of Values:     _ 
+                   Edit Rule:           _ 
+
+
+RELATIONSHIP CHARACTERISTICS AFFECTED
+
+    Deletion rule:              _
+    Type of participation:      _
+    Degree of participation:    _
+
+    
+ACTION TAKEN
+
+ClubName now has UNIQUE constraint.
+
+NOTES: _
+
+
+### SelectionCascadeDeletion.txt
+BUSINESS RULE SPECIFICATIONS
+
+RULE INFORMATION
+
+Statement:  If a piece of material is removed from the selection, we will delete information from the other tables that pertains to the material that was removed. 
+
+Constraint: If the material_id, that is being deleted, appears within another table, such as selection_genres and selection_creators, than that data will be deleted as well.
+Type:     Database Oriented:     X 
+          Application Oriented   _ 
+
+Category: Field Specific:        _ 
+          Relationship Specific: X 
+
+Test On:  Insert:                _ 
+          Delete:                X 
+          Update:                _
+
+
+STRUCTURES AFFECTED
+
+Field Names: material_id, material_title, material_date_recieved, material_date_created, material_isPending, material_ILL_source
+Table Names: Selection, multimedia, Print, Patron_Selection_Interaction, Selection_Genres, Selection_Creators, Selection_Languages, Adaptations
+
+
+FIELD ELEMENTS AFFECTED
+
+Physical Elements: Data Type:           _ 
+                   Length:              _ 
+                   Character Support:   _ 
+
+Logical Elements:  Key Type:            _ 
+                   Key Structure:       _ 
+                   Uniqueness:          _ 
+                   Null Support:        _ 
+                   Values Entered By:   _ 
+                   Range of Values:     _ 
+                   Edit Rule:           _ 
+
+
+RELATIONSHIP CHARACTERISTICS AFFECTED
+
+    Deletion rule:              X
+    Type of participation:      _
+    Degree of participation:    _
+
+    
+ACTION TAKEN
+
+We will implement a cascade deletion rule for this situation. 
+
+NOTES: 
+
+
+
+### MaxTenPrintMaterialsAtATime.txt
+BUSINESS RULE SPECIFICATIONS
+
+RULE INFORMATION
+
+Statement:  A patron can have at most ten print materials checked out
+from the library at a time.
+
+Constraint: A single Patron can only be related to ten PrintMaterials where
+the LoanStartDate and LoanReturnDate overlap.
+
+Type:     Database Oriented:     _ 
+          Application Oriented   X
+
+Category: Field Specific:        _ 
+          Relationship Specific: _ 
+
+Test On:  Insert:                X
+          Delete:                _ 
+          Update:                X
+
+
+STRUCTURES AFFECTED
+
+Field Names: _ 
+
+Table Names: _
+
+
+FIELD ELEMENTS AFFECTED
+
+Physical Elements: Data Type:           _ 
+                   Length:              _ 
+                   Character Support:   _ 
+
+Logical Elements:  Key Type:            _ 
+                   Key Structure:       _ 
+                   Uniqueness:          _ 
+                   Null Support:        _ 
+                   Values Entered By:   _ 
+                   Range of Values:     X
+                   Edit Rule:           _ 
+
+
+RELATIONSHIP CHARACTERISTICS AFFECTED
+
+    Deletion rule:              _
+    Type of participation:      _
+    Degree of participation:    X
+
+    
+ACTION TAKEN
+
+New Loan records involving PrintMaterials with the same PatronID
+cannot have a LoanStartDate that is between another record's
+(with the same PatronID) LoanStartDate and LoanReturnDate if there
+are already ten records with such requirements in the table.
+
+NOTES: _
+
+
+### HoldDateRequestedCannotBeFuture.txt
+BUSINESS RULE SPECIFICATIONS
+
+RULE INFORMATION
+
+Statement:  A patron cannot place a hold on material in the library's selection
+in advance. It must already be checked out by another patron and must accurately
+reflect the time a patron requested a hold on that material, and therefore must
+occur at a time before or during the present.
+
+Constraint: HoldDateRequested cannot be in the future.
+
+Type:     Database Oriented:     _ 
+          Application Oriented   X
+
+Category: Field Specific:        _ 
+          Relationship Specific: _ 
+
+Test On:  Insert:                X
+          Delete:                _ 
+          Update:                X
+
+
+STRUCTURES AFFECTED
+
+Field Names: _ 
+
+Table Names: _
+
+
+FIELD ELEMENTS AFFECTED
+
+Physical Elements: Data Type:           _ 
+                   Length:              _ 
+                   Character Support:   _ 
+
+Logical Elements:  Key Type:            _ 
+                   Key Structure:       _ 
+                   Uniqueness:          _ 
+                   Null Support:        _ 
+                   Values Entered By:   _ 
+                   Range of Values:     X
+                   Edit Rule:           _ 
+
+
+RELATIONSHIP CHARACTERISTICS AFFECTED
+
+    Deletion rule:              _
+    Type of participation:      _
+    Degree of participation:    _
+
+    
+ACTION TAKEN
+
+Allowed range of values is maxed out at TODAY.
+
+NOTES: _
+
+
+### PatronCascadeDelete.txt
+BUSINESS RULE SPECIFICATIONS
+
+RULE INFORMATION
+
+Statement:  If a patron asks for their infromation to be removed from the database, we will delete all the information that has any connection to that patron
+
+Constraint: If the patron_id, that is being deleted, appears within another table, such as club_memebrs or space_reservations, than that data will be deleted as well.
+Type:     Database Oriented:     X 
+          Application Oriented   _ 
+
+Category: Field Specific:        _ 
+          Relationship Specific: X 
+
+Test On:  Insert:                _ 
+          Delete:                X 
+          Update:                _
+
+
+STRUCTURES AFFECTED
+
+Field Names: patron_id, patron_email, patron_phone_number
+Table Names: Patrons, Patron_Selection_Interaction, club_memebrs, space_reservations
+
+
+FIELD ELEMENTS AFFECTED
+
+Physical Elements: Data Type:           _ 
+                   Length:              _ 
+                   Character Support:   _ 
+
+Logical Elements:  Key Type:            _ 
+                   Key Structure:       _ 
+                   Uniqueness:          _ 
+                   Null Support:        _ 
+                   Values Entered By:   _ 
+                   Range of Values:     _ 
+                   Edit Rule:           _ 
+
+
+RELATIONSHIP CHARACTERISTICS AFFECTED
+
+    Deletion rule:              X
+    Type of participation:      _
+    Degree of participation:    _
+
+    
+ACTION TAKEN
+
+We will implement a cascade deletion rule for this situation. 
+
+NOTES: 
+If the patron is simply inactive, we will use deny and we will have a "is_active" to let the databse know if it should show the patron or not.
+
+
+### LoanReturnDateCannotBeFuture.txt
+BUSINESS RULE SPECIFICATIONS
+
+RULE INFORMATION
+
+Statement:  A loaned-out material cannot be returned in the future; the patron must
+actually bring the material to the library and have it be processed in order for
+the return to be logged. It is not a promised date; it is the actual return date.
+
+Constraint: LoanReturnDate cannot be in the future.
+
+Type:     Database Oriented:     _ 
+          Application Oriented   X
+
+Category: Field Specific:        _ 
+          Relationship Specific: _ 
+
+Test On:  Insert:                X
+          Delete:                _ 
+          Update:                X
+
+
+STRUCTURES AFFECTED
+
+Field Names: _ 
+
+Table Names: _
+
+
+FIELD ELEMENTS AFFECTED
+
+Physical Elements: Data Type:           _ 
+                   Length:              _ 
+                   Character Support:   _ 
+
+Logical Elements:  Key Type:            _ 
+                   Key Structure:       _ 
+                   Uniqueness:          _ 
+                   Null Support:        _ 
+                   Values Entered By:   _ 
+                   Range of Values:     X
+                   Edit Rule:           _ 
+
+
+RELATIONSHIP CHARACTERISTICS AFFECTED
+
+    Deletion rule:              _
+    Type of participation:      _
+    Degree of participation:    _
+
+    
+ACTION TAKEN
+
+Allowed range of values is maxed out at TODAY.
+
+NOTES: _
+
+
+### RenewalTallyMaxValues.txt
+BUSINESS RULE SPECIFICATIONS
+
+RULE INFORMATION
+
+Statement:  A print book can be renewed four times before being returned, and a
+            multimedia source can be reneweed twice before being returned.
+
+Constraint: Maximum on renewal_tally for print and multimedia.
+
+Type:     Database Oriented:     X
+          Application Oriented   _
+
+Category: Field Specific:        X
+          Relationship Specific: _ 
+
+Test On:  Insert:                X
+          Delete:                _ 
+          Update:                X
+
+
+STRUCTURES AFFECTED
+
+Field Names: loan_renewal_tally
+
+Table Names: loans
+
+
+FIELD ELEMENTS AFFECTED
+
+Physical Elements: Data Type:           _ 
+                   Length:              _ 
+                   Character Support:   _ 
+
+Logical Elements:  Key Type:            _ 
+                   Key Structure:       _ 
+                   Uniqueness:          _ 
+                   Null Support:        _ 
+                   Values Entered By:   _ 
+                   Range of Values:     X
+                   Edit Rule:           _ 
+
+
+RELATIONSHIP CHARACTERISTICS AFFECTED
+
+    Deletion rule:              _
+    Type of participation:      _
+    Degree of participation:    _
+
+    
+ACTION TAKEN
+
+We'll need a function to check if the record is for print and multimedia,
+and then ensure that we aren't updating a tally above its max valid value.
+for print books, loan_renewal_tally <= 4
+for multimedia,  loan_renewal_tally <= 2
+
+
+NOTES: _
+
+

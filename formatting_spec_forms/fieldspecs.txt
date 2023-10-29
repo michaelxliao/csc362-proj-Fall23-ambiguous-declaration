@@ -1,0 +1,4148 @@
+### Club_Members.PatronID.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Patron ID
+Parent Table:         Club_Members
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            Patrons
+Description:          An identifier used to indicate which patron is a member of a linked club.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            INT
+Length:               None
+Decimal Places:       None  
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    X
+               Foreign:    X
+               Alternate:  _ 
+
+Key Structure: Simple:     _ 
+               Composite:  X
+
+Uniqueness:    Non-unique: X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Any valid Patron ID from the home Patrons table.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Creators.Creator_Last_Name.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Creator Last Name
+Parent Table:         Creators
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: X 
+  Replica: _ 
+Source Specification: _
+Shared By:            _ 
+Description:          The last name of a creator of a particular material. Helpful for colloquial identification.
+
+PHYSICAL ELEMENTS
+
+Data Type:            VARCHAR
+Length:               128
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      X
+  Numbers (0-9):      X 
+  Keyboard (.,/$#%):  X
+  Special (©®™Σπ):    X 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X
+               Primary:    _ 
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     _ 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Any valid string within the length.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Loan.RenewalTally.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Loan Renewal Tally
+Parent Table:         Loans
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: X 
+  Replica: _ 
+Source Specification: N/A
+Shared By:            _
+Description:          Tallys the amount of renewals a loan has.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            INT
+Length:               N/A
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X 
+               Primary:    _
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X 
+               Unique:     _
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X 
+                   System: _
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Whatever value the library decides on
+
+Edit Rule:
+  Enter now, edits allowed:       X 
+  Enter now, edits not allowed:   _
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Club_Members.ClubID.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Club ID
+Parent Table:         Club_Members
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            Clubs
+Description:          An identifier used to indicate which club the members of the table are linked to.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            INT
+Length:               None
+Decimal Places:       None 
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    X
+               Foreign:    X
+               Alternate:  _ 
+
+Key Structure: Simple:     _ 
+               Composite:  X
+
+Uniqueness:    Non-unique: X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Any valid Club ID from the home Clubs table.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Club_Reservations.ReservationID.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Reservation ID
+Parent Table:         Club_Reservations
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            Space_Reservations
+Description:          A unique identifier that distinguishes between different reservations posted for spaces from clubs.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            INT
+Length:               None 
+Decimal Places:       None 
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    X
+               Foreign:    X
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: _ 
+               Unique:     X
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   An existing Reservation ID from the home Space_Reservations table.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Selection_Languages.Material_ID.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Material ID
+Parent Table:         Selection Languages
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: _ 
+  Replica: X 
+Source Specification: N/A
+Shared By:            Selection     Print Materials     Multimedia      Adaptations       
+Description:          Stores the ID of a material for identifying which material can be consumed in a particular language.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            Int
+Length:               N/A
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    _
+               Foreign:    X
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X 
+               Unique:     _
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   _ 
+                   System: X
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Valid number in the list of MaterialIDs
+
+Edit Rule:
+  Enter now, edits allowed:       _ 
+  Enter now, edits not allowed:   X
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### PrintTypes.PrintType.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Print Type
+Parent Table:         Print Types
+Alias(es):            _ 
+Specification Type:
+  Unique:  X 
+  Generic: _
+  Replica: _ 
+Source Specification: Type
+Shared By:            _ 
+Description:          An indicator of role or category to help delineate between kinds of some subject that do not substantially change the characteristic -- mostly for organizing sections of data for filtering reasons.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            VARCHAR
+Length:               32
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      X
+  Numbers (0-9):      _ 
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _
+               Primary:    X 
+               Foreign:    _
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: _
+               Unique:     X 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:    Valid strings in the character limit.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Patrons.Phone.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Patron Phone
+Parent Table:         Patrons
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            _ 
+Description:          A phone number used to contact a patron of the library.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            VARCHAR
+Length:               14
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  X
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X
+               Primary:    _ 
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     _ 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   X
+               No nulls:   _ 
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   A valid ten-digit phone number, in the format (XXX) XXX-XXXX.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: Only one of Patron.Email or Patron.Phone can be null.
+### Club_Members.isLeader.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           isLeader
+Parent Table:         Club_Members
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            _ 
+Description:          An indicator of whether or not a patron is a leader of the associated club.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            BOOLEAN
+Length:               None
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      _ 
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X
+               Primary:    _ 
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     _ 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   FALSE or TRUE.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Selection.MaterialPrice.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Material Price
+Parent Table:         Selection
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: X 
+  Replica: _ 
+Source Specification: N/A
+Shared By:            Print Materials, Multimedia
+Description:          The price of the material. This is important when computing fees for losing items.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            DECIMAL
+Length:               _
+Decimal Places:       2
+Character Support:
+  Letters (A-Z):      _
+  Numbers (0-9):      X 
+  Keyboard (.,/$#%):  _
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X
+               Primary:    _ 
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     X 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X 
+               Unique:     _ 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X 
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Any valid price (nonnegative)
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Creator_Roles.Creator_Role.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Creator Role
+Parent Table:         Creator Roles
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _
+Source Specification: _ 
+Shared By:            _
+Description:          The role a creator filled in creating the content of a material.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            VARCHAR
+Length:               32
+Decimal Places:       _
+Character Support:
+  Letters (A-Z):      X
+  Numbers (0-9):      _
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    X
+               Foreign:    _
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: _ 
+               Unique:     X
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Any alphabetical string.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Spaces.Space_ID.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Space ID
+Parent Table:         Spaces
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Source Specification: N/A
+Shared By:            
+Description:          The integer used to uniquely identify a space in our library. It is important because
+                      it allows us to identify between renovation periods where room numbers can be reassigned.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            Int
+Length:               N/A
+Decimal Places:       0
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    X
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: _ 
+               Unique:     X
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   _ 
+                   System: X
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   0-*
+
+Edit Rule:
+  Enter now, edits allowed:       _ 
+  Enter now, edits not allowed:   X
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### PrintMaterials.MaterialID.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Material ID
+Parent Table:         Print Materials
+Alias(es):            _ 
+Specification Type:
+  Unique:  _ 
+  Generic: _ 
+  Replica: X
+Source Specification: _ 
+Shared By:            Selection
+Description:          The ID of a material stored by the library, which can be used to identify it.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            INT
+Length:               _ 
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    X
+               Foreign:    X
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: _ 
+               Unique:     X
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Any valid integer from 1 onward.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Selection.MaterialDateReceived.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Material Date Received
+Parent Table:         Collection
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: X 
+  Replica: _ 
+Source Specification: N/A
+Shared By:            Print Materials, Multimedia
+Description:          Stores the time the library gains access to this particular material.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            DATE
+Length:               N/A
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      _
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X 
+               Primary:    _
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X 
+               Unique:     _
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X 
+                   System: _
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Valid times in the past
+
+Edit Rule:
+  Enter now, edits allowed:       X 
+  Enter now, edits not allowed:   _
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Club.ID.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Club ID 
+Parent Table:         Clubs
+Alias(es):            _ 
+Specification Type:
+  Unique:  X 
+  Generic: _ 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            _ 
+Description:          This is the unique ID we will use to identify each Club 
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            Int 
+Length:               _ 
+Decimal Places:       _  
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    X 
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     X 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: _ 
+               Unique:     X 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X 
+
+Values Entered By: User:   _ 
+                   System: X 
+
+Required Value:    No:     _ 
+                   Yes:    X 
+
+Range of Values:   1 to any number 
+
+Edit Rule:
+  Enter now, edits allowed:       _ 
+  Enter now, edits not allowed:   X 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _
+
+NOTES: _
+### Patrons.LastName.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Patron Last Name
+Parent Table:         Patrons
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: X 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            _ 
+Description:          The last name of a patron.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            VARCHAR
+Length:               128
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      X
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  X
+  Special (©®™Σπ):    X 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X
+               Primary:    _ 
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     _ 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Any valid string within the length.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Spaces.Space_Room_Number.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Space Room Number
+Parent Table:         Spaces
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: X 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            _ 
+Description:          The room number of the space.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            INT
+Length:               _
+Decimal Places:       _
+Character Support:
+  Letters (A-Z):      _
+  Numbers (0-9):      X 
+  Keyboard (.,/$#%):  _
+  Special (©®™Σπ):    _
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X
+               Primary:    _ 
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     _ 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   X
+               No nulls:   _
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X (b/c null)
+
+Range of Values:   Any valid (positive) integer.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Club_Members.MemberInfo.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Member Info
+Parent Table:         Club_Members
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            _ 
+Description:          A note on a member that holds important or otherwise noteworthy details about them for club to be aware of.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            VARCHAR
+Length:               256
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      X
+  Numbers (0-9):      X 
+  Keyboard (.,/$#%):  X 
+  Special (©®™Σπ):    X 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X
+               Primary:    _ 
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     _ 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   X
+               No nulls:   _ 
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     X
+                   Yes:    _ 
+
+Range of Values:   Any valid string.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Multimedia.Duration.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Multimedia Duration
+Parent Table:         Multimedia
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            _ 
+Description:          The watchtime or length of a multimedia piece.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            TIME
+Length:               _ 
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  X
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X
+               Primary:    _ 
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     _ 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Any valid duration represented by hours, minutes, and seconds.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Spaces.Space_Capacity.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Space Capacity
+Parent Table:         Spaces
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: X 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            _ 
+Description:          The number of people the space can hold.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            INT
+Length:               _
+Decimal Places:       _
+Character Support:
+  Letters (A-Z):      _
+  Numbers (0-9):      X 
+  Keyboard (.,/$#%):  _
+  Special (©®™Σπ):    _
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X
+               Primary:    _ 
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     _ 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   X
+               No nulls:   _
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X (b/c null)
+
+Range of Values:   Any valid (positive) integer.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Patrons.FirstName.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Patron First Name
+Parent Table:         Patrons
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: X 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            _ 
+Description:          The first name of a patron.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            VARCHAR
+Length:               128
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      X
+  Numbers (0-9):      X 
+  Keyboard (.,/$#%):  X
+  Special (©®™Σπ):    X 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X
+               Primary:    _ 
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     _ 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Any valid string within the length.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### SpaceReservations.ReservationNotes.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Reservation Notes
+Parent Table:         Space Reservations
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            _ 
+Description:          A note that allows the space-reserving patron to request certain things or warn ahead of time of special needs.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            VARCHAR
+Length:               256
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      X
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  X 
+  Special (©®™Σπ):    X 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X
+               Primary:    _ 
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     _ 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   X
+               No nulls:   _ 
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     X
+                   Yes:    _ 
+
+Range of Values:   Any valid string.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Multimedia.MaterialID.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Material ID
+Parent Table:         Multimedia
+Alias(es):            _ 
+Specification Type:
+  Unique:  _ 
+  Generic: _ 
+  Replica: X
+Source Specification: _ 
+Shared By:            Selection
+Description:          The ID of a material stored by the library, which can be used to identify it.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            INT
+Length:               _ 
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    X
+               Foreign:    X
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: _ 
+               Unique:     X
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Any valid integer from 1 onward.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### SpaceReservations.SpaceID.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Space ID
+Parent Table:         Space Reservations
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            Spaces
+Description:          A numerical identifier indicating which space has been reserved by the linked patron.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            INT
+Length:               None
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    _ 
+               Foreign:    X
+               Alternate:  _ 
+
+Key Structure: Simple:     _ 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   An existing Space ID from the home Spaces table.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Selection_Creators.Material_ID.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Material ID
+Parent Table:         Selection Creators
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: _ 
+  Replica: X 
+Source Specification: N/A
+Shared By:            Selection
+Description:          Stores the ID of a material for identifying which material has a particular associated creator.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            Int
+Length:               N/A
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    _
+               Foreign:    X
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X 
+               Unique:     _
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   _ 
+                   System: X
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Valid number in the list of MaterialIDs
+
+Edit Rule:
+  Enter now, edits allowed:       _ 
+  Enter now, edits not allowed:   X
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Holds.DateRequested.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Hold Date Requested
+Parent Table:         Holds
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: X 
+  Replica: _ 
+Source Specification: N/A
+Shared By:            _
+Description:          Stores the original date which the hold was submitted.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            DATE
+Length:               N/A
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  X 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X 
+               Primary:    _
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X 
+               Unique:     _
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X 
+                   System: _
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Valid times in the future
+
+Edit Rule:
+  Enter now, edits allowed:       X 
+  Enter now, edits not allowed:   _
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Genres.Genre_Name.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Genre Name
+Parent Table:         Genres
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _
+Source Specification: _ 
+Shared By:            _
+Description:          The name of a genre a particular material in the library falls under.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            VARCHAR
+Length:               64
+Decimal Places:       _
+Character Support:
+  Letters (A-Z):      X
+  Numbers (0-9):      _
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    X
+               Foreign:    _
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: _ 
+               Unique:     X
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Any alphabetical string.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Selection_Genres.Material_ID.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Material ID
+Parent Table:         Selection Genres
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: _ 
+  Replica: X 
+Source Specification: N/A
+Shared By:            Selection
+Description:          Stores the ID of a material for identifying which material has a particular associated genre.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            Int
+Length:               N/A
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    _
+               Foreign:    X
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X 
+               Unique:     _
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   _ 
+                   System: X
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Valid number in the list of MaterialIDs
+
+Edit Rule:
+  Enter now, edits allowed:       _ 
+  Enter now, edits not allowed:   X
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### SpaceReservations.EndReservation.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           End Reservation
+Parent Table:         Space Reservations
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            _ 
+Description:          The date and time of the end of a reservation. This signals to the library when a space is free.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            DATETIME
+Length:               None
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      _ 
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X
+               Primary:    _ 
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     _ 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   A valid time that occurs after the corresponding End Reservation.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Patron-SelectionInteractions.MaterialID.ixt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Material ID
+Parent Table:         Patron Selection Interactions
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: _ 
+  Replica: X 
+Source Specification: N/A
+Shared By:            Selection     Print Materials     Multimedia      Adaptations       
+Description:          Stores the ID of a media for identifying who had this interaction.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            Int
+Length:               N/A
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    _
+               Foreign:    X
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X 
+               Unique:     _
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   _ 
+                   System: X
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Valid numebr in the list of MaterialIDs
+
+Edit Rule:
+  Enter now, edits allowed:       _ 
+  Enter now, edits not allowed:   X
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### SpaceReservations.StartReservation.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Start Reservation
+Parent Table:         Space Reservations
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            _ 
+Description:          The date and time of the beginning of a reservation. This helps the library keep track of when a space should be blocked off.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            DATETIME
+Length:               None
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      _ 
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X
+               Primary:    _ 
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     _ 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Any valid time before the corresponding End Reservation time.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Narratives.NarrativeID.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Narratives Narrative ID
+Parent Table:         Narratives
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: _ 
+  Replica: X 
+Source Specification: N/A
+Shared By:            Adaptations
+Description:          Stores the ID of any narrative added to the Field.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            INT
+Length:               N/A
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    X
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: _ 
+               Unique:     X
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   _ 
+                   System: X
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Any valid number in the list of narrative id's
+
+Edit Rule:
+  Enter now, edits allowed:       _
+  Enter now, edits not allowed:   X
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Selection_Creators.Creator_ID.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Creator ID
+Parent Table:         Selection Creators
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: _ 
+  Replica: X 
+Source Specification: N/A
+Shared By:            Creators
+Description:          Stores the ID of a creator for identifying which material has a particular associated creator.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            Int
+Length:               N/A
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    _
+               Foreign:    X
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X 
+               Unique:     _
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   _ 
+                   System: X
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Valid number in the list of CreatorIDs
+
+Edit Rule:
+  Enter now, edits allowed:       _ 
+  Enter now, edits not allowed:   X
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Languages.Language_Name.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Language Name
+Parent Table:         Languages
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _
+Source Specification: _ 
+Shared By:            _
+Description:          The name of a language a particular material in the library can be consumed in.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            VARCHAR
+Length:               32
+Decimal Places:       _
+Character Support:
+  Letters (A-Z):      X
+  Numbers (0-9):      _
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    X
+               Foreign:    _
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: _ 
+               Unique:     X
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Any alphabetical string.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Multimedia_Types.MultimediaType.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Multimedia Type
+Parent Table:         Multimedia Types
+Alias(es):            _ 
+Specification Type:
+  Unique:  X 
+  Generic: _
+  Replica: _ 
+Source Specification: Type
+Shared By:            _ 
+Description:          An indicator of role or category to help delineate between kinds of some subject that do not substantially change the characteristic -- mostly for organizing sections of data for filtering reasons.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            VARCHAR
+Length:               32
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      X
+  Numbers (0-9):      _ 
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _
+               Primary:    X 
+               Foreign:    _
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: _
+               Unique:     X 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:    Valid strings in the character limit.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Selection_Creators.Creator_Role.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Creator Role
+Parent Table:         Selection Creators
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: _ 
+  Replica: X 
+Source Specification: N/A
+Shared By:            Creator Roles
+Description:          Stores the role a particular creator had in making a material.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            Varchar
+Length:               32
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      X 
+  Numbers (0-9):      _
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    _
+               Foreign:    X
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X 
+               Unique:     _
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   _ 
+                   System: X
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Valid value in the list of Creator Roles
+
+Edit Rule:
+  Enter now, edits allowed:       _ 
+  Enter now, edits not allowed:   X
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Club_Reservations.ClubID.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Club ID
+Parent Table:         Club_Reservations
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            Clubs
+Description:          An identifier that indicates which club is associated with a given reservation.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            INT
+Length:               None 
+Decimal Places:       None  
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    _ 
+               Foreign:    X
+               Alternate:  _ 
+
+Key Structure: Simple:     _ 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   An existing Club ID from the home Clubs table.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Club.Name.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Club Name 
+Parent Table:         Clubs 
+Alias(es):            _ 
+Specification Type:
+  Unique:  X 
+  Generic: _ 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            _ 
+Description:          This is another way in which patrons can identify clubs. 
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            VARCHAR 
+Length:               256 
+Decimal Places:       _  
+Character Support:
+  Letters (A-Z):      X 
+  Numbers (0-9):      X 
+  Keyboard (.,/$#%):  X 
+  Special (©®™Σπ):    X 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X 
+               Primary:    _ 
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     _ 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X 
+               Unique:     _ 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X 
+
+Values Entered By: User:   X 
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X 
+
+Range of Values:   Any combination of 256 characters 
+
+Edit Rule:
+  Enter now, edits allowed:       X 
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Selection_Genres.Genre_Name.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Genre Name
+Parent Table:         Selection Genres
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: _ 
+  Replica: X 
+Source Specification: N/A
+Shared By:            Genres
+Description:          Stores the genre for which the linked material falls under.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            Varchar
+Length:               64
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      X 
+  Numbers (0-9):      _
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    _
+               Foreign:    X
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X 
+               Unique:     _
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   _ 
+                   System: X
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Valid value in the list of Genres
+
+Edit Rule:
+  Enter now, edits allowed:       _ 
+  Enter now, edits not allowed:   X
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Selection.MaterialTitle.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Material Title
+Parent Table:         Selection
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: X 
+  Replica: _ 
+Source Specification: N/A
+Shared By:            Print Materials, Multimedia
+Description:          The full title of the material. This is important as it is the colloquial identifier for
+                      most books, and so it will be a common way to recognize/search for a book.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            VARCHAR
+Length:               128
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      X
+  Numbers (0-9):      X 
+  Keyboard (.,/$#%):  X 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X
+               Primary:    _ 
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     X 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X 
+               Unique:     _ 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X 
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Anything <128 characters that isn't the empty string
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Adaptations.MaterialID.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Adaptations Material ID
+Parent Table:         Adaptations
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: _ 
+  Replica: X 
+Source Specification: N/A
+Shared By:            Selection, Print Materials, Narratives, Patron Selection Interactions
+Description:          Stores the ID of the material to trace back media.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            INT
+Length:               N/A
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    X
+               Foreign:    X 
+               Alternate:  _ 
+
+Key Structure: Simple:     _
+               Composite:  X 
+
+Uniqueness:    Non-unique: _ 
+               Unique:     X
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X 
+                   System: _
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Any valid number in the list of material id's
+
+Edit Rule:
+  Enter now, edits allowed:       _
+  Enter now, edits not allowed:   X
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### PrintMaterials.PrintType.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Print Type
+Parent Table:         Prin
+Alias(es):            _ 
+Specification Type:
+  Unique:  _ 
+  Generic: _
+  Replica: X 
+Source Specification: Type
+Shared By:            Print Types
+Description:          An indicator of what type of multimedia a particular material is -- mostly for organizing sections of data for filtering reasons.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            VARCHAR
+Length:               32
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      X
+  Numbers (0-9):      _ 
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _
+               Primary:    _ 
+               Foreign:    X
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:    Strings in multimedia_types table.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Selection_Languages.Language_Name.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Language Name
+Parent Table:         Selection Languages
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: _ 
+  Replica: X 
+Source Specification: N/A
+Shared By:            Languages
+Description:          Stores the language for which the linked material can be consumed in.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            Varchar
+Length:               32
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      X 
+  Numbers (0-9):      _
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    _
+               Foreign:    X
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X 
+               Unique:     _
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   _ 
+                   System: X
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Valid value in the list of Languages
+
+Edit Rule:
+  Enter now, edits allowed:       _ 
+  Enter now, edits not allowed:   X
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Multimedia.MultimediaType.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Multimedia Type
+Parent Table:         Multimedia
+Alias(es):            _ 
+Specification Type:
+  Unique:  _ 
+  Generic: _
+  Replica: X 
+Source Specification: Type
+Shared By:            Multimedia Types
+Description:          An indicator of what type of multimedia a particular material is -- mostly for organizing sections of data for filtering reasons.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            VARCHAR
+Length:               32
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      X
+  Numbers (0-9):      _ 
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _
+               Primary:    _ 
+               Foreign:    X
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:    Strings in multimedia_types table.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### PrintMaterials.PageCount.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Print Page Count
+Parent Table:         Print Materials
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            _ 
+Description:          The number of pages in a printed piece.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            INT
+Length:               _ 
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X
+               Primary:    _ 
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     _ 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Any positive number.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Type.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Type
+Parent Table:         _ 
+Alias(es):            _ 
+Specification Type:
+  Unique:  _ 
+  Generic: X
+  Replica: _ 
+Source Specification: _ 
+Shared By:            _ 
+Description:          An indicator of role or category to help delineate between kinds of some subject that do not substantially change the characteristic -- mostly for organizing sections of data for filtering reasons.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            VARCHAR
+Length:               32
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      X
+  Numbers (0-9):      _ 
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X
+               Primary:    _ 
+               Foreign:    X
+               Alternate:  _ 
+
+Key Structure: Simple:     _ 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Will be used only in relation to validation tables - limited to values established there
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Patron-SelectionInteractions.ID.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Interaction ID 
+Parent Table:         Patron Selection Interactions 
+Alias(es):            _ 
+Specification Type:
+  Unique:  X 
+  Generic: _ 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            Loans     Holds 
+Description:          This will track every interaction of holds and loans from the library
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            Int 
+Length:               _ 
+Decimal Places:       _  
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X 
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    X 
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     X 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: _ 
+               Unique:     X 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X 
+
+Values Entered By: User:   _ 
+                   System: X 
+
+Required Value:    No:     _ 
+                   Yes:    X 
+
+Range of Values:   1 to any number 
+
+Edit Rule:
+  Enter now, edits allowed:       _ 
+  Enter now, edits not allowed:   X 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Selection.MaterialDateCreated.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Material Date Created
+Parent Table:         Collection
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: X 
+  Replica: _ 
+Source Specification: N/A
+Shared By:            Print Materials, Multimedia
+Description:          Stores the original publishing date or release of a material.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            DATE
+Length:               N/A
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      _
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X 
+               Primary:    _
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X 
+               Unique:     _
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X 
+                   System: _
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Valid times in the past
+
+Edit Rule:
+  Enter now, edits allowed:       X 
+  Enter now, edits not allowed:   _
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Club.Description.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Club Description 
+Parent Table:         Clubs 
+Alias(es):            _ 
+Specification Type:
+  Unique:  X 
+  Generic: _ 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            _ 
+Description:          This will give a description of what the club does 
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            VARCHAR 
+Length:               256 
+Decimal Places:       _  
+Character Support:
+  Letters (A-Z):      X 
+  Numbers (0-9):      X 
+  Keyboard (.,/$#%):  X 
+  Special (©®™Σπ):    X 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X 
+               Primary:    _ 
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     _ 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: _ 
+               Unique:     X 
+
+Null Support:  Nulls OK:   X 
+               No nulls:   _ 
+
+Values Entered By: User:   X 
+                   System: _ 
+
+Required Value:    No:     X 
+                   Yes:    _ 
+
+Range of Values:   _ 
+
+Edit Rule:
+  Enter now, edits allowed:       X 
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Loan.ReturnDate.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Loan Return Date
+Parent Table:         Loans
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: X 
+  Replica: _ 
+Source Specification: N/A
+Shared By:            _
+Description:          Stores the original date which a piece of media is returned from a loan.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            DATE
+Length:               10
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  X 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X 
+               Primary:    _
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X 
+               Unique:     _
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X 
+                   System: _
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Valid times in the past
+
+Edit Rule:
+  Enter now, edits allowed:       X 
+  Enter now, edits not allowed:   _
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Creators.Creator_ID.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Creator ID
+Parent Table:         Languages
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _
+Source Specification: _ 
+Shared By:            _
+Description:          The unique identifier of a creator of a particular material. Helpful when they share the same name but have different projects they have worked on.
+
+PHYSICAL ELEMENTS
+
+Data Type:            INT
+Length:               _
+Decimal Places:       _
+Character Support:
+  Letters (A-Z):      _
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    X
+               Foreign:    _
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: _ 
+               Unique:     X
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Any unique integer.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Loan.EndDate.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Loan Start Date
+Parent Table:         Loans
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _
+  Replica: _ 
+Source Specification: N/A
+Shared By:            _
+Description:          Stores the original end date of the loan.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            DATE
+Length:               10
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  X 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X 
+               Primary:    _
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X 
+               Unique:     _
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X 
+                   System: _
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Valid times in the future
+
+Edit Rule:
+  Enter now, edits allowed:       X 
+  Enter now, edits not allowed:   _
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Spaces.Space_Name.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Space Name
+Parent Table:         Spaces
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: X 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            _ 
+Description:          The name of the space, if it has a more specific one than its room number.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            VARCHAR
+Length:               128
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      X
+  Numbers (0-9):      X 
+  Keyboard (.,/$#%):  X
+  Special (©®™Σπ):    _
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X
+               Primary:    _ 
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     _ 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   X
+               No nulls:   _
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X (b/c null)
+
+Range of Values:   Any valid string within the length.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### SpaceReservations.PatronID.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Patron ID
+Parent Table:         Space Reservations
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            Patrons
+Description:          A unique numerical identifier used to separate reservations from one another.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            INT
+Length:               None
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    _ 
+               Foreign:    X
+               Alternate:  _ 
+
+Key Structure: Simple:     _ 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   An existing Patron ID from the home Patrons table.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Loans.InteractionID.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Loans Interaction ID
+Parent Table:         Loans
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: _ 
+  Replica: X 
+Source Specification: N/A
+Shared By:            Patron Selection Interactions, Holds
+Description:          Stores the ID of the interaction to store this interaction as a loan.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            INT
+Length:               N/A
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    X
+               Foreign:    X 
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: _ 
+               Unique:     X
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X 
+                   System: _
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Any valid number in the list of interaction id's
+
+Edit Rule:
+  Enter now, edits allowed:       _
+  Enter now, edits not allowed:   X
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Narratives.NarrativeDescription.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Narratives Narrative Description
+Parent Table:         Narratives
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: _ 
+  Replica: X 
+Source Specification: N/A
+Shared By:            _
+Description:          Stores the description of the narrative.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            VARCHAR
+Length:               256
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      X 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  X 
+  Special (©®™Σπ):    X 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X 
+               Primary:    _
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     _
+               Composite:  _ 
+
+Uniqueness:    Non-unique: _ 
+               Unique:     X
+
+Null Support:  Nulls OK:   X 
+               No nulls:   _
+
+Values Entered By: User:   X 
+                   System: _
+
+Required Value:    No:     X 
+                   Yes:    _
+
+Range of Values:   Any combination of characters <256.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Adaptations.NarrativeID.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Adaptations Narrative ID
+Parent Table:         Adaptations
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: _ 
+  Replica: X 
+Source Specification: N/A
+Shared By:            Narratives
+Description:          Stores the ID of the narrative to know it's Adaptations.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            INT
+Length:               N/A
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    X
+               Foreign:    X 
+               Alternate:  _ 
+
+Key Structure: Simple:     _
+               Composite:  X 
+
+Uniqueness:    Non-unique: _ 
+               Unique:     X
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X 
+                   System: _
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Any valid number in the list of narrative id's
+
+Edit Rule:
+  Enter now, edits allowed:       _
+  Enter now, edits not allowed:   X
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### SpaceReservations.ReservationID.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Reservation ID
+Parent Table:         Space Reservations
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            _ 
+Description:          A unique numerical identifier that distinguishes between reservations made by the same patron or on the same space.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            INT
+Length:               None
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    X
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: _ 
+               Unique:     X
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   _ 
+                   System: X
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   1 to any number
+
+Edit Rule:
+  Enter now, edits allowed:       _ 
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Patrons.ID.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Patron ID
+Parent Table:         Patrons
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            _ 
+Description:          A number used to uniquely identify each patron of the library.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            INT
+Length:               _ 
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    X
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: _ 
+               Unique:     X
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   _ 
+                   System: X
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Any valid integer from 1 onwards.
+
+Edit Rule:
+  Enter now, edits allowed:       _ 
+  Enter now, edits not allowed:   X
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Selection.MaterialIsPending.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Material Is Pending
+Parent Table:         Collection
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: X 
+  Replica: _ 
+Source Specification: N/A
+Shared By:            Print Materials, Multimedia
+Description:          Stores whether the library has approved a book to be a part of the selection.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            BOOLEAN
+Length:               N/A
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      _
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X 
+               Primary:    _
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X 
+               Unique:     _
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X 
+                   System: _
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   True/False
+
+Edit Rule:
+  Enter now, edits allowed:       X 
+  Enter now, edits not allowed:   _
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: Default value could be True
+### Holds.InteractionID.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Holds Interaction ID
+Parent Table:         Holds
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: _ 
+  Replica: X 
+Source Specification: N/A
+Shared By:            Loans, Patrons Selection Interactions
+Description:          Stores the ID of the interaction between patron and media
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            INT
+Length:               N/A
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    X
+               Foreign:    X 
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X 
+               Unique:     _
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X 
+                   System: _
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Valid number in the list of interaction ID's 
+
+Edit Rule:
+  Enter now, edits allowed:       _ 
+  Enter now, edits not allowed:   X
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Patron-SelectionInteractions.PatronID.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Patron ID
+Parent Table:         Patron Selection Interactions
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: _ 
+  Replica: X 
+Source Specification: N/A
+Shared By:            Patrons   
+Description:          Stores the ID of a patron for identifying who had this interaction.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            Int
+Length:               N/A
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    _
+               Foreign:    X
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X 
+               Unique:     _
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   _ 
+                   System: X
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Valid numebr in the list of patronIDs
+
+Edit Rule:
+  Enter now, edits allowed:       _ 
+  Enter now, edits not allowed:   X
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Selection.MaterialID.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Material ID
+Parent Table:         Collection
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Source Specification: N/A
+Shared By:            Print Materials, Multimedia
+Description:          The integer used to uniquely identify a material in our selection. It is important because
+                      we may have two otherwise-identical copies of a book that we wish to distinguish between.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            Int
+Length:               N/A
+Decimal Places:       0
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        _ 
+               Primary:    X
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: _ 
+               Unique:     X
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   _ 
+                   System: X
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   0-*
+
+Edit Rule:
+  Enter now, edits allowed:       _ 
+  Enter now, edits not allowed:   X
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Narratives.NarrativeName.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Narratives Name
+Parent Table:         Narratives
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: _ 
+  Replica: X 
+Source Specification: N/A
+Shared By:            _
+Description:          Stores the name of the narrative.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            VARCHAR
+Length:               256
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      X 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  X 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X 
+               Primary:    _
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     _
+               Composite:  _ 
+
+Uniqueness:    Non-unique: _ 
+               Unique:     X
+
+Null Support:  Nulls OK:   X 
+               No nulls:   _
+
+Values Entered By: User:   X 
+                   System: _
+
+Required Value:    No:     X 
+                   Yes:    _
+
+Range of Values:   Any valid combination of characters <256 characters.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Loan.StartDate.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Loan State Date
+Parent Table:         Loans
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Source Specification: N/A
+Shared By:            _
+Description:          Stores the original start date of a loan 
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            DATE
+Length:               10
+Decimal Places:       N/A
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  X 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X 
+               Primary:    _
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     X
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X 
+               Unique:     _
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X 
+                   System: _
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Valid times in the past
+
+Edit Rule:
+  Enter now, edits allowed:       X 
+  Enter now, edits not allowed:   _
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Creators.Creator_First_Name.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Creator First Name
+Parent Table:         Creators
+Alias(es):            _ 
+Specification Type:
+  Unique:  _
+  Generic: X 
+  Replica: _ 
+Source Specification: _
+Shared By:            _ 
+Description:          The first name of a creator of a particular material. Helpful for colloquial identification.
+
+PHYSICAL ELEMENTS
+
+Data Type:            VARCHAR
+Length:               128
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      X
+  Numbers (0-9):      X 
+  Keyboard (.,/$#%):  X
+  Special (©®™Σπ):    X 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X
+               Primary:    _ 
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     _ 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Any valid string within the length.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Adaptations.MaterialisSource.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Material isSource
+Parent Table:         Adaptations
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            _ 
+Description:          A boolean indicator of whether or not the material adapting the linked narrative happens to be the progenitor of it.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            BOOLEAN
+Length:               None
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      _ 
+  Numbers (0-9):      _ 
+  Keyboard (.,/$#%):  _ 
+  Special (©®™Σπ):    _ 
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X
+               Primary:    _ 
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     _ 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   _ 
+               No nulls:   X
+
+Values Entered By: User:   _ 
+                   System: _ 
+
+Required Value:    No:     X
+                   Yes:    _ 
+
+Range of Values:   FALSE or TRUE.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: _
+### Patrons.Email.txt
+FIELD SPECIFICATIONS
+
+GENERAL ELEMENTS
+
+Field Name:           Patron Email
+Parent Table:         Patrons
+Alias(es):            _ 
+Specification Type:
+  Unique:  X
+  Generic: _ 
+  Replica: _ 
+Source Specification: _ 
+Shared By:            _ 
+Description:          The email address of an individual patron, which can be used to contact them regarding library matters.
+
+
+PHYSICAL ELEMENTS
+
+Data Type:            VARCHAR
+Length:               256
+Decimal Places:       None
+Character Support:
+  Letters (A-Z):      X
+  Numbers (0-9):      X
+  Keyboard (.,/$#%):  X
+  Special (©®™Σπ):    X
+
+
+LOGICAL ELEMENTS
+
+Key Type:      Non:        X
+               Primary:    _ 
+               Foreign:    _ 
+               Alternate:  _ 
+
+Key Structure: Simple:     _ 
+               Composite:  _ 
+
+Uniqueness:    Non-unique: X
+               Unique:     _ 
+
+Null Support:  Nulls OK:   _
+               No nulls:   _ 
+
+Values Entered By: User:   X
+                   System: _ 
+
+Required Value:    No:     _ 
+                   Yes:    X
+
+Range of Values:   Null or any valid email address.
+
+Edit Rule:
+  Enter now, edits allowed:       X
+  Enter now, edits not allowed:   _ 
+  Enter later, edits allowed:     _ 
+  Enter later, edits not allowed: _ 
+  Not determined at this time:    _ 
+
+NOTES: Only one of Patron.Email or Patron.Phone can be null.
