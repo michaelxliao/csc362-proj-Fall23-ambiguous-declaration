@@ -37,10 +37,10 @@ Paste `☑` over the `☐` boxes when done.
 | ☐    | ActiveClubs.sql                        | Rashawn         | VIEW                                         |
 | ☐    | ClubMembers.sql                        | Rashawn         |                                              |
 | ☐    | Spaces.sql                             | Pierce          |                                              |
-| ☐    | ActiveSpaces.sql                       | Pierce          | VIEW                                         |
-| ☐    | SpaceReservations.sql                  | Pierce          |                                              |
-| ☐    | CurrentReservations.sql                | Pierce          | VIEW, range? the current week/today/ongoing? |
-| ☐    | ClubReservations.sql                   | Pierce          |                                              |
+| ☑    | ActiveSpaces.sql                       | Pierce          | VIEW                                         |
+| ☑    | SpaceReservations.sql                  | Pierce          |                                              |
+| ☑    | CurrentReservations.sql                | Pierce          | VIEW, range? the current week/today/ongoing? |
+| ☑    | ClubReservations.sql                   | Pierce          |                                              |
 
 ### Client-Requested Reports
 
