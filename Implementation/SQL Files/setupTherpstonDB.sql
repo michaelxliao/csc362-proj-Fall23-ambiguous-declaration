@@ -14,3 +14,11 @@ GRANT DELETE ON *.* TO 'webuser'@'localhost'; -- D(dlete)
 SOURCE selection.sql;
 SOURCE activeSelection.sql;
 SOURCE printMaterials.sql;
+SOURCE multimedia.sql;
+SOURCE printTypes.sql;
+SOURCE multimediaTypes.sql;
+SOURCE narratives.sql;
+SOURCE activeNarratives.sql;
+SOURCE adaptations.sql;
+SOURCE selection_languages.sql;
+SOURCE languages;

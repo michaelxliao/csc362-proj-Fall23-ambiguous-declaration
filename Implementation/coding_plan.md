@@ -13,9 +13,9 @@ Paste `☑` over the `☐` boxes when done.
 | ☑    | Selection.sql                          | Michael         |                                              |
 | ☑    | ActiveSelection.sql                    | Michael         | VIEW, for DENY deletion                      |
 | ☑    | PrintMaterials.sql                     | Michael         |                                              |
-| ☐    | Multimedia.sql                         | Michael         |                                              |
-| ☐    | PrintTypes.sql                         | Michael         |                                              |
-| ☐    | MultiMediaTypes.sql                    | Michael         |                                              |
+| ☑    | Multimedia.sql                         | Michael         |                                              |
+| ☑    | PrintTypes.sql                         | Michael         |                                              |
+| ☑    | MultiMediaTypes.sql                    | Michael         |                                              |
 | ☐    | Narratives.sql                         | Michael         |                                              |
 | ☐    | ActiveNarratives.sql                   | Michael         | VIEW, for DENY deletion                      |
 | ☐    | Adaptations.sql                        | Michael         |                                              |
