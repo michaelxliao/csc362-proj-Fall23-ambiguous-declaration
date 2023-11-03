@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW AS active_selection
+CREATE OR REPLACE VIEW active_selection AS
 SELECT material_id,
        material_title,
        material_date_received,
