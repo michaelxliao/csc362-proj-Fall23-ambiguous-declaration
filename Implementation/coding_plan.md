@@ -4,15 +4,15 @@
 
 Paste `☑` over the `☐` boxes when done.
 
-### Database Definitions
+#### Database Definitions
 
 
 | Done? | **Filename**                           | **Assigned to** | Notes                                        |
 | ------- | ---------------------------------------- | ----------------- | ---------------------------------------------- |
 | ☐    | SetupTherpstonDB.sql                   | Michael         | webuser, SOURCE other sql files              |
-| ☐    | Selection.sql                          | Michael         |                                              |
-| ☐    | ActiveSelection.sql                    | Michael         | VIEW, for DENY deletion                      |
-| ☐    | PrintMaterials.sql                     | Michael         |                                              |
+| ☑    | Selection.sql                          | Michael         |                                              |
+| ☑    | ActiveSelection.sql                    | Michael         | VIEW, for DENY deletion                      |
+| ☑    | PrintMaterials.sql                     | Michael         |                                              |
 | ☐    | Multimedia.sql                         | Michael         |                                              |
 | ☐    | PrintTypes.sql                         | Michael         |                                              |
 | ☐    | MultiMediaTypes.sql                    | Michael         |                                              |
@@ -76,14 +76,13 @@ Note that each `ManageX.sql` script holds the appropriate INSERT/DELETE/UPDATE q
 
 | Done? | **Filename**            | **Assigned to** | Notes                                                 |
 | ------- | ------------------------- | ----------------- | ------------------------------------------------------- |
-| ☐    | Index.php               |                 |   Links to all other pages                            |
+| ☐    | Index.php               |                 | Links to all other pages                              |
 | ☐    | Catalog.php             |                 | shows all materials in selection, probably can filter |
 | ☐    | CurrentLoans.php        | Rashawn         | for librarians                                        |
 | ☐    | CurrentReservations.php |                 | for librarians                                        |
 | ☐    | CurrentHolds.php        |                 | for librarians                                        |
 | ☐    | ClubDetails.php         |                 | for librarians (active clubs)                         |
 | ☐    | PatronLookup.php        |                 | for librarians                                        |
-
 
 ## Final Deliverables
 
