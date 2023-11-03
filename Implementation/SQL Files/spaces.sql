@@ -6,5 +6,5 @@ CREATE OR REPLACE TABLE spaces (
     space_name          VARCHAR(64) NOT NULL,
     space_room_number   INT NOT NULL,
     space_capacity      INT NOT NULL,
-    space_is_active     BOOLEAN
+    space_is_active     BOOLEAN DEFAULT TRUE
 );
