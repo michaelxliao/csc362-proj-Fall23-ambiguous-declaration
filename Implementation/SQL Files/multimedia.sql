@@ -5,5 +5,5 @@ CREATE OR REPLACE TABLE multimedia (
 
     material_id         INT         AUTO_INCREMENT,
     multimedia_type     VARCHAR(32),
-    duration            TIME        NOT NULL,
+    duration            TIME        NOT NULL
 );
