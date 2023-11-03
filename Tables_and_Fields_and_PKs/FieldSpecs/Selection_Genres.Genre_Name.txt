@@ -17,7 +17,7 @@ Description:          Stores the genre for which the linked material falls under
 PHYSICAL ELEMENTS
 
 Data Type:            Varchar
-Length:               64
+Length:               256
 Decimal Places:       N/A
 Character Support:
   Letters (A-Z):      X 

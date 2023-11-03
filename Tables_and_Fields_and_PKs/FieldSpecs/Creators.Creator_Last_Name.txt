@@ -16,7 +16,7 @@ Description:          The last name of a creator of a particular material. Helpf
 PHYSICAL ELEMENTS
 
 Data Type:            VARCHAR
-Length:               128
+Length:               256
 Decimal Places:       None
 Character Support:
   Letters (A-Z):      X

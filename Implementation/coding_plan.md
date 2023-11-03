@@ -58,16 +58,16 @@ Note that each `ManageX.sql` script holds the appropriate INSERT/DELETE/UPDATE q
 
 | Done? | **Filename**               | **Assigned to** | Notes                                          |
 | ------- | ---------------------------- | ----------------- | ------------------------------------------------ |
-| ☐    | UpdateValidationTables.sql |                 | infrequently run; left as script               |
-| ☐    | ManageSpaces.sql           |                 | infrequently updated; left as script           |
+| ☐    | UpdateValidationTables.sql | Michael         | infrequently run; left as script               |
+| ☐    | ManageSpaces.sql           | Michael         | infrequently updated; left as script           |
 | ☐    | ManageSelection.php        | Pierce          | can modify selection/deselect things from page |
 | ☐    | ManageSelection.sql        | Pierce          | will likely also interface with Adaptations    |
 | ☐    | ManageClubs.php            | Rashawn         |                                                |
 | ☐    | ManageClubs.sql            | Rashawn         |                                                |
 | ☐    | ManagePatrons.php          | Rashawn         |                                                |
 | ☐    | ManagePatrons.sql          | Rashawn         |                                                |
-| ☐    | ManageInteractions.php     |                 |                                                |
-| ☐    | ManageInteractions.sql     |                 | will have to interface with subset tables      |
+| ☐    | ManageInteractions.php     | Michael         |                                                |
+| ☐    | ManageInteractions.sql     | Michael         | will have to interface with subset tables      |
 | ☐    | ManageReservations.php     | Pierce          |                                                |
 | ☐    | ManageReservations.sql     | Pierce          |                                                |
 

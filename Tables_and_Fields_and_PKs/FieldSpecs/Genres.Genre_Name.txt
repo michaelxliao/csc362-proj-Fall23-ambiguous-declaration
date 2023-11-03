@@ -17,7 +17,7 @@ Description:          The name of a genre a particular material in the library f
 PHYSICAL ELEMENTS
 
 Data Type:            VARCHAR
-Length:               64
+Length:               256
 Decimal Places:       _
 Character Support:
   Letters (A-Z):      X

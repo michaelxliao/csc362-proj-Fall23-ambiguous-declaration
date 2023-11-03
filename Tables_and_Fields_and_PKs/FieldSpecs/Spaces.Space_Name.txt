@@ -17,7 +17,7 @@ Description:          The name of the space, if it has a more specific one than 
 PHYSICAL ELEMENTS
 
 Data Type:            VARCHAR
-Length:               128
+Length:               256
 Decimal Places:       None
 Character Support:
   Letters (A-Z):      X

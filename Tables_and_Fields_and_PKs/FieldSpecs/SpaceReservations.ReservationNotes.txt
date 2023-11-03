@@ -17,7 +17,7 @@ Description:          A note that allows the space-reserving patron to request c
 PHYSICAL ELEMENTS
 
 Data Type:            VARCHAR
-Length:               256
+Length:               1024
 Decimal Places:       None
 Character Support:
   Letters (A-Z):      X

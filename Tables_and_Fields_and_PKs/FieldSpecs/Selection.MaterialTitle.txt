@@ -18,7 +18,7 @@ Description:          The full title of the material. This is important as it is
 PHYSICAL ELEMENTS
 
 Data Type:            VARCHAR
-Length:               128
+Length:               256
 Decimal Places:       N/A
 Character Support:
   Letters (A-Z):      X
@@ -49,7 +49,7 @@ Values Entered By: User:   X
 Required Value:    No:     _ 
                    Yes:    X
 
-Range of Values:   Anything <128 characters that isn't the empty string
+Range of Values:   Anything <256 characters that isn't the empty string
 
 Edit Rule:
   Enter now, edits allowed:       X

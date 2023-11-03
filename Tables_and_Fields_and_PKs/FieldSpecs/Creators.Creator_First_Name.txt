@@ -16,7 +16,7 @@ Description:          The first name of a creator of a particular material. Help
 PHYSICAL ELEMENTS
 
 Data Type:            VARCHAR
-Length:               128
+Length:               256
 Decimal Places:       None
 Character Support:
   Letters (A-Z):      X

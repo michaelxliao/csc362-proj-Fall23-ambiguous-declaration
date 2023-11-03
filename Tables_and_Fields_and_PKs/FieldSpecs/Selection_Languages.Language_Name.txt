@@ -17,7 +17,7 @@ Description:          Stores the language for which the linked material can be c
 PHYSICAL ELEMENTS
 
 Data Type:            Varchar
-Length:               32
+Length:               256
 Decimal Places:       N/A
 Character Support:
   Letters (A-Z):      X 

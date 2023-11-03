@@ -16,7 +16,7 @@ Description:          A phone number used to contact a patron of the library.
 
 PHYSICAL ELEMENTS
 
-Data Type:            VARCHAR
+Data Type:            CHAR
 Length:               14
 Decimal Places:       None
 Character Support:
