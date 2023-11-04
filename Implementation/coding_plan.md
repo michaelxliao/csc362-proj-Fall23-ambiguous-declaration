@@ -26,16 +26,16 @@ Paste `☑` over the `☐` boxes when done.
 | ☐    | CreatorRoles.sql                       | Pierce          |                                              |
 | ☐    | SelectionGenres.sql                    | Pierce          |                                              |
 | ☐    | Genres.sql                             | Pierce          |                                              |
-| ☐    | Patrons.sql                            | Rashawn         |                                              |
-| ☐    | Patron-SelectionInteractions.sql       | Rashawn         |                                              |
-| ☐    | ActivePatron-SelectionInteractions.sql | Rashawn         | VIEW, for DENY deletion                      |
-| ☐    | Loans.sql                              | Rashawn         |                                              |
-| ☐    | CurrentLoans.sql                       | Rashawn         | VIEW                                         |
-| ☐    | Holds.sql                              | Rashawn         |                                              |
-| ☐    | CurrentHolds.sql                       | Rashawn         | VIEW                                         |
-| ☐    | Clubs.sql                              | Rashawn         |                                              |
-| ☐    | ActiveClubs.sql                        | Rashawn         | VIEW                                         |
-| ☐    | ClubMembers.sql                        | Rashawn         |                                              |
+| ☑    | Patrons.sql                            | Rashawn         |                                              |
+| ☑    | Patron-SelectionInteractions.sql       | Rashawn         |                                              |
+| ☑    | ActivePatron-SelectionInteractions.sql | Rashawn         | VIEW, for DENY deletion                      |
+| ☑    | Loans.sql                              | Rashawn         |                                              |
+| ☑    | CurrentLoans.sql                       | Rashawn         | VIEW                                         |
+| ☑    | Holds.sql                              | Rashawn         |                                              |
+| ☑    | CurrentHolds.sql                       | Rashawn         | VIEW                                         |
+| ☑    | Clubs.sql                              | Rashawn         |                                              |
+| ☑    | ActiveClubs.sql                        | Rashawn         | VIEW                                         |
+| ☑    | ClubMembers.sql                        | Rashawn         |                                              |
 | ☐    | Spaces.sql                             | Pierce          |                                              |
 | ☑    | ActiveSpaces.sql                       | Pierce          | VIEW                                         |
 | ☑    | SpaceReservations.sql                  | Pierce          |                                              |
@@ -63,9 +63,9 @@ Note that each `ManageX.sql` script holds the appropriate INSERT/DELETE/UPDATE q
 | ☐    | ManageSelection.php        | Pierce          | can modify selection/deselect things from page |
 | ☐    | ManageSelection.sql        | Pierce          | will likely also interface with Adaptations    |
 | ☐    | ManageClubs.php            | Rashawn         |                                                |
-| ☐    | ManageClubs.sql            | Rashawn         |                                                |
+| ☑    | ManageClubs.sql            | Rashawn         |                                                |
 | ☐    | ManagePatrons.php          | Rashawn         |                                                |
-| ☐    | ManagePatrons.sql          | Rashawn         |                                                |
+| ☑    | ManagePatrons.sql          | Rashawn         |                                                |
 | ☐    | ManageInteractions.php     | Michael         |                                                |
 | ☐    | ManageInteractions.sql     | Michael         | will have to interface with subset tables      |
 | ☐    | ManageReservations.php     | Pierce          |                                                |
