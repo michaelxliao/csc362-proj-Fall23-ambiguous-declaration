@@ -1,5 +1,5 @@
 DELIMITER //
-CREATE OR REPLACE PROCEDURE del_print_material()
+CREATE OR REPLACE PROCEDURE add_multimedia_type()
  BEGIN
  START TRANSACTION;
        

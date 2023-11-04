@@ -27,7 +27,18 @@ COMMIT;
 DELIMITER ;
 
 DELIMITER //
-CREATE OR REPLACE PROCEDURE del_print_material()
+CREATE OR REPLACE PROCEDURE del_material(material_id INT)
+ BEGIN
+ START TRANSACTION;
+       DElETE FROM selection
+       WHERE selection.material_id = material_id;
+COMMIT;
+   END
+//
+DELIMITER ;
+
+DELIMITER //
+CREATE OR REPLACE PROCEDURE update_print_material(material_id INT)
  BEGIN
  START TRANSACTION;
        
