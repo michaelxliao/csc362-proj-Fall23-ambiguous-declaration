@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW activeInteractions AS
+CREATE OR REPLACE VIEW active_interactions AS
 SELECT *
-FROM Patron_Selection_Interactions
-WHERE Patron_Selection_Interactions.Interaction_isActive = TRUE;
+  FROM patron_selection_interactions
+ WHERE patron_selection_interactions.interaction_is_active = TRUE;

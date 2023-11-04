@@ -1,4 +1,4 @@
-CREATE OR REPLACE TABLE patron_selection_interactions(
+CREATE OR REPLACE TABLE patron_selection_interactions (
     PRIMARY KEY (interaction_id),
     FOREIGN KEY (material_id)
         REFERENCES selection(material_id)

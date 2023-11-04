@@ -32,7 +32,7 @@ Paste `☑` over the `☐` boxes when done.
 | ☑    | Genres.sql                             | Pierce          |                                              |
 | ☑    | Patrons.sql                            | Rashawn         |                                              |
 | ☑    | Patron-SelectionInteractions.sql       | Rashawn         |                                              |
-| ☐    | ActivePatron-SelectionInteractions.sql | Rashawn         | VIEW, for DENY deletion                      |
+| ☑    | ActivePatron-SelectionInteractions.sql | Rashawn         | VIEW, for DENY deletion                      |
 | ☑    | Loans.sql                              | Rashawn         |                                              |
 | ☑    | CurrentLoans.sql                       | Rashawn         | VIEW                                         |
 | ☑    | Holds.sql                              | Rashawn         |                                              |
