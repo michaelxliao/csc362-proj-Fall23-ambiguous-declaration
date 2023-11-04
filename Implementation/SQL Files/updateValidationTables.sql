@@ -1,0 +1,9 @@
+DELIMITER //
+CREATE OR REPLACE PROCEDURE del_print_material()
+ BEGIN
+ START TRANSACTION;
+       
+COMMIT;
+   END
+//
+DELIMITER ;

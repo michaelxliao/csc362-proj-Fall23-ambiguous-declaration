@@ -56,20 +56,20 @@ Paste `☑` over the `☐` boxes when done.
 Note that each `ManageX.sql` script holds the appropriate INSERT/DELETE/UPDATE queries as needed per page.
 
 
-| Done? | **Filename**               | **Assigned to** | Notes                                          |
-| ------- | ---------------------------- | ----------------- | ------------------------------------------------ |
-| ☐    | UpdateValidationTables.sql | Michael         | infrequently run; left as script               |
-| ☐    | ManageSpaces.sql           | Michael         | infrequently updated; left as script           |
-| ☐    | ManageSelection.php        | Pierce          | can modify selection/deselect things from page |
-| ☐    | ManageSelection.sql        | Pierce          | will likely also interface with Adaptations    |
-| ☐    | ManageClubs.php            | Rashawn         |                                                |
-| ☐    | ManageClubs.sql            | Rashawn         |                                                |
-| ☐    | ManagePatrons.php          | Rashawn         |                                                |
-| ☐    | ManagePatrons.sql          | Rashawn         |                                                |
-| ☐    | ManageInteractions.php     | Michael         |                                                |
-| ☐    | ManageInteractions.sql     | Michael         | will have to interface with subset tables      |
-| ☐    | ManageReservations.php     | Pierce          |                                                |
-| ☐    | ManageReservations.sql     | Pierce          |                                                |
+| Done? | **Filename**               | **Assigned to**    | Notes                                                                              |
+| ------- | ---------------------------- | -------------------- | ------------------------------------------------------------------------------------ |
+| ☐    | UpdateValidationTables.sql | Michael            | infrequently run; left as script                                                   |
+| ☐    | ManageSpaces.sql           | Michael            | infrequently updated; left as script                                               |
+| ☐    | ManageSelection.php        | Pierce             | can modify selection/deselect things from page                                     |
+| ☐    | ManageSelection.sql        | ~~Pierce~~ Michael | will likely also interface with Adaptations<br />SORRY PIERCE I DID IT BY ACCIDENT |
+| ☐    | ManageClubs.php            | Rashawn            |                                                                                    |
+| ☐    | ManageClubs.sql            | Rashawn            |                                                                                    |
+| ☐    | ManagePatrons.php          | Rashawn            |                                                                                    |
+| ☐    | ManagePatrons.sql          | Rashawn            |                                                                                    |
+| ☐    | ManageInteractions.php     | Michael            |                                                                                    |
+| ☐    | ManageInteractions.sql     | Michael            | will have to interface with subset tables                                          |
+| ☐    | ManageReservations.php     | Pierce             |                                                                                    |
+| ☐    | ManageReservations.sql     | Pierce             |                                                                                    |
 
 ### Other Useful Reports
 

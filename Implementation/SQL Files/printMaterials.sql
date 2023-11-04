@@ -7,6 +7,6 @@ CREATE OR REPLACE TABLE print_materials (
 
     material_id     INT,
     print_type      VARCHAR(256),
-    page_count      INT NOT NULL,
+    page_count      INT             NOT NULL,
         CHECK (page_count > 0) -- no negative page counts
 );
