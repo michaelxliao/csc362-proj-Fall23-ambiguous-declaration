@@ -1,7 +1,11 @@
 CREATE OR REPLACE TABLE adaptations (
     PRIMARY KEY (narrative_id, material_id),
-    FOREIGN KEY (narrative_id) REFERENCES narratives(narrative_id),
-    FOREIGN KEY (material_id) REFERENCES selection(material_id),
+    FOREIGN KEY (narrative_id)
+        REFERENCES narratives(narrative_id)
+        ON DELETE CASCADE,
+    FOREIGN KEY (material_id) 
+        REFERENCES selection(material_id)
+        ON DELETE CASCADE,
     
     narrative_id            INT         NOT NULL,
     material_id             INT         NOT NULL,
