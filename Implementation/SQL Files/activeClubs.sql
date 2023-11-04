@@ -1,4 +1,4 @@
-CREATE OR REPLACE activeClubs AS
-SELECT club_id, club_name
-FROM clubs
-WHERE clubs.club_isActive=TRUE;
+CREATE OR REPLACE active_clubs AS
+SELECT club_id, club_name, club_description
+ FROM clubs
+WHERE clubs.club_is_active = TRUE;
