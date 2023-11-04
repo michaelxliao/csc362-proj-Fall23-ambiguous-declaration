@@ -60,7 +60,7 @@ Note that each `ManageX.sql` script holds the appropriate INSERT/DELETE/UPDATE q
 | ------- | ---------------------------- | -------------------- | ------------------------------------------------------------------------------------ |
 | ☐    | UpdateValidationTables.sql | Michael            | infrequently run; left as script                                                   |
 | ☐    | ManageSpaces.sql           | Michael            | infrequently updated; left as script                                               |
-| ☐    | ManageSelection.php        | Pierce             | can modify selection/deselect things from page                                     |
+| ☑    | ManageSelection.php        | Pierce             | can modify selection/deselect things from page                                     |
 | ☐    | ManageSelection.sql        | ~~Pierce~~ Michael | will likely also interface with Adaptations<br />SORRY PIERCE I DID IT BY ACCIDENT |
 | ☐    | ManageClubs.php            | Rashawn            |                                                                                    |
 | ☐    | ManageClubs.sql            | Rashawn            |                                                                                    |
