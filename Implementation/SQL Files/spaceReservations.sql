@@ -11,5 +11,6 @@ CREATE OR REPLACE TABLE space_reservations (
     patron_id               INT         NOT NULL,
     space_id                INT         NOT NULL,
     start_reservation       DATETIME    NOT NULL,
+    end_reservation         DATETIME    NOT NULL,
     reservation_notes       VARCHAR(256)
 );

@@ -58,3 +58,5 @@ SOURCE spaceReservations.sql;
 SOURCE currentReservations.sql;
 
 SOURCE clubReservations.sql;
+
+/* calling management scripts to create procedures/functions */

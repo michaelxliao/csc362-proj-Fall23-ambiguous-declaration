@@ -9,7 +9,7 @@ Paste `☑` over the `☐` boxes when done.
 
 | Done? | **Filename**                           | **Assigned to** | Notes                                        |
 | ------- | ---------------------------------------- | ----------------- | ---------------------------------------------- |
-| ☐    | SetupTherpstonDB.sql                   | Michael         | webuser, SOURCE other sql files              |
+| ☐    | SetupTherpstonDB.sql                   | Michael         | webuser ☑, SOURCE other sql files ☐        |
 | ☑    | Selection.sql                          | Michael         |                                              |
 | ☑    | ActiveSelection.sql                    | Michael         | VIEW, for DENY deletion                      |
 | ☑    | PrintMaterials.sql                     | Michael         |                                              |
@@ -19,13 +19,13 @@ Paste `☑` over the `☐` boxes when done.
 | ☑    | Narratives.sql                         | Michael         |                                              |
 | ☑    | ActiveNarratives.sql                   | Michael         | VIEW, for DENY deletion                      |
 | ☑    | Adaptations.sql                        | Michael         |                                              |
-| ☐    | SelectionLanguages.sql                 | Pierce          |                                              |
-| ☐    | Languages.sql                          | Pierce          |                                              |
-| ☐    | SelectionCreators.sql                  | Pierce          |                                              |
-| ☐    | Creators.sql                           | Pierce          |                                              |
-| ☐    | CreatorRoles.sql                       | Pierce          |                                              |
-| ☐    | SelectionGenres.sql                    | Pierce          |                                              |
-| ☐    | Genres.sql                             | Pierce          |                                              |
+| ☑    | SelectionLanguages.sql                 | Pierce          |                                              |
+| ☑    | Languages.sql                          | Pierce          |                                              |
+| ☑    | SelectionCreators.sql                  | Pierce          |                                              |
+| ☑    | Creators.sql                           | Pierce          |                                              |
+| ☑    | CreatorRoles.sql                       | Pierce          |                                              |
+| ☑    | SelectionGenres.sql                    | Pierce          |                                              |
+| ☑    | Genres.sql                             | Pierce          |                                              |
 | ☐    | Patrons.sql                            | Rashawn         |                                              |
 | ☐    | Patron-SelectionInteractions.sql       | Rashawn         |                                              |
 | ☐    | ActivePatron-SelectionInteractions.sql | Rashawn         | VIEW, for DENY deletion                      |
@@ -36,7 +36,7 @@ Paste `☑` over the `☐` boxes when done.
 | ☐    | Clubs.sql                              | Rashawn         |                                              |
 | ☐    | ActiveClubs.sql                        | Rashawn         | VIEW                                         |
 | ☐    | ClubMembers.sql                        | Rashawn         |                                              |
-| ☐    | Spaces.sql                             | Pierce          |                                              |
+| ☑    | Spaces.sql                             | Pierce          |                                              |
 | ☑    | ActiveSpaces.sql                       | Pierce          | VIEW                                         |
 | ☑    | SpaceReservations.sql                  | Pierce          |                                              |
 | ☑    | CurrentReservations.sql                | Pierce          | VIEW, range? the current week/today/ongoing? |
@@ -59,9 +59,9 @@ Note that each `ManageX.sql` script holds the appropriate INSERT/DELETE/UPDATE q
 | Done? | **Filename**               | **Assigned to**    | Notes                                                                              |
 | ------- | ---------------------------- | -------------------- | ------------------------------------------------------------------------------------ |
 | ☐    | UpdateValidationTables.sql | Michael            | infrequently run; left as script                                                   |
-| ☐    | ManageSpaces.sql           | Michael            | infrequently updated; left as script                                               |
-| ☑    | ManageSelection.php        | Pierce             | can modify selection/deselect things from page                                     |
-| ☐    | ManageSelection.sql        | ~~Pierce~~ Michael | will likely also interface with Adaptations<br />SORRY PIERCE I DID IT BY ACCIDENT |
+| ☐    | ManageSpaces.sql           | ~~Michael~~ Pierce | infrequently updated; left as script                                               |
+| ☐    | ManageSelection.php        | Pierce             | can modify selection/deselect things from page                                     |
+| ☑    | ManageSelection.sql        | ~~Pierce~~ Michael | will likely also interface with Adaptations<br />SORRY PIERCE I DID IT BY ACCIDENT |
 | ☐    | ManageClubs.php            | Rashawn            |                                                                                    |
 | ☐    | ManageClubs.sql            | Rashawn            |                                                                                    |
 | ☐    | ManagePatrons.php          | Rashawn            |                                                                                    |

@@ -1,6 +1,6 @@
-CREATE OR REPLACE holds(
-    PRIMARY KEY(Interaction_ID),
-    Interaction_ID      INT,
-    hold_date_requested DATE,
-    hold_isActive       BOOLEAN DEFUALT TRUE
+CREATE OR REPLACE holds (
+    PRIMARY KEY (interaction_id),
+    interaction_id          INT,
+    hold_date_requested     DATE        NOT NULL,
+    hold_is_active          BOOLEAN     NOT NULL DEFAULT TRUE
 );
