@@ -6,6 +6,10 @@ Paste `☑` over the `☐` boxes when done.
 
 #### Database Definitions
 
+##### REVIEW ALL FOR SYNTAX.
+
+* Includes: cases, whitespace, foreign key constraints, OR REPLACEs, etc.
+
 
 | Done? | **Filename**                           | **Assigned to** | Notes                                        |
 | ------- | ---------------------------------------- | ----------------- | ---------------------------------------------- |
@@ -26,16 +30,16 @@ Paste `☑` over the `☐` boxes when done.
 | ☑    | CreatorRoles.sql                       | Pierce          |                                              |
 | ☑    | SelectionGenres.sql                    | Pierce          |                                              |
 | ☑    | Genres.sql                             | Pierce          |                                              |
-| ☐    | Patrons.sql                            | Rashawn         |                                              |
-| ☐    | Patron-SelectionInteractions.sql       | Rashawn         |                                              |
+| ☑    | Patrons.sql                            | Rashawn         |                                              |
+| ☑    | Patron-SelectionInteractions.sql       | Rashawn         |                                              |
 | ☐    | ActivePatron-SelectionInteractions.sql | Rashawn         | VIEW, for DENY deletion                      |
-| ☐    | Loans.sql                              | Rashawn         |                                              |
-| ☐    | CurrentLoans.sql                       | Rashawn         | VIEW                                         |
-| ☐    | Holds.sql                              | Rashawn         |                                              |
-| ☐    | CurrentHolds.sql                       | Rashawn         | VIEW                                         |
-| ☐    | Clubs.sql                              | Rashawn         |                                              |
-| ☐    | ActiveClubs.sql                        | Rashawn         | VIEW                                         |
-| ☐    | ClubMembers.sql                        | Rashawn         |                                              |
+| ☑    | Loans.sql                              | Rashawn         |                                              |
+| ☑    | CurrentLoans.sql                       | Rashawn         | VIEW                                         |
+| ☑    | Holds.sql                              | Rashawn         |                                              |
+| ☑    | CurrentHolds.sql                       | Rashawn         | VIEW                                         |
+| ☑    | Clubs.sql                              | Rashawn         |                                              |
+| ☑    | ActiveClubs.sql                        | Rashawn         | VIEW                                         |
+| ☑    | ClubMembers.sql                        | Rashawn         |                                              |
 | ☑    | Spaces.sql                             | Pierce          |                                              |
 | ☑    | ActiveSpaces.sql                       | Pierce          | VIEW                                         |
 | ☑    | SpaceReservations.sql                  | Pierce          |                                              |
@@ -58,8 +62,8 @@ Note that each `ManageX.sql` script holds the appropriate INSERT/DELETE/UPDATE q
 
 | Done? | **Filename**               | **Assigned to**    | Notes                                                                              |
 | ------- | ---------------------------- | -------------------- | ------------------------------------------------------------------------------------ |
-| ☐    | UpdateValidationTables.sql | Michael            | infrequently run; left as script                                                   |
-| ☐    | ManageSpaces.sql           | ~~Michael~~ Pierce | infrequently updated; left as script                                               |
+| ☐    | UpdateValidationTables.sql | Michael + Pierce   | infrequently run; left as script                                                   |
+| ☑    | ManageSpaces.sql           | ~~Michael~~ Pierce | infrequently updated; left as script                                               |
 | ☐    | ManageSelection.php        | Pierce             | can modify selection/deselect things from page                                     |
 | ☑    | ManageSelection.sql        | ~~Pierce~~ Michael | will likely also interface with Adaptations<br />SORRY PIERCE I DID IT BY ACCIDENT |
 | ☐    | ManageClubs.php            | Rashawn            |                                                                                    |
@@ -67,9 +71,9 @@ Note that each `ManageX.sql` script holds the appropriate INSERT/DELETE/UPDATE q
 | ☐    | ManagePatrons.php          | Rashawn            |                                                                                    |
 | ☐    | ManagePatrons.sql          | Rashawn            |                                                                                    |
 | ☐    | ManageInteractions.php     | Michael            |                                                                                    |
-| ☐    | ManageInteractions.sql     | Michael            | will have to interface with subset tables                                          |
+| ☑    | ManageInteractions.sql     | Michael            | will have to interface with subset tables                                          |
 | ☐    | ManageReservations.php     | Pierce             |                                                                                    |
-| ☐    | ManageReservations.sql     | Pierce             |                                                                                    |
+| ☑    | ManageReservations.sql     | Pierce             |                                                                                    |
 
 ### Other Useful Reports
 

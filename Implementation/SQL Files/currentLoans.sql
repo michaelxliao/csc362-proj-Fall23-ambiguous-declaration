@@ -1,4 +1,4 @@
 CREATE OR REPLACE VIEW activeLoans AS
 SELECT *
-FROM loans
-WHERE loans.Loan_isActive=TRUE;
+  FROM loans
+ WHERE loans.loan_is_active = TRUE;

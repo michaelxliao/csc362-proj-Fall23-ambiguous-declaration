@@ -6,7 +6,7 @@ CREATE OR REPLACE TABLE loans (
 
     interaction_id          INT,
     loan_start_date         DATE        NOT NULL,
-    loan_return_date        DATE        NOT NULL,
+    loan_return_date        DATE,
     loan_renewal_tally      INT         NOT NULL DEFAULT 0,
     loan_is_active          BOOLEAN     NOT NULL DEFAULT TRUE
 );
