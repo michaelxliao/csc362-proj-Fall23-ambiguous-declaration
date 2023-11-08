@@ -1,0 +1,21 @@
+DELIMITER //
+CREATE OR REPLACE PROCEDURE add_Club(club_name VARCHAR(256), club_description)
+ BEGIN
+ START TRANSACTION;
+       
+COMMIT;
+   END
+//
+DELIMITER ;
+
+DELIMITER //
+CREATE OR REPLACE PROCEDURE del_Club(deleted_club_name VARCHAR(256))
+ BEGIN
+ START TRANSACTION;
+   DELETE FROM clubs
+   WHERE club_name=deleted_club_name;
+
+COMMIT;
+   END
+//
+DELIMITER ;

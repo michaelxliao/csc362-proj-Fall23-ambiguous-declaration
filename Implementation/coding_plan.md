@@ -23,6 +23,15 @@ Paste `☑` over the `☐` boxes when done.
 | ☑    | Narratives.sql                         | Michael         |                                              |
 | ☑    | ActiveNarratives.sql                   | Michael         | VIEW, for DENY deletion                      |
 | ☑    | Adaptations.sql                        | Michael         |                                              |
+<<<<<<< HEAD
+| ☐    | SelectionLanguages.sql                 | Pierce          |                                              |
+| ☐    | Languages.sql                          | Pierce          |                                              |
+| ☐    | SelectionCreators.sql                  | Pierce          |                                              |
+| ☐    | Creators.sql                           | Pierce          |                                              |
+| ☐    | CreatorRoles.sql                       | Pierce          |                                              |
+| ☐    | SelectionGenres.sql                    | Pierce          |                                              |
+| ☐    | Genres.sql                             | Pierce          |                                              |
+=======
 | ☑    | SelectionLanguages.sql                 | Pierce          |                                              |
 | ☑    | Languages.sql                          | Pierce          |                                              |
 | ☑    | SelectionCreators.sql                  | Pierce          |                                              |
@@ -30,6 +39,7 @@ Paste `☑` over the `☐` boxes when done.
 | ☑    | CreatorRoles.sql                       | Pierce          |                                              |
 | ☑    | SelectionGenres.sql                    | Pierce          |                                              |
 | ☑    | Genres.sql                             | Pierce          |                                              |
+>>>>>>> a9ece9953b81fc90fd1a0cdbb66543296752551b
 | ☑    | Patrons.sql                            | Rashawn         |                                              |
 | ☑    | Patron-SelectionInteractions.sql       | Rashawn         |                                              |
 | ☑    | ActivePatron-SelectionInteractions.sql | Rashawn         | VIEW, for DENY deletion                      |
@@ -40,7 +50,11 @@ Paste `☑` over the `☐` boxes when done.
 | ☑    | Clubs.sql                              | Rashawn         |                                              |
 | ☑    | ActiveClubs.sql                        | Rashawn         | VIEW                                         |
 | ☑    | ClubMembers.sql                        | Rashawn         |                                              |
+<<<<<<< HEAD
+| ☐    | Spaces.sql                             | Pierce          |                                              |
+=======
 | ☑    | Spaces.sql                             | Pierce          |                                              |
+>>>>>>> a9ece9953b81fc90fd1a0cdbb66543296752551b
 | ☑    | ActiveSpaces.sql                       | Pierce          | VIEW                                         |
 | ☑    | SpaceReservations.sql                  | Pierce          |                                              |
 | ☑    | CurrentReservations.sql                | Pierce          | VIEW, range? the current week/today/ongoing? |
@@ -60,6 +74,22 @@ Paste `☑` over the `☐` boxes when done.
 Note that each `ManageX.sql` script holds the appropriate INSERT/DELETE/UPDATE queries as needed per page.
 
 
+<<<<<<< HEAD
+| Done? | **Filename**               | **Assigned to** | Notes                                          |
+| ------- | ---------------------------- | ----------------- | ------------------------------------------------ |
+| ☐    | UpdateValidationTables.sql | Michael         | infrequently run; left as script               |
+| ☐    | ManageSpaces.sql           | Michael         | infrequently updated; left as script           |
+| ☐    | ManageSelection.php        | Pierce          | can modify selection/deselect things from page |
+| ☐    | ManageSelection.sql        | Pierce          | will likely also interface with Adaptations    |
+| ☐    | ManageClubs.php            | Rashawn         |                                                |
+| ☑    | ManageClubs.sql            | Rashawn         |                                                |
+| ☐    | ManagePatrons.php          | Rashawn         |                                                |
+| ☑    | ManagePatrons.sql          | Rashawn         |                                                |
+| ☐    | ManageInteractions.php     | Michael         |                                                |
+| ☐    | ManageInteractions.sql     | Michael         | will have to interface with subset tables      |
+| ☐    | ManageReservations.php     | Pierce          |                                                |
+| ☐    | ManageReservations.sql     | Pierce          |                                                |
+=======
 | Done? | **Filename**               | **Assigned to**    | Notes                                                                              |
 | ------- | ---------------------------- | -------------------- | ------------------------------------------------------------------------------------ |
 | ☐    | UpdateValidationTables.sql | Michael + Pierce   | infrequently run; left as script                                                   |
@@ -74,6 +104,7 @@ Note that each `ManageX.sql` script holds the appropriate INSERT/DELETE/UPDATE q
 | ☑    | ManageInteractions.sql     | Michael            | will have to interface with subset tables                                          |
 | ☐    | ManageReservations.php     | Pierce             |                                                                                    |
 | ☑    | ManageReservations.sql     | Pierce             |                                                                                    |
+>>>>>>> a9ece9953b81fc90fd1a0cdbb66543296752551b
 
 ### Other Useful Reports
 
