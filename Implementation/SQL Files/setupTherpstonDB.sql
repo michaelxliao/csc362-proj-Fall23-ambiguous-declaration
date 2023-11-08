@@ -1,4 +1,5 @@
-CREATE OR REPLACE DATABASE therpston;
+DROP DATABASE IF EXISTS therpston;
+CREATE DATABASE therpston;
 
 USE therpston;
 
@@ -23,7 +24,6 @@ SOURCE multimedia.sql;
 SOURCE narratives.sql;
 SOURCE activeNarratives.sql;
 SOURCE adaptations.sql;
-
 
 SOURCE languages.sql;
 SOURCE selectionLanguages.sql;
@@ -60,3 +60,9 @@ SOURCE currentReservations.sql;
 SOURCE clubReservations.sql;
 
 /* calling management scripts to create procedures/functions */
+SOURCE manageClubs.sql;
+SOURCE manageInteractions.sql;
+SOURCE managePatrons.sql;
+SOURCE manageReservations.sql;
+SOURCE manageSelection.sql;
+SOURCE manageSpaces.sql;

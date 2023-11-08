@@ -51,7 +51,7 @@ CREATE OR REPLACE PROCEDURE update_print_material(material_id INT, title VARCHAR
 
        UPDATE print_materials
           SET print_materials.print_type = print_type,
-          SET print_materials.page_count = num_pages
+              print_materials.page_count = num_pages
         WHERE print_materials.material_id = material_id;
 COMMIT;
    END
@@ -72,7 +72,7 @@ CREATE OR REPLACE PROCEDURE update_multimedia_material(material_id INT, title VA
 
        UPDATE multimedia_materials
           SET multimedia_materials.multimedia_type = multimedia_type,
-          SET multimedia_materials.duration = duration
+              multimedia_materials.duration = duration
         WHERE print_materials.material_id = material_id;
 COMMIT;
    END

@@ -1,5 +1,5 @@
 DELIMITER //
-CREATE OR REPLACE PROCEDURE add_patron(Patron_First_Name VARCHAR(256), Patron_Last_Name VARCHAR(256), Patron_Email VARCHAR(256), Patron_Phone VARCHAR(64))
+CREATE OR REPLACE PROCEDURE add_patron(patron_first_name VARCHAR(256), patron_last_name VARCHAR(256), patron_email VARCHAR(256), patron_phone CHAR(14))
  BEGIN
  START TRANSACTION;
        
