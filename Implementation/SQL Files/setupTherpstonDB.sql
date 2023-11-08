@@ -28,7 +28,7 @@ SOURCE adaptations.sql;
 SOURCE languages.sql;
 SOURCE selectionLanguages.sql;
 
-SOURCE creator.sql;
+SOURCE creators.sql;
 SOURCE creatorRoles.sql;
 SOURCE selectionCreators.sql;
 
