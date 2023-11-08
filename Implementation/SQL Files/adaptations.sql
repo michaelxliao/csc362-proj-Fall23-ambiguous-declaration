@@ -7,7 +7,7 @@ CREATE OR REPLACE TABLE adaptations (
         REFERENCES selection(material_id)
         ON DELETE CASCADE,
     
-    narrative_id            INT         NOT NULL,
-    material_id             INT         NOT NULL,
+    narrative_id            INT,
+    material_id             INT,
     material_is_source      BOOLEAN     NOT NULL
 );
