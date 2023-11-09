@@ -1,17 +1,9 @@
 DELIMITER //
-<<<<<<< HEAD
-CREATE OR REPLACE PROCEDURE add_Club(new_club_name VARCHAR(256), new_club_description)
- BEGIN
- START TRANSACTION;
-       INSERT INTO clubs( club_name, club_description)
-       VALUES(new_club_name, new_club_description);
-=======
 CREATE OR REPLACE PROCEDURE add_club(club_name VARCHAR(256), club_description VARCHAR(1024))
  BEGIN
  START TRANSACTION;
        INSERT INTO clubs (club_name, club_description)
        VALUES (club_name, club_description);
->>>>>>> 1f1ab4defb9d9c43a709ba33b580b87445918543
 COMMIT;
    END
 //
