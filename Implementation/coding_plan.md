@@ -23,15 +23,6 @@ Paste `☑` over the `☐` boxes when done.
 | ☑    | Narratives.sql                         | Michael         |                                              |
 | ☑    | ActiveNarratives.sql                   | Michael         | VIEW, for DENY deletion                      |
 | ☑    | Adaptations.sql                        | Michael         |                                              |
-<<<<<<< HEAD
-| ☐    | SelectionLanguages.sql                 | Pierce          |                                              |
-| ☐    | Languages.sql                          | Pierce          |                                              |
-| ☐    | SelectionCreators.sql                  | Pierce          |                                              |
-| ☐    | Creators.sql                           | Pierce          |                                              |
-| ☐    | CreatorRoles.sql                       | Pierce          |                                              |
-| ☐    | SelectionGenres.sql                    | Pierce          |                                              |
-| ☐    | Genres.sql                             | Pierce          |                                              |
-=======
 | ☑    | SelectionLanguages.sql                 | Pierce          |                                              |
 | ☑    | Languages.sql                          | Pierce          |                                              |
 | ☑    | SelectionCreators.sql                  | Pierce          |                                              |
@@ -39,7 +30,6 @@ Paste `☑` over the `☐` boxes when done.
 | ☑    | CreatorRoles.sql                       | Pierce          |                                              |
 | ☑    | SelectionGenres.sql                    | Pierce          |                                              |
 | ☑    | Genres.sql                             | Pierce          |                                              |
->>>>>>> a9ece9953b81fc90fd1a0cdbb66543296752551b
 | ☑    | Patrons.sql                            | Rashawn         |                                              |
 | ☑    | Patron-SelectionInteractions.sql       | Rashawn         |                                              |
 | ☑    | ActivePatron-SelectionInteractions.sql | Rashawn         | VIEW, for DENY deletion                      |
@@ -50,11 +40,7 @@ Paste `☑` over the `☐` boxes when done.
 | ☑    | Clubs.sql                              | Rashawn         |                                              |
 | ☑    | ActiveClubs.sql                        | Rashawn         | VIEW                                         |
 | ☑    | ClubMembers.sql                        | Rashawn         |                                              |
-<<<<<<< HEAD
-| ☐    | Spaces.sql                             | Pierce          |                                              |
-=======
 | ☑    | Spaces.sql                             | Pierce          |                                              |
->>>>>>> a9ece9953b81fc90fd1a0cdbb66543296752551b
 | ☑    | ActiveSpaces.sql                       | Pierce          | VIEW                                         |
 | ☑    | SpaceReservations.sql                  | Pierce          |                                              |
 | ☑    | CurrentReservations.sql                | Pierce          | VIEW, range? the current week/today/ongoing? |

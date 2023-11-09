@@ -44,13 +44,13 @@ CREATE OR REPLACE PROCEDURE update_loan(id INT, material_id INT, patron_id INT, 
  START TRANSACTION;
     UPDATE patron_selection_interactions
        SET patron_selection_interactions.material_id = material_id,
-       SET patron_selection_interactions.patron_id = patron_id
+           patron_selection_interactions.patron_id = patron_id
     WHERE interaction_id = id;
 
     UPDATE loans
        SET loans.loan_start_date = loan_start,
-       SET loans.loan_return_date = loan_return,
-       SET loans.loan_renewal_tally = loan_renewal_tally
+           loans.loan_return_date = loan_return,
+           loans.loan_renewal_tally = loan_renewal_tally
     WHERE interaction_id = id;
 COMMIT;
    END
@@ -63,7 +63,7 @@ CREATE OR REPLACE PROCEDURE update_hold(id INT, material_id INT, patron_id INT, 
  START TRANSACTION;
     UPDATE patron_selection_interactions
        SET patron_selection_interactions.material_id = material_id,
-       SET patron_selection_interactions.patron_id = patron_id
+           patron_selection_interactions.patron_id = patron_id
     WHERE interaction_id = id;
 
     UPDATE holds

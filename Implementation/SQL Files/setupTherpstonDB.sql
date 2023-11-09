@@ -1,14 +1,15 @@
-CREATE OR REPLACE DATABASE therpston;
+DROP DATABASE IF EXISTS therpston;
+CREATE DATABASE therpston;
 
 USE therpston;
 
 /* Defining the webuser */
-CREATE OR REPLACE USER 'webuser'@'localhost' IDENTIFIED BY '007'; -- RANDOMLY GENERATED 2 WORDS
+CREATE OR REPLACE USER 'lib_webuser'@'localhost' IDENTIFIED BY 'tidybattlefield'; -- RANDOMLY GENERATED 2 WORDS
 
-GRANT INSERT ON *.* TO 'webuser'@'localhost'; -- C(reate)
-GRANT SELECT ON *.* TO 'webuser'@'localhost'; -- R(ead)
-GRANT UPDATE ON *.* TO 'webuser'@'localhost'; -- U(pdate)
-GRANT DELETE ON *.* TO 'webuser'@'localhost'; -- D(dlete)
+GRANT INSERT ON *.* TO 'lib_webuser'@'localhost'; -- C(reate)
+GRANT SELECT ON *.* TO 'lib_webuser'@'localhost'; -- R(ead)
+GRANT UPDATE ON *.* TO 'lib_webuser'@'localhost'; -- U(pdate)
+GRANT DELETE ON *.* TO 'lib_webuser'@'localhost'; -- D(dlete)
 
 /* now calling the rest of the definitional files */
 SOURCE selection.sql;
@@ -24,11 +25,10 @@ SOURCE narratives.sql;
 SOURCE activeNarratives.sql;
 SOURCE adaptations.sql;
 
-
 SOURCE languages.sql;
 SOURCE selectionLanguages.sql;
 
-SOURCE creator.sql;
+SOURCE creators.sql;
 SOURCE creatorRoles.sql;
 SOURCE selectionCreators.sql;
 
@@ -60,3 +60,9 @@ SOURCE currentReservations.sql;
 SOURCE clubReservations.sql;
 
 /* calling management scripts to create procedures/functions */
+SOURCE manageClubs.sql;
+SOURCE manageInteractions.sql;
+SOURCE managePatrons.sql;
+SOURCE manageReservations.sql;
+SOURCE manageSelection.sql;
+SOURCE manageSpaces.sql;
