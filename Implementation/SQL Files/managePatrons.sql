@@ -3,7 +3,7 @@ CREATE OR REPLACE PROCEDURE add_patron(patron_first_name VARCHAR(256), patron_la
  BEGIN
  START TRANSACTION;
        INSERT INTO patrons
-       VALUES(new_Patron_First_Name, new_Patron_Last_Name, new_Patron_Email, new_Patron_Phone)
+       VALUES(new_Patron_First_Name, new_Patron_Last_Name, new_Patron_Email, new_Patron_Phone);
 COMMIT;
    END
 //
@@ -26,7 +26,7 @@ CREATE OR REPLACE PROCEDURE update_patron(id INT, new_patron_first_name VARCHAR(
 DELIMITER ;
 
 DELIMITER //
-CREATE OR REPLACE PROCEDURE del_patron(del_Patron_ID)
+CREATE OR REPLACE PROCEDURE del_patron(del_Patron_ID int)
  BEGIN
  START TRANSACTION;
    DELETE FROM patrons
