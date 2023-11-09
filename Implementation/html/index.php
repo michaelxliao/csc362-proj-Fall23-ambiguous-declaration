@@ -1,3 +1,29 @@
+<?php
+# setup debugging php errors
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+# Create sql connection
+
+$config = parse_ini_file('/home/stard/mysql.ini');
+print_r($config);
+$conn = new mysqli(
+            $config['lib_host'],
+            $config['lib_user'],
+            $config['lib_password'],
+            $config['lib_database']);
+if ($conn->connect_errno) {
+        echo "Error: Failed to make a MySQL connection, here is why: ". "<br>";
+        echo "Errno: " . $conn->connect_errno . "\n";
+        echo "Error: " . $conn->connect_error . "\n";
+        exit; // Quit this PHP script if the connection fails.
+    } else {
+        echo "Connection established." . "<br>";
+    }
+?>
+
 <h1>Therpston County Public Library</h1>
 
 <h2>Reports</h2>
