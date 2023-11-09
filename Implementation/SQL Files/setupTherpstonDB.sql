@@ -4,7 +4,7 @@ CREATE DATABASE therpston;
 USE therpston;
 
 /* Defining the webuser */
-CREATE OR REPLACE USER 'webuser'@'localhost' IDENTIFIED BY '007'; -- RANDOMLY GENERATED 2 WORDS
+CREATE OR REPLACE USER 'lib_webuser'@'localhost' IDENTIFIED BY 'tidybattlefield'; -- RANDOMLY GENERATED 2 WORDS
 
 GRANT INSERT ON *.* TO 'webuser'@'localhost'; -- C(reate)
 GRANT SELECT ON *.* TO 'webuser'@'localhost'; -- R(ead)
