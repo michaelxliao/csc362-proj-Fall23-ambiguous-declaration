@@ -66,3 +66,5 @@ SOURCE managePatrons.sql;
 SOURCE manageReservations.sql;
 SOURCE manageSelection.sql;
 SOURCE manageSpaces.sql;
+
+SOURCE ;
