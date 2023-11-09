@@ -8,7 +8,6 @@ error_reporting(E_ALL);
 # Create sql connection
 
 $config = parse_ini_file('/home/stard/mysql.ini');
-print_r($config);
 $conn = new mysqli(
             $config['lib_host'],
             $config['lib_user'],
