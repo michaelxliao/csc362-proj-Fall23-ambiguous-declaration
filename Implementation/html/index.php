@@ -74,7 +74,7 @@ Show Details On:
         Spaces and Space Reservations
     </li>  
     <li>
-        Clubs
+        <a href="manageClubs.php">Clubs</a>
     </li>  
     <li>
         Holds and Loans (selection)
