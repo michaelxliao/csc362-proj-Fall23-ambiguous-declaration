@@ -4,7 +4,7 @@ CREATE OR REPLACE PROCEDURE add_multimedia_type(multimedia_type VARCHAR(256))
  BEGIN
  START TRANSACTION;
        INSERT INTO multimedia_types (multimedia_type)
-       VALUES (multimedia_type)
+       VALUES (multimedia_type);
 COMMIT;
    END
 //
@@ -40,7 +40,7 @@ CREATE OR REPLACE PROCEDURE add_print_type(print_type VARCHAR(256))
  BEGIN
  START TRANSACTION;
        INSERT INTO print_types (print_type)
-       VALUES (print_type)
+       VALUES (print_type);
 COMMIT;
    END
 //
@@ -76,7 +76,7 @@ CREATE OR REPLACE PROCEDURE add_language(language_name VARCHAR(256))
  BEGIN
  START TRANSACTION;
        INSERT INTO languages (language_name)
-       VALUES (language_name)
+       VALUES (language_name);
 COMMIT;
    END
 //
@@ -112,7 +112,7 @@ CREATE OR REPLACE PROCEDURE add_genre(genre_name VARCHAR(256))
  BEGIN
  START TRANSACTION;
        INSERT INTO genres (genre_name)
-       VALUES (genre_name)
+       VALUES (genre_name);
 COMMIT;
    END
 //
@@ -148,7 +148,7 @@ CREATE OR REPLACE PROCEDURE add_narrative(narrative_name VARCHAR(256), narrative
  BEGIN
  START TRANSACTION;
        INSERT INTO narratives (narrative_name, narrative_description)
-       VALUES (narrative_name, narrative_description)
+       VALUES (narrative_name, narrative_description);
 COMMIT;
    END
 //
@@ -171,7 +171,7 @@ CREATE OR REPLACE PROCEDURE update_narrative(id INT, new_name VARCHAR(256), new_
  START TRANSACTION;
        UPDATE narratives
           SET narratives.narrative_name = new_name,
-          SET narratives.narrative_description = new_desc
+              narratives.narrative_description = new_desc
         WHERE narratives.narrative_id = id;
 COMMIT;
    END
