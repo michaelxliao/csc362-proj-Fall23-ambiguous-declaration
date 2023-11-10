@@ -1,5 +1,5 @@
 <?php
-require 'setup.php';
+require 'includes/setup.php';
 $conn = setup();
 
 ?>
