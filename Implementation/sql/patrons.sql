@@ -5,5 +5,5 @@ CREATE OR REPLACE TABLE patrons(
     patron_last_name    VARCHAR(256)    NOT NULL,
     patron_phone        CHAR(14),
     patron_email        VARCHAR(256),
-    patron_isActive     BOOLEAN
+    patron_isActive     BOOLEAN SET DEFAULT TRUE
 );
