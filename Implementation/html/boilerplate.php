@@ -1,5 +1,5 @@
 <?php
-require 'includes/setup.php';
+require '../includes/setup.php';
 $conn = setup();
 ?>
 <!DOCTYPE html>

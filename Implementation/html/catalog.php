@@ -1,6 +1,6 @@
 <?php
-require 'includes/setup.php';
-require 'includes/format_result.php';
+require '../includes/setup.php';
+require '../includes/format_result.php';
 
 $conn = setup();
 ?>
