@@ -19,7 +19,7 @@ $conn = setup();
             <a href="patron_profile.php">Patrons (Patron Profile)</a>
         </li>
         <li>
-            <a href="club_profile.php">Clubs (Club Profile)</a>
+            <a href="display_clubs.php">Clubs (Club Profile)</a>
         </li>
         <li>
             <a href="current_holds.php">Holds (rework)</a>
