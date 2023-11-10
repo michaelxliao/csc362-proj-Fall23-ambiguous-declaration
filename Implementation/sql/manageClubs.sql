@@ -10,13 +10,13 @@ COMMIT;
 DELIMITER ;
 
 DELIMITER //
-CREATE OR REPLACE PROCEDURE update_club(id INT, new_club_name VARCHAR(256), club_description VARCHAR(1024))
+CREATE OR REPLACE PROCEDURE update_club(old_club_name VARCHAR(256), new_club_name VARCHAR(256), club_description VARCHAR(1024))
  BEGIN
  START TRANSACTION;
        UPDATE clubs
           SET club_name = new_club_name,
               clubs.club_description = club_description
-       WHERE club_id = id;
+       WHERE club_name = old_club_name;
 COMMIT;
    END
 //
