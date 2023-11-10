@@ -81,7 +81,7 @@ Note that each `ManageX.sql` script holds the appropriate INSERT/DELETE/UPDATE q
 | Done? | **Filename**            | **Assigned to** | Notes                                                 |
 | ------- | ------------------------- | ----------------- | ------------------------------------------------------- |
 | ☐    | Index.php               | Pierce          | Links to all other pages                              |
-| ☐    | Catalog.php             |                 | shows all materials in selection, probably can filter |
+| ☐    | Catalog.php             | Michael         | shows all materials in selection, probably can filter |
 | ☐    | CurrentLoans.php        | Rashawn         | for librarians                                        |
 | ☐    | CurrentReservations.php |                 | for librarians                                        |
 | ☐    | CurrentHolds.php        |                 | for librarians                                        |
