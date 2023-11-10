@@ -15,7 +15,7 @@ CREATE OR REPLACE PROCEDURE update_club(old_club_name VARCHAR(256), new_club_nam
  START TRANSACTION;
        UPDATE clubs
           SET club_name = new_club_name,
-              clubs.club_description = club_description
+              club_description = club_description
        WHERE club_name = old_club_name;
 COMMIT;
    END
