@@ -10,7 +10,7 @@ function connectToDB() {
     if (!$config) { // if this fails, try another directory (NOTE: WILL PRODUCE WARNINGS! DISABLE WHEN DONE)
         $config = parse_ini_file('/home/michael/mysql.ini');
         if (!$config) {
-            $config = parse_ini_file('/home/<RASHAWN USERNAME HERE>/mysql.ini');
+            $config = parse_ini_file('/home/rashawn_butler/mysql.ini');
         }
     }
 
