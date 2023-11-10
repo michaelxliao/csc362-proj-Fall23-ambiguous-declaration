@@ -2,15 +2,15 @@ DELIMITER //
 CREATE OR REPLACE PROCEDURE add_patron(patron_first_name VARCHAR(256), patron_last_name VARCHAR(256), patron_email VARCHAR(256), patron_phone CHAR(14))
  BEGIN
  START TRANSACTION;
-       INSERT INTO patrons
-       VALUES(new_Patron_First_Name, new_Patron_Last_Name, new_Patron_Email, new_Patron_Phone);
+       INSERT INTO patrons 
+       VALUES (new_patron_first_name, new_patron_last_name, new_patron_email, new_patron_phone);
 COMMIT;
    END
 //
 DELIMITER ;
 
 DELIMITER //
-CREATE OR REPLACE PROCEDURE update_patron(id INT, new_patron_first_name VARCHAR(256), new_patron_last_name VARCHAR(256), new_ptron_email VARCHAR(256), new_patron_phone CHAR(14))
+CREATE OR REPLACE PROCEDURE update_patron(id INT, new_patron_first_name VARCHAR(256), new_patron_last_name VARCHAR(256), new_patron_email VARCHAR(256), new_patron_phone CHAR(14))
  BEGIN
  START TRANSACTION;
        UPDATE patrons

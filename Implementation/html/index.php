@@ -7,7 +7,7 @@ $conn = setup();
 <h1>Therpston County Public Library</h1>
 
 <h2>Reports</h2>
-Search for Specific:
+Search for a Specific:
 <ul>
     <li>
         <a href="patron_profile.php">Patrons (Patron Profile)</a>

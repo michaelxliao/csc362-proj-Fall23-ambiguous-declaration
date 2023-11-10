@@ -13,7 +13,7 @@ Paste `☑` over the `☐` boxes when done.
 
 | Done? | **Filename**                           | **Assigned to** | Notes                                        |
 | ------- | ---------------------------------------- | ----------------- | ---------------------------------------------- |
-| ☐    | SetupTherpstonDB.sql                   | Michael         | webuser ☑, SOURCE other sql files ☐        |
+| ☐    | SetupTherpstonDB.sql                   | Michael         | still waiting on                             |
 | ☑    | Selection.sql                          | Michael         |                                              |
 | ☑    | ActiveSelection.sql                    | Michael         | VIEW, for DENY deletion                      |
 | ☑    | PrintMaterials.sql                     | Michael         |                                              |
@@ -80,7 +80,7 @@ Note that each `ManageX.sql` script holds the appropriate INSERT/DELETE/UPDATE q
 
 | Done? | **Filename**            | **Assigned to** | Notes                                                 |
 | ------- | ------------------------- | ----------------- | ------------------------------------------------------- |
-| ☐    | Index.php               |                 | Links to all other pages                              |
+| ☐    | Index.php               | Pierce          | Links to all other pages                              |
 | ☐    | Catalog.php             |                 | shows all materials in selection, probably can filter |
 | ☐    | CurrentLoans.php        | Rashawn         | for librarians                                        |
 | ☐    | CurrentReservations.php |                 | for librarians                                        |
