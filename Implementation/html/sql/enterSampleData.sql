@@ -171,4 +171,8 @@ VALUES
 (19,2),
 (19,3);
 
--- INSERT INTO selection_creator
+-- selection_creator
+
+
+-- selection_genres
+INSERT INTO selection_genres
