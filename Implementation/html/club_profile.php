@@ -13,7 +13,7 @@ $conn = setup()
     <body>
         <form>
             <?php
-            result_to_table($conn->query('SELECT  FROM "))
+            result_to_table($conn->query('SELECT * FROM clubs'))
             ?>
         </form>
     </body>

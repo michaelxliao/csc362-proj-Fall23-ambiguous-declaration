@@ -39,7 +39,7 @@ $conn = setup();
         Current Loans
     </li>
     <li>
-        Current Reservations
+        <a >Current Reservations</a>
     </li>
     <li>
         Current Holds
