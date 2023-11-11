@@ -14,9 +14,10 @@ $conn = setup();
 </head>
 
 <body>
-    <a href=index.php> Back to Sign-In</a>
-    <h1>Therpston County Public Library</h1>
-
+    <a class="link-button" href=index.php> Back to Sign-In</a>
+    <header>
+        <h1>Therpston County Public Library</h1>
+    </header>
     <h2>Reports</h2>
     <h3>Find Specific:</h3>
     <ul>

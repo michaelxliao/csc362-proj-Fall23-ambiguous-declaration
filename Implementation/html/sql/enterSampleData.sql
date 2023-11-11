@@ -14,25 +14,20 @@ VALUES
 ("Evil Poetry Club", "Make a better haiku losers", True),
 ("D&D Club", "Scheduling issues :(", False);
 
-/*
-            INT             AUTO_INCREMENT,
-    space_name          VARCHAR(256)    NOT NULL,
-    space_room_number   INT             NOT NULL,
-    space_capacity      INT             NOT NULL,
-    space_is_active)
-    */
 INSERT INTO patrons(patron_first_name, patron_last_name, patron_email, patron_phone)
 VALUES  ("Rashawn","Butler","rashawn.butler@centre.edu", "111-111-1111"),
         ("Pierce","Mason","pierce.mason@centre.edu","222-222-2222"),
         ("Michael","Liao","michael.liao@centre.edu","333-333-3333"),
-        ("Minecraft","Steve",NULL,"100-200-3000");
+        ("Minecraft","Steve",NULL,"100-200-3000"),
+        ("Sans", "Undertale","tobyfox@urmom.com",NULL),
+        ("Cuttlefish","Capn",NULL,"420-420-8008");
         
 INSERT INTO club_members(patron_id, club_id, member_info, member_is_leader)
 VALUES  (1,5,"Can only play on monday and friday",FALSE),
         (2,5,"Can only play on tuseday and thursday",FALSE),
         (3,5,"Can only play on wedneday",TRUE),
         (1,2,"Reads fantasy books",TRUE),
-        (2,2,"Reads monster manuels",FALSE),
+        (2,2,"Reads monster manuals",FALSE),
         (3,4,"Reads poetry about ruling the moon", TRUE);
 
 INSERT INTO multimedia_types (multimedia_type)
@@ -112,22 +107,24 @@ VALUES ("Steven", "Spielberg"), -- 1
        ("Hatsune", "Miku"), -- 3
        ("Rebecca", "Sugar"); -- 4
 
-INSERT INTO creator_roles(creator_roles)
-VALUES ("Director"), -- 1
-       ("Producer"), -- 2
-       ("Voice Actor"), -- 3
-       ("Actor"); -- 4
+INSERT INTO creator_roles(creator_role)
+VALUES ("Director"),
+       ("Producer"),
+       ("Voice Actor"),
+       ("Actor"),
+       ("Author");
 
 INSERT INTO languages(language_name)
-VALUES ("English"), -- 1
-       ("French"), -- 2
-       ("Japanese"); -- 3
+VALUES ("English"),
+       ("French"),
+       ("Japanese");
     
 INSERT INTO genres(genre_name)
-VALUES  ("Sci-Fi"), -- 1
-        ("Fantasy"), -- 2
-        ("Romance"), -- 3
-        ("Adventure"); -- 4
+VALUES  ("Sci-Fi"),
+        ("Fantasy"),
+        ("Romance"),
+        ("Adventure"), 
+        ("Comedy");
 
 INSERT INTO narratives(narrative_name, narrative_description)
 VALUES
@@ -160,19 +157,60 @@ VALUES
 -- best case this is done for all of them.
 INSERT INTO selection_languages(material_id, language_name)
 VALUES
-(3,1),
-(4,1),
-(4,2),
-(16,1),
-(16,2),
-(18,1),
-(18,3),
-(19,1),
-(19,2),
-(19,3);
+(3,"English"),
+(4,"English"),
+(4,"French"),
+(16,"English"),
+(16,"French"),
+(18,"English"),
+(18,"Japanese"),
+(19,"English"),
+(19,"French"),
+(19,"Japanese");
 
--- selection_creator
+-- selection_creators
 
+INSERT INTO selection_creators(creator_id, material_id, creator_role)
+VALUES
+(1, 3, "Author"),
+(1, 10, "Author"),
+(1, 11, "Author"),
+(2, 5, "Voice Actor"),
+(2, 6, "Author"),
+(2, 6, "Voice Actor"),
+(2, 7, "Voice Actor"),
+(3, 19, "Actor"),
+(4, 19, "Director");
 
 -- selection_genres
-INSERT INTO selection_genres
+
+INSERT INTO selection_genres(material_id, genre_name) 
+VALUES
+(1, "Fantasy"),
+(10, "Fantasy"),
+(11, "Fantasy"),
+(10, "Adventure"),
+(11, "Adventure"),
+(4, "Comedy"),
+(16, "Romance"),
+(16, "Comedy"),
+(17, "Comedy");
+
+-- patron selection interactions
+-- add_loan(material_id INT, patron_id INT, loan_start DATE, loan_return DATE, loan_renewal_tally INT)
+-- add_hold(material_id INT, patron_id INT, hold_date DATETIME)
+CALL add_loan(5, 1, '2023-10-29', '2023-11-02', 0);
+CALL add_loan(5, 1, '2023-11-05', '2023-11-28', 1);
+CALL add_loan(5, 2, '2023-9-29', '2023-10-15', 0);
+CALL add_loan(5, 3, '2023-10-29', '2023-11-02', 0);
+CALL add_loan(4, 4, '2023-10-29', NULL, 2);
+CALL add_loan(2, 5, '2023-10-29', NULL, 0);
+CALL add_loan(1, 5, '2023-10-10', NULL, 3);
+CALL add_loan(12, 5, '2023-10-10', NULL, 1);
+CALL add_hold(1, 4, '2023-10-11 ');
+CALL add_hold(4, 1, '2023-11-10 07:00:00');
+CALL add_hold(4, 2, '2023-11-12 04:00:00');
+
+-- club reservations
+
+CALL add_reservation(1, 1, '2023-11-01 03:00:00', '2023-11-01 07:00:00', "Knights when they");

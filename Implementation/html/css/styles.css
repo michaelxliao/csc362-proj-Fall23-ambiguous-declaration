@@ -1,20 +1,23 @@
-button {
-  background-color: #04AA6D;
-  /* Green */
-  border: none;
-  color: white;
-  padding: 30px 70px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  /* font-weight: 500; */
+/* color palette: https://coolors.co/0d3b66-faf0ca-f4d35e-ee964b-f95738 */
+header {
   font-family: 'Montserrat', sans-serif;
+  padding: 20px;
+  background-color: #0D3B66;
+  color: #FFFFFF;
 }
 
 body {
   font-family: 'Gentium Book Plus', serif;
+  background-color: #FAF0CA;
+}
+
+a.link-button {
+  background-color: #EE964B;
+  color: inherit;
+  border: none;
+  padding: 30px 70px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
 }

@@ -14,7 +14,9 @@ $conn = setup();
 </head>
 
 <body>
-
+    <header>
+        <!-- this is where h1s etc. go, any explanatory info -->
+    </header>
 </body>
 
 </html>

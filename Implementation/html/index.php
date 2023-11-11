@@ -15,16 +15,14 @@ $conn = setup();
 </head>
 
 <body>
+    <header>
     <h1> Welcome to the Therpston County
-        Public Library!
+        Public Library (WIP)!
     </h1>
+</header>
 
-    <a href="general_index.php">
-        <button type="button">For Patrons</button>
-    </a>
-    <a href="staff_index.php">
-        <button type="button">For Staff</button>
-    </a>
+    <a class="link-button" href="general_index.php">For Patrons</a>
+    <a class="link-button" href="staff_index.php">For Staff</a>
 </body>
 
 </html>

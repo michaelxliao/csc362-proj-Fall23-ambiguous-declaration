@@ -12,5 +12,6 @@ CREATE OR REPLACE TABLE space_reservations (
     space_id                INT         NOT NULL,
     start_reservation       DATETIME    NOT NULL,
     end_reservation         DATETIME    NOT NULL,
+        CHECK (end_reservation > start_reservation), -- Space Reservation End Date Must Be After Start Date business rule
     reservation_notes       VARCHAR(256)
 );

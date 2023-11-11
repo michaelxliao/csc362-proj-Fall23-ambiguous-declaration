@@ -5,5 +5,5 @@ CREATE OR REPLACE TABLE spaces (
     space_name          VARCHAR(256)    NOT NULL,
     space_room_number   INT             NOT NULL,
     space_capacity      INT             NOT NULL,
-    space_is_active     BOOLEAN         DEFAULT TRUE
+    space_is_active     BOOLEAN         DEFAULT TRUE -- for DENY deletion rule
 );

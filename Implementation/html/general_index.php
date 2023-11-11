@@ -1,5 +1,5 @@
 <?php
-require '../includes/setup.php';
+require 'includes/setup.php';
 $conn = setup();
 ?>
 
@@ -15,7 +15,10 @@ $conn = setup();
 </head>
 
 <body>
-    <h2> Welcome, esteemed patron of Therpston.</h2>
+<a class="link-button" href=index.php> Back to Sign-In</a>
+    <header>
+        <h2> Welcome, esteemed patron of Therpston County Public Library.</h2>
+    </header>
 
     <ul>
         <li>
