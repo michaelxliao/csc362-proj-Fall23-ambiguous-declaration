@@ -55,22 +55,32 @@ if (isset($_GET["Filter"])) {
 <html>
 
 <head>
-<link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 
 <body>
     <h1>Catalog</h1>
-    <form method=GET> <!-- will hold filtering form later -->
+    <form method=GET> <!-- NOTE FOR FILTERING: don't freakin forget your quotes -->
         <label for="media-type">Media type: </label>
         <select name="media-type" id="media-type" required>
-            <option value="<?= $ALL_MEDIA ?>"><?= $ALL_MEDIA ?></option>
-            <option value="<?= $PRINT ?>"><?= $PRINT ?></option>
-            <option value="<?= $MULTIMEDIA ?>"><?= $MULTIMEDIA ?></option>
-            <?php for ($i = 0; $i<$print_types_res->num_rows; $i++) { ?>
-                <option value="<?= $print_types[$i][0] ?>"><?= $print_types[$i][0] ?></option>
+            <option value="<?= $ALL_MEDIA ?>">
+                <?= $ALL_MEDIA ?>
+            </option>
+            <option value="<?= $PRINT ?>">
+                <?= $PRINT ?>
+            </option>
+            <option value="<?= $MULTIMEDIA ?>">
+                <?= $MULTIMEDIA ?>
+            </option>
+            <?php for ($i = 0; $i < $print_types_res->num_rows; $i++) { ?>
+                <option value="<?= $print_types[$i][0] ?>">
+                    <?= $print_types[$i][0] ?>
+                </option>
             <?php } ?>
-            <?php for ($i = 0; $i<$multimedia_types_res->num_rows; $i++) { ?>
-                <option value="<?= $multimedia_types[$i][0] ?>"><?= $multimedia_types[$i][0] ?></option>
+            <?php for ($i = 0; $i < $multimedia_types_res->num_rows; $i++) { ?>
+                <option value="<?= $multimedia_types[$i][0] ?>">
+                    <?= $multimedia_types[$i][0] ?>
+                </option>
             <?php } ?>
         </select>
         <button type="submit" name="Filter">Filter</button>

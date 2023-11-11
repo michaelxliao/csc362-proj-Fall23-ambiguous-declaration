@@ -7,10 +7,14 @@ $conn = setup();
 
 <head>
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gentium+Book+Plus&family=Montserrat:wght@500&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-    <a href = index.php> Back to Sign-In</a> 
+    <a href=index.php> Back to Sign-In</a>
     <h1>Therpston County Public Library</h1>
 
     <h2>Reports</h2>
@@ -20,7 +24,8 @@ $conn = setup();
             <a href="patron_profile.php">Patrons (Patron Profile)</a>
         </li>
         <li>
-            <a href="club_profile.php">Clubs (Club Profile)</a> <!-- this is to look up all related info on a specific club -->
+            <a href="club_profile.php">Clubs (Club Profile)</a>
+            <!-- this is to look up all related info on a specific club -->
         </li>
         <li>
             <a href="current_holds.php">Holds (rework)</a>
@@ -39,7 +44,7 @@ $conn = setup();
         Current Loans
     </li>
     <li>
-        <a >Current Reservations</a>
+        <a>Current Reservations</a>
     </li>
     <li>
         Current Holds
