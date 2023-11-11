@@ -6,20 +6,21 @@ $conn = setup();
 <html>
 
 <head>
-
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 
 <body>
+    <a href = index.php> Back to Sign-In</a> 
     <h1>Therpston County Public Library</h1>
 
     <h2>Reports</h2>
-    Search for a Specific:
+    <h3>Find Specific:</h3>
     <ul>
         <li>
             <a href="patron_profile.php">Patrons (Patron Profile)</a>
         </li>
         <li>
-            <a href="display_clubs.php">Clubs (Club Profile)</a>
+            <a href="club_profile.php">Clubs (Club Profile)</a> <!-- this is to look up all related info on a specific club -->
         </li>
         <li>
             <a href="current_holds.php">Holds (rework)</a>
@@ -61,7 +62,7 @@ $conn = setup();
             Spaces and Space Reservations
         </li>
         <li>
-            <a href="manageClubs.php">Clubs</a>
+            <a href="manage_clubs.php">Clubs</a> <!-- this is to see and manage all clubs -->
         </li>
         <li>
             Holds and Loans (selection)
@@ -69,10 +70,6 @@ $conn = setup();
     </ul>
 
 
-
-    Notes
-    - library-facing and patron-facing, patrons as a subset.
-    - stretch goal: sessions an
 
 </body>
 

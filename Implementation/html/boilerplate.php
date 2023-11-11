@@ -4,9 +4,9 @@ $conn = setup();
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
-        
-    </head>
+<head>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
     <body>
 
     </body>

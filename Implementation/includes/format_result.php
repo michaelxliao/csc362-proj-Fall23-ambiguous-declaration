@@ -1,8 +1,8 @@
 <?php // taken from lab 7
-    function result_to_table($result) {
+function result_to_table($result) {
         $fields = $result->fetch_fields();
         $data = $result->fetch_all();
-?>
+    ?>
         <table>
             <thead>
                 <tr>
@@ -26,10 +26,10 @@
 <?php } ?>
 
 <?php
-    function result_to_deletable_table($result) { // defining deletable table
+function result_to_deletable_table($result) { // defining deletable table
         $fields = $result->fetch_fields();
         $data = $result->fetch_all();
-?>
+    ?>
         <form method=POST>
             <table>
                 <thead>
@@ -63,10 +63,10 @@
 <?php } ?>
 
 <?php
-    function result_to_toggle_active_table($result) { // defining deletable table
+function result_to_toggle_active_table($result) { // defining toggle active table
         $fields = $result->fetch_fields();
         $data = $result->fetch_all();
-?>
+    ?>
         <form method=POST>
             <table>
                 <thead>

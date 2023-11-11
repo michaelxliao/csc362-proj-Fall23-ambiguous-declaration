@@ -6,7 +6,7 @@ $conn = setup();
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
  <h1> Welcome to the Therpston County 
