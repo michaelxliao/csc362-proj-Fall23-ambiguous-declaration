@@ -65,6 +65,7 @@ if (isset($_GET["Filter"])) {
 <body>
     <h1>Catalog</h1>
     <form method=GET> <!-- NOTE FOR FILTERING: don't freakin forget your quotes -->
+    <!-- need to convert to checkboxes; we don't want just one or the other, we may want multiple -->
         <label for="media-type">Media type: </label>
         <select name="media-type" id="media-type" required>
             <option value="<?= $ALL_MEDIA ?>">
