@@ -9,9 +9,9 @@ CREATE OR REPLACE TABLE loans (
     loan_start_date         DATE        NOT NULL,
     loan_return_date        DATE, -- to be clear: this is the day the material is actually returned; the due date of book is calculated
         CHECK (loan_return_date >= loan_start_date), -- loan times cannot be nonsensical
-    loan_renewal_tally      INT         NOT NULL DEFAULT 0,
+    loan_renewal_tally      INT         NOT NULL DEFAULT 0
         -- need to implement checks based on membership in table
-    loan_is_active          BOOLEAN     NOT NULL DEFAULT TRUE
+    -- deny deletion is in interactions
 );
 
 -- Loan Return Date Cannot Be In Future business rule

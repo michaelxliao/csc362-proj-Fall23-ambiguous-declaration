@@ -19,39 +19,42 @@ $conn = setup();
         <h1>Therpston County Public Library</h1>
     </header>
     <h2>Reports</h2>
-    <h3>Find Specific:</h3>
+    <h3>Search for:</h3>
     <ul>
         <li>
-            <a href="patron_profile.php">Patrons (Patron Profile)</a>
+            <a href="profile_patrons.php">Patrons (WIP Patron Profile)</a>
         </li>
         <li>
-            <a href="club_profile.php">Clubs (Club Profile)</a>
+            <a href="profile_clubs.php">Clubs (Club Profile)</a>
             <!-- this is to look up all related info on a specific club -->
         </li>
         <li>
-            <a href="current_holds.php">Holds (rework)</a>
+            <a href="profile_holds.php">Holds (WIP From Times, Spaces, and Patrons)</a>
         </li>
         <li>
-            Adaptations of a Narrative
+            <a href="profile_adaptations.php">Adaptations of a Narrative (WIP Find All Narratives)</a>
+        </li>
+        <li>
+            <a href="loans_profile.php">Loans on the Selection (WIP)</a>
         </li>
     </ul>
 
-    Show Details On:
+    <h3>All Active:</h3>
     </ul>
     <li>
         <a href="catalog.php">The Catalog (filterable, public-facing)</a>
     </li>
     <li>
-        Current Loans
+        <a href="active_loans.php">Active Loans (WIP)</a>
     </li>
     <li>
-        <a>Current Reservations</a>
+        <a href="active_spaces.php">Active Space Reservations (WIP)</a>
     </li>
     <li>
-        Current Holds
+        <a href="active_holds.php">Active Holds (WIP)</a>
     </li>
     <li>
-        All Active Clubs
+        <a href="active_clubs.php">Active Clubs (WIP)</a>
     </li>
     </ul>
 
@@ -59,23 +62,26 @@ $conn = setup();
     <h2>Data Management</h2>
     <ul>
         <li>
-            Selection
+            <a href="manage_selection.php"> Review Selection to Add or Remove (WIP)</a>
         </li>
         <li>
-            Patrons
+            <a href="manage_patrons.php">Patrons (WIP)</a>
         </li>
         <li>
-            Spaces and Space Reservations
+            <a href="manage_spaces.php">Spaces and Space Reservations (WIP)</a>
         </li>
         <li>
             <a href="manage_clubs.php">Clubs</a> <!-- this is to see and manage all clubs -->
         </li>
         <li>
-            Holds and Loans (selection)
+            <a href="manage_loanhold.php">Holds and Loans for Selection (WIP)</a>
+        </li>
+        <li>
+            <a href="manage_filters.php">Filters for Selection (WIP)</a>
         </li>
     </ul>
 
-
+    <h1>we prolly need a footer but that's a later problem</h1>
 
 </body>
 

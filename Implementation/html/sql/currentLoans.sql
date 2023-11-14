@@ -1,4 +1,4 @@
 CREATE OR REPLACE VIEW active_loans AS
 SELECT *
-  FROM loans
- WHERE loans.loan_is_active = TRUE;
+  FROM loans INNER JOIN patron_selection_interactions USING (interaction_id)
+ WHERE interaction_is_active = TRUE;

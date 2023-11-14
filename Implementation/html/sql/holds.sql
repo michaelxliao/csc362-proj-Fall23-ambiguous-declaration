@@ -5,8 +5,8 @@ CREATE OR REPLACE TABLE holds (
         ON DELETE NO ACTION, -- DENY deletion rule implemented in manageInteractions.sql
         
     interaction_id          INT,
-    hold_date_requested     DATETIME    NOT NULL,
-    hold_is_active          BOOLEAN     NOT NULL DEFAULT TRUE
+    hold_date_requested     DATETIME    NOT NULL
+    -- deny deletion is through interaction_id
 );
 
 -- Hold Date Requested Cannot Be In Future business rule

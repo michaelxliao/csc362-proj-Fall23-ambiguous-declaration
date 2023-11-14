@@ -49,56 +49,35 @@ VALUES
 (3, 3, '2023-11-28 06:00:00', '2023-11-29 07:00:00', "Things happening also");
 
 
-/* Selection Sample Data */
-/* Generated with ChatGPT 3.5, using the following prompts:
-Help me generate some filler data for this table, which notably has two subset tables:
-[The contents of the selection.sql, printMaterials.sql, and multimedia.sql files.]
-You may use the following procedures to insert this sample data.
-[The contents of the manageSelection.sql file.]
-
-(ChatGPT responds with:)
+/* Selection Sample Data (see: ChatGPTprompts.sql */
 -- Inserting print materials
-CALL add_print_material('Book 1', '2023-01-01', '2023-01-01', TRUE, 19.99, 'Hardcover', 300);
-CALL add_print_material('Book 2', '2023-02-01', '2023-02-01', FALSE, 14.99, 'Paperback', 200);
-
--- Inserting multimedia materials
-CALL add_multimedia_material('Movie 1', '2023-03-01', '2023-03-01', TRUE, 9.99, 'DVD', '02:30:00');
-CALL add_multimedia_material('Podcast 1', '2023-04-01', '2023-04-01', FALSE, 0.99, 'Audio CD', '01:15:00');
-
-I prompt: Make them more fun! Come up with feasible-sounding data that is still clearly sample data.
-
-Result is as follows, unedited. */
-
--- Inserting print materials
-CALL add_print_material('The Adventures of Codey the Coding Cat', '2023-01-15', '2023-01-10', TRUE, 29.99, 'Hardcover', 150); -- 1
-CALL add_print_material('Galactic Pizza Recipes', '2023-02-20', '2023-02-25', FALSE, 19.99, 'Paperback', 100); -- 2
-
-
+CALL add_print_material('The Adventures of Codey the Coding Cat', '2023-01-15', '1980-01-10', TRUE, 29.99, 'Hardcover', 150); -- 1
+CALL add_print_material('Galactic Pizza Recipes', '2023-02-25', '1980-02-20', FALSE, 19.99, 'Paperback', 100); -- 2
 
 -- Inserting multimedia materials
 -- NOTE: "Digital Download" and "Audio Streaming" were changed to "Movie" and "Podcast"
-CALL add_multimedia_material('Space Explorers: The Musical', '2023-03-25', '2023-03-20', TRUE, 9.99, 'Movie', '01:45:00'); -- 3
-CALL add_multimedia_material('The Laughing Llamas Podcast', '2023-04-30', '2023-04-25', FALSE, 0.99, 'Podcast', '00:45:00'); -- 4
+CALL add_multimedia_material('Space Explorers: The Musical', '2023-03-25', '1955-03-20', TRUE, 9.99, 'Movie', '01:45:00'); -- 3
+CALL add_multimedia_material('The Laughing Llamas Podcast', '2023-04-30', '1980-04-25', FALSE, 0.99, 'Podcast', '00:45:00'); -- 4
 
 -- Back to not-chatGPT
 -- name, date inserted, date created, is pending, price, material type, page number OR length
-CALL add_print_material('The Cento', '2023-08-16', '2023-08-23', TRUE, 0.09, 'Magazine', 5); -- 5
-CALL add_print_material('The CenTWO', '2023-08-17', '2023-08-23', TRUE, 0.09, 'Magazine', 5); -- 6
-CALL add_print_material('The CenThree', '2023-08-17', '2023-08-23', FALSE, 0.09, 'Magazine', 5); -- 7
-CALL add_print_material('Galactic Burger Recipes', '2023-02-20', '2023-02-25', FALSE, 19.99, 'Paperback', 120); -- 8
-CALL add_print_material('Galactic Grepcipes', '2023-02-20', '2023-02-25', FALSE, 19.99, 'Paperback', 80); -- 9
-CALL add_print_material('Codey the Coding Cat Fell In A Hole', '2023-01-15', '2023-01-10', TRUE, 29.99, 'Hardcover', 120); -- 10
-CALL add_print_material('Codey the Coding Cat Fell In A Hole', '2023-01-15', '2023-01-10', TRUE, 29.99, 'Paperback', 120); -- 11
+CALL add_print_material('The Cento', '2023-08-16', '2023-08-15', TRUE, 0.09, 'Magazine', 5); -- 5
+CALL add_print_material('The CenTWO', '2023-08-17', '2023-08-16', TRUE, 0.09, 'Magazine', 5); -- 6
+CALL add_print_material('The CenThree', '2023-08-18', '2023-08-16', FALSE, 0.09, 'Magazine', 5); -- 7
+CALL add_print_material('Galactic Burger Recipes', '2023-02-20', '1980-02-25', FALSE, 19.99, 'Paperback', 120); -- 8
+CALL add_print_material('Galactic Grepcipes', '2023-02-20', '1980-02-25', FALSE, 19.99, 'Paperback', 80); -- 9
+CALL add_print_material('Codey the Coding Cat Fell In A Hole', '2023-01-15', '1990-01-10', TRUE, 29.99, 'Hardcover', 120); -- 10
+CALL add_print_material('Codey the Coding Cat Fell In A Hole', '2023-01-15', '1990-01-10', TRUE, 29.99, 'Paperback', 120); -- 11
 CALL add_print_material('Dune', '2003-01-15', '1965-01-10', TRUE, 29.99, 'Paperback', 1230); -- 12
 
-CALL add_multimedia_material('Space Explorers: The Movie', '2023-03-25', '2023-03-20', TRUE, 9.99, 'Movie', '01:45:00'); -- 13
-CALL add_multimedia_material('Space Explorers Two: The Subspace Explorers Attack', '2023-03-25', '2023-03-20', TRUE, 9.99, 'Movie', '02:30:00'); -- 14
-CALL add_multimedia_material('Space Explorers Three: Revenge of the Schmedi', '2023-04-30', '2023-04-25', FALSE, 0.99, 'Movie', '03:45:00'); -- 15
+CALL add_multimedia_material('Space Explorers: The Movie', '2023-03-25', '1980-03-20', TRUE, 9.99, 'Movie', '01:45:00'); -- 13
+CALL add_multimedia_material('Space Explorers Two: The Subspace Explorers Attack', '2023-03-25', '1982-03-20', TRUE, 9.99, 'Movie', '02:30:00'); -- 14
+CALL add_multimedia_material('Space Explorers Three: Revenge of the Schmedi', '2023-04-30', '1985-04-25', FALSE, 0.99, 'Movie', '03:45:00'); -- 15
 CALL add_multimedia_material('Larry Llama Talks About Laughter', '2023-04-30', '2023-04-25', FALSE, 0.99, 'Podcast', '00:39:00'); -- 16
 CALL add_multimedia_material('Louise Llama Does Stand-Up', '2023-04-30', '2023-04-25', FALSE, 0.99, 'Podcast', '00:39:00');  -- 17
-CALL add_multimedia_material('The Podcast With No Narrative', '2023-04-30', '2023-04-25', FALSE, 0.99, 'Podcast', '00:20:00'); -- 18
+CALL add_multimedia_material('The Podcast With No Narrative', '2023-04-30', '1900-04-25', FALSE, 0.99, 'Podcast', '00:20:00'); -- 18
 CALL add_multimedia_material('Dune Your Mom', '2020-04-20', '2019-04-25', FALSE, 14.99, 'Movie', '00:39:00'); -- 19
-CALL add_print_material('The Adventures of Codey the Coding Cat', '2023-01-15', '2023-01-10', TRUE, 29.99, 'Paperback', 150); -- 20
+CALL add_print_material('The Adventures of Codey the Coding Cat', '2023-01-15', '1980-01-10', TRUE, 29.99, 'Paperback', 150); -- 20
 
 
 INSERT INTO creators(creator_first_name, creator_last_name)
@@ -200,7 +179,7 @@ VALUES
 -- add_loan(material_id INT, patron_id INT, loan_start DATE, loan_return DATE, loan_renewal_tally INT)
 -- add_hold(material_id INT, patron_id INT, hold_date DATETIME)
 CALL add_loan(5, 1, '2023-10-29', '2023-11-02', 0);
-CALL add_loan(5, 1, '2023-11-05', '2023-11-28', 1);
+CALL add_loan(5, 1, '2023-11-05', '2023-11-12', 1);
 CALL add_loan(5, 2, '2023-9-29', '2023-10-15', 0);
 CALL add_loan(5, 3, '2023-10-29', '2023-11-02', 0);
 CALL add_loan(4, 4, '2023-10-29', NULL, 2);
