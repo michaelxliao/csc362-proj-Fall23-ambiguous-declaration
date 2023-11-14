@@ -1,8 +1,5 @@
 <?php
 require 'includes/setup.php';
-require 'includes/format_result.php';
-require 'includes/format_result_with_links.php';
-
 $conn = setup();
 ?>
 <!DOCTYPE html>
@@ -15,10 +12,13 @@ $conn = setup();
     <link href="https://fonts.googleapis.com/css2?family=Gentium+Book+Plus&family=Montserrat:wght@500&display=swap"
         rel="stylesheet">
 </head>
-<body>
-    <a href="staff_index.php">Back to Staff</a>
-    <h1>Select a Patron to Examine</h1>
-    
-    <?php result_to_clickable_table($conn->query('SELECT * FROM pretty_patron_details_librarian'), "patron", "details_patron.php")?>
 
+<body>
+    <header>
+        <!-- this is where h1s etc. go, any explanatory info -->
+    </header>
+
+    <?php echo $_GET['patronid']; ?>
 </body>
+
+</html>
