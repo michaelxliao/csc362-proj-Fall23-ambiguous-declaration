@@ -3,10 +3,10 @@ CREATE OR REPLACE TABLE club_reservations (
     FOREIGN KEY (reservation_id) 
         REFERENCES space_reservations(reservation_id)
         ON DELETE NO ACTION, -- DENY deletion rule implemented in manageReservations.sql
-    FOREIGN KEY (club_name)
-        REFERENCES clubs(club_name)
+    FOREIGN KEY (club_id)
+        REFERENCES clubs(club_id)
         ON DELETE NO ACTION, -- DENY deletion rule implemented in manageReservations.sql
 
     reservation_id      INT,
-    club_name           VARCHAR(256)
+    club_id             INT
 );

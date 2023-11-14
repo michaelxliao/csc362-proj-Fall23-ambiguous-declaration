@@ -1,5 +1,9 @@
 # Coding Plan
 
+Stretch Goals:
+- Sessions and Passwords
+- CSS
+
 ## Files
 
 Paste `☑` over the `☐` boxes when done.
@@ -66,7 +70,7 @@ Note that each `ManageX.sql` script holds the appropriate INSERT/DELETE/UPDATE q
 | ☑    | ManageSpaces.sql           | ~~Michael~~ Pierce | infrequently updated; left as script                                               |
 | ☐    | ManageSelection.php        | Pierce             | can modify selection/deselect things from page                                     |
 | ☑    | ManageSelection.sql        | ~~Pierce~~ Michael | will likely also interface with Adaptations<br />SORRY PIERCE I DID IT BY ACCIDENT |
-| ☐    | ManageClubs.php            | Rashawn            |                                                                                    |
+| ☐    | ManageClubs.php            | ~~Rashawn~~ Everyone           |                                                                                    |
 | ☐    | ManageClubs.sql            | Rashawn            |                                                                                    |
 | ☐    | ManagePatrons.php          | Rashawn            |                                                                                    |
 | ☐    | ManagePatrons.sql          | Rashawn            |                                                                                    |
@@ -81,7 +85,7 @@ Note that each `ManageX.sql` script holds the appropriate INSERT/DELETE/UPDATE q
 | Done? | **Filename**            | **Assigned to** | Notes                                                 |
 | ------- | ------------------------- | ----------------- | ------------------------------------------------------- |
 | ☐    | Index.php               | Pierce          | Links to all other pages                              |
-| ☐    | Catalog.php             |                 | shows all materials in selection, probably can filter |
+| ☐    | Catalog.php             | Michael         | shows all materials in selection, probably can filter |
 | ☐    | CurrentLoans.php        | Rashawn         | for librarians                                        |
 | ☐    | CurrentReservations.php |                 | for librarians                                        |
 | ☐    | CurrentHolds.php        |                 | for librarians                                        |

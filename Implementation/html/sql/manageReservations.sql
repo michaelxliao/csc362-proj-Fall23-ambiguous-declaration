@@ -37,7 +37,7 @@ COMMIT;
 DELIMITER ;
 
 DELIMITER //
-CREATE OR REPLACE PROCEDURE add_club_reserve(reserveid INT, clubid INT)
+CREATE OR REPLACE PROCEDURE add_club_reservation(reserveid INT, clubid INT)
  BEGIN
  START TRANSACTION;
     INSERT INTO club_reservations(reservation_id, club_id)
@@ -48,7 +48,7 @@ COMMIT;
 DELIMITER ;
 
 DELIMITER //
-CREATE OR REPLACE PROCEDURE update_club_reserve(reserveid INT, clubid INT)
+CREATE OR REPLACE PROCEDURE update_club_reservation(reserveid INT, clubid INT)
  BEGIN
  START TRANSACTION;
     UPDATE club_reservations
@@ -61,7 +61,7 @@ COMMIT;
 DELIMITER ;
 
 DELIMITER //
-CREATE OR REPLACE PROCEDURE del_club_reserve(reserveid INT, clubid INT)
+CREATE OR REPLACE PROCEDURE del_club_reservation(reserveid INT, clubid INT)
  BEGIN
  START TRANSACTION;
     DELETE FROM club_reservations

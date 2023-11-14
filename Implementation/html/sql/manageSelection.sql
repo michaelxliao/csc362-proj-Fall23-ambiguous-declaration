@@ -19,7 +19,7 @@ CREATE OR REPLACE PROCEDURE add_multimedia_material(title VARCHAR(256), date_rec
        INSERT INTO selection (material_title, material_date_received, material_date_created, material_is_pending, material_price)
        VALUES (title, date_received, date_created, is_pending, price);
 
-       INSERT INTO multimedia_materials (material_id, multimedia_type, duration)
+       INSERT INTO multimedia (material_id, multimedia_type, duration)
        VALUES (LAST_INSERT_ID(), multimedia_type, duration);
 COMMIT;
    END
@@ -70,10 +70,10 @@ CREATE OR REPLACE PROCEDURE update_multimedia_material(material_id INT, title VA
               selection.material_price = price
        WHERE selection.material_id = material_id;
 
-       UPDATE multimedia_materials
-          SET multimedia_materials.multimedia_type = multimedia_type,
-              multimedia_materials.duration = duration
-        WHERE print_materials.material_id = material_id;
+       UPDATE multimedia
+          SET multimedia.multimedia_type = multimedia_type,
+              multimedia.duration = duration
+        WHERE multimedia.material_id = material_id;
 COMMIT;
    END
 //

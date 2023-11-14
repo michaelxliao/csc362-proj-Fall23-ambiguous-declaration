@@ -9,7 +9,8 @@ CREATE OR REPLACE USER 'lib_webuser'@'localhost' IDENTIFIED BY 'tidybattlefield'
 GRANT INSERT ON *.* TO 'lib_webuser'@'localhost'; -- C(reate)
 GRANT SELECT ON *.* TO 'lib_webuser'@'localhost'; -- R(ead)
 GRANT UPDATE ON *.* TO 'lib_webuser'@'localhost'; -- U(pdate)
-GRANT DELETE ON *.* TO 'lib_webuser'@'localhost'; -- D(dlete)
+GRANT DELETE ON *.* TO 'lib_webuser'@'localhost'; -- D(elete)
+GRANT EXECUTE ON *.* TO 'lib_webuser'@'localhost'; -- E(xecute)
 
 /* now calling the rest of the definitional files */
 SOURCE selection.sql;
@@ -68,3 +69,5 @@ SOURCE manageSelection.sql;
 SOURCE manageSpaces.sql;
 
 SOURCE updateValidationTables.sql;
+
+SOURCE enterSampleData.sql;

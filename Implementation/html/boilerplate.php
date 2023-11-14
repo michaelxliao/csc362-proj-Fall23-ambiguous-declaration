@@ -2,7 +2,6 @@
 require 'includes/setup.php';
 $conn = setup();
 ?>
-
 <!DOCTYPE html>
 <html>
 
@@ -16,13 +15,8 @@ $conn = setup();
 
 <body>
     <header>
-    <h1> Welcome to the Therpston County
-        Public Library (WIP)!
-    </h1>
-</header>
-
-    <a class="link-button" href="general_index.php">For Patrons</a>
-    <a class="link-button" href="staff_index.php">For Staff</a>
+        <!-- this is where h1s etc. go, any explanatory info -->
+    </header>
 </body>
 
 </html>
