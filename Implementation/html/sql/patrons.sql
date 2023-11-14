@@ -7,5 +7,5 @@ CREATE OR REPLACE TABLE patrons(
     patron_phone        CHAR(14),
     patron_email        VARCHAR(256),
         CHECK ((patron_phone IS NOT NULL) OR (patron_email IS NOT NULL)), -- Patron Email or Patron Phone Must Be Non-null business rule
-    patron_is_active     BOOLEAN
+    patron_is_active     BOOLEAN DEFAULT TRUE
 );
