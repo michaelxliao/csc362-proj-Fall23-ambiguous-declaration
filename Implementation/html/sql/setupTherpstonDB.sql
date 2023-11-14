@@ -71,3 +71,5 @@ SOURCE manageSpaces.sql;
 SOURCE updateValidationTables.sql;
 
 SOURCE enterSampleData.sql;
+
+SOURCE views.sql;
