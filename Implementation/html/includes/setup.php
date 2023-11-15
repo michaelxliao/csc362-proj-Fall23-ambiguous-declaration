@@ -7,13 +7,14 @@ function doErrorReporting() {
 }
 
 function connectToDB() {
-    $config = parse_ini_file('/home/stard/mysql.ini');
-    if (!$config) { // if this fails, try another directory (NOTE: WILL PRODUCE WARNINGS! DISABLE WHEN DONE)
-        $config = parse_ini_file('/home/michael/mysql.ini');
-        if (!$config) {
-            $config = parse_ini_file('/home/rashawn_butler/mysql.ini');
-        }
-    }
+    $config = parse_ini_file('~/mysql.ini');
+    // $config = parse_ini_file('/home/stard/mysql.ini');
+    // if (!$config) { // if this fails, try another directory (NOTE: WILL PRODUCE WARNINGS! DISABLE WHEN DONE)
+    //     $config = parse_ini_file('/home/michael/mysql.ini');
+    //     if (!$config) {
+    //         $config = parse_ini_file('/home/rashawn_butler/mysql.ini');
+    //     }
+    // }
 
     $conn = new mysqli(
                 $config['lib_host'],
