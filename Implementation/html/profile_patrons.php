@@ -1,7 +1,6 @@
 <?php
 require 'includes/setup.php';
 require 'includes/format_result.php';
-require 'includes/format_result_with_links.php';
 
 $conn = setup();
 ?>
@@ -19,6 +18,6 @@ $conn = setup();
     <a href="staff_index.php">Back to Staff</a>
     <h1>Select a Patron to Examine</h1>
     
-    <?php result_to_clickable_table($conn->query('SELECT * FROM pretty_patron_details_librarian'), "patron", "details_patron.php")?>
+    <?php result_to_clickable_table($conn->query('SELECT * FROM pretty_patron_details_librarian'), "patron", "details_patron.php", true) ?>
 
 </body>

@@ -118,7 +118,12 @@ function result_to_clickable_table($result, $typeofid, $url, $show_ids) {
     <table>
         <thead>
             <tr>
-                <?php for ($i=0; $i<$result->field_count; $i++) { ?>
+                <?php for ($i=0; $i<$result->field_count; $i++) { 
+                    // Only have field for ids if show_ids
+                    if (($i == 0) && (!$show_ids)) {
+                        continue;
+                    }
+                    ?>
                     <th> <?= $fields[$i] -> name ?> </th>
                 <?php
                     }
@@ -130,14 +135,18 @@ function result_to_clickable_table($result, $typeofid, $url, $show_ids) {
             <?php for ($i=0; $i<$result->num_rows; $i++) { ?>
                 <?php $id = $data[$i][0] // this is the primary key ?>
                 <tr>
-                    <?php for ($j=0; $j<$result->field_count; $j++) { 
-                        if ($j == 1) { 
+                    <?php for ($j=0; $j<$result->field_count; $j++) {
+                        // Only show ids if show_ids is True 
+                        if (($j == 0) && (!$show_ids)) { 
+                            continue;
+                        }
+                        if ($j == 1) { // index of the clickable column 
                         $newurl = $url . "?" . $typeofid . "id=" . $id; ?>
                         <td> <a href=<?=$newurl?>> <?= $data[$i][$j] ?> </a> </td>
                     <?php }
-                    else { ?>
-                        <td> <?=$data[$i][$j] ?> </td>
-                    <?php }
+                        else { ?>
+                            <td> <?=$data[$i][$j] ?> </td>
+                        <?php }
                     } ?>
                 </tr>
             <?php } ?>
