@@ -5,7 +5,7 @@ AS (
 SELECT 
     patron_id AS "ID", -- assuming this is the same as their library card's
     (CONCAT(patron_first_name, " ", patron_last_name)) AS "Name",
-    COUNT(material_id) AS "Number of Loans",
+    COUNT(material_id) AS "Number of Loans", -- need only current loans?
     patron_email AS "Email",
     patron_phone AS "Phone Number"
 
