@@ -26,9 +26,10 @@ function connectToDB() {
             echo "Errno: " . $conn->connect_errno . "\n";
             echo "Error: " . $conn->connect_error . "\n";
             exit; // Quit this PHP script if the connection fails.
-        } else {
-            echo "Connection established." . "<br>";
-        }
+    }
+        // } else {
+        //     echo "Connection established." . "<br>";
+        // }
 
     return $conn;
 }
