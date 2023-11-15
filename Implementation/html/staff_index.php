@@ -22,7 +22,7 @@ $conn = setup();
     <h3>Search for:</h3>
     <ul>
         <li>
-            <a href="profile_patrons.php">Patrons (WIP Patron Profile)</a>
+            <a href="profile_patrons.php">Patrons (Patron Profile) (FILTER BY NAME, EMAIL, PHONE)</a>
         </li>
         <li>
             <a href="profile_clubs.php">Clubs (Club Profile)</a>
