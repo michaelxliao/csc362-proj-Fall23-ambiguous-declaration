@@ -3,7 +3,7 @@ require 'includes/setup.php';
 require 'includes/format_result.php';
 
 $conn = setup();
-$club_info = $conn->query("SELECT DISTINCT club_id, club_name FROM clubs;")
+$club_info = $conn->query("SELECT DISTINCT club_id, club_name, club_is_active FROM clubs ORDER BY club_name")
 ?>
 
 <!DOCTYPE html>
