@@ -1,6 +1,7 @@
 # Coding Plan
 
 Stretch Goals:
+
 - Sessions and Passwords
 - CSS
 
@@ -53,31 +54,31 @@ Paste `☑` over the `☐` boxes when done.
 ### Client-Requested Reports
 
 
-| Done? | **Filename**       | **Assigned to** | Notes                                                          |
-| ------- | -------------------- | ----------------- | ---------------------------------------------------------------- |
-| ☐    | Patron_Profile.php |                 | All checked out items, hold requests, fines, etc. for 1 person |
-| ☐    | Club_Profile.php   | Rashawn         | All info about a club                                          |
-| ☐    | Current_Holds.php  |                 | should also show the queue of users waiting for it             |
+| Done? | **Filename**       | **Assigned to** | Notes                                                                                                                                         |
+| ------- | -------------------- | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| ☐    | Patron_Profile.php |                 | All checked out items, hold requests, fines, etc. for 1 person                                                                                |
+| ☐    | Club_Profile.php   | Rashawn         | All info about a club (members concatenated, ability to show more info about a member, who's the leader, what reservations they've made, etc) |
+| ☐    | Current_Holds.php  |                 | should also show the queue of users waiting for it (a particular material)                                                                    |
 
 ### Data Management
 
 Note that each `ManageX.sql` script holds the appropriate INSERT/DELETE/UPDATE queries as needed per page.
 
 
-| Done? | **Filename**               | **Assigned to**    | Notes                                                                              |
-| ------- | ---------------------------- | -------------------- | ------------------------------------------------------------------------------------ |
-| ☑    | UpdateValidationTables.sql | Michael + Pierce   | infrequently run; left as script                                                   |
-| ☑    | ManageSpaces.sql           | ~~Michael~~ Pierce | infrequently updated; left as script                                               |
-| ☐    | ManageSelection.php        | Pierce             | can modify selection/deselect things from page                                     |
-| ☑    | ManageSelection.sql        | ~~Pierce~~ Michael | will likely also interface with Adaptations<br />SORRY PIERCE I DID IT BY ACCIDENT |
-| ☐    | ManageClubs.php            | ~~Rashawn~~ Everyone           |                                                                                    |
-| ☐    | ManageClubs.sql            | Rashawn            |                                                                                    |
-| ☐    | ManagePatrons.php          | Rashawn            |                                                                                    |
-| ☐    | ManagePatrons.sql          | Rashawn            |                                                                                    |
-| ☐    | ManageInteractions.php     | Michael            |                                                                                    |
-| ☑    | ManageInteractions.sql     | Michael            | will have to interface with subset tables                                          |
-| ☐    | ManageReservations.php     | Pierce             |                                                                                    |
-| ☑    | ManageReservations.sql     | Pierce             |                                                                                    |
+| Done? | **Filename**               | **Assigned to**      | Notes                                                                              |
+| ------- | ---------------------------- | ---------------------- | ------------------------------------------------------------------------------------ |
+| ☑    | UpdateValidationTables.sql | Michael + Pierce     | infrequently run; left as script                                                   |
+| ☑    | ManageSpaces.sql           | ~~Michael~~ Pierce   | infrequently updated; left as script                                               |
+| ☐    | ManageSelection.php        | Pierce               | can modify selection/deselect things from page                                     |
+| ☑    | ManageSelection.sql        | ~~Pierce~~ Michael   | will likely also interface with Adaptations<br />SORRY PIERCE I DID IT BY ACCIDENT |
+| ☐    | ManageClubs.php            | ~~Rashawn~~ Everyone |                                                                                    |
+| ☐    | ManageClubs.sql            | Rashawn              |                                                                                    |
+| ☐    | ManagePatrons.php          | Rashawn              |                                                                                    |
+| ☐    | ManagePatrons.sql          | Rashawn              |                                                                                    |
+| ☐    | ManageInteractions.php     | Michael              |                                                                                    |
+| ☑    | ManageInteractions.sql     | Michael              | will have to interface with subset tables                                          |
+| ☐    | ManageReservations.php     | Pierce               |                                                                                    |
+| ☑    | ManageReservations.sql     | Pierce               |                                                                                    |
 
 ### Other Useful Reports
 
