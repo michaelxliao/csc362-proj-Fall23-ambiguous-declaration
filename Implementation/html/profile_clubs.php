@@ -3,37 +3,7 @@ require 'includes/setup.php';
 require 'includes/format_result.php';
 
 $conn = setup();
-$club_info = $conn->query("SELECT club_name, patron_first_name, patron_last_name, member_info, member_is_leader 
-                              FROM clubs 
-                                   INNER JOIN club_members USING(club_id) 
-                                   INNER JOIN patrons USING(patron_id)");
-$filter_stmt = '';
-if (isset($_GET['search_clubs'])) {
-    if (isset($_GET['club_to_find'])) {
-        echo $_GET['club_to_find'];
-        $filter_stmt = $conn->prepare("SELECT club_name, patron_first_name, patron_last_name, member_info, member_is_leader 
-                                         FROM clubs 
-                                              INNER JOIN club_members USING(club_id) 
-                                              INNER JOIN patrons USING(patron_id)
-                                        WHERE club_name = ?;");
-        $filter_stmt->bind_param('s', $_GET["club_to_find"]);
-        $filter_stmt->execute();
-        $club_info = $filter_stmt->get_result();
-
-        // header("Location:" . $_SERVER['REQUEST_URI'], true, 303); // POST overkill, PRG unnecessary
-        // exit();
-    }
-} /*
-if (isset($_GET['end_filter'])){
-    $club_info =$conn ->query( "SELECT club_name, patron_first_name, patron_last_name, member_info, member_is_leader 
-    FROM clubs 
-    INNER JOIN club_members 
-    USING(club_id) 
-    INNER JOIN patrons 
-    USING(patron_id) ");
-    header("Location:" . $_SERVER['REQUEST_URI'], true, 303);
-    exit();
-}*/
+$club_info = $conn->query("SELECT DISTINCT club_id, club_name FROM clubs;")
 ?>
 
 <!DOCTYPE html>
@@ -48,14 +18,12 @@ if (isset($_GET['end_filter'])){
 </head>
 
 <body>
+    <a href="staff_index.php">Back to Staff</a>
+    <p>Select a club to examine:</p>
     <form method="GET">
         <?php
-        result_to_table($club_info)
+        result_to_clickable_table($club_info, "club", "details_club.php", False);
             ?>
-        <p>Input the name of a club you'd like to search:</p>
-        <input type="text" name="club_to_find">
-        <input type="submit" name="search_clubs">
-        <input type="submit" name="end_filter" value="Reset Filter">
     </form>
 </body>
 
