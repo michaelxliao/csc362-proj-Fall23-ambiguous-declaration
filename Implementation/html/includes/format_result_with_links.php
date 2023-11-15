@@ -1,6 +1,5 @@
 <?php
 # Specifically, this is to add fields with GET requests.
-
 function result_to_clickable_table($result, $typeofid, $url) {
     $fields = $result->fetch_fields();
     $data = $result->fetch_all();
