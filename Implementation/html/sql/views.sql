@@ -17,19 +17,19 @@ SELECT
     GROUP BY (patron_id)
 );
 
-CREATE OR REPLACE VIEW active_selection_pretty_librarians AS -- needs reformatting lol
-SELECT material_title AS "Title",
-       material_date_received AS "Date Selected into Library",
-       material_date_created AS "Date Created",
-       material_is_pending AS "Pending?",
-       material_price AS "Cost"
-  FROM active_selection
+-- CREATE OR REPLACE VIEW active_selection_pretty_librarians AS -- needs reformatting lol
+-- SELECT material_title AS "Title",
+--        material_date_received AS "Date Selected into Library",
+--        material_date_created AS "Date Created",
+--        material_is_pending AS "Pending?",
+--        material_price AS "Cost"
+--   FROM active_selection;
 
-CREATE OR REPLACE VIEW active_selection_pretty_patrons AS
-SELECT material_title AS "Title",
-       material_date_created AS "Date Created",
-  FROM active_selection
- WHERE material_is_pending = FALSE;
+-- CREATE OR REPLACE VIEW active_selection_pretty_patrons AS
+-- SELECT material_title AS "Title",
+--        material_date_created AS "Date Created",
+--   FROM active_selection
+--  WHERE material_is_pending = FALSE;
 
  SELECT * FROM pretty_patron_details_librarian;
 /*
