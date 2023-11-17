@@ -153,3 +153,50 @@ function result_to_clickable_table($result, $typeofid, $url, $show_ids) {
         </tbody>
 </table>
 <?php } ?>
+
+
+<?php
+
+function result_to_checkbox_table($result, $col_output_name, $name_of_checkbox, $submit_output_name, $name_of_submit) { // defining toggle active table
+    // $result is sqli query result
+    // $col_output_name is the string for the table header cell, for the output
+    // $name_of_checkbox is the name of the ID you want for the checkbox when submitte. In general, you grab it by:
+        // $_POST[name_of_checkbox<id>]
+        //e.g. $name_of_checkbox = 'clubid', and I want to see if the 5th record is checked.
+        // I would do the following command: isset($_POST['clubid5']) 
+    // $submit_output_name is the string for the SUBMIT form. 
+    // $name_of_submit is the name of the variable for the SUBMIT button.
+
+    $fields = $result->fetch_fields();
+        $data = $result->fetch_all();
+    ?>
+        <form method=POST>
+            <table>
+                <thead>
+                    <tr>
+                        <?php for ($i=0; $i<$result->field_count; $i++) { ?>
+                            <th> <?= $fields[$i]->name ?> </th>
+                        <?php } ?>
+                        <th> <?=$col_output_name?> </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <?php for ($i=0; $i<$result->num_rows; $i++) { ?>
+                        <?php $prim_key = $data[$i][0] // this is the primary key ?>
+                        <tr>
+                            <?php for ($j=0; $j<$result->field_count; $j++) { ?>
+                                <td> <?= $data[$i][$j] ?> </td>
+                            <?php } ?>
+                            <td>
+                                <input type="checkbox"
+                                    name="<?=$name_of_checkbox?><?= $prim_key ?>"
+                                />
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+        </table>
+        <input type="submit" name="<?=$name_of_submit?>" value="<?=$submit_output_name?>" method=POST />
+    </form>
+<?php } ?>

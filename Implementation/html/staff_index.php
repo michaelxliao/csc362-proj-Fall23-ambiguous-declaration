@@ -14,10 +14,11 @@ $conn = setup();
 </head>
 
 <body>
-    <a class="link-button" href=index.php> Back to Sign-In</a>
     <header>
         <h1>Therpston County Public Library</h1>
     </header>
+    <a class="link-button" href=index.php> Back to Sign-In</a>
+
     <h2>Reports</h2>
     <h3>Search for:</h3>
     <ul>
@@ -35,7 +36,7 @@ $conn = setup();
             <a href="profile_adaptations.php">Adaptations of a Narrative (WIP Find All Narratives)</a>
         </li>
         <li>
-            <a href="loans_profile.php">Loans on the Selection (WIP)</a>
+            <a href="profile_loans.php">Loans on the Selection (WIP)</a>
         </li>
     </ul>
 
