@@ -3,7 +3,13 @@
 Stretch Goals:
 
 - Sessions and Passwords
+    - Errors displayed when
+      invalid data submitted,
+      via https://stackoverflow.com/questions/57011464/show-errors-on-form-without-using-get
 - CSS
+- Testing for SQL to ensure tables work properly
+- Testing for PHP to ensure web handles as expected
+  - e.g. preventing XSS and other cybersecurity risks
 
 ## Files
 

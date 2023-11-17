@@ -29,7 +29,25 @@ if (isset($_POST["add_genre"])) {
     }
 }
 // deleting genres
-
+if(isset($_POST["delete_genres"])) {
+    #$changesMade = True;
+    #query all instruments
+    $result = $conn->query("SELECT genre_name FROM genres");
+    $all_ids = $result->fetch_all();
+    $num_rows = count($all_ids);
+    $del_stmt = $conn->prepare("DELETE FROM genres WHERE genre_name=?");
+    $del_stmt->bind_param('s', $id);
+    #loop through checkboxes of instruments
+    for($i=0; $i<$num_rows; $i++)
+    {
+        $id = $all_ids[$i][0];
+        echo $id;
+        if(isset($_POST['del_genre_id_' . $id]))
+        {
+            $result = $del_stmt->execute();
+        }
+    }
+}
 // below is essentially the same handling for all of these, it's essentially just SQL for web.
 // recommended: collapse the if statements below this
 // (even better if you write a function for all this, which i should've done oops)
