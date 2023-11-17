@@ -1,6 +1,14 @@
 <?php
 require 'includes/setup.php';
 $conn = setup();
+
+$patron_id = $_GET['narrativeid'];
+$sql_query = 'SELECT material_title AS "Title"
+                FROM active_narratives
+                     INNER JOIN adaptations USING(narrative_id)
+                     LEFT OUTER JOIN selection USING(material_id)
+               WHERE narrative_id = ?'
+
 ?>
 <!DOCTYPE html>
 <html>

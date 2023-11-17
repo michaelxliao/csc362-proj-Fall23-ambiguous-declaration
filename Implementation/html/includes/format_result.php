@@ -7,6 +7,8 @@
     result_to_table() -- creates a basic table that lists all fields, no interactivity
     result_to_deletable_table() -- creates a table with checkboxes that can be deleted from (ignoring FK constraints)
     result_to_clickable_table() -- creates a table with clickable/drill-downable links in the second column
+    result_to_toggle_active_table() -- creates a table with checkboxes that toggle activity (!!! NOTE UNNECESSARY; SHOULD BE SAME AS DELETE)
+    result_to_checkbox_table() -- highly customizable checkbox table
 */
 
 function result_to_table($result) {

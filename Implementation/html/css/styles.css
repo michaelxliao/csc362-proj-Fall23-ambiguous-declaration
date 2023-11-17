@@ -21,3 +21,29 @@ a.link-button {
   display: inline-block;
   font-size: 20px;
 }
+
+/* Generated with ChatGPT 3.5, using the following prompt:
+Help me generate a simple table css line to add alternating shading and soft borders to all tables.
+
+Changed colors to match palette.
+*/
+
+/* Add alternating shading to table rows */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table tr:nth-child(even) {
+  background-color: #f4d45e85;
+}
+
+/* Add soft borders to table cells */
+table, th, td {
+  border: 1px solid #0D3B66;
+}
+
+/* Optional: Style table header */
+th {
+  background-color: #F4D35E;
+}

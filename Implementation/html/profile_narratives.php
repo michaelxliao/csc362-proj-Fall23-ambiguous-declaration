@@ -1,11 +1,10 @@
 <?php
 require 'includes/setup.php';
 require 'includes/format_result.php';
-
 $conn = setup();
-$club_info = $conn->query("SELECT * FROM pretty_clubs_librarian")
-?>
 
+$sql_query = 'SELECT * FROM pretty_narratives_librarian'
+?>
 <!DOCTYPE html>
 <html>
 
@@ -18,13 +17,13 @@ $club_info = $conn->query("SELECT * FROM pretty_clubs_librarian")
 </head>
 
 <body>
-    <a href="index_staff.php">Back to Staff</a>
-    <p>Select a club to examine:</p>
-    <form method="GET">
-        <?php
-        result_to_clickable_table($club_info, "club", "details_club.php", False);
-            ?>
-    </form>
+    <header>
+        <h1>Narratives</h1>
+        <p> Curious what other versions or adaptations of your favorite media might exist? Look no further. </p>
+    </header>
+
+    <?php result_to_clickable_table($conn->query($sql_query), "narrative", "details_narrative.php", true); ?>
+
 </body>
 
 </html>

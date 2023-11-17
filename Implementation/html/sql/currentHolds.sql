@@ -1,4 +1,6 @@
-CREATE OR REPLACE VIEW active_holds AS
+CREATE OR REPLACE VIEW current_holds AS
 SELECT *
-  FROM holds INNER JOIN patron_selection_interactions USING (interaction_id)
- WHERE interaction_is_active = TRUE;
+  FROM holds
+       LEFT OUTER JOIN patron_selection_interactions USING(interaction_id)
+       LEFT OUTER JOIN loans USING(interaction_id)
+ WHERE loan_return_date IS NOT NULL;

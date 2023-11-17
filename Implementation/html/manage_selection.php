@@ -10,9 +10,7 @@ $multimedia_types_res = $conn->query("SELECT multimedia_type FROM multimedia_typ
 $print_types = $print_types_res->fetch_all();
 $multimedia_types = $multimedia_types_res->fetch_all();
 
-$sql_query = 'SELECT * FROM active_selection
-                            LEFT OUTER JOIN print_materials USING (material_id)
-                            LEFT OUTER JOIN multimedia USING (material_id)'; // this by default; can be overridden by filtering
+$sql_query = 'SELECT * FROM pretty_selection_librarian'; // this by default; can be overridden by filtering
 $result = $conn->query($sql_query);
 
 // defining constants like a good coder
@@ -21,27 +19,23 @@ $PRINT = 'Print';
 $MULTIMEDIA = 'Multimedia';
 
 if (isset($_GET["Filter"])) {
-    echo $_GET["media-type"];
+    // echo $_GET["media-type"];
     if ($_GET["media-type"] == $ALL_MEDIA) {
-        $sql_query = 'SELECT * FROM active_selection'; // this by default; can be overridden by filtering
+        $sql_query = 'SELECT * FROM pretty_selection_librarian'; // this by default; can be overridden by filtering
         $result = $conn->query($sql_query);
     }
     if ($_GET["media-type"] == $PRINT) {
-        $sql_query = 'SELECT * FROM active_selection
-                                    LEFT OUTER JOIN print_materials USING (material_id)
-                       WHERE material_id IN (SELECT material_id FROM print_materials)';
+        $sql_query = 'SELECT * FROM pretty_selection_librarian
+                       WHERE pretty_selection_librarian.`ID` IN (SELECT material_id FROM print_materials)';
         $result = $conn->query($sql_query);
     } elseif ($_GET["media-type"] == $MULTIMEDIA) {
-        $sql_query = 'SELECT * FROM active_selection
-                                    LEFT OUTER JOIN multimedia USING (material_id)
-                      WHERE material_id IN (SELECT material_id FROM multimedia)';
+        $sql_query = 'SELECT * FROM pretty_selection_librarian
+                       WHERE pretty_selection_librarian.`ID` IN (SELECT material_id FROM multimedia)';
         $result = $conn->query($sql_query);
     } elseif ($_GET["media-type"] != $ALL_MEDIA) {
-        $filter_stmt = $conn->prepare('SELECT * FROM active_selection
-                                      LEFT OUTER JOIN print_materials USING (material_id)
-                                      LEFT OUTER JOIN multimedia USING (material_id)
-                                WHERE (multimedia_type = ?) OR (print_type = ?)');
-        $filter_stmt->bind_param('ss', $_GET["media-type"], $_GET["media-type"]);
+        $filter_stmt = $conn->prepare('SELECT * FROM pretty_selection_librarian
+                                WHERE `Type` = ?');
+        $filter_stmt->bind_param('s', $_GET["media-type"]);
         if ($filter_stmt->execute()) {
             $result = $filter_stmt->get_result();
         } else {
