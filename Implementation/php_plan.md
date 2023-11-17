@@ -17,10 +17,10 @@ Basic architecture: All basic data tables (prettified views) receive their own p
     - [ ] Curr
 
 - Details on Patron (Patron Profile):
-    - [ ] checked-out materials
-    - [ ] current spaces reserved
-    - [ ] joined clubs
-    - [ ] current holds on books
+    - [X] checked-out materials
+    - [X] current spaces reserved
+    - [X] joined clubs
+    - [X] current holds on books
 
 - Details on Club (Club Profile):
     - [X] Spaces reserved
