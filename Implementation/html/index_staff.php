@@ -33,7 +33,7 @@ $conn = setup();
             <a href="profile_holds.php">Holds (WIP From Times, Spaces, and Patrons)</a>
         </li>
         <li>
-            <a href="profile_adaptations.php">Adaptations of a Narrative (WIP Find All Narratives)</a>
+            <a href="profile_narratives.php">Adaptations of a Narrative (WIP Find All Narratives)</a>
         </li>
         <li>
             <a href="profile_loans.php">Loans on the Selection (WIP)</a>

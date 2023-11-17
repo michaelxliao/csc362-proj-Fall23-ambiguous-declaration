@@ -57,3 +57,12 @@ SELECT club_id AS 'ID',
        club_description AS 'Description'
   FROM active_clubs
  ORDER BY club_name;
+
+ -- for profile_adaptations.php
+ CREATE OR REPLACE VIEW pretty_narrative_details_librarian AS
+ SELECT DISTINCT narrative_name AS 'Narrative',
+        material_title AS 'Source Material'
+    FROM active_narratives
+         INNER JOIN adaptations USING(narrative_id)
+         LEFT OUTER JOIN selection USING(material_id)
+   WHERE material_is_source;
