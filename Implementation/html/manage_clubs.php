@@ -41,7 +41,7 @@ if (isset($_POST["add_club"])) {
     }
 }
 
-if (isset($_POST["EditClub"])) {
+if (isset($_POST["edit_club"])) {
     $changesMade = True;
 
     if (isset($_POST["old_club_name"]) && isset($_POST["new_club_name"]) && isset($_POST["edit_club_desc"])) {
@@ -134,7 +134,7 @@ if ($changesMade) {
                 <tr>
             </tbody>
         </table>
-        <input type="submit" name="EditClub" value="Edit Club" />
+        <input type="submit" name="edit_club" value="Edit Club" />
 
     </form>
 
