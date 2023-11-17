@@ -177,3 +177,26 @@ COMMIT;
    END
 //
 DELIMITER ;
+
+/* Creator Roles */
+DELIMITER //
+CREATE OR REPLACE PROCEDURE add_creator_role(creator_role VARCHAR(256))
+ BEGIN
+ START TRANSACTION;
+       INSERT INTO creator_roles (creator_role)
+       VALUES (creator_role);
+COMMIT;
+   END
+//
+DELIMITER ;
+
+DELIMITER //
+CREATE OR REPLACE PROCEDURE del_creator_role(creator_role VARCHAR(256))
+ BEGIN
+ START TRANSACTION;
+       DELETE FROM creator_roles
+        WHERE creator_roles.creator_role = creator_role;
+COMMIT;
+   END
+//
+DELIMITER ;

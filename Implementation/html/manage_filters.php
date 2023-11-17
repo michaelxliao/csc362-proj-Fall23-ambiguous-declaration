@@ -3,7 +3,131 @@ require 'includes/setup.php';
 require 'includes/format_result.php';
 $conn = setup();
 
+///
+/// Checking Changes in SQL
+///
 
+$changes_made = False;
+// adding genres
+if (isset($_POST["add_genre"])) {
+    $changesMade = True;
+
+    if (isset($_POST["add_genre_id"])) {
+        # Check for the genre already being in database.
+        $checkexists = $conn->prepare("SELECT * FROM genres WHERE genre_name = ?");
+        $checkexists->bind_param('s', $_POST["add_genre_id"]);
+        $result = $checkexists->execute();
+        $has_value = $checkexists->get_result()->num_rows;
+
+        # Add if the genre doesn't exist.
+        if (!$has_value) {
+            $insert_stmt = $conn->prepare("CALL add_genre(?)");
+            $insert_stmt->bind_param('s', $_POST["add_genre_id"]);
+            $result = $insert_stmt->execute();
+        }
+
+    }
+}
+// deleting genres
+
+// below is essentially the same handling for all of these, it's essentially just SQL for web.
+// recommended: collapse the if statements below this
+// (even better if you write a function for all this, which i should've done oops)
+
+// add languages
+if (isset($_POST["add_lang"])) {
+    $changesMade = True;
+
+    if (isset($_POST["add_lang_id"])) {
+        # Check for the genre already being in database.
+        $checkexists = $conn->prepare("SELECT * FROM languages WHERE language_name = ?");
+        $checkexists->bind_param('s', $_POST["add_lang_id"]);
+        $result = $checkexists->execute();
+        $has_value = $checkexists->get_result()->num_rows;
+
+        # Add if the genre doesn't exist.
+        if (!$has_value) {
+            $insert_stmt = $conn->prepare("CALL add_language(?)");
+            $insert_stmt->bind_param('s', $_POST["add_lang_id"]);
+            $result = $insert_stmt->execute();
+        }
+
+    }
+}
+// deleting languages
+
+// add creator roles
+if (isset($_POST["add_role"])) {
+    $changesMade = True;
+
+    if (isset($_POST["add_role_id"])) {
+        # Check for the role already being in database.
+        $checkexists = $conn->prepare("SELECT * FROM creator_roles WHERE creator_role = ?");
+        $checkexists->bind_param('s', $_POST["add_role_id"]);
+        $result = $checkexists->execute();
+        $has_value = $checkexists->get_result()->num_rows;
+
+        # Add if the role doesn't exist.
+        if (!$has_value) {
+            $insert_stmt = $conn->prepare("CALL add_creator_role(?)");
+            $insert_stmt->bind_param('s', $_POST["add_role_id"]);
+            $result = $insert_stmt->execute();
+        }
+
+    }
+}
+// delete creator roles
+
+// add print types
+if (isset($_POST["add_print"])) {
+    $changesMade = True;
+
+    if (isset($_POST["add_print_id"])) {
+        # Check for the genre already being in database.
+        $checkexists = $conn->prepare("SELECT * FROM print_types WHERE print_type = ?");
+        $checkexists->bind_param('s', $_POST["add_print_id"]);
+        $result = $checkexists->execute();
+        $has_value = $checkexists->get_result()->num_rows;
+
+        # Add if the genre doesn't exist.
+        if (!$has_value) {
+            $insert_stmt = $conn->prepare("CALL add_print_type(?)");
+            $insert_stmt->bind_param('s', $_POST["add_print_id"]);
+            $result = $insert_stmt->execute();
+        }
+
+    }
+}
+// delete print types
+
+// add multimedia types
+if (isset($_POST["add_multimedia"])) {
+    $changesMade = True;
+
+    if (isset($_POST["add_multimedia_id"])) {
+        # Check for the genre already being in database.
+        $checkexists = $conn->prepare("SELECT * FROM multimedia_types WHERE multimedia_type = ?");
+        $checkexists->bind_param('s', $_POST["add_multimedia_id"]);
+        $result = $checkexists->execute();
+        $has_value = $checkexists->get_result()->num_rows;
+
+        # Add if the genre doesn't exist.
+        if (!$has_value) {
+            $insert_stmt = $conn->prepare("CALL add_multimedia_type(?)");
+            $insert_stmt->bind_param('s', $_POST["add_multimedia_id"]);
+            $result = $insert_stmt->execute();
+        }
+
+    }
+}
+// delete multimedia types
+
+
+//post request get
+if($changes_made)
+{
+    header("Location:" . $_SERVER['REQUEST_URI'], true, 303);
+}
 
 
 
@@ -17,10 +141,10 @@ $languages_res = $conn->query("SELECT language_name
                             FROM languages;");
 $creator_roles_res = $conn->query("SELECT creator_role
                             FROM creator_roles;");
-$multimedia_types_res = $conn->query("SELECT creator_role
-                            FROM creator_roles;");  
-$print_types_res = $conn->query("SELECT creator_role
-FROM creator_roles;");
+$print_types_res = $conn->query("SELECT print_type
+                            FROM print_types;");  
+$multimedia_types_res = $conn->query("SELECT multimedia_type
+FROM multimedia_types;");
 
 ?>
 <!DOCTYPE html>
@@ -104,7 +228,6 @@ FROM creator_roles;");
 
 
     <h2>Creator Roles</h2>
-    <h2>Genres</h2>
     <form action="manage_filters.php" method=POST>
         <table>
             <thead>
@@ -136,7 +259,6 @@ FROM creator_roles;");
 
 
     <h2>Print Types</h2>
-    <h2>Genres</h2>
     <form action="manage_filters.php" method=POST>
         <table>
             <thead>
@@ -155,8 +277,6 @@ FROM creator_roles;");
     </form>
 
     <h4>Delete Print Types</h4>
-
-
     <?php
             result_to_checkbox_table($print_types_res, // query
                                 "Delete Type",             // string for column
@@ -167,7 +287,6 @@ FROM creator_roles;");
             ?>
 
     <h2>Multimedia Types</h2>
-    <h2>Genres</h2>
     <form action="manage_filters.php" method=POST>
         <table>
             <thead>
@@ -186,8 +305,6 @@ FROM creator_roles;");
     </form>
 
     <h4>Delete Genres</h4>
-
-
     <?php
             result_to_checkbox_table($multimedia_types_res, // query
                                 "Delete Type",             // string for column
