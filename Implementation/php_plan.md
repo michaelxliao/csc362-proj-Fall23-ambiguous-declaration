@@ -23,8 +23,8 @@ Basic architecture: All basic data tables (prettified views) receive their own p
     - [ ] current holds on books
 
 - Details on Club (Club Profile):
-    - [ ] Spaces reserved
-    - [ ] Club members and their role (leadership)
+    - [X] Spaces reserved
+    - [X] Club members and their role (leadership)
 
 - Details on a Space
     - 

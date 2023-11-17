@@ -21,7 +21,8 @@ VALUES  ("Rashawn","Butler","rashawn.butler@centre.edu", "111-111-1111"),
         ("Minecraft","Steve",NULL,"100-200-3000"),
         ("Sans", "Undertale","tobyfox@urmom.com",NULL),
         ("Cuttlefish","Capn",NULL,"420-420-8008");
-        
+
+
 INSERT INTO club_members(patron_id, club_id, member_info, member_is_leader)
 VALUES  (1,5,"Can only play on monday and friday",FALSE),
         (2,5,"Can only play on tuseday and thursday",FALSE),
@@ -48,6 +49,11 @@ VALUES
 (2, 1, '2023-11-29 07:00:00', '2023-11-29 08:00:00', "Things happening here too"),
 (3, 3, '2023-11-28 06:00:00', '2023-11-29 07:00:00', "Things happening also");
 
+INSERT INTO club_reservations(reservation_id, club_id)
+VALUES (1,5),
+       (2,5),
+       (3,5),
+       (4,2);
 
 /* Selection Sample Data (see: ChatGPTprompts.sql */
 -- Inserting print materials
