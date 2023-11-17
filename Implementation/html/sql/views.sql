@@ -59,7 +59,7 @@ SELECT club_id AS 'ID',
  ORDER BY club_name;
 
  -- for profile_adaptations.php
- CREATE OR REPLACE VIEW pretty_narrative_details_librarian AS
+ CREATE OR REPLACE VIEW pretty_narratives_librarian AS
  SELECT DISTINCT narrative_name AS 'Narrative',
         material_title AS 'Source Material'
     FROM active_narratives
