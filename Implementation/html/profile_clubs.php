@@ -3,7 +3,7 @@ require 'includes/setup.php';
 require 'includes/format_result.php';
 
 $conn = setup();
-$club_info = $conn->query("SELECT DISTINCT club_id, club_name, club_is_active FROM clubs ORDER BY club_name")
+$club_info = $conn->query("SELECT * FROM pretty_clubs_librarian")
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@ $club_info = $conn->query("SELECT DISTINCT club_id, club_name, club_is_active FR
 </head>
 
 <body>
-    <a href="staff_index.php">Back to Staff</a>
+    <a href="index_staff.php">Back to Staff</a>
     <p>Select a club to examine:</p>
     <form method="GET">
         <?php

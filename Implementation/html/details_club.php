@@ -3,20 +3,21 @@ require 'includes/setup.php';
 require 'includes/format_result.php';
 $conn = setup();
 $club_id = $_GET['clubid'];
-$club_members = $conn->query("SELECT patron_first_name, patron_last_name, member_info, member_is_leader 
-                            FROM patrons
-                            INNER JOIN club_members USING(patron_id)
-                            INNER JOIN clubs USING(club_id)
-                            WHERE club_id = $club_id;");
-$club_spaces_reserved = $conn->query("SELECT space_name, start_reservation, end_reservation
+$club_members = $conn->query("SELECT CONCAT(patron_first_name, ' ', patron_last_name) AS 'Name',
+                                     member_info AS 'Details',
+                                     member_is_leader
+                                FROM patrons
+                                     INNER JOIN club_members USING(patron_id)
+                                     INNER JOIN clubs USING(club_id)
+                               WHERE club_id = $club_id;");
+$club_spaces_reserved = $conn->query("SELECT space_name AS 'Space',
+                                             start_reservation AS 'Reserved From',
+                                             end_reservation AS 'Reserved Until'
                                         FROM clubs
-                                        INNER JOIN club_reservations
-                                        USING (club_id)
-                                        INNER JOIN space_reservations
-                                        USING (reservation_id)
-                                        INNER JOIN spaces
-                                        USING (space_id)
-                                        WHERE club_id=$club_id;");
+                                             INNER JOIN club_reservations USING (club_id)
+                                             INNER JOIN space_reservations USING (reservation_id)
+                                             INNER JOIN spaces USING (space_id)
+                                       WHERE club_id=$club_id;");
 
 ?>
 <!DOCTYPE html>

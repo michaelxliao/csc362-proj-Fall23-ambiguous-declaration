@@ -34,6 +34,14 @@ $patron_holds = $conn->query("SELECT material_title, hold_date_requested
                                 INNER JOIN holds
                                 USING (interaction_id)
                                 WHERE patron_id = $patron_id;");
+$patron_loans = $conn->query("SELECT material_title AS 'Title',
+                                     loan_start_date AS 'Checked Out',
+                                     loan_return_date AS 'Returned?',
+                                     DATE_ADD(loan_start_date, INTERVAL (2*(loan_renewal_tally+1)) WEEK) AS 'Due Date'
+                                FROM selection
+                                     INNER JOIN patron_selection_interactions USING(material_id)
+                                     INNER JOIN loans USING (interaction_id)
+                               WHERE patron_id = $patron_id")
 ?>
 <!DOCTYPE html>
 <html>

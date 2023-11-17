@@ -34,8 +34,8 @@ Basic architecture: All basic data tables (prettified views) receive their own p
 | PHP File          | Assigned To | Details                        |
 | ------------------- | ------------- | -------------------------------- |
 | index.php         |             |                                |
-| staff_index.php   |             | for librarians - HIGH PRIORITY |
-| general_index.php |             | for patrons                    |
+| index_staff.php   |             | for librarians - HIGH PRIORITY |
+| index_general.php |             | for patrons                    |
 
 ## Reports
 

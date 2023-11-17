@@ -1,8 +1,10 @@
 <?php
 require 'includes/setup.php';
+require 'includes/format_result.php';
 $conn = setup();
-?>
 
+$sql_query = 'SELECT * FROM pretty_narratives_librarian'
+?>
 <!DOCTYPE html>
 <html>
 
@@ -16,13 +18,12 @@ $conn = setup();
 
 <body>
     <header>
-    <h1> Welcome to the Therpston County
-        Public Library (WIP)!
-    </h1>
-</header>
+        <h1>Narratives</h1>
+        <p> Curious what other versions or adaptations of your favorite media might exist? Look no further. </p>
+    </header>
 
-    <a class="link-button" href="index_general.php">For Patrons (WIP)</a>
-    <a class="link-button" href="index_staff.php">For Staff</a>
+    <?php result_to_clickable_table($conn->query($sql_query), "narrative", "details_narrative.php", true); ?>
+
 </body>
 
 </html>
