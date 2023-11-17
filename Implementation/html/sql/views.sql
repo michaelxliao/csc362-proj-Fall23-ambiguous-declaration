@@ -1,4 +1,4 @@
--- For profile_patrons.sql, we want to show
+-- For patrons_profile.php, we want to show
 -- all active patrons and their number of current loans.
 CREATE OR REPLACE VIEW pretty_patron_details_librarian
 AS (
@@ -17,8 +17,8 @@ SELECT
     GROUP BY (patron_id)
 );
 
-
-CREATE OR REPLACE VIEW pretty_active_selection_librarians AS
+-- for manage_selection.php
+CREATE OR REPLACE VIEW pretty_selection_librarian AS
 SELECT material_id AS 'ID',
        material_title AS 'Title',
        (CASE WHEN (NOT EXISTS (SELECT 1 FROM current_loans WHERE current_loans.material_id = active_selection.material_id))
@@ -42,7 +42,7 @@ SELECT material_id AS 'ID',
        THEN page_count
        ELSE duration
        END) AS 'Length'
-  FROM active_selection -- change this if want is_active field
+  FROM active_selection
        LEFT OUTER JOIN print_materials USING(material_id)
        LEFT OUTER JOIN multimedia USING(material_id)
        LEFT OUTER JOIN selection_creators USING(material_id)
@@ -50,14 +50,10 @@ SELECT material_id AS 'ID',
        LEFT OUTER JOIN creator_roles USING (creator_role)
  GROUP BY material_id;
 
---  SELECT * FROM pretty_patron_details_librarian;
-/*
- SELECT COUNT(material_id) FROM loans
-    INNER JOIN patron_selection_interactions USING (interaction_id)
-     WHERE patron_id = 5
-     GROUP BY patron_id;
-
-SELECT COUNT(material_id), patron_id FROM loans
-    INNER JOIN patron_selection_interactions USING (interaction_id)
-     GROUP BY patron_id;
-     */
+-- for profile_clubs.php
+CREATE OR REPLACE VIEW pretty_clubs_librarian AS
+SELECT club_id AS 'ID',
+       club_name AS 'Name',
+       club_description AS 'Description'
+  FROM active_clubs
+ ORDER BY club_name;

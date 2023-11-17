@@ -164,7 +164,7 @@ FROM multimedia_types;");
         <h1>Therpston County Public Library</h1>
     </header>
 
-    <a href="staff_index.php">Back to Staff</a>
+    <a href="index_staff.php">Back to Staff</a>
     <h1>Manage Filters For the Selection</h1>
 
     <h2>Genres</h2>
