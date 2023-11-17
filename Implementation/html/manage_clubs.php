@@ -8,7 +8,7 @@ $changesMade = False;
 
 # Check if club added
 
-if (isset($_POST["AddClub"])) {
+if (isset($_POST["add_club"])) {
     $changesMade = True;
 
     if (isset($_POST["club_name"]) && isset($_POST["add_club_desc"])) {
@@ -86,7 +86,7 @@ if ($changesMade) {
 <body>
     <h2>Club Search and Editing</h2>
     <h3>Add Clubs</h3>
-    <form action="display_clubs.php" method=POST>
+    <form method=POST>
         <table>
             <thead>
                 <th></th>
@@ -105,13 +105,13 @@ if ($changesMade) {
                 <tr>
             </tbody>
         </table>
-        <input type="submit" name="AddClub" value="Add Club" />
+        <input type="submit" name="add_club" value="Add Club" />
 
     </form>
 
 
     <h3>Edit Clubs</h3>
-    <form action="display_clubs.php" method=POST>
+    <form method=POST>
         <table>
             <thead>
                 <th></th>
