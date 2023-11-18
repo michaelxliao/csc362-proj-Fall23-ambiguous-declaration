@@ -30,7 +30,7 @@ if (isset($_POST["add_genre"])) {
 }
 // deleting genres
 if(isset($_POST["delete_genres"])) {
-    #$changesMade = True;
+    $changesMade = True;
     #query all instruments
     $result = $conn->query("SELECT genre_name FROM genres");
     $all_ids = $result->fetch_all();
@@ -73,6 +73,25 @@ if (isset($_POST["add_lang"])) {
     }
 }
 // deleting languages
+if(isset($_POST["delete_languages"])) {
+    $changesMade = True;
+    #query all instruments
+    $result = $conn->query("SELECT language_name FROM languages");
+    $all_ids = $result->fetch_all();
+    $num_rows = count($all_ids);
+    $del_stmt = $conn->prepare("DELETE FROM languages WHERE language_name=?");
+    $del_stmt->bind_param('s', $id);
+    #loop through checkboxes of instruments
+    for($i=0; $i<$num_rows; $i++)
+    {
+        $id = $all_ids[$i][0];
+        echo $id;
+        if(isset($_POST['del_lang_id_' . $id]))
+        {
+            $result = $del_stmt->execute();
+        }
+    }
+}
 
 // add creator roles
 if (isset($_POST["add_role"])) {
@@ -95,6 +114,26 @@ if (isset($_POST["add_role"])) {
     }
 }
 // delete creator roles
+if(isset($_POST["del_roles"])) {
+    $changesMade = True;
+    #query all instruments
+    $result = $conn->query("SELECT creator_role FROM creator_roles");
+    $all_ids = $result->fetch_all();
+    $num_rows = count($all_ids);
+    $del_stmt = $conn->prepare("DELETE FROM creator_roles WHERE creator_role=?");
+    $del_stmt->bind_param('s', $id);
+    #loop through checkboxes of instruments
+    for($i=0; $i<$num_rows; $i++)
+    {
+        $id = $all_ids[$i][0];
+        echo $id;
+        if(isset($_POST['del_role_id_' . $id]))
+        {
+            $result = $del_stmt->execute();
+        }
+    }
+}
+
 
 // add print types
 if (isset($_POST["add_print"])) {
@@ -117,6 +156,25 @@ if (isset($_POST["add_print"])) {
     }
 }
 // delete print types
+if(isset($_POST["del_prints"])) {
+    $changesMade = True;
+    #query all instruments
+    $result = $conn->query("SELECT print_type FROM print_types");
+    $all_ids = $result->fetch_all();
+    $num_rows = count($all_ids);
+    $del_stmt = $conn->prepare("DELETE FROM print_types WHERE print_type=?");
+    $del_stmt->bind_param('s', $id);
+    #loop through checkboxes of instruments
+    for($i=0; $i<$num_rows; $i++)
+    {
+        $id = $all_ids[$i][0];
+        echo $id;
+        if(isset($_POST['del_print_id_' . $id]))
+        {
+            $result = $del_stmt->execute();
+        }
+    }
+}
 
 // add multimedia types
 if (isset($_POST["add_multimedia"])) {
@@ -139,7 +197,25 @@ if (isset($_POST["add_multimedia"])) {
     }
 }
 // delete multimedia types
-
+if(isset($_POST["del_multimedias"])) {
+    $changesMade = True;
+    #query all instruments
+    $result = $conn->query("SELECT multimedia_type FROM multimedia_types");
+    $all_ids = $result->fetch_all();
+    $num_rows = count($all_ids);
+    $del_stmt = $conn->prepare("DELETE FROM multimedia_types WHERE multimedia_type=?");
+    $del_stmt->bind_param('s', $id);
+    #loop through checkboxes of instruments
+    for($i=0; $i<$num_rows; $i++)
+    {
+        $id = $all_ids[$i][0];
+        echo $id;
+        if(isset($_POST['del_multimedia_id_' . $id]))
+        {
+            $result = $del_stmt->execute();
+        }
+    }
+}
 
 //post request get
 if($changes_made)
@@ -271,7 +347,7 @@ FROM multimedia_types;");
                                 "Delete Role",             // string for column
                                 "del_role_id_",             // 'del_role_id_actor' would be the checkbox's POST, for ex.
                                 "Delete Selected Roles",   // value of submit form
-                                "delete_roles"              // check this at start
+                                "del_roles"              // check this at start
                                 )
             ?>
 
@@ -300,7 +376,7 @@ FROM multimedia_types;");
                                 "Delete Type",             // string for column
                                 "del_print_id_",             // 'del_print_id_book' would be the checkbox's POST, for ex.
                                 "Delete Selected Types",   // value of submit form
-                                "delete_prints"              // check this at start
+                                "del_prints"              // check this at start
                                 )
             ?>
 
@@ -322,13 +398,13 @@ FROM multimedia_types;");
 
     </form>
 
-    <h4>Delete Genres</h4>
+    <h4>Delete Multimedias</h4>
     <?php
             result_to_checkbox_table($multimedia_types_res, // query
                                 "Delete Type",             // string for column
                                 "del_multimedia_id_",             // e.g. 'del_multimedia_id_podcast'
                                 "Delete Selected Types",   // value of submit form
-                                "delete_multimedias"              // check this at start
+                                "del_multimedias"              // check this at start
                                 )
             ?>
 </body>
