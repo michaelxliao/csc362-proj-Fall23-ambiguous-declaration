@@ -9,3 +9,5 @@ CREATE OR REPLACE TABLE print_materials (
     page_count      INT             NOT NULL,
         CHECK (page_count > 0) -- no negative page counts
 );
+
+-- implement deny trigger here
