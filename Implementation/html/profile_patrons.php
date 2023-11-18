@@ -17,7 +17,7 @@ $conn = setup();
 <body>
     <a href="index_staff.php">Back to Staff</a>
     <h1>Select a Patron to Examine</h1>
-    
+    <form>
     <?php result_to_clickable_table($conn->query('SELECT * FROM pretty_patron_details_librarian'), "patron", "details_patron.php", true) ?>
-
+    </form>
 </body>

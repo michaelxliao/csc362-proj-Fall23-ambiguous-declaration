@@ -19,7 +19,7 @@ $club_info = $conn->query("SELECT * FROM pretty_clubs_librarian")
 
 <body>
     <a href="index_staff.php">Back to Staff</a>
-    <p>Select a club to examine:</p>
+    <h1>Select a club to examine:</h1>
     <form method="GET">
         <?php
         result_to_clickable_table($club_info, "club", "details_club.php", False);
