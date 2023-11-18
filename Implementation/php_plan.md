@@ -60,5 +60,5 @@ Management pages have a filterable table that allows us to operate on the data d
 | manage_patrons.php   |             |                                             |
 | manage_selection.php |             | ALSO the catalog page, but without DM perms |
 | manage_              |             |                                             |
-|                      |             |                                             |
+| manage_filters.php   |             |                                             |
 |                      |             |                                             |
