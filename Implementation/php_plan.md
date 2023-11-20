@@ -28,6 +28,10 @@ Basic architecture: All basic data tables (prettified views) receive their own p
 
 - Details on a Space
     - 
+
+### Misc Notes to Resolve
+- space_reservations table needs a business rule where no overlapping reservations on a space 
+
 ## General
 
 

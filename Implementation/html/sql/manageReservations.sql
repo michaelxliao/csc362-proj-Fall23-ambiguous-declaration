@@ -37,11 +37,14 @@ COMMIT;
 DELIMITER ;
 
 DELIMITER //
-CREATE OR REPLACE PROCEDURE add_club_reservation(reserveid INT, clubid INT)
+CREATE OR REPLACE PROCEDURE add_club_reservation(patronid INT, spaceid INT, start_time DATETIME, end_time DATETIME, notes VARCHAR(256), clubid INT)
  BEGIN
  START TRANSACTION;
+    INSERT INTO space_reservations(patron_id, space_id, start_reservation, end_reservation, reservation_notes)
+    VALUES (patronid, spaceid, start_time, end_time, notes);
+
     INSERT INTO club_reservations(reservation_id, club_id)
-    VALUES (reserve_id, club_id);
+    VALUES (LAST_INSERT_ID(), clubid);
 COMMIT;
    END
 //
