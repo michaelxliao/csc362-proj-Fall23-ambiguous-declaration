@@ -3,9 +3,10 @@ require 'includes/setup.php';
 require 'includes/format_result.php';
 $conn = setup();
 $patron_id = $_GET['patronid'];
-$patron_first_name= $conn->query("SELECT patron_first_name
+$patron_info= $conn->query("SELECT patron_first_name, patron_last_name, patron_email, patron_phone
                                     FROM patrons
                                     WHERE patron_id = $patron_id;");
+$patron_info_res = $patron_info->fetch_all();
 $patron_loans = $conn->query("SELECT material_title, loan_start_date, loan_return_date
                                 FROM selection
                                 INNER JOIN patron_selection_interactions
@@ -58,7 +59,11 @@ $patron_loans = $conn->query("SELECT material_title AS 'Title',
     <header>
     </header>
     <a href="profile_patrons.php">Back to Patron List</a>
-    <form>
+    <h2>Current Email:<?php echo $patron_info_res[1][2];?></h2>
+    <form method=POST>
+        <input type="text" name="new_email">
+        <input type="submit" name="change_email" value="Update Email";>
+    </form>
     <h2>Checked Out Material(s):</h2>
     <?php result_to_table($patron_loans);?>
     <h2>Current Hold(s):</h2>

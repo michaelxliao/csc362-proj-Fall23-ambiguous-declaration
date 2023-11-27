@@ -19,7 +19,8 @@ $club_info = $conn->query("SELECT * FROM pretty_clubs_librarian")
 
 <body>
     <a href="index_staff.php">Back to Staff</a>
-    <h1>Select a club to examine:</h1>
+    <h1>Select a club to Examine:</h1>
+    <p>To add or rename a club, use <a href="manage_clubs.php">this link.</a></p>
     <form method="GET">
         <?php
         result_to_clickable_table($club_info, "club", "details_club.php", False);

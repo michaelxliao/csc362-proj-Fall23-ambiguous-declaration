@@ -45,19 +45,6 @@ $conn = setup();
     <li>
         <a href="manage_selection.php">The Catalog (filterable, public-facing)</a>
     </li>
-    <li>
-        <a href="active_loans.php">Active Loans (WIP)</a>
-    </li>
-    <li>
-        <a href="active_spaces.php">Active Space Reservations (WIP)</a>
-    </li>
-    <li>
-        <a href="active_holds.php">Active Holds (WIP)</a>
-    </li>
-    <li>
-        <a href="active_clubs.php">Active Clubs (WIP)</a>
-    </li>
-    </ul>
 
 
     <h2>Data Management</h2>

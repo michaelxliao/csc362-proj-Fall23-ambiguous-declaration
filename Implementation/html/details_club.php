@@ -16,7 +16,6 @@ $spaces_info = $spaces_res->fetch_all();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(isset($_POST["delete_records"])){
-        print_r("Got this far");
         $deletable_patron_ids = $conn->query("SELECT patron_id
                                     FROM patrons
                                     INNER JOIN club_members USING(patron_id)
@@ -91,7 +90,6 @@ $club_spaces_reserved_res = $conn->query("SELECT space_name AS 'Space',
         <h1><?= $club_name ?></h1>
     </header>
     <a href="profile_clubs.php">Back to Club Profiles</a>
-    <h2><?= print_r($_POST)?></h2>
     <h2>Club Member(s):</h2>
     <form method=POST>
         <label for="new_member_id">Add new member: </label>
