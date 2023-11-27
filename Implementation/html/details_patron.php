@@ -41,7 +41,7 @@ $patron_loans = $conn->query("SELECT material_title AS 'Title',
                                 FROM selection
                                      INNER JOIN patron_selection_interactions USING(material_id)
                                      INNER JOIN loans USING (interaction_id)
-                               WHERE patron_id = $patron_id")
+                               WHERE patron_id = $patron_id AND loan_return_date IS NULL;")
 ?>
 <!DOCTYPE html>
 <html>
