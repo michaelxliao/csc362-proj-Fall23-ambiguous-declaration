@@ -43,7 +43,7 @@ $conn = setup();
     <h3>All Active:</h3>
     </ul>
     <li>
-        <a href="catalog.php">The Catalog (filterable, public-facing)</a>
+        <a href="manage_selection.php">The Catalog (filterable, public-facing)</a>
     </li>
     <li>
         <a href="active_loans.php">Active Loans (WIP)</a>
