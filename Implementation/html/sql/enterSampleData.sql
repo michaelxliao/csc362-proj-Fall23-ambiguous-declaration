@@ -15,9 +15,9 @@ VALUES
 ("D&D Club", "Scheduling issues :(", False);
 
 INSERT INTO patrons(patron_first_name, patron_last_name, patron_email, patron_phone)
-VALUES  ("Rashawn","Butler","rashawn.butler@centre.edu", "111-111-1111"),
-        ("Pierce","Mason","pierce.mason@centre.edu","222-222-2222"),
-        ("Michael","Liao","michael.liao@centre.edu","333-333-3333"),
+VALUES  ("Raise-on","Bottler","bottlessince1967@gmail.com", "111-111-1111"),
+        ("Purse","Maize-on","purseisworse@example.com","222-222-2222"),
+        ("My-call","Lee-ow","heymickey@urso.fun","333-333-3333"),
         ("Minecraft","Steve",NULL,"100-200-3000"),
         ("Sans", "Undertale","tobyfox@urmom.com",NULL),
         ("Cuttlefish","Capn",NULL,"420-420-8008");
