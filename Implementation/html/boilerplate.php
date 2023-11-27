@@ -1,6 +1,18 @@
 <?php
 require 'includes/setup.php';
 $conn = setup();
+
+$FORM_NAME = 'placeholder'; // change this!
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST[$FORM_NAME])) {
+        // ...
+    }
+    
+	header(‘Location: { $_SERVER[‘REQUEST_URI’] }’, true, 303);
+    exit();
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,6 +29,10 @@ $conn = setup();
     <header>
         <!-- this is where h1s etc. go, any explanatory info -->
     </header>
+    <form method="POST"> <!-- GENERIC!! action defaults to original page -->
+        <!-- labels, inputs -->
+        <input type="submit" name="<?= $FORM_NAME ?>">
+    </form>
 </body>
 
 </html>
