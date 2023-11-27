@@ -7,9 +7,10 @@ $FORM_NAME = 'placeholder'; // change this!
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST[$FORM_NAME])) {
         // ...
+        echo "";
     }
     
-	header(‘Location: { $_SERVER[‘REQUEST_URI’] }’, true, 303);
+	header("Location: { $_SERVER[‘REQUEST_URI’] }", true, 303);
     exit();
 }
 

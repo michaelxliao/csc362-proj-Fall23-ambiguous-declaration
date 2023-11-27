@@ -15,6 +15,29 @@ $spaces_res = $conn->query('SELECT space_id, space_name FROM spaces');
 $spaces_info = $spaces_res->fetch_all();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if(isset($_POST["delete_records"])){
+        print_r("Got this far");
+        $deletable_patron_ids = $conn->query("SELECT patron_id
+                                    FROM patrons
+                                    INNER JOIN club_members USING(patron_id)
+                                    INNER JOIN clubs USING(club_id)
+                                    WHERE club_id = $club_id;");
+        $ids_res = $deletable_patron_ids->fetch_all();
+        for($_i=0;$_i<$deletable_patron_ids->num_rows;$_i++){
+            
+            
+            $id=$ids_res[$_i][0];
+            
+            $_delete_statement=$conn->prepare("DELETE FROM club_members WHERE patron_id=?");
+            $_delete_statement->bind_param('i',$id);
+                if(isset($_POST["checkbox$id"])){
+                    $_delete_statement->execute();
+                    print_r("Deleted $id");
+                }
+        }
+    }
+
+
     if (isset($_POST['add_member'])) {
         $is_leader = false;
         if (isset($_POST['is_leader'])) {
@@ -34,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit();
 }
 
-$club_members_res = $conn->query("SELECT CONCAT(patron_first_name, ' ', patron_last_name) AS 'Name',
+$club_members_res = $conn->query("SELECT patron_id, CONCAT(patron_first_name, ' ', patron_last_name) AS 'Name',
                                      member_info AS 'Details',
                                      member_is_leader
                                 FROM patrons
@@ -42,14 +65,15 @@ $club_members_res = $conn->query("SELECT CONCAT(patron_first_name, ' ', patron_l
                                      INNER JOIN clubs USING(club_id)
                                WHERE club_id = $club_id;");
 $club_spaces_reserved_res = $conn->query("SELECT space_name AS 'Space',
+                                            CONCAT(patron_first_name, ' ', patron_last_name) AS 'Reserved By', 
                                              start_reservation AS 'Reserved From',
                                              end_reservation AS 'Reserved Until'
-                                        FROM clubs
-                                             INNER JOIN club_reservations USING (club_id)
-                                             INNER JOIN space_reservations USING (reservation_id)
-                                             INNER JOIN spaces USING (space_id)
+                                        FROM club_reservations
+                                             LEFT OUTER JOIN space_reservations USING (reservation_id)
+                                             LEFT OUTER JOIN patrons USING (patron_id)
+                                             LEFT OUTER JOIN spaces USING (space_id)
+                                             
                                        WHERE club_id=$club_id;");
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -67,6 +91,7 @@ $club_spaces_reserved_res = $conn->query("SELECT space_name AS 'Space',
         <h1><?= $club_name ?></h1>
     </header>
     <a href="profile_clubs.php">Back to Club Profiles</a>
+    <h2><?= print_r($_POST)?></h2>
     <h2>Club Member(s):</h2>
     <form method=POST>
         <label for="new_member_id">Add new member: </label>
@@ -81,7 +106,15 @@ $club_spaces_reserved_res = $conn->query("SELECT space_name AS 'Space',
         <input type="checkbox" name="is_leader">
         <input type="submit" name="add_member" value="Submit">
     </form>
-    <?php result_to_table($club_members_res); ?>
+
+
+
+    <?php result_to_deletable_table($club_members_res, False); ?>
+
+
+
+
+
     <h2>Space Reservation(s):</h2>
     <!-- <form method=POST>
         <label for="space_id">Reserve a space: </label>

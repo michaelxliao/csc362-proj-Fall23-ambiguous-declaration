@@ -45,7 +45,7 @@ function result_to_table($result) {
 <?php } ?>
 
 <?php
-function result_to_deletable_table($result) { // defining deletable table
+function result_to_deletable_table($result, $showids) { // defining deletable table
         $fields = $result->fetch_fields();
         $data = $result->fetch_all();
     ?>
@@ -53,7 +53,15 @@ function result_to_deletable_table($result) { // defining deletable table
             <table>
                 <thead>
                     <tr>
-                        <?php for ($i=0; $i<$result->field_count; $i++) { ?>
+                        <?php
+                        //if we want to show ids, usually false because they're backend. 
+                        if($showids) {
+                            $start = 0;
+                        }
+                        else {
+                            $start = 1;
+                        }
+                         for ($i=$start; $i<$result->field_count; $i++) { ?>
                             <th> <?= $fields[$i]->name ?> </th>
                         <?php } ?>
                         <th> Delete? </th>
@@ -64,7 +72,9 @@ function result_to_deletable_table($result) { // defining deletable table
                     <?php for ($i=0; $i<$result->num_rows; $i++) { ?>
                         <?php $id = $data[$i][0] // this is the primary key ?>
                         <tr>
-                            <?php for ($j=0; $j<$result->field_count; $j++) { ?>
+                            <?php
+                            // start is the same as earlier
+                            for ($j=$start; $j<$result->field_count; $j++) { ?>
                                 <td> <?= $data[$i][$j] ?> </td>
                             <?php } ?>
                             <td>
@@ -77,7 +87,7 @@ function result_to_deletable_table($result) { // defining deletable table
                     <?php } ?>
                 </tbody>
         </table>
-        <input type="submit" name="delete_records" value="Delete Selected Records" method=POST />
+        <input type="submit" name="delete_records" value="Delete Selected Records"/>
     </form>
 <?php } ?>
 

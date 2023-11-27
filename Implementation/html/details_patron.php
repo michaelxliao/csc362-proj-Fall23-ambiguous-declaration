@@ -66,7 +66,8 @@ $patron_loans = $conn->query("SELECT material_title AS 'Title',
     <h2>Future Reservation(s):</h2>
     <?= result_to_table($patron_spaces_reserved)?>
     <h2>Club(s):</h2>
-    <?= result_to_table($patron_clubs)?>
+    <form method=POST>
+        <?=result_to_table($patron_clubs)?>
     </form>
 </body>
 
