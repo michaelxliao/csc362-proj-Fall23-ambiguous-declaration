@@ -14,8 +14,6 @@ $patron_info = $patrons_res->fetch_all();
 $spaces_res = $conn->query('SELECT space_id, space_name FROM spaces');
 $spaces_info = $spaces_res->fetch_all();
 
-// echo $club_name;
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['add_member'])) {
         $is_leader = false;
