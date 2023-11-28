@@ -3,7 +3,7 @@ require 'includes/setup.php';
 require 'includes/format_result.php';
 $conn = setup();
 $patron_id = $_GET['patronid'];
-$patron_info= $conn->query("SELECT patron_first_name, patron_last_name, patron_email, patron_phone
+$patron_info= $conn->query("SELECT patron_first_name ,patron_last_name, patron_email, patron_phone
                                     FROM patrons
                                     WHERE patron_id = $patron_id;");
 $patron_info_res = $patron_info->fetch_all();
@@ -42,7 +42,33 @@ $patron_loans = $conn->query("SELECT material_title AS 'Title',
                                 FROM selection
                                      INNER JOIN patron_selection_interactions USING(material_id)
                                      INNER JOIN loans USING (interaction_id)
-                               WHERE patron_id = $patron_id AND loan_return_date IS NULL;")
+                               WHERE patron_id = $patron_id AND loan_return_date IS NULL;");
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if(isset($_POST["new_email"])){
+        $_update_statement=$conn->prepare("CALL update_patron(?,?,?,?,?)");
+        $_update_statement->bind_param('issss',$patron_id,$patron_info_res[0][0], $patron_info_res[0][1], $_POST["new_email"], $patron_info_res[0][3]);
+        $_update_statement->execute();
+    }
+    if(isset($_POST["new_phone"])){
+        $_update_statement=$conn->prepare("CALL update_patron(?,?,?,?,?)");
+        $_update_statement->bind_param('issss',$patron_id,$patron_info_res[0][0], $patron_info_res[0][1], $patron_info_res[0][2], $_POST["new_phone"]);
+        $_update_statement->execute();
+    }
+    if(isset($_POST["change_first_name"])){
+        $_update_statement=$conn->prepare("CALL update_patron(?,?,?,?,?)");
+        $_update_statement->bind_param('issss',$patron_id,$_POST["new_first_name"], $patron_info_res[0][1], $patron_info_res[0][2], $patron_info_res[0][3]);
+        $_update_statement->execute();
+    }
+    if(isset($_POST["change_last_name"])){
+        $_update_statement=$conn->prepare("CALL update_patron(?,?,?,?,?)");
+        $_update_statement->bind_param('issss',$patron_id,$patron_info_res[0][0],$_POST["new_last_name"], $patron_info_res[0][2], $patron_info_res[0][3]);
+        $_update_statement->execute();
+    }
+    header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -57,12 +83,28 @@ $patron_loans = $conn->query("SELECT material_title AS 'Title',
 
 <body>
     <header>
+       <h1><?=  print_r($patron_info_res[0][0] . " " . $patron_info_res[0][1]); ?></h1>
     </header>
     <a href="profile_patrons.php">Back to Patron List</a>
-    <h2>Current Email:<?php echo $patron_info_res[1][2];?></h2>
+    <h2>Current First Name: <?php print_r( $patron_info_res[0][0]);?></h2>
+    <form method=POST>
+        <input type="text" name="new_first_name">
+        <input type="submit" name="change_first_name" value="Update Patron First Name";>
+    </form>
+    <h2>Current Last Name: <?php print_r($patron_info_res[0][1]);?></h2>
+    <form method=POST>
+        <input type="text" name="new_last_name">
+        <input type="submit" name="change_last_name" value="Update Patron Last Name";>
+    </form>
+    <h2>Current Email: <?php echo $patron_info_res[0][2];?></h2>
     <form method=POST>
         <input type="text" name="new_email">
         <input type="submit" name="change_email" value="Update Email";>
+    </form>
+    <h2>Current Phone Number: <?php echo $patron_info_res[0][3];?></h2>
+    <form method=POST>
+        <input type="text" name="new_phone">
+        <input type="submit" name="change_phone" value="Update Phone Number";>
     </form>
     <h2>Checked Out Material(s):</h2>
     <?php result_to_table($patron_loans);?>

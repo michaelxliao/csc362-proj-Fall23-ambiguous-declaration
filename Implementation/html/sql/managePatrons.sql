@@ -14,10 +14,10 @@ CREATE OR REPLACE PROCEDURE update_patron(id INT, new_patron_first_name VARCHAR(
  BEGIN
  START TRANSACTION;
        UPDATE patrons
-       SET patron_first_name=new_patron_first_name,
-           patron_last_name=new_patron_last_namem,
-           patron_email=new_patron_email,
-           patron_phone=new_patron_phone
+       SET patrons.patron_first_name=new_patron_first_name,
+           patrons.patron_last_name=new_patron_last_name,
+           patrons.patron_email=new_patron_email,
+           patrons.patron_phone=new_patron_phone
        WHERE patron_id=id;
  COMMIT;
    END
