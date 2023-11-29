@@ -66,3 +66,28 @@ SELECT club_id AS 'ID',
          INNER JOIN adaptations USING(narrative_id)
          LEFT OUTER JOIN selection USING(material_id)
    WHERE material_is_source;
+
+   CREATE OR REPLACE VIEW pretty_clubs_and_roles AS
+   SELECT club_id AS 'ID',
+       club_name AS 'Name',
+       (CASE WHEN (member_info = "")
+       THEN 'Member'
+       ELSE member_info END) AS 'Member Role', -- when "", "Member"
+       club_description AS 'Club Description',
+       patron_id
+    FROM active_clubs
+    LEFT OUTER JOIN club_members USING (club_id)
+    ORDER BY club_name;
+
+    CREATE OR REPLACE VIEW pretty_upcoming_space_reservations AS
+    SELECT space_name AS 'Reserved Space', 
+    space_room_number AS 'Room Number',
+    start_reservation AS 'Start Time',
+    end_reservation AS 'End Time', 
+    club_name AS 'Associated Club',
+    reservation_notes AS 'Notes',
+    patron_id
+    FROM space_reservations
+    LEFT OUTER JOIN spaces USING (space_id) 
+    LEFT OUTER JOIN club_reservations USING (reservation_id)
+    LEFT OUTER JOIN clubs USING (club_id);

@@ -22,6 +22,23 @@ a.link-button {
   font-size: 20px;
 }
 
+.librarian_visible { /* this is a class for forms that handle data manipulation */
+  border: 1px dotted #0D3B66;
+}
+
+.librarian_visible h1,
+.librarian_visible h2,
+.librarian_visible h3,
+.librarian_visible h4,
+.librarian_visible h5,
+.librarian_visible h6 {
+  margin-top: 0;
+}
+
+.hidden { /* for use when patrons are logged in */
+  display: none;
+}
+
 /* Generated with ChatGPT 3.5, using the following prompt:
 Help me generate a simple table css line to add alternating shading and soft borders to all tables.
 

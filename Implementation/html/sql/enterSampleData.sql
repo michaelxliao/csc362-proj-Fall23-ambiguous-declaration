@@ -190,7 +190,7 @@ CALL add_loan(5, 2, '2023-9-29', '2023-10-15', 0);
 CALL add_loan(5, 3, '2023-10-29', '2023-11-02', 0);
 CALL add_loan(4, 4, '2023-10-29', NULL, 2);
 CALL add_loan(2, 5, '2023-10-29', NULL, 0);
-CALL add_loan(2, 8, '2023-10-29', NULL, 0);
+CALL add_loan(8, 5, '2023-10-29', NULL, 0);
 
 CALL add_loan(1, 5, '2023-10-10', NULL, 3);
 CALL add_loan(12, 5, '2023-10-10', NULL, 1);
@@ -221,7 +221,7 @@ VALUES  (7,3,"",FALSE),
 
 INSERT INTO spaces(space_name, space_room_number, space_capacity)
 VALUES
-("Study Room 201", 7, 201),
+("Study Room 201", 7, 201);
 
 
 -- made one as a personal study session, one as a meeting.
@@ -229,11 +229,11 @@ VALUES
 INSERT INTO space_reservations(patron_id, space_id, start_reservation, end_reservation, reservation_notes)
 VALUES
 -- reading club is reading codey the coding cat
-(7, 1, '2023-12-01 06:00:00', '2023-11-29 07:00:00', "Codey the Coding Cat Book Circle"),
+(7, 1, '2023-12-01 06:00:00', '2023-12-01 07:00:00', "Codey the Coding Cat Book Circle"),
 -- reservation for self at study hall
-(7, 4, '2023-12-01 07:00:00', '2023-11-29 10:00:00', "Breaking Down about Presentation :("),
+(7, 4, '2023-12-01 07:00:01', '2023-12-01 10:00:00', "Breaking Down about Presentation :(");
 
 
 INSERT INTO club_reservations(club_id, reservation_id)
 VALUES
-(7, 6)
+(2, 5);

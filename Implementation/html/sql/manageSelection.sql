@@ -2,6 +2,10 @@ DELIMITER //
 CREATE OR REPLACE PROCEDURE add_print_material(title VARCHAR(256), date_received DATE, date_created DATE, is_pending BOOLEAN, price DECIMAL(10,2), print_type VARCHAR(256), num_pages INT)
  BEGIN
  START TRANSACTION;
+       IF date_received IS NULL
+       THEN SET date_received = CURDATE();
+       END IF;
+
        INSERT INTO selection (material_title, material_date_received, material_date_created, material_is_pending, material_price)
        VALUES (title, date_received, date_created, is_pending, price);
 
@@ -16,6 +20,10 @@ DELIMITER //
 CREATE OR REPLACE PROCEDURE add_multimedia_material(title VARCHAR(256), date_received DATE, date_created DATE, is_pending BOOLEAN, price DECIMAL(10,2), multimedia_type VARCHAR(256), duration TIME)
  BEGIN
  START TRANSACTION;
+       IF date_received IS NULL
+       THEN SET date_received = CURDATE();
+       END IF;
+       
        INSERT INTO selection (material_title, material_date_received, material_date_created, material_is_pending, material_price)
        VALUES (title, date_received, date_created, is_pending, price);
 

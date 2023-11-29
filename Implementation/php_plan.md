@@ -29,6 +29,21 @@ Basic architecture: All basic data tables (prettified views) receive their own p
 - Details on a Space
     - 
 
+- Details on a Patron
+
+- Details on the Selection
+
+
+- [X] Login, session start from patron side
+    - [ ] Session selection
+        - Views
+        - Editability
+    - [X] Session clubs
+        - View
+    - [ ] Session spaces
+        - Views
+        - Editability
+
 ### Misc Notes to Resolve
 - space_reservations table needs a business rule where no overlapping reservations on a space 
 

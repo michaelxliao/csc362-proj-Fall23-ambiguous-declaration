@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "";
     }
     
-	header("Location: { $_SERVER[‘REQUEST_URI’] }", true, 303);
+	header("Location:" .  $_SERVER['REQUEST_URI'],  true, 303);
     exit();
 }
 

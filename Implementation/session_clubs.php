@@ -78,7 +78,6 @@ else
 }
 
 $patron_first_name = $patron_data['patron_first_name'];
-$patron_last_name = $patron_data['patron_last_name'];
 
 ?>
 
@@ -96,11 +95,10 @@ $patron_last_name = $patron_data['patron_last_name'];
 <body>
 <a class="link-button" href=login_general.php> Back to Sign-In</a>
     <header>
-        <h2> Welcome, <?=$patron_first_name?>, to the Therpston County Public Library.</h2>
+        <h2> Welcome, <?=$patron_first_name?>, to Therpston County Public Library.</h2>
     </header>
     
     <p>
-        Name: <?=$patron_first_name?> <?=$patron_last_name?><br>
         Email: <?=$patron_email?><br>
         Phone: <?=$patron_phone?><br>
     </p>

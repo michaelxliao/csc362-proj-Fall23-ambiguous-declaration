@@ -16,6 +16,9 @@
         -- (!!! NOTE UNNECESSARY; SHOULD BE SAME AS DELETE)
     result_to_checkbox_table() 
         -- highly customizable checkbox table. Extension of result_to_deletable_table.
+    result_to_session_table()
+        -- creates a basic table that lists fields NOT including last field.
+        -- Used for blocking out patron_id in corresponding session tables.
 */
 
 function result_to_table($result) {
@@ -218,4 +221,31 @@ function result_to_checkbox_table($result, $col_output_name, $name_of_checkbox, 
         </table>
         <input type="submit" name="<?=$name_of_submit?>" value="<?=$submit_output_name?>" method=POST />
     </form>
+<?php } ?>
+
+<?php
+function result_to_session_table($result) {
+        $fields = $result->fetch_fields();
+        $data = $result->fetch_all();
+    ?>
+        <table>
+            <thead>
+                <tr>
+                    <?php for ($i=0; $i<$result->field_count - 1; $i++) { ?>
+                        <th> <?= $fields[$i] -> name ?> </th>
+                    <?php } ?>
+                </tr>
+            </thead>
+
+            <tbody>
+                <?php for ($i=0; $i<$result->num_rows; $i++) { ?>
+                    <?php $id = $data[$i][0] // this is the primary key ?>
+                    <tr>
+                        <?php for ($j=0; $j<$result->field_count - 1; $j++) { ?>
+                            <td> <?= $data[$i][$j] ?> </td>
+                        <?php } ?>
+                    </tr>
+                <?php } ?>
+            </tbody>
+    </table>
 <?php } ?>
