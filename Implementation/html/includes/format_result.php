@@ -22,6 +22,9 @@
     result_to_table_hideids() 
         -- result_to_table() without showing first field.
         -- CAN/SHOULD BE REFACTORED INTO result_to_table.
+    result_to_deletable_table_general()
+        -- more general version of deletable table, allows
+        -- for multiple hidden fields.
 */
 
 function result_to_table($result) {
@@ -166,8 +169,9 @@ function result_to_clickable_table($result, $typeofid, $url, $show_ids) {
                             continue;
                         }
                         if ($j == 1) { // index of the clickable column 
-                        $newurl = $url . "?" . $typeofid . "id=" . $id; ?>
-                        <td> <a href=<?=$newurl?>> <?= $data[$i][$j] ?> </a> </td>
+                        $newurl = "$url" . "?" . "$typeofid" . "id=$id"; 
+                        echo $newurl;?>
+                        <td> <a href="<?=$newurl?>"> <?= $data[$i][$j] ?> </a> </td>
                     <?php }
                         else { ?>
                             <td> <?=$data[$i][$j] ?> </td>
@@ -279,3 +283,62 @@ function result_to_table_hideids($result) {
             </tbody>
     </table>
 <?php } ?>
+
+<?php
+function result_to_deletable_table_general($result, $hidden_fields, $delete_col_name, $submit_name) 
+{ 
+    // result: sql query result
+    // hiddenfields: array of integer values in query to hide. 
+    //      CANNOT BE EMPTY
+    // deletecolname: name for column for delete checkbox.
+    // submitname: name of the submit button.
+        $fields = $result->fetch_fields();
+        $data = $result->fetch_all();
+    ?>
+        <form method=POST>
+            <table>
+                <thead>
+                    <tr>
+                        <?php
+                         for ($i=0; $i<$result->field_count; $i++) 
+                         { 
+                            if(in_array($i, $hidden_fields))
+                            {
+                                continue;
+                            }
+                            ?>
+                            <th> <?= $fields[$i]->name ?> </th>
+                        <?php } ?>
+                        <th> <?=$delete_col_name?> </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <?php for ($i=0; $i<$result->num_rows; $i++) { ?>
+                        <?php $id = $data[$i][0] // this is the primary key ?>
+                        <tr>
+                            <?php
+                            // start is the same as earlier
+                            for ($j=0; $j<$result->field_count; $j++) 
+                            { 
+                                if(in_array($j, $hidden_fields))
+                                {
+                                    continue;
+                                }
+                                ?>
+                                <td> <?= $data[$i][$j] ?> </td>
+                            <?php } ?>
+                            <td>
+                                <input type="checkbox"
+                                    name="checkbox<?= $id ?>"
+                                    value="<?= $id ?>"
+                                />
+                            </td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+        </table>
+        <input type="submit" name="delete_records" value="<?=$submit_name?>"/>
+    </form>
+<?php } ?>
+

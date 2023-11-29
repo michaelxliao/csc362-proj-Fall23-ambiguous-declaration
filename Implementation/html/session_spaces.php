@@ -86,7 +86,7 @@ $res = $patron_spaces->get_result();
 
 
     <h2>My Upcoming Space Reservations</h2>
-    <?=result_to_session_table($res)?>
+    <?=result_to_deletable_table_general($res, [0,1], "Cancel?", "Cancel Reservations");?>
 
     <a href="session_spaces_past.php">Show All Past Reservations</a>
     
