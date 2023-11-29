@@ -70,7 +70,7 @@ if ($changesMade) {
 
 <body>
 <a href="index_staff.php">Back to Staff Page</a>
-    <h2>Patron Adding and Editing</h2>
+    <h2>Patron Adding</h2>
     <h3>Add Patron</h3>
     <form method=POST>
         <table>
