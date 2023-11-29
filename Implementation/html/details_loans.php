@@ -1,11 +1,15 @@
 <?php
 require 'includes/setup.php';
-require 'includes/format_result.php';
-
 $conn = setup();
-$loan_info = $conn->query("SELECT * FROM pretty_selection_librarian");
-?>
 
+$patron_id = $_GET['narrativeid'];
+$sql_query = 'SELECT material_title AS "Title"
+                FROM active_narratives
+                     INNER JOIN adaptations USING(narrative_id)
+                     LEFT OUTER JOIN selection USING(material_id)
+               WHERE narrative_id = ?'
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -18,13 +22,9 @@ $loan_info = $conn->query("SELECT * FROM pretty_selection_librarian");
 </head>
 
 <body>
-    <a href="index_staff.php">Back to Staff</a>
-    <h1>Select a loan to Examine:</h1>
-    <form method="GET">
-        <?php
-        result_to_clickable_table($loan_info, "club", "details_loans.php", False);
-            ?>
-    </form>
+    <header>
+        <!-- this is where h1s etc. go, any explanatory info -->
+    </header>
 </body>
 
 </html>
