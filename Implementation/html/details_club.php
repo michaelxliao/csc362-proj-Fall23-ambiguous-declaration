@@ -5,6 +5,8 @@ $conn = setup();
 $club_id = $_GET['clubid'];
 $club_name_res = $conn->query("SELECT club_name FROM clubs WHERE club_id = $club_id"); // note all these need to be refactoered into perpared statements
 $club_name = $club_name_res->fetch_row()[0];
+$club_desc = $conn->query("SELECT club_description FROM clubs WHERE club_id = $club_id");
+$club_desc_res = $club_desc->fetch_all()[0][0];
 
 $patrons_res = $conn->query('SELECT CONCAT(patron_first_name, " ", patron_last_name) AS patron_name,
                                     patron_id
@@ -14,7 +16,53 @@ $patron_info = $patrons_res->fetch_all();
 $spaces_res = $conn->query('SELECT space_id, space_name FROM spaces');
 $spaces_info = $spaces_res->fetch_all();
 
+$club_members_res = $conn->query("SELECT patron_id, CONCAT(patron_first_name, ' ', patron_last_name) AS 'Name',
+                                     member_info AS 'Details',
+                                     member_is_leader
+                                FROM patrons
+                                     INNER JOIN club_members USING(patron_id)
+                                     INNER JOIN clubs USING(club_id)
+                               WHERE club_id = $club_id;");
+$club_spaces_reserved_res = $conn->query("SELECT space_name AS 'Space',
+                                            CONCAT(patron_first_name, ' ', patron_last_name) AS 'Reserved By', 
+                                             start_reservation AS 'Reserved From',
+                                             end_reservation AS 'Reserved Until'
+                                        FROM club_reservations
+                                             LEFT OUTER JOIN space_reservations USING (reservation_id)
+                                             LEFT OUTER JOIN patrons USING (patron_id)
+                                             LEFT OUTER JOIN spaces USING (space_id)
+                                             
+                                       WHERE club_id=$club_id;");
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST["edit_old_club"])) {
+        print_r("GOT HERE FIRST");
+        $new_club_name = $_POST["edit_club_name"];
+        $new_club_decs = $_POST["edit_club_desc"];
+        $changesMade = True;
+    
+        if (isset($_POST["edit_club_name"]) && isset($_POST["edit_club_desc"])) {
+            # Check for the club already being in database.
+            echo "GOT HERE";
+            $checkexists = $conn->prepare("SELECT * FROM clubs WHERE club_name = ?");
+            $checkexists->bind_param('s',$club_name);
+            $checkexists->execute();
+    
+            $result = $checkexists->get_result();
+    
+            // this is technically an int but 0 means it does not have that club & 1 means it does
+            $has_value = $result->num_rows;
+    
+            #we update if the club currently exists.
+            if ($has_value) {
+                $update_stmt = $conn->prepare("CALL update_club(?, ?, ?)");
+                $update_stmt->bind_param('iss', $club_id, $new_club_name, $new_club_decs);
+                $update_stmt->execute();
+    
+            }
+        }
+    } 
+    
     if(isset($_POST["delete_records"])){
         $deletable_patron_ids = $conn->query("SELECT patron_id
                                     FROM patrons
@@ -55,24 +103,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
     exit();
 }
-
-$club_members_res = $conn->query("SELECT patron_id, CONCAT(patron_first_name, ' ', patron_last_name) AS 'Name',
-                                     member_info AS 'Details',
-                                     member_is_leader
-                                FROM patrons
-                                     INNER JOIN club_members USING(patron_id)
-                                     INNER JOIN clubs USING(club_id)
-                               WHERE club_id = $club_id;");
-$club_spaces_reserved_res = $conn->query("SELECT space_name AS 'Space',
-                                            CONCAT(patron_first_name, ' ', patron_last_name) AS 'Reserved By', 
-                                             start_reservation AS 'Reserved From',
-                                             end_reservation AS 'Reserved Until'
-                                        FROM club_reservations
-                                             LEFT OUTER JOIN space_reservations USING (reservation_id)
-                                             LEFT OUTER JOIN patrons USING (patron_id)
-                                             LEFT OUTER JOIN spaces USING (space_id)
-                                             
-                                       WHERE club_id=$club_id;");
 ?>
 <!DOCTYPE html>
 <html>
@@ -90,6 +120,25 @@ $club_spaces_reserved_res = $conn->query("SELECT space_name AS 'Space',
         <h1><?= $club_name ?></h1>
     </header>
     <a href="profile_clubs.php">Back to Club Profiles</a>
+    <form method=POST>
+        <table>
+            <thead>
+                <th></th>
+            </thead>
+            <tbody>
+            <tr>
+                <td style="text-align: right;">Club Name:</td>
+                <td><input type="text" name="edit_club_name" value = "<?=$club_name?> " $style="height: 70px;" /></td>
+            </tr>
+            <!-- Description -->
+            <tr>
+                <td style="text-align: right;">Club Description:</td>
+                <td><input type="text" name="edit_club_desc" value = "<?=$club_desc_res?> " $style="height: 70px;" /></td>
+            </tr>
+            </tbody>
+        </table>
+        <input type="submit" name="edit_old_club" value="Edit Club" />
+    </form>
     <h2>Club Member(s):</h2>
     <form method=POST>
         <label for="new_member_id">Add new member: </label>

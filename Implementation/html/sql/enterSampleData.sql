@@ -231,9 +231,11 @@ VALUES
 -- reading club is reading codey the coding cat
 (7, 1, '2023-12-01 06:00:00', '2023-12-01 07:00:00', "Codey the Coding Cat Book Circle"),
 -- reservation for self at study hall
-(7, 4, '2023-12-01 07:00:01', '2023-12-01 10:00:00', "Breaking Down about Presentation :(");
+(7, 4, '2023-12-01 07:00:01', '2023-12-01 10:00:00', "Breaking Down about Presentation :("),
+(7, 4, '2023-11-01 07:00:01', '2023-11-01 10:00:00', "Choose Which Book to Circle");
 
 
 INSERT INTO club_reservations(club_id, reservation_id)
 VALUES
-(2, 5);
+(2, 6),
+(2, 8);

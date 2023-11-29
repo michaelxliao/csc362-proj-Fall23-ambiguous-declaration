@@ -1,42 +1,10 @@
 <?php
 require 'includes/setup.php';
+require 'includes/format_result.php';
 $conn = setup();
 session_start();
-$_SESSION['mode'] = 'viewonly';
 
-
-// check if they've logged in through login page.
-if(isset($_POST['login_submit']))
-{
-    if(!is_numeric($_POST['patron_login_id']))
-    {   
-        header("Location:login_general.php?error=true", true, 303);
-    }
-    $login_id = $_POST['patron_login_id'];
-
-    //check that their id is in the DB.
-    $id_statement = $conn->prepare("SELECT patron_id FROM patrons WHERE patron_id = ?");
-    $id_statement->bind_param("i", $login_id);
-    if(!$id_statement->execute())
-    {
-        print("SQL error!");
-    }
-    $id_res = $id_statement->get_result();
-    
-    if($id_res->num_rows == 0)
-    {
-        header("Location:login_general.php?error=true", true, 303);
-    }
-
-    $_SESSION['patron_id'] = $login_id;
-
-    header("Location:" . $_SERVER['REQUEST_URI'], true, 303);
-
-}
-
-
-
-// check if they're logged in at all, if not crash
+// check if they're logged in, if not crash
 if(!isset($_SESSION['patron_id']))
 {
     header("Location:login_general.php?error=true", true, 303);
@@ -80,7 +48,17 @@ else
 }
 
 $patron_first_name = $patron_data['patron_first_name'];
-$patron_last_name = $patron_data['patron_last_name'];
+
+$patron_spaces = $conn->prepare("SELECT * FROM pretty_past_space_reservations WHERE patron_id = ?;");
+
+$patron_spaces->bind_param("i", $login_id);
+
+if(!$patron_spaces->execute())
+{
+    print("SQL WENT WRONG (NOT CLICKBAIT)");
+}
+
+$res = $patron_spaces->get_result();
 
 ?>
 
@@ -100,30 +78,9 @@ $patron_last_name = $patron_data['patron_last_name'];
     <header>
         <h2> Welcome, <?=$patron_first_name?>, to the Therpston County Public Library.</h2>
     </header>
-    
-    <p>
-        Name: <?=$patron_first_name?> <?=$patron_last_name?><br>
-        Email: <?=$patron_email?><br>
-        Phone: <?=$patron_phone?><br>
-    </p>
-    
-    <ul>
-        <li>
-            <a href="manage_selection.php">Search the Catalog</a>
-        </li>
-        <li>
-            <a href="session_loans.php">Show My Loans and Holds</a>
-        </li>
-        <li>
-            <a href="session_spaces.php">Find Spaces to Reserve (and my current reservations)</a>
-        </li>
-        <li>
-            <a href="session_clubs.php">Show My Clubs (and my roles in them)</a>
-        </li>
-
-
-
-    </ul>
+    <a href="session_spaces.php">Back to Spaces Menu</a>
+    <h2>Past Space Reservations</h2>
+    <?=result_to_session_table($res)?>
 
 </body>
 

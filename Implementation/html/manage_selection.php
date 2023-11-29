@@ -6,20 +6,17 @@ $conn = setup();
 
 //from $_GET request, find what mode to display.
 
-if(!isset($_GET['mode']))
-{
-    header('Location:index.php', True, 303);
-}
+session_start();
 
-if($_GET['mode'] == 'staff')
+if($_SESSION['mode'] == 'staff')
 {
     $style_view_type = 'librarian_visible';
 }
-else if($_GET['mode'] == 'viewonly')
+else if($_SESSION['mode'] == 'viewonly')
 {
     $style_view_type = 'patron_view';
 }
-else
+else // kicks you back to login if you're not already set up
 {
     header('Location:index.php', True, 303);
 }
@@ -81,7 +78,7 @@ function generate_insert_form($type_string)
                 <?php } ?>
             </select>
             <label for="duration">Duration: </label>
-            <input pattern="^\d{2}:\d{2}:\d{2}$" name="duration" placeholder="XX:XX:XX" required>
+            <input pattern="^\d{2}:\d{2}:\d{2}$" name="duration" placeholder="HH:MM:SS" required>
         <?php } ?>
         <br>
         <input type="submit" name="add_material" value="Submit">
@@ -141,8 +138,6 @@ if (isset($_POST["add_material"])) {
         $pending = false;
     }
 
-    // need to reformat dates as yyyy-mm-dd
-
     if (isset($_POST["print_type"])) {
         $insert_stmt = $conn->prepare("CALL add_print_material(?, ?, ?, ?, ?, ?, ?)");
         $insert_stmt->bind_param('sssidsi', $_POST["title"], $_POST["date_received"], $_POST["date_created"], $pending, $_POST["price"], $_POST["print_type"], $_POST["num_pages"]);
@@ -152,7 +147,7 @@ if (isset($_POST["add_material"])) {
     } elseif (isset($_POST["multimedia_type"])) {
         echo $_POST["duration"];
         $insert_stmt = $conn->prepare("CALL add_multimedia_material(?, ?, ?, ?, ?, ?, ?)");
-        $insert_stmt->bind_param('sssidsi', $_POST["title"], $_POST["date_received"], $_POST["date_created"], $pending, $_POST["price"], $_POST["multimedia_type"], $_POST["duration"]);
+        $insert_stmt->bind_param('sssidss', $_POST["title"], $_POST["date_received"], $_POST["date_created"], $pending, $_POST["price"], $_POST["multimedia_type"], $_POST["duration"]);
         if (!$insert_stmt->execute()) {
             echo "insertion print failed";
         }

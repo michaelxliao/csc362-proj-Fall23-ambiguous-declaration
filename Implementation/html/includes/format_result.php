@@ -19,6 +19,9 @@
     result_to_session_table()
         -- creates a basic table that lists fields NOT including last field.
         -- Used for blocking out patron_id in corresponding session tables.
+    result_to_table_hideids() 
+        -- result_to_table() without showing first field.
+        -- CAN/SHOULD BE REFACTORED INTO result_to_table.
 */
 
 function result_to_table($result) {
@@ -242,6 +245,33 @@ function result_to_session_table($result) {
                     <?php $id = $data[$i][0] // this is the primary key ?>
                     <tr>
                         <?php for ($j=0; $j<$result->field_count - 1; $j++) { ?>
+                            <td> <?= $data[$i][$j] ?> </td>
+                        <?php } ?>
+                    </tr>
+                <?php } ?>
+            </tbody>
+    </table>
+<?php } ?>
+
+<?php
+function result_to_table_hideids($result) {
+        $fields = $result->fetch_fields();
+        $data = $result->fetch_all();
+    ?>
+        <table>
+            <thead>
+                <tr>
+                    <?php for ($i=1; $i<$result->field_count; $i++) { ?>
+                        <th> <?= $fields[$i] -> name ?> </th>
+                    <?php } ?>
+                </tr>
+            </thead>
+
+            <tbody>
+                <?php for ($i=0; $i<$result->num_rows; $i++) { ?>
+                    <?php $id = $data[$i][0] // this is the primary key ?>
+                    <tr>
+                        <?php for ($j=1; $j<$result->field_count; $j++) { ?>
                             <td> <?= $data[$i][$j] ?> </td>
                         <?php } ?>
                     </tr>

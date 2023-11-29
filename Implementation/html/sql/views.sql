@@ -32,8 +32,10 @@ SELECT material_id AS 'ID',
        ELSE 'Processed'
        END) AS 'Pending?', -- should be filterable
        material_price AS 'Cost', -- prolly leave to drill-down
-       GROUP_CONCAT(CONCAT(creator_first_name, ' ', creator_last_name) SEPARATOR ', ') AS 'Creator(s)', -- add conditional to only show authors/directors
-       GROUP_CONCAT(creator_role SEPARATOR ', ') AS 'Role',
+       GROUP_CONCAT(DISTINCT CONCAT(creator_role, ': ', creator_first_name, ' ', creator_last_name) SEPARATOR ', ') AS 'Creator(s)', -- later: hide these on page :)
+    --    GROUP_CONCAT(creator_role SEPARATOR ', ') AS 'Role',
+       GROUP_CONCAT(DISTINCT genre_name SEPARATOR ', ') AS 'Genre(s)',
+       GROUP_CONCAT(DISTINCT language_name SEPARATOR ', ') AS 'Language(s)',
        (CASE WHEN (multimedia_type IS NULL)
        THEN print_type
        ELSE multimedia_type
@@ -48,6 +50,8 @@ SELECT material_id AS 'ID',
        LEFT OUTER JOIN selection_creators USING(material_id)
        LEFT OUTER JOIN creators USING (creator_id)
        LEFT OUTER JOIN creator_roles USING (creator_role)
+       LEFT OUTER JOIN selection_genres USING (material_id)
+       LEFT OUTER JOIN selection_languages USING (material_id)
  GROUP BY material_id;
 
 -- for profile_clubs.php
@@ -79,6 +83,23 @@ SELECT club_id AS 'ID',
     LEFT OUTER JOIN club_members USING (club_id)
     ORDER BY club_name;
 
+
+-- for session_spaces_find.php
+    CREATE OR REPLACE VIEW pretty_all_upcoming_space_reservations AS
+    SELECT reservation_id,
+    space_name AS 'Reserved Space', 
+    space_room_number AS 'Room Number',
+    start_reservation AS 'Start Time',
+    end_reservation AS 'End Time',
+    reservation_notes AS 'Notes'
+    FROM space_reservations
+    LEFT OUTER JOIN spaces USING (space_id) 
+    LEFT OUTER JOIN club_reservations USING (reservation_id)
+    LEFT OUTER JOIN clubs USING (club_id)
+    WHERE end_reservation > CURRENT_TIMESTAMP()
+    ORDER BY start_reservation ASC;
+
+    -- for session_spaces.php
     CREATE OR REPLACE VIEW pretty_upcoming_space_reservations AS
     SELECT space_name AS 'Reserved Space', 
     space_room_number AS 'Room Number',
@@ -90,4 +111,22 @@ SELECT club_id AS 'ID',
     FROM space_reservations
     LEFT OUTER JOIN spaces USING (space_id) 
     LEFT OUTER JOIN club_reservations USING (reservation_id)
-    LEFT OUTER JOIN clubs USING (club_id);
+    LEFT OUTER JOIN clubs USING (club_id)
+    WHERE end_reservation > CURRENT_TIMESTAMP()
+    ORDER BY start_reservation ASC;
+
+
+-- for session_spaces_past.php
+    CREATE OR REPLACE VIEW pretty_past_space_reservations AS
+    SELECT space_name AS 'Reserved Space', 
+    space_room_number AS 'Room Number',
+    start_reservation AS 'Start Time',
+    end_reservation AS 'End Time', 
+    club_name AS 'Associated Club',
+    reservation_notes AS 'Notes',
+    patron_id
+    FROM space_reservations
+    LEFT OUTER JOIN spaces USING (space_id) 
+    LEFT OUTER JOIN club_reservations USING (reservation_id)
+    LEFT OUTER JOIN clubs USING (club_id)
+    ORDER BY start_reservation DESC;

@@ -49,16 +49,16 @@ else
 
 $patron_first_name = $patron_data['patron_first_name'];
 
-$patron_clubs = $conn->prepare("SELECT * FROM pretty_upcoming_space_reservations WHERE patron_id = ?;");
+$patron_spaces = $conn->prepare("SELECT * FROM pretty_upcoming_space_reservations WHERE patron_id = ?;");
 
-$patron_clubs->bind_param("i", $login_id);
+$patron_spaces->bind_param("i", $login_id);
 
-if(!$patron_clubs->execute())
+if(!$patron_spaces->execute())
 {
     print("SQL WENT WRONG (NOT CLICKBAIT)");
 }
 
-$res = $patron_clubs->get_result();
+$res = $patron_spaces->get_result();
 
 ?>
 
@@ -80,8 +80,16 @@ $res = $patron_clubs->get_result();
     </header>
     <a href="index_general.php">Back to Main Patron Page</a>
 
-    <h2>Club Involvement</h2>
+    <h2>Reserve a Space</h2>
+
+    <a href="session_spaces_find.php">See Available Spaces</a>
+
+
+    <h2>My Upcoming Space Reservations</h2>
     <?=result_to_session_table($res)?>
+
+    <a href="session_spaces_past.php">Show All Past Reservations</a>
+    
 
 </body>
 

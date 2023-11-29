@@ -1,6 +1,9 @@
 <?php
 require 'includes/setup.php';
 $conn = setup();
+session_start();
+$_SESSION['mode'] = 'staff';
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -43,7 +46,7 @@ $conn = setup();
     <h3>All Active:</h3>
     </ul>
     <li>
-        <a href="manage_selection.php?mode=staff">The Catalog (filterable, public-facing)</a>
+        <a href="manage_selection.php">The Catalog (filterable, public-facing)</a>
     </li>
 
 
@@ -53,7 +56,7 @@ $conn = setup();
             <a href="manage_selection.php?mode=staff"> Review Selection to Add or Remove (WIP)</a>
         </li>
         <li>
-            <a href="manage_patrons.php">Patrons (WIP)</a>
+            <a href="manage_patrons.php">Patrons (WIP)</a> <!-- Removed manage patrons. Remove this when we're ready -->
         </li>
         <li>
             <a href="manage_spaces.php">Spaces and Space Reservations (WIP)</a>
