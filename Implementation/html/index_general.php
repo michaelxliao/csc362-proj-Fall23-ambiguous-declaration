@@ -1,6 +1,44 @@
 <?php
 require 'includes/setup.php';
 $conn = setup();
+session_start();
+
+// check if they've logged in through login page.
+if(isset($_POST['login_submit']))
+{
+    if(!is_numeric($_POST['patron_login_id']))
+    {   
+        header("Location:login_general.php?error=true", true, 303);
+    }
+    $login_id = $_POST['patron_login_id'];
+
+    //check that their id is in the DB.
+    $id_statement = $conn->prepare("SELECT patron_id FROM patrons WHERE patron_id = ?");
+    $id_statement->bind_param("i", $login_id);
+    if(!$id_statement->execute())
+    {
+        print("SQL error!");
+    }
+    $id_res = $id_statement->get_result();
+    
+    if($id_res->num_rows == 0)
+    {
+        header("Location:login_general.php?error=true", true, 303);
+    }
+
+    $_SESSION['patron_id'] = $login_id;
+}
+
+
+
+// check if they're logged in at all, if not crash
+if(!isset($_SESSION['patron_id']))
+{
+    header("Location:login_general.php?error=true", true, 303);
+}
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -15,9 +53,9 @@ $conn = setup();
 </head>
 
 <body>
-<a class="link-button" href=index.php> Back to Sign-In</a>
+<a class="link-button" href=login_general.php> Back to Sign-In</a>
     <header>
-        <h2> Welcome, esteemed patron of Therpston County Public Library.</h2>
+        <h2> Welcome, esteemed patron , to Therpston County Public Library.</h2>
     </header>
 
     <ul>

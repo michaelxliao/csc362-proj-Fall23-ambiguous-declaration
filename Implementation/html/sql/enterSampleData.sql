@@ -10,7 +10,7 @@ INSERT INTO clubs(club_name, club_description, club_is_active)
 VALUES
 ("Inkling Performance Labs", "Inkling Performance Labs' goal is to unite and grow the community by creating high quality Splatoon tournaments. We want to promote the growth of Splatoon, both in working to bring in new members, along with helping improve those already in the community.", True),
 ("Reading Club", "It's a library. What did you expect", True),
-("Poetry Club", "We're a budding club \n Like sakura in spring \n We, too, share our hearts.", True),
+("Poetry Club", "We're a budding club / Like sakura in spring / We, too, share our hearts.", True),
 ("Evil Poetry Club", "Make a better haiku losers", True),
 ("D&D Club", "Scheduling issues :(", False);
 
@@ -24,12 +24,12 @@ VALUES  ("Raise-on","Bottler","bottlessince1967@gmail.com", "111-111-1111"),
 
 
 INSERT INTO club_members(patron_id, club_id, member_info, member_is_leader)
-VALUES  (1,5,"Can only play on monday and friday",FALSE),
-        (2,5,"Can only play on tuseday and thursday",FALSE),
-        (3,5,"Can only play on wedneday",TRUE),
-        (1,2,"Reads fantasy books",TRUE),
-        (2,2,"Reads monster manuals",FALSE),
-        (3,4,"Reads poetry about ruling the moon", TRUE);
+VALUES  (1,5,"",FALSE),
+        (2,5,"",FALSE),
+        (3,5,"",TRUE),
+        (1,2,"Organizer",TRUE),
+        (2,2,"",FALSE),
+        (3,4,"Anarchist", TRUE);
 
 INSERT INTO multimedia_types (multimedia_type)
 VALUES ("Movie"),
@@ -190,8 +190,11 @@ CALL add_loan(5, 2, '2023-9-29', '2023-10-15', 0);
 CALL add_loan(5, 3, '2023-10-29', '2023-11-02', 0);
 CALL add_loan(4, 4, '2023-10-29', NULL, 2);
 CALL add_loan(2, 5, '2023-10-29', NULL, 0);
+CALL add_loan(2, 8, '2023-10-29', NULL, 0);
+
 CALL add_loan(1, 5, '2023-10-10', NULL, 3);
 CALL add_loan(12, 5, '2023-10-10', NULL, 1);
+CALL add_loan(14, 5, '2023-10-10', NULL, 1);
 CALL add_hold(1, 4, '2023-10-11 ');
 CALL add_hold(4, 1, '2023-11-10 07:00:00');
 CALL add_hold(4, 2, '2023-11-12 04:00:00');
@@ -199,3 +202,38 @@ CALL add_hold(4, 2, '2023-11-12 04:00:00');
 -- club reservations
 
 CALL add_reservation(1, 1, '2023-11-01 03:00:00', '2023-11-01 07:00:00', "Knights when they");
+
+
+-- for the demo
+
+INSERT INTO patrons(patron_first_name, patron_last_name, patron_email, patron_phone)
+VALUES  ("Day","Tabez","xX_madewhentwelve_Xx@gmail.com", "123-456-7809");
+
+-- hold on second space movie. Current loans on space movie
+-- and codey the coding cat.
+CALL add_loan(13, 7, '2023-10-10', NULL, 1);
+CALL add_loan(10, 7, '2023-10-10', NULL, 1);
+CALL add_hold(14, 7, '2023-10-11');
+
+INSERT INTO club_members(patron_id, club_id, member_info, member_is_leader)
+VALUES  (7,3,"",FALSE),
+(7,2,"Secretary",TRUE);
+
+INSERT INTO spaces(space_name, space_room_number, space_capacity)
+VALUES
+("Study Room 201", 7, 201),
+
+
+-- made one as a personal study session, one as a meeting.
+
+INSERT INTO space_reservations(patron_id, space_id, start_reservation, end_reservation, reservation_notes)
+VALUES
+-- reading club is reading codey the coding cat
+(7, 1, '2023-12-01 06:00:00', '2023-11-29 07:00:00', "Codey the Coding Cat Book Circle"),
+-- reservation for self at study hall
+(7, 4, '2023-12-01 07:00:00', '2023-11-29 10:00:00', "Breaking Down about Presentation :("),
+
+
+INSERT INTO club_reservations(club_id, reservation_id)
+VALUES
+(7, 6)

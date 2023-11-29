@@ -1,8 +1,9 @@
 <?php
 require 'includes/setup.php';
 $conn = setup();
-?>
 
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -16,13 +17,21 @@ $conn = setup();
 
 <body>
     <header>
-    <h1> Welcome to the Therpston County
-        Public Library (WIP)!
-    </h1>
-</header>
+    </header>
 
-    <a class="link-button" href="login_general.php">For Patrons (WIP)</a>
-    <a class="link-button" href="index_staff.php">For Staff</a>
+    <h3>Please enter your library card number.</h3>
+    <form method="POST" action="index_general.php"> 
+        <input type="text" name="patron_login_id">
+        <input type="submit" name="login_submit" value="Login">
+    </form>
+    
+    <?php
+    if(isset($_GET['error']))
+    {
+        ?><h4>An error occurred. Please log in again.</h4>
+        <?php
+    }
+    ?>
 </body>
 
 </html>
