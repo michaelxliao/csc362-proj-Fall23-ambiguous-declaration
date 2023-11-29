@@ -4,6 +4,30 @@ require 'includes/format_result.php';
 
 $conn = setup();
 
+//from $_GET request, find what mode to display.
+
+if(!isset($_GET['mode']))
+{
+    header('Location:index.php', True, 303);
+}
+
+if($_GET['mode'] == 'staff')
+{
+    $style_view_type = 'librarian_visible';
+}
+else if($_GET['mode'] == 'viewonly')
+{
+    $style_view_type = 'patron_view';
+}
+else
+{
+    header('Location:index.php', True, 303);
+}
+
+
+// Later: implement session-specific details
+
+
 $print_types_res = $conn->query("SELECT print_type FROM print_types WHERE print_type_is_active = TRUE");
 $multimedia_types_res = $conn->query("SELECT multimedia_type FROM multimedia_types WHERE multimedia_type_is_active = TRUE");
 
@@ -21,11 +45,6 @@ $MULTIMEDIA = 'Multimedia';
 $ALL_AVAILABILITY = 'All';
 $ON_SHELF = 'On Shelf';
 $CHECKED_OUT = 'Checked Out';
-
-$style_view_type = "librarian_visible";
-// if session {
-//     $style_view_type = "hidden";
-// }
 
 function generate_insert_form($type_string)
 { // do not use this function in other php files. it will NOT WORK. 
@@ -159,7 +178,8 @@ if (isset($_POST["add_material"])) {
 
 <body>
     <h1>Catalog</h1>
-    <div class=<?= $style_view_type ?>>
+    <?= $style_view_type ?>
+    <div class= <?=$style_view_type?>>
         <h2>Add a new material</h2>
         <?php if (!isset($_GET["type_chosen"])) { ?>
             <form method=GET>

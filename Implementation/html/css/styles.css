@@ -35,7 +35,8 @@ a.link-button {
   margin-top: 0;
 }
 
-.hidden { /* for use when patrons are logged in */
+/* Formerly 'hidden' */
+.patron_view { /* for use when patrons are logged in */
   display: none;
 }
 

@@ -107,7 +107,7 @@ $patron_last_name = $patron_data['patron_last_name'];
     
     <ul>
         <li>
-            <a href="catalog.php">Search the Catalog</a>
+            <a href="manage_selection.php?mode=viewonly">Search the Catalog</a>
         </li>
         <li>
             <a href="session_loans.php">Show My Loans and Holds</a>

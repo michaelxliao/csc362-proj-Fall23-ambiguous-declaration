@@ -43,14 +43,14 @@ $conn = setup();
     <h3>All Active:</h3>
     </ul>
     <li>
-        <a href="manage_selection.php">The Catalog (filterable, public-facing)</a>
+        <a href="manage_selection.php?mode=staff">The Catalog (filterable, public-facing)</a>
     </li>
 
 
     <h2>Data Management</h2>
     <ul>
         <li>
-            <a href="manage_selection.php"> Review Selection to Add or Remove (WIP)</a>
+            <a href="manage_selection.php?mode=staff"> Review Selection to Add or Remove (WIP)</a>
         </li>
         <li>
             <a href="manage_patrons.php">Patrons (WIP)</a>
