@@ -193,8 +193,8 @@ CALL add_loan(2, 5, '2023-10-29', NULL, 0);
 CALL add_loan(20, 5, '2023-10-29', NULL, 0);
 
 CALL add_loan(1, 5, '2023-10-10', NULL, 3);
-CALL add_loan(12, 5, '2023-10-10', NULL, 1);
-CALL add_loan(14, 5, '2023-10-10', NULL, 1);
+CALL add_loan(12, 5, '2023-10-10', NULL, 2);
+CALL add_loan(14, 5, '2023-10-10', NULL, 2);
 CALL add_hold(1, 4, '2023-10-11 ');
 CALL add_hold(4, 1, '2023-11-10 9:00:00');
 CALL add_hold(4, 2, '2023-11-12 04:00:00');
