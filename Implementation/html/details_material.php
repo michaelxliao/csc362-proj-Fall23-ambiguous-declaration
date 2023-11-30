@@ -20,17 +20,6 @@ if (!$get_material_info_stmt->execute()) {
     print("SQL error. Sorry!");
 }
 
-// function find_result($id, $query)
-// {
-//     $stmt = $GLOBALS['conn']->prepare($query);
-//     $stmt->bind_param('i', $id);
-//     if (!$stmt->execute()) {
-//         echo 'SQL error. Sorry!';
-//     }
-//     $res = $stmt->get_result();
-//     return $res;
-// }
-
 $get_material_info_result = $get_material_info_stmt->get_result();
 $material_info = $get_material_info_result->fetch_assoc();
 $material_title = $material_info['Title'];
@@ -41,7 +30,7 @@ $cost = $material_info['Cost'];
 $type = $material_info['Type'];
 $length = $material_info['Length'];
 
-if ($conn->query('SELECT 1 FROM multimedia_types WHERE multimedia_type =' . $type)->num_rows > 0) { // can be unsafe here because inputs guaranteed coming out of database
+if ($conn->query('SELECT 1 FROM multimedia_types WHERE multimedia_type = "' . $type . '"')->num_rows > 0) { // can be unsafe here because inputs guaranteed coming out of database
     $is_print = false;
 } else {
     $is_print = true;
@@ -98,8 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $del_stmt = $conn->prepare("DELETE FROM selection_creators WHERE creator_id = ? AND material_id = ? AND creator_role = ?");
         $del_stmt->bind_param("iis", $creator_id, $material_id, $creator_role);
 
-        for ($i = 0; $i < $res->num_rows; $i++)
-        {
+        for ($i = 0; $i < $res->num_rows; $i++) {
             $creator_id = $data[$i][0];
             $material_id = $data[$i][1];
             $creator_role = $data[$i][2];
@@ -126,11 +114,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $del_stmt = $conn->prepare("DELETE FROM selection_genres WHERE material_id = ? AND genre_name = ?");
         $del_stmt->bind_param("is", $curr_material, $genre_name);
 
-        for ($i = 0; $i < $res->num_rows; $i++)
-        {
+        for ($i = 0; $i < $res->num_rows; $i++) {
             $genre_name = $data[$i][0];
             if (isset($_POST['checkbox' . $genre_name])) {
-                try { 
+                try {
                     $del_stmt->execute();
                 } catch (mysqli_sql_exception $e) {
                     echo $e->getMessage();
@@ -141,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $add_stmt = $conn->prepare('INSERT INTO selection_genres (material_id, genre_name)
                                     VALUES (?, ?)');
         $add_stmt->bind_param('is', $curr_material, $_POST['genre_name']);
-        try { 
+        try {
             $add_stmt->execute();
         } catch (mysqli_sql_exception $e) {
             echo $e->getMessage();
@@ -158,11 +145,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $del_stmt = $conn->prepare("DELETE FROM selection_languages WHERE material_id = ? AND language_name = ?");
         $del_stmt->bind_param("is", $curr_material, $language_name);
 
-        for ($i = 0; $i < $res->num_rows; $i++)
-        {
+        for ($i = 0; $i < $res->num_rows; $i++) {
             $language_name = $data[$i][0];
             if (isset($_POST['checkbox' . $language_name])) {
-                try { 
+                try {
                     $del_stmt->execute();
                 } catch (mysqli_sql_exception $e) {
                     echo $e->getMessage();
@@ -173,7 +159,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $add_stmt = $conn->prepare('INSERT INTO selection_languages (material_id, language_name)
                                     VALUES (?, ?)');
         $add_stmt->bind_param('is', $curr_material, $_POST['language_name']);
-        try { 
+        try {
             $add_stmt->execute();
         } catch (mysqli_sql_exception $e) {
             echo $e->getMessage();
@@ -182,28 +168,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $new_club_name = $_POST["edit_club_name"];
         $new_club_decs = $_POST["edit_club_desc"];
         $changesMade = True;
-    
+
         if (isset($_POST["edit_club_name"]) && isset($_POST["edit_club_desc"])) {
             # Check for the club already being in database.
             echo "GOT HERE";
             $checkexists = $conn->prepare("SELECT * FROM clubs WHERE club_name = ?");
-            $checkexists->bind_param('s',$club_name);
+            $checkexists->bind_param('s', $club_name);
             $checkexists->execute();
-    
+
             $result = $checkexists->get_result();
-    
+
             // this is technically an int but 0 means it does not have that club & 1 means it does
             $has_value = $result->num_rows;
-    
+
             #we update if the club currently exists.
             if ($has_value) {
                 $update_stmt = $conn->prepare("CALL update_club(?, ?, ?)");
                 $update_stmt->bind_param('iss', $club_id, $new_club_name, $new_club_decs);
                 $update_stmt->execute();
-    
+
             }
         }
-    } 
+    }
 
     header("Location:" . $_SERVER['REQUEST_URI'], true, 303);
     exit();
@@ -243,6 +229,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php } else { ?>
             <p> Currently available! </p>
         <?php } ?>
+
+        <?php
+        $holds_stmt = $conn->prepare("SELECT COUNT(*) FROM current_holds WHERE material_id = ? GROUP BY material_id"); // displaying how many there are; simple enough to convert into a table
+        $holds_stmt->bind_param("i", $curr_material);
+        if (!$holds_stmt->execute()) {
+            echo $holds_stmt->error;
+        }
+        $holds_res = $holds_stmt->get_result();
+        $holds_data = $holds_res->fetch_all();
+        if ($holds_res->num_rows > 0) { ?>
+            <p> There are currently
+                <?= $holds_data[0][0] ?> holds on this material.
+            </p>
+        <?php } else { ?>
+            <p> There are no holds on this material. </p>
+        <?php } ?>
+
         <?php
         $is_source_stmt = $conn->prepare('SELECT material_is_source, narrative_name
                                                 FROM adaptations
@@ -274,50 +277,55 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <h2>Update this Material</h2>
     <form method=POST>
-        <label for ="new_title">Title:</label>
-        <input type="text" name="new_title" value = "<?=$material_title?> " required />
+        <label for="new_title">Title:</label>
+        <input type="text" name="new_title" value="<?= $material_title ?>" required />
         <br>
-        <label for ="date_selected">Date Selected: </label>
-        <input type="date" name="date_selected" value = "<?=$date_selected?> " required />
+        <label for="date_selected">Date Selected: </label>
+        <input type="date" name="date_selected" value="<?= $date_selected ?>" required />
         <br>
-        <label for ="date_created">Date Created: </label>
-        <input type="date" name="date_created" value = "<?=$date_created?> " required />
+        <label for="date_created">Date Created: </label>
+        <input type="date" name="date_created" value="<?= $date_created ?>" required />
         <br>
-        <label for ="pending">Pending? </label>
-        <input type="checkbox" name="pending" value = "<?=$pending?> " required />
+        <label for="pending">Pending? </label>
+        <input type="checkbox" name="pending" <?php if ($pending) { ?> checked <?php } ?> required />
         <br>
-        <label for ="cost">Cost: </label>
-        <input type="number" min="0" step="any" name="cost" value = "<?=$cost?> " required />
+        <label for="cost">Cost: </label>
+        <input type="number" min="0" step="any" name="cost" value="<?= $cost ?>" required />
         <br>
-        <label for ="type">Type: </label>
-        <select selected="<?= $type ?>" required>
+        <label for="type">Type: </label>
+        <select>
             <?php if ($is_print) {
                 $print_types_res = $conn->query("SELECT print_type FROM print_types WHERE print_type_is_active = TRUE");
+                $print_types = $print_types_res->fetch_all();
+
                 for ($i = 0; $i < $print_types_res->num_rows; $i++) { ?>
-                    <option value="<?= $print_types[$i][0] ?>">
+                    <option value="<?= $print_types[$i][0] ?>" required <?php if ($print_types[$i][0] == $type) { ?> selected
+                        <?php } ?>>
                         <?= $print_types[$i][0] ?>
                     </option>
-            <?php }
+                <?php }
             } else {
                 $multimedia_types_res = $conn->query("SELECT multimedia_type FROM multimedia_types WHERE multimedia_type_is_active = TRUE");
+                $multimedia_types = $multimedia_types_res->fetch_all();
+
                 for ($i = 0; $i < $multimedia_types_res->num_rows; $i++) { ?>
-                    <option value="<?= $multimedia_types[$i][0] ?>">
+                    <option value="<?= $multimedia_types[$i][0] ?>" required <?php if ($multimedia_types[$i][0] == $type) { ?>
+                            selected <?php } ?>>
                         <?= $multimedia_types[$i][0] ?>
                     </option>
                 <?php }
             } ?>
         </select>
         <br>
-        <label for ="length">Length: </label>
+        <label for="length">Length: </label>
         <?php if ($is_print) { ?>
-            <input type="number" min="1" name="length" value = "<?=$length?> " required />
+            <input type="number" min="1" name="length" value="<?= $length ?>" required />
         <?php } else { ?>
             <input pattern="^\d{2}:\d{2}:\d{2}$" name="duration" placeholder="HH:MM:SS" value="<?= $length ?>" required>
         <?php } ?>
         <br>
         <input type="submit" name="edit_material" value="Edit Material" />
     </form>
-    <h2>Holds on this Material</h2>
 
     <h2>Creator(s)</h2>
     <form method=POST>

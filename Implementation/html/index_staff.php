@@ -28,15 +28,15 @@ $_SESSION['mode'] = 'staff';
             <br>
             <a href="profile_clubs.php">View and Manage Clubs</a>
             <br>
-            <a href="profile_holds.php">Holds (WIP From Times, Spaces, and Patrons)</a>
+            <a href="profile_holds.php">Holds</a> <!-- (WIP From Times, Spaces, and Patrons) -->
             <br>
-            <a href="profile_narratives.php">Adaptations of a Narrative (WIP Find All Narratives)</a>
+            <a href="profile_narratives.php">Adaptations of a Narrative</a>
             <br>
-            <a href="profile_loans.php">Loans on the Selection (WIP)</a>
+            <a href="profile_loans.php">Loans on the Selection</a>
             <br>
             <a href="profile_spaces.php">Spaces Available to Reserve</a>
             <br>
-            <a href="profile_selection.php">The Catalog (filterable, public-facing)</a>
+            <a href="profile_selection.php">The Catalog</a>
             <br>
             <a href="profile_filters.php">Manage Filters for Selection (genres, languages, etc.)</a>
     </nav>
