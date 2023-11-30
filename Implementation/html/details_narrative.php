@@ -65,6 +65,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $update_stmt->bind_param('si',$_POST["new_desc"] ,$real_narrative_id);
         $update_stmt->execute();
     }
+    if(isset($_POST["del_narrative"])){
+        $del_stmt = $conn->prepare("CALL del_narrative(?)");
+        $del_stmt -> bind_param('i', $real_narrative_id);
+        $del_stmt -> execute();
+        header("Location: profile_narratives.php", true, 303);
+        exit();
+
+    }
     header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
     exit();
 }
@@ -99,6 +107,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="submit" name="new_adaptation" value = "Add Material"/>
     </form>
     <?php result_to_deletable_table($sql_query, true) ?>
+    <form method = POST>
+        <input type="submit" name="del_narrative" value = "Delete Narrative?"/>
+    </form>
 </body>
 
 </html>

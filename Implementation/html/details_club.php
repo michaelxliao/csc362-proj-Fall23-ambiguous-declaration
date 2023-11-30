@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (isset($_POST['del_club'])){
-        $del_club = $conn->query("CALL del_club(?)");
+        $del_club = $conn->prepare("CALL del_club(?)");
         $del_club ->bind_param('i', $club_id);
         $del_club -> execute();
         header("Location: profile_clubs.php", true, 303);
