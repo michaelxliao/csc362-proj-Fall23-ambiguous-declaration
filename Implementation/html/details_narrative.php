@@ -8,10 +8,7 @@ $real_narrative_id_res = $conn->query("SELECT narrative_id
                                     FROM active_narratives
                                     WHERE narrative_name = '$narrative_name'");
 $real_narrative_id = $real_narrative_id_res->fetch_all()[0][0];
-// $narrative_name = $conn->query("SELECT narrative_name
-//                                 FROM active_narratives
-//                                 WHERE narrative_name = '$narrative_name'");
-// $narrative_name_res = $narrative_name->fetch_all()[0][0];
+
 $narrative_desc = $conn->query("SELECT narrative_description
                                 FROM active_narratives
                                 WHERE narrative_name = '$narrative_name'");
@@ -65,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $update_stmt = $conn->prepare("UPDATE narratives
                                         SET narratives.narrative_description = ?
                                         WHERE narratives.narrative_id = ?");
-        $update_stmt->bind_param('si',$_POST['new_desc'] ,$real_narrative_id);
+        $update_stmt->bind_param('si',$_POST["new_desc"] ,$real_narrative_id);
         $update_stmt->execute();
     }
     header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
@@ -86,13 +83,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <header>
-        <?= printf($narrative_name) ?>
+        <?= $narrative_name ?>
     </header>
     <a href="profile_narratives.php">Back to Narrative List</a>
     <h2> Update description: </h2>
     <form method=POST>
         <label for="new_desc">Narrative Description:</td>
-            <textarea name="new_desc" value = "<?=$narrative_desc_res?> "></textarea>
+            <input type="textarea"  name="new_desc" value = "<?=$narrative_desc_res?> "></input>
         <input type="submit" name="edit_old_description" value="Edit Narrative" />
     </form>
     <h2> Add another material as an adaptation: </h2>

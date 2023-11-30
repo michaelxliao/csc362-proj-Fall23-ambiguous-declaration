@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_update_statement->bind_param('issss',$patron_id,$patron_info_res[0][0], $patron_info_res[0][1], $patron_info_res[0][2], $_POST["new_phone"]);
         $_update_statement->execute();
     }
-    if(isset($_POST["change_first_name"])){
+    if(isset($_POST["change_first_name"])&&($_POST["change_first_name"]!=NULL)){
         $_update_statement=$conn->prepare("CALL update_patron(?,?,?,?,?)");
         $_update_statement->bind_param('issss',$patron_id,$_POST["new_first_name"], $patron_info_res[0][1], $patron_info_res[0][2], $patron_info_res[0][3]);
         $_update_statement->execute();
@@ -86,24 +86,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
        <h1><?= $patron_info_res[0][0] . " " . $patron_info_res[0][1]; ?></h1>
     </header>
     <a href="profile_patrons.php">Back to Patron List</a>
-    <h2>Current First Name: <?php print_r( $patron_info_res[0][0]);?></h2>
     <form method=POST>
-        <input type="text" name="new_first_name">
+        <label for = "change_first_name" >Current First Name:</label>
+        <input type="text" name="new_first_name" value ="<?= $patron_info_res[0][0]?>">
         <input type="submit" name="change_first_name" value="Update Patron First Name";>
-    </form>
-    <h2>Current Last Name: <?php print_r($patron_info_res[0][1]);?></h2>
-    <form method=POST>
-        <input type="text" name="new_last_name">
+        <br>
+        <label for ="change_last_name">Current Last Name:<label>
+        <input type="text" name="new_last_name" value ="<?= $patron_info_res[0][1]?>">
         <input type="submit" name="change_last_name" value="Update Patron Last Name";>
-    </form>
-    <h2>Current Email: <?php echo $patron_info_res[0][2];?></h2>
-    <form method=POST>
-        <input type="text" name="new_email">
+        <br>
+        <label for = "change_email" >Current Email:</label>
+        <input type="text" name="new_email" value ="<?= $patron_info_res[0][2]?>">
         <input type="submit" name="change_email" value="Update Email";>
-    </form>
-    <h2>Current Phone Number: <?php echo $patron_info_res[0][3];?></h2>
-    <form method=POST>
-        <input type="text" name="new_phone">
+        <br>
+        <label for = "change_phone">Current Phone Number:</label>
+        <input type="text" name="new_phone" value ="<?= $patron_info_res[0][3]?>">
         <input type="submit" name="change_phone" value="Update Phone Number";>
     </form>
     <h2>Checked Out Material(s):</h2>
