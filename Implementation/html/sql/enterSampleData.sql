@@ -207,7 +207,7 @@ CALL add_reservation(1, 1, '2023-11-01 03:00:00', '2023-11-01 07:00:00', "Knight
 -- for the demo
 
 INSERT INTO patrons(patron_first_name, patron_last_name, patron_email, patron_phone)
-VALUES  ("Day","Tabez","xX_madewhentwelve_Xx@gmail.com", "123-456-7809");
+VALUES  ("Bailey","Williams","xX_madewhentwelve_Xx@gmail.com", "123-456-7809");
 
 -- hold on second space movie. Current loans on space movie
 -- and codey the coding cat.
