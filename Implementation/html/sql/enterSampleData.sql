@@ -193,8 +193,8 @@ CALL add_loan(2, 5, '2023-10-29', NULL, 0);
 CALL add_loan(20, 5, '2023-10-29', NULL, 0);
 
 CALL add_loan(1, 5, '2023-10-10', NULL, 3);
-CALL add_loan(12, 5, '2023-10-10', NULL, 1);
-CALL add_loan(14, 5, '2023-10-10', NULL, 1);
+CALL add_loan(12, 5, '2023-10-10', NULL, 2);
+CALL add_loan(14, 5, '2023-10-10', NULL, 2);
 CALL add_hold(1, 4, '2023-10-11 ');
 CALL add_hold(4, 1, '2023-11-10 9:00:00');
 CALL add_hold(4, 2, '2023-11-12 04:00:00');
@@ -207,7 +207,7 @@ CALL add_reservation(1, 1, '2023-11-01 03:00:00', '2023-11-01 07:00:00', "Knight
 -- for the demo
 
 INSERT INTO patrons(patron_first_name, patron_last_name, patron_email, patron_phone)
-VALUES  ("Day","Tabez","xX_madewhentwelve_Xx@gmail.com", "123-456-7809");
+VALUES  ("Bailey","Williams","xX_madewhentwelve_Xx@gmail.com", "123-456-7809");
 
 -- hold on second space movie. Current loans on space movie
 -- and codey the coding cat.
