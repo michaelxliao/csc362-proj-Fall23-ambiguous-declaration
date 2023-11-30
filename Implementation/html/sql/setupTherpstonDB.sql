@@ -39,7 +39,6 @@ SOURCE selectionGenres.sql;
 SOURCE patrons.sql;
 
 SOURCE patronSelectionInteractions.sql;
-SOURCE activePatronSelectionInteractions.sql;
 
 SOURCE loans.sql;
 SOURCE currentLoans.sql;

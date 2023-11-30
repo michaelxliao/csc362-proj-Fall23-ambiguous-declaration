@@ -3,8 +3,7 @@ require 'includes/setup.php';
 require 'includes/format_result.php';
 $conn = setup();
 
-if (!isset($_GET['materialid']))
-{
+if (!isset($_GET['materialid'])) {
     header('Location:manage_selection.php', true, 303);
 }
 
@@ -18,15 +17,15 @@ $get_material_info_query = "SELECT material_id,
 
 $get_material_info_stmt = $conn->prepare($get_material_info_query);
 $get_material_info_stmt->bind_param('i', $curr_material);
-if(!$get_material_info_stmt->execute())
-{
+if (!$get_material_info_stmt->execute()) {
     print("SQL error. Sorry!");
 }
 
-function find_result($material_id, $query) {
+function find_result($material_id, $query)
+{
     $stmt = $GLOBALS['conn']->prepare($query);
     $stmt->bind_param('i', $material_id);
-    if ( !$stmt->execute() ) {
+    if (!$stmt->execute()) {
         echo 'SQL error. Sorry!';
     }
     $res = $stmt->get_result();
@@ -79,8 +78,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // ...
         echo "";
     }
-    
-	header("Location:" .  $_SERVER['REQUEST_URI'],  true, 303);
+
+    header("Location:" . $_SERVER['REQUEST_URI'], true, 303);
     exit();
 }
 
@@ -98,18 +97,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <header>
-        <h1><?= $material_title ?></h1>
-        <p> Currently checked out/Available for checkout! </p> <!-- DO THIS -->
+        <h1>
+            <?= $material_title ?>
+        </h1>
         <?php
-            $is_source_stmt = $conn->prepare('SELECT material_is_source FROM adaptations WHERE material_id = ?');
-            $is_source_stmt->bind_param('i', $curr_material);
-            if (!$is_source_stmt->execute()) {
-                echo $is_source_stmt->error;
-            }
-            $is_source = $is_so
-            if () { ?>
-            <p> This material is the source for the narrative </p> <!-- DO THIS ALSO -->
+        $loan_status_stmt = $conn->prepare('SELECT 1
+                                             FROM current_loans
+                                            WHERE material_id = ?');
+        $loan_status_stmt->bind_param('i', $curr_material);
+        if (!$loan_status_stmt->execute()) {
+            echo $loan_status_stmt->error;
+        }
+        $loan_status_res = $loan_status_stmt->get_result();
+        $loan_status = $loan_status_res->fetch_all();
+
+        if ($loan_status) {
+            ?>
+            <p> Currently checked out! </p>
+        <?php } else { ?>
+            <p> Currently available! </p>
         <?php } ?>
+        <?php
+        $is_source_stmt = $conn->prepare('SELECT material_is_source, narrative_name
+                                                FROM adaptations
+                                                     NATURAL JOIN narratives
+                                               WHERE material_id = ?');
+        $is_source_stmt->bind_param('i', $curr_material);
+        if (!$is_source_stmt->execute()) {
+            echo $is_source_stmt->error;
+        }
+        $is_source_res = $is_source_stmt->get_result();
+        $is_source_data = $is_source_res->fetch_all();
+        if ($is_source_res->num_rows == 0) { ?>
+            <p> This material is not an adaptation of any narrative at the moment. </p>
+        <?php } else {
+            $is_source = $is_source_data[0][0];
+            $narrative_title = $is_source_data[0][1];
+            if ($is_source) {
+                ?>
+                <p> This material is the source for the narrative
+                    <?= $narrative_title ?>.
+                </p>
+            <?php } elseif (!$is_source) { ?>
+                <p> This material adapts the narrative
+                    <?= $narrative_title ?>
+                </p>
+            <?php }
+        } ?>
     </header>
 
     <h2>Holds on this Material</h2>
@@ -123,44 +157,48 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="new_role">New Creator Role: </label>
         <select name="new_role" id="new_role" required>
             <?php
-                $roles_res = $conn->query('SELECT * FROM creator_roles');
-                $roles_data = $roles_res->fetch_all();
+            $roles_res = $conn->query('SELECT * FROM creator_roles');
+            $roles_data = $roles_res->fetch_all();
 
-                for ($i = 0; $i < $roles_res->num_rows; $i++) { ?>
-                <option value="<?= $roles_data[$i][0] ?>"><?= $roles_data[$i][0] ?></option>
+            for ($i = 0; $i < $roles_res->num_rows; $i++) { ?>
+                <option value="<?= $roles_data[$i][0] ?>">
+                    <?= $roles_data[$i][0] ?>
+                </option>
             <?php } ?>
         </select>
         <input type="submit" name="add_creator" value="Add Creator">
     </form>
     <form method=POST>
         <?php $creators_data = $creators_res->fetch_all(); ?>
-            <table>
-                <thead>
-                    <tr>
-                        <th> <?= $creators_res->fetch_fields()[3]->name ?> </th>
-                        <th> Delete? </th>
-                    </tr>
-                </thead>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <?= $creators_res->fetch_fields()[3]->name ?>
+                    </th>
+                    <th> Delete? </th>
+                </tr>
+            </thead>
 
-                <tbody>
-                    <?php for ($i=0; $i < $creators_res->num_rows; $i++) {
-                        $id_1 = $creators_data[$i][0];
-                        $id_2 = $creators_data[$i][1];
-                        $id_3 = $creators_data[$i][2];
+            <tbody>
+                <?php for ($i = 0; $i < $creators_res->num_rows; $i++) {
+                    $id_1 = $creators_data[$i][0];
+                    $id_2 = $creators_data[$i][1];
+                    $id_3 = $creators_data[$i][2];
                     ?>
-                        <tr>
-                            <td><?= $creators_data[$i][3] ?></td>
-                            <td>
-                                <input type="checkbox"
-                                    name="checkbox<?= $id_1 . ',' . $id_2 . ',' . $id_3 ?>"
-                                    value="<?= $id_1 . ',' . $id_2 . ',' . $id_3 ?>"
-                                />
-                            </td>
-                        </tr>
-                    <?php } ?>
-                </tbody>
+                    <tr>
+                        <td>
+                            <?= $creators_data[$i][3] ?>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="checkbox<?= $id_1 . ',' . $id_2 . ',' . $id_3 ?>"
+                                value="<?= $id_1 . ',' . $id_2 . ',' . $id_3 ?>" />
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
         </table>
-        <input type="submit" name="delete_creators" value="Delete Selected Records"/>
+        <input type="submit" name="delete_creators" value="Delete Selected Records" />
     </form>
 
     <h2>Genre(s)</h2>
@@ -168,11 +206,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="genre_name">New Genre: </label>
         <select name="genre_name" id="genre_name" required>
             <?php
-                $all_genres_res = $conn->query('SELECT * FROM genres');
-                $all_genres_data = $all_genres_res->fetch_all();
+            $all_genres_res = $conn->query('SELECT * FROM genres');
+            $all_genres_data = $all_genres_res->fetch_all();
 
-                for ($i = 0; $i < $all_genres_res->num_rows; $i++) { ?>
-                <option value="<?= $all_genres_data[$i][0] ?>"><?= $all_genres_data[$i][0] ?></option>
+            for ($i = 0; $i < $all_genres_res->num_rows; $i++) { ?>
+                <option value="<?= $all_genres_data[$i][0] ?>">
+                    <?= $all_genres_data[$i][0] ?>
+                </option>
             <?php } ?>
         </select>
         <input type="submit" name="add_genre" value="Add Genre">
@@ -184,11 +224,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="genre_name">New Language: </label>
         <select name="language_name" id="language_name" required>
             <?php
-                $all_languages_res = $conn->query('SELECT * FROM languages');
-                $all_languages_data = $all_languages_res->fetch_all();
+            $all_languages_res = $conn->query('SELECT * FROM languages');
+            $all_languages_data = $all_languages_res->fetch_all();
 
-                for ($i = 0; $i < $all_languages_res->num_rows; $i++) { ?>
-                <option value="<?= $all_languages_data[$i][0] ?>"><?= $all_languages_data[$i][0] ?></option>
+            for ($i = 0; $i < $all_languages_res->num_rows; $i++) { ?>
+                <option value="<?= $all_languages_data[$i][0] ?>">
+                    <?= $all_languages_data[$i][0] ?>
+                </option>
             <?php } ?>
         </select>
         <input type="submit" name="add_language" value="Add Language">
