@@ -8,22 +8,53 @@ $conn = setup();
 
 session_start();
 
-if($_SESSION['mode'] == 'staff')
-{
-    $style_view_type = 'librarian_visible';
-}
-else if($_SESSION['mode'] == 'viewonly')
-{
-    $style_view_type = 'patron_view';
-}
-else // kicks you back to login if you're not already set up
-{
-    header('Location:index.php', True, 303);
-}
+// check if they're logged in, if not crash
+    if(!isset($_SESSION['patron_id']))
+    {
+        header("Location:login_general.php?error=true", true, 303);
+    }
+
+    $login_id = $_SESSION['patron_id'];
+
+    $patron_info = $conn->prepare("SELECT patron_id, 
+                                    patron_first_name,
+                                    patron_last_name,
+                                    patron_phone,
+                                    patron_email
+                                    FROM patrons 
+                                    WHERE patron_id = ?");
+
+    $patron_info->bind_param("i", $login_id);
+    if(!$patron_info->execute())
+    {
+        print("SQL error!");
+    }
+    $res = $patron_info->get_result();
+    $patron_data = $res->fetch_assoc();
+
+    if(isset($patron_data['patron_email']))
+    {
+        $patron_email = $patron_data['patron_email'];
+    }
+    else
+    {
+        $patron_email = "Not Set";
+    }
 
 
-// Later: implement session-specific details
+    if(isset($patron_data['patron_phone']))
+    {
+        $patron_phone = $patron_data['patron_phone'];
+    }
+    else
+    {
+        $patron_phone = "Not Set";
+    }
 
+    $patron_first_name = $patron_data['patron_first_name'];
+
+
+//SELECTION START
 
 $print_types_res = $conn->query("SELECT print_type FROM print_types WHERE print_type_is_active = TRUE");
 $multimedia_types_res = $conn->query("SELECT multimedia_type FROM multimedia_types WHERE multimedia_type_is_active = TRUE");
@@ -130,36 +161,6 @@ if (isset($_GET["Filter"])) {
     }
 }
 
-// POST logic
-if (isset($_POST["add_material"])) {
-    if (isset($_POST["pending"])) {
-        $pending = true;
-    } else {
-        $pending = false;
-    }
-
-    if (isset($_POST["print_type"])) {
-        $insert_stmt = $conn->prepare("CALL add_print_material(?, ?, ?, ?, ?, ?, ?)");
-        $insert_stmt->bind_param('sssidsi', $_POST["title"], $_POST["date_received"], $_POST["date_created"], $pending, $_POST["price"], $_POST["print_type"], $_POST["num_pages"]);
-        if (!$insert_stmt->execute()) {
-            echo "insertion print failed";
-        }
-    } elseif (isset($_POST["multimedia_type"])) {
-        echo $_POST["duration"];
-        $insert_stmt = $conn->prepare("CALL add_multimedia_material(?, ?, ?, ?, ?, ?, ?)");
-        $insert_stmt->bind_param('sssidss', $_POST["title"], $_POST["date_received"], $_POST["date_created"], $pending, $_POST["price"], $_POST["multimedia_type"], $_POST["duration"]);
-        if (!$insert_stmt->execute()) {
-            echo "insertion print failed";
-        }
-    } else {
-        echo "ya goofed up";
-    }
-
-    // header
-    header("Location:" .  $_SERVER['REQUEST_URI'],  true, 303);
-    exit();
-}
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -172,25 +173,12 @@ if (isset($_POST["add_material"])) {
 </head>
 
 <body>
-    <h1>Catalog</h1>
-    <?= $style_view_type ?>
-    <div class= <?=$style_view_type?>>
-        <h2>Add a new material</h2>
-        <?php if (!isset($_GET["type_chosen"])) { ?>
-            <form method=GET>
-                <input type="radio" name="type" id="print-radio" value="<?= $PRINT ?>" required>
-                <label for="print-radio"><?= $PRINT ?></label><br>
-                <input type="radio" name="type" id="multimedia-radio" value="<?= $MULTIMEDIA ?>" required>
-                <label for="multimedia-radio"><?= $MULTIMEDIA ?></label><br>
-                <input type="submit" name="type_chosen" value="Choose a type">
-            </form>
-        <?php } else { ?>
-            <form method=GET>
-                <input type="submit" name="undo" value="Go back">
-            </form>
-        <?php generate_insert_form($_GET["type"]);
-        } ?>
-    </div>
+    <a class="link-button" href=login_general.php> Back to Sign-In</a>
+    <header>
+        <h2> Welcome, <?=$patron_first_name?>, to the Therpston County Public Library.</h2>
+    </header>
+
+    <h1>The Catalog</h1>
 
     <br>
 

@@ -21,7 +21,7 @@ $conn = setup();
     </h1>
 </header>
 
-    <a class="link-button" href="login_general.php">For Patrons (WIP)</a>
+    <a class="link-button" href="login_general.php">For Patrons</a>
     <a class="link-button" href="index_staff.php">For Staff</a>
 </body>
 

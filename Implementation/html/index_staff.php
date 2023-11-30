@@ -22,14 +22,12 @@ $_SESSION['mode'] = 'staff';
     </header>
     <a class="link-button" href=index.php> Back to Sign-In</a>
 
-    <h2>Reports</h2>
-    <h3>Search for:</h3>
     <ul>
         <li>
-            <a href="profile_patrons.php">Patrons (Patron Profile) (FILTER BY NAME, EMAIL, PHONE)</a>
+            <a href="profile_patrons.php">View and Manage Patrons</a>
         </li>
         <li>
-            <a href="profile_clubs.php">Clubs (Club Profile)</a>
+            <a href="profile_clubs.php">View and Manage Clubs</a>
             <!-- this is to look up all related info on a specific club -->
         </li>
         <li>
@@ -41,38 +39,18 @@ $_SESSION['mode'] = 'staff';
         <li>
             <a href="profile_loans.php">Loans on the Selection (WIP)</a>
         </li>
-    </ul>
-
-    <h3>All Active:</h3>
-    </ul>
-    <li>
-        <a href="manage_selection.php">The Catalog (filterable, public-facing)</a>
-    </li>
-
-
-    <h2>Data Management</h2>
-    <ul>
         <li>
-            <a href="manage_selection.php?mode=staff"> Review Selection to Add or Remove (WIP)</a>
+            <a href="profile_spaces.php">Spaces Available to Reserve</a>
+        </li>   
+        <li>
+            <a href="profile_selection.php">The Catalog (filterable, public-facing)</a>
         </li>
         <li>
-            <a href="manage_patrons.php">Patrons (WIP)</a> <!-- Removed manage patrons. Remove this when we're ready -->
-        </li>
-        <li>
-            <a href="manage_spaces.php">Spaces and Space Reservations (WIP)</a>
-        </li>
-        <li>
-            <a href="manage_clubs.php">Clubs</a> <!-- this is to see and manage all clubs -->
-        </li>
-        <li>
-            <a href="manage_loanhold.php">Holds and Loans for Selection (WIP)</a>
-        </li>
-        <li>
-            <a href="manage_filters.php">Filters for Selection (WIP)</a>
+            <a href="manage_filters.php">Manage Filters for Selection (genres, languages, etc.)</a>
         </li>
     </ul>
 
-    <h1>we prolly need a footer but that's a later problem</h1>
+    <!-- <h1>we prolly need a footer but that's a later problem</h1> -->
 
 </body>
 

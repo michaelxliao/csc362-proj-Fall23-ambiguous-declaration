@@ -9,6 +9,8 @@ CREATE OR REPLACE TABLE patron_selection_interactions (
         
     interaction_id          INT         AUTO_INCREMENT,
     material_id             INT,
-    patron_id               INT,
-    interaction_is_active   BOOLEAN     NOT NULL DEFAULT TRUE
+    patron_id               INT
+    -- interaction_is_active   BOOLEAN     NOT NULL DEFAULT TRUE
+    -- found later that interaction is better as cascade 
+
 );

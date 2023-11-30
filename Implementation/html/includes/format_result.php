@@ -169,8 +169,7 @@ function result_to_clickable_table($result, $typeofid, $url, $show_ids) {
                             continue;
                         }
                         if ($j == 1) { // index of the clickable column 
-                        $newurl = "$url" . "?" . "$typeofid" . "id=$id"; 
-                        echo $newurl;?>
+                        $newurl = "$url" . "?" . "$typeofid" . "id=$id";?>
                         <td> <a href="<?=$newurl?>"> <?= $data[$i][$j] ?> </a> </td>
                     <?php }
                         else { ?>
@@ -285,7 +284,7 @@ function result_to_table_hideids($result) {
 <?php } ?>
 
 <?php
-function result_to_deletable_table_general($result, $hidden_fields, $delete_col_name, $submit_name) 
+function result_to_deletable_table_general($result, $hidden_fields, $delete_col_name, $submit_name, $del_rec_name  = 'delete_records') 
 { 
     // result: sql query result
     // hiddenfields: array of integer values in query to hide. 
@@ -338,7 +337,40 @@ function result_to_deletable_table_general($result, $hidden_fields, $delete_col_
                     <?php } ?>
                 </tbody>
         </table>
-        <input type="submit" name="delete_records" value="<?=$submit_name?>"/>
+        <input type="submit" name="<?=$del_rec_name?>" value="<?=$submit_name?>"/>
     </form>
 <?php } ?>
 
+
+<?php
+/*
+THIS IS BOILERPLATE FOR HANDLING POST REQUEST FOR result_to_deletable_table_general
+    if (isset($_POST['delete_records'])) {
+            
+        $patron_spaces = $conn->prepare("SELECT * FROM pretty_upcoming_space_reservations WHERE patron_id = ?;");
+
+        $patron_spaces->bind_param("i", $login_id);
+
+        if(!$patron_spaces->execute())
+        {
+            print("SQL WENT WRONG (NOT CLICKBAIT)");
+        }
+
+        $res = $patron_spaces->get_result();
+        $data = $res->fetch_all();
+
+        $del_stmt = $conn->prepare("CALL del_reservation(?);");
+        $del_stmt->bind_param("i", $record_id);
+
+        for($i = 0; $i < $res->num_rows; $i++)
+        {
+            $record_id = $data[$i][0];
+            if(isset($_POST['checkbox' . $record_id])) {
+                $del_stmt->execute();
+            }
+        }
+    
+    }
+
+*/
+?>

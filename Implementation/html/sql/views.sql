@@ -119,15 +119,29 @@ SELECT club_id AS 'ID',
 
 -- for session_spaces_past.php
     CREATE OR REPLACE VIEW pretty_past_space_reservations AS
-    SELECT space_name AS 'Reserved Space', 
+    SELECT reservation_id,
+    patron_id,
+    space_name AS 'Reserved Space', 
     space_room_number AS 'Room Number',
     start_reservation AS 'Start Time',
     end_reservation AS 'End Time', 
     club_name AS 'Associated Club',
-    reservation_notes AS 'Notes',
-    patron_id
+    reservation_notes AS 'Notes'
     FROM space_reservations
     LEFT OUTER JOIN spaces USING (space_id) 
     LEFT OUTER JOIN club_reservations USING (reservation_id)
     LEFT OUTER JOIN clubs USING (club_id)
     ORDER BY start_reservation DESC;
+
+
+DELIMITER //
+CREATE OR REPLACE PROCEDURE increment_loan_renewal(reservationid INT)
+ BEGIN
+ START TRANSACTION;
+UPDATE loans
+       SET loans.loan_renewal_tally = loan_renewal_tally + 1
+    WHERE interaction_id = reservationid;
+    COMMIT;
+   END
+//
+DELIMITER ;

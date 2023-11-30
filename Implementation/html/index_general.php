@@ -112,7 +112,7 @@ $patron_last_name = $patron_data['patron_last_name'];
             <a href="manage_selection.php">Search the Catalog</a>
         </li>
         <li>
-            <a href="session_loans.php">Show My Loans and Holds</a>
+            <a href="session_loanholds.php">Show My Loans and Holds</a>
         </li>
         <li>
             <a href="session_spaces.php">Find Spaces to Reserve (and my current reservations)</a>

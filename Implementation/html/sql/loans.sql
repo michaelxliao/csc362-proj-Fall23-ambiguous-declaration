@@ -2,8 +2,8 @@ CREATE OR REPLACE TABLE loans (
     PRIMARY KEY (interaction_id),
     FOREIGN KEY (interaction_id)
         REFERENCES patron_selection_interactions(interaction_id)
-        ON DELETE NO ACTION, -- DENY deletion rule implemented in manageInteractions.sql
-
+        ON DELETE CASCADE,
+        
     interaction_id          INT,
 
     loan_start_date         DATE        NOT NULL,

@@ -60,23 +60,24 @@ $sql_query = 'SELECT * FROM pretty_all_upcoming_space_reservations'; // this by 
 $result = $conn->query($sql_query);
 if (isset($_GET["Filter"])) {
 $where_clauses = [];
-    if ($_GET["spacename"] == $ALL_SPACES) {
+    if ($_GET["space_name"] == $ALL_SPACES) {
         // do nothing
     } else {
         //append the space name filter
 
         //NEED TO CHECK FOR SQL INJECTION.
 
-        $where_clauses[] = '`Reserved Space` = "' . $_GET['spacename'] . '"';
+        $where_clauses[] = '`Reserved Space` = "' . $_GET['space_name'] . '"';
     }
 
+    $final_sql_query = $sql_query;
+
     if (sizeof($where_clauses) > 0) {
-        $final_sql_query = $sql_query . ' WHERE';
+        $final_sql_query = $final_sql_query . ' WHERE';
         for ($i = 0; $i < sizeof($where_clauses) - 1; $i++) { // loop through all where clauses, append with ANDs
             $final_sql_query = $final_sql_query . ' (' . $where_clauses[$i] . ') AND ';
         }
         $final_sql_query = $final_sql_query . ' (' . $where_clauses[sizeof($where_clauses) - 1] . ')'; // handling the final where clause
-        echo $final_sql_query;
     }    
     
 
@@ -111,10 +112,14 @@ $where_clauses = [];
 
     <a href="session_spaces.php">Back to Spaces Menu</a>
 
+    <h2>Spaces Available for Reservation</h2>
+    <?php result_to_table($conn->query("SELECT space_name AS `Space` FROM spaces WHERE space_is_active = TRUE"));?>
+
+    <h2>Current Reserved Spaces</h2>
     <form method=GET> <!-- NOTE FOR FILTERING: don't freakin forget your quotes -->
-        <label for="space-name">Room Name: </label>
-        <select name="space-name" id="space-name" required>
-            <option value=<?=$ALL_SPACES?>> 
+        <label for="space_name">Room Name: </label>
+        <select name="space_name" id="space_name" required>
+            <option value="<?=$ALL_SPACES?>"> 
             <?=$ALL_SPACES?>
             </option>   
             <?php for ($i = 0; $i < $space_names_res->num_rows; $i++) { ?>
@@ -122,12 +127,9 @@ $where_clauses = [];
                     <?= $space_names[$i][0] ?>
                 </option>
             <?php } ?>
-            <?php for ($i = 0; $i < $multimedia_types_res->num_rows; $i++) { ?>
-                <option value="<?= $multimedia_types[$i][0] ?>">
-                    <?= $multimedia_types[$i][0] ?>
-                </option>
-            <?php } ?>
         </select>
+        <button type="submit" name="Filter">Filter</button>
+    </form>
 
         <?php result_to_table_hideids($result); ?>
 

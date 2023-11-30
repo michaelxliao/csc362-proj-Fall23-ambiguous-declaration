@@ -30,8 +30,8 @@ DELIMITER //
 CREATE OR REPLACE PROCEDURE del_interaction(id INT)
  BEGIN
  START TRANSACTION;
-    DELETE FROM interaction_id
-     WHERE interactions.interaction_id = id;
+    DELETE FROM patron_selection_interactions
+     WHERE interaction_id = id;
      -- table def handles deletion
 COMMIT;
    END

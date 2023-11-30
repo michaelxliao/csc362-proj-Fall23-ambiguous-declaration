@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <header>
-       <h1><?=  print_r($patron_info_res[0][0] . " " . $patron_info_res[0][1]); ?></h1>
+       <h1><?= $patron_info_res[0][0] . " " . $patron_info_res[0][1]; ?></h1>
     </header>
     <a href="profile_patrons.php">Back to Patron List</a>
     <h2>Current First Name: <?php print_r( $patron_info_res[0][0]);?></h2>
