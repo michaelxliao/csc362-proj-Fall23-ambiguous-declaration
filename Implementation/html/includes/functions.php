@@ -139,7 +139,7 @@ function result_to_toggle_active_table($result) { // defining toggle active tabl
 
 <?php
 # Specifically, this is to add fields with GET requests.
-function result_to_clickable_table($result, $typeofid, $url, $show_ids) {
+function result_to_clickable_table($result, $typeofid, $url, $show_ids = False, $clickable_col_index = 1) {
     $fields = $result->fetch_fields();
     $data = $result->fetch_all();
 ?>
@@ -168,7 +168,7 @@ function result_to_clickable_table($result, $typeofid, $url, $show_ids) {
                         if (($j == 0) && (!$show_ids)) { 
                             continue;
                         }
-                        if ($j == 1) { // index of the clickable column 
+                        if ($j == $clickable_col_index) { // index of the clickable column 
                         $newurl = "$url" . "?" . "$typeofid" . "id=$id";?>
                         <td> <a href="<?=$newurl?>"> <?= $data[$i][$j] ?> </a> </td>
                     <?php }
@@ -373,4 +373,17 @@ THIS IS BOILERPLATE FOR HANDLING POST REQUEST FOR result_to_deletable_table_gene
     }
 
 */
+?>
+
+<?php function find_result($id, $query)
+/* This function takes a singular primary key and an SQL query and returns a result object. */
+{
+    $stmt = $GLOBALS['conn']->prepare($query);
+    $stmt->bind_param('i', $id);
+    if (!$stmt->execute()) {
+        echo 'SQL error. Sorry!';
+    }
+    $res = $stmt->get_result();
+    return $res;
+}
 ?>

@@ -1,6 +1,6 @@
 <?php
 require 'includes/setup.php';
-require 'includes/format_result.php';
+require 'includes/functions.php';
 $conn = setup();
 $patron_id = $_GET['patronid'];
 $patron_info= $conn->query("SELECT patron_first_name ,patron_last_name, patron_email, patron_phone

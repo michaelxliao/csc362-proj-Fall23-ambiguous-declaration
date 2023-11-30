@@ -1,6 +1,6 @@
 <?php
 require 'includes/setup.php';
-require 'includes/format_result.php';
+require 'includes/functions.php';
 $conn = setup();
 
 $sql_query = 'SELECT * FROM pretty_narratives_librarian'
@@ -21,8 +21,8 @@ $sql_query = 'SELECT * FROM pretty_narratives_librarian'
         <h1>Narratives</h1>
         <p> Curious what other versions or adaptations of your favorite media might exist? Look no further. </p>
     </header>
-
-    <?php result_to_clickable_table($conn->query($sql_query), "narrative", "details_narrative.php", true); ?>
+    <a href="index_staff.php">Back to Staff</a>
+    <?php result_to_clickable_table($conn->query($sql_query), "narrative", "details_narrative.php", true, 0); ?>
 
 </body>
 

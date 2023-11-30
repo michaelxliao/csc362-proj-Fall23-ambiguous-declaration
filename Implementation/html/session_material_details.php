@@ -6,30 +6,71 @@ $conn = setup();
 if (!isset($_GET['materialid'])) {
     header('Location:manage_selection.php', true, 303);
 }
+session_start();
 
-$curr_material = $_GET['materialid']; // might be invalid still
+// check if they're logged in, if not crash
+    if(!isset($_SESSION['patron_id']))
+    {
+        header("Location:login_general.php?error=true", true, 303);
+    }
+
+    $login_id = $_SESSION['patron_id'];
+
+    $patron_info = $conn->prepare("SELECT patron_id, 
+                                    patron_first_name,
+                                    patron_last_name,
+                                    patron_phone,
+                                    patron_email
+                                    FROM patrons 
+                                    WHERE patron_id = ?");
+
+    $patron_info->bind_param("i", $login_id);
+    if(!$patron_info->execute())
+    {
+        print("SQL error!");
+    }
+    $res = $patron_info->get_result();
+    $patron_data = $res->fetch_assoc();
+
+    if(isset($patron_data['patron_email']))
+    {
+        $patron_email = $patron_data['patron_email'];
+    }
+    else
+    {
+        $patron_email = "Not Set";
+    }
+
+
+    if(isset($patron_data['patron_phone']))
+    {
+        $patron_phone = $patron_data['patron_phone'];
+    }
+    else
+    {
+        $patron_phone = "Not Set";
+    }
+
+    $patron_first_name = $patron_data['patron_first_name'];
+
+try{
+    $curr_material = $_GET['materialid']; // might be invalid still
+} catch(Exception $e)
+{
+    //$_GET['materialid'] isn't set
+    header("Location:session_sel_material.php?error=true", true, 303);
+}
 
 // if 0 rows, then curr_material is invalid.
 $get_material_info_query = "SELECT *
                               FROM pretty_selection_librarian
-                             WHERE `ID` = ?";
+                             WHERE ID = ?";
 
 $get_material_info_stmt = $conn->prepare($get_material_info_query);
 $get_material_info_stmt->bind_param('i', $curr_material);
 if (!$get_material_info_stmt->execute()) {
     print("SQL error. Sorry!");
 }
-
-// function find_result($id, $query)
-// {
-//     $stmt = $GLOBALS['conn']->prepare($query);
-//     $stmt->bind_param('i', $id);
-//     if (!$stmt->execute()) {
-//         echo 'SQL error. Sorry!';
-//     }
-//     $res = $stmt->get_result();
-//     return $res;
-// }
 
 $get_material_info_result = $get_material_info_stmt->get_result();
 $material_info = $get_material_info_result->fetch_assoc();
@@ -40,12 +81,6 @@ $pending = $material_info['Pending?'];
 $cost = $material_info['Cost'];
 $type = $material_info['Type'];
 $length = $material_info['Length'];
-
-if ($conn->query('SELECT 1 FROM multimedia_types WHERE multimedia_type =' . $type)->num_rows > 0) { // can be unsafe here because inputs guaranteed coming out of database
-    $is_print = false;
-} else {
-    $is_print = true;
-}
 
 $get_creators_query = "SELECT creator_id,
                               material_id,
@@ -68,22 +103,6 @@ $languages_query = "SELECT language_name AS 'Language'
                      WHERE material_id = ?";
 
 $languages_res = find_result($curr_material, $languages_query);
-
-$adaptations_query = "SELECT material_title AS 'Adaptation Title',
-                             (CASE WHEN (multimedia_type IS NULL)
-                             THEN print_type
-                             ELSE multimedia_type
-                             END) AS 'Type'
-                        FROM adaptations
-                             NATURAL JOIN narratives
-                             LEFT OUTER JOIN selection USING (material_id)
-                             LEFT OUTER JOIN multimedia USING (material_id)
-                             LEFT OUTER JOIN print_materials USING (material_id)
-                       WHERE narrative_id IN (SELECT narrative_id
-                                                FROM adaptations
-                                               WHERE material_id = ?)";
-
-$adaptations_res = find_result($curr_material, $adaptations_query);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['delete_creators'])) {
@@ -275,47 +294,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h2>Update this Material</h2>
     <form method=POST>
         <label for ="new_title">Title:</label>
-        <input type="text" name="new_title" value = "<?=$material_title?> " required />
+        <input type="text" name="new_title" value = "<?=$material_title?> " />
         <br>
         <label for ="date_selected">Date Selected: </label>
-        <input type="date" name="date_selected" value = "<?=$date_selected?> " required />
+        <input type="date" name="date_selected" value = "<?=$date_selected?> " />
         <br>
-        <label for ="date_created">Date Created: </label>
-        <input type="date" name="date_created" value = "<?=$date_created?> " required />
-        <br>
-        <label for ="pending">Pending? </label>
-        <input type="checkbox" name="pending" value = "<?=$pending?> " required />
-        <br>
-        <label for ="cost">Cost: </label>
-        <input type="number" min="0" step="any" name="cost" value = "<?=$cost?> " required />
-        <br>
-        <label for ="type">Type: </label>
-        <select selected="<?= $type ?>" required>
-            <?php if ($is_print) {
-                $print_types_res = $conn->query("SELECT print_type FROM print_types WHERE print_type_is_active = TRUE");
-                for ($i = 0; $i < $print_types_res->num_rows; $i++) { ?>
-                    <option value="<?= $print_types[$i][0] ?>">
-                        <?= $print_types[$i][0] ?>
-                    </option>
-            <?php }
-            } else {
-                $multimedia_types_res = $conn->query("SELECT multimedia_type FROM multimedia_types WHERE multimedia_type_is_active = TRUE");
-                for ($i = 0; $i < $multimedia_types_res->num_rows; $i++) { ?>
-                    <option value="<?= $multimedia_types[$i][0] ?>">
-                        <?= $multimedia_types[$i][0] ?>
-                    </option>
-                <?php }
-            } ?>
-        </select>
-        <br>
-        <label for ="length">Length: </label>
-        <?php if ($is_print) { ?>
-            <input type="number" min="1" name="length" value = "<?=$length?> " required />
-        <?php } else { ?>
-            <input pattern="^\d{2}:\d{2}:\d{2}$" name="duration" placeholder="HH:MM:SS" value="<?= $length ?>" required>
-        <?php } ?>
-        <br>
-        <input type="submit" name="edit_material" value="Edit Material" />
+        <input type="submit" name="edit_materi" value="Edit Club" />
     </form>
     <h2>Holds on this Material</h2>
 
@@ -406,8 +390,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
     <?= result_to_deletable_table_general($languages_res, [-1], 'Delete?', 'Delete Language', 'delete_languages') ?>
 
-    <h2>Adaptation(s)</h2> <!-- no data management here; that happens elsewhere -->
-    <?= result_to_table($adaptations_res) ?>
 
 </body>
 

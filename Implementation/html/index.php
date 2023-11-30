@@ -16,13 +16,13 @@ $conn = setup();
 
 <body>
     <header>
-    <h1> Welcome to the Therpston County
-        Public Library (WIP)!
-    </h1>
-</header>
-
     <a class="link-button" href="login_general.php">For Patrons</a>
     <a class="link-button" href="index_staff.php">For Staff</a>
+    <h1> Welcome to the Therpston County
+        Public Library!
+    </h1>
+</header>
+    <p> Lorem ipsum here... </p>
 </body>
 
 </html>

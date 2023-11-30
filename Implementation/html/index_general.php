@@ -96,9 +96,10 @@ $patron_last_name = $patron_data['patron_last_name'];
 </head>
 
 <body>
-<a class="link-button" href=login_general.php> Back to Sign-In</a>
     <header>
-        <h2> Welcome, <?=$patron_first_name?>, to the Therpston County Public Library.</h2>
+
+        <a class="link-button" href=login_general.php> Back to Sign-In</a>
+        <h1> Welcome, <?=$patron_first_name?>, to the Therpston County Public Library.</h1>
     </header>
     
     <p>
@@ -107,23 +108,13 @@ $patron_last_name = $patron_data['patron_last_name'];
         Phone: <?=$patron_phone?><br>
     </p>
     
-    <ul>
-        <li>
-            <a href="manage_selection.php">Search the Catalog</a>
-        </li>
-        <li>
-            <a href="session_loanholds.php">Show My Loans and Holds</a>
-        </li>
-        <li>
-            <a href="session_spaces.php">Find Spaces to Reserve (and my current reservations)</a>
-        </li>
-        <li>
-            <a href="session_clubs.php">Show My Clubs (and my roles in them)</a>
-        </li>
-
-
-
-    </ul>
+    <nav>
+        <a href="session_loanholds.php">Show My Loans and Holds</a><br>
+        <a href="session_sel_material.php">Search the Catalog</a><br>
+        <a href="session_sel_narrative.php">Find Adaptations of a Material</a><br>
+        <a href="session_spaces.php">Find Spaces to Reserve (and my current reservations)</a><br>
+        <a href="session_clubs.php">Show My Clubs (and my roles in them)</a><br>
+    </nav>
 
 </body>
 

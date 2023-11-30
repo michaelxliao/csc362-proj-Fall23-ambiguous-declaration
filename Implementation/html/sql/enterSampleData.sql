@@ -79,7 +79,7 @@ CALL add_print_material('Dune', '2003-01-15', '1965-01-10', TRUE, 29.99, 'Paperb
 CALL add_multimedia_material('Space Explorers: The Movie', '2023-03-25', '1980-03-20', TRUE, 9.99, 'Movie', '01:45:00'); -- 13
 CALL add_multimedia_material('Space Explorers Two: The Subspace Explorers Attack', '2023-03-25', '1982-03-20', TRUE, 9.99, 'Movie', '02:30:00'); -- 14
 CALL add_multimedia_material('Space Explorers Three: Revenge of the Schmedi', '2023-04-30', '1985-04-25', FALSE, 0.99, 'Movie', '03:45:00'); -- 15
-CALL add_multimedia_material('Larry Llama Talks About Laughter', '2023-04-30', '2023-04-25', FALSE, 0.99, 'Podcast', '00:39:00'); -- 16
+CALL add_multimedia_material('Larry Llama and Codey', '2023-04-30', '2023-04-25', FALSE, 0.99, 'Podcast', '00:39:00'); -- 16
 CALL add_multimedia_material('Louise Llama Does Stand-Up', '2023-04-30', '2023-04-25', FALSE, 0.99, 'Podcast', '00:39:00');  -- 17
 CALL add_multimedia_material('The Podcast With No Narrative', '2023-04-30', '1900-04-25', FALSE, 0.99, 'Podcast', '00:20:00'); -- 18
 CALL add_multimedia_material('Dune Your Mom', '2020-04-20', '2019-04-25', FALSE, 14.99, 'Movie', '00:39:00'); -- 19
@@ -88,7 +88,7 @@ CALL add_print_material('The Adventures of Codey the Coding Cat', '2023-01-15', 
 
 INSERT INTO creators(creator_first_name, creator_last_name)
 VALUES ("Steven", "Spielberg"), -- 1
-       ("Stephen", "Rout"), -- 2
+       ("Steven", "Route"), -- 2
        ("Hatsune", "Miku"), -- 3
        ("Rebecca", "Sugar"); -- 4
 
@@ -190,13 +190,13 @@ CALL add_loan(5, 2, '2023-9-29', '2023-10-15', 0);
 CALL add_loan(5, 3, '2023-10-29', '2023-11-02', 0);
 CALL add_loan(4, 4, '2023-10-29', NULL, 2);
 CALL add_loan(2, 5, '2023-10-29', NULL, 0);
-CALL add_loan(8, 5, '2023-10-29', NULL, 0);
+CALL add_loan(20, 5, '2023-10-29', NULL, 0);
 
 CALL add_loan(1, 5, '2023-10-10', NULL, 3);
 CALL add_loan(12, 5, '2023-10-10', NULL, 1);
 CALL add_loan(14, 5, '2023-10-10', NULL, 1);
 CALL add_hold(1, 4, '2023-10-11 ');
-CALL add_hold(4, 1, '2023-11-10 07:00:00');
+CALL add_hold(4, 1, '2023-11-10 9:00:00');
 CALL add_hold(4, 2, '2023-11-12 04:00:00');
 
 -- club reservations
@@ -229,13 +229,17 @@ VALUES
 INSERT INTO space_reservations(patron_id, space_id, start_reservation, end_reservation, reservation_notes)
 VALUES
 -- reading club is reading codey the coding cat
-(7, 1, '2023-12-01 06:00:00', '2023-12-01 07:00:00', "Codey the Coding Cat Book Circle"),
+(7, 1, '2023-12-01 18:00:00', '2023-12-01 19:00:00', "Codey the Coding Cat Book Circle"),
 -- reservation for self at study hall
-(7, 4, '2023-12-01 07:00:01', '2023-12-01 10:00:00', "Breaking Down about Presentation :("),
-(7, 4, '2023-11-01 07:00:01', '2023-11-01 10:00:00', "Choose Which Book to Circle");
+(7, 4, '2023-12-01 19:00:01', '2023-12-01 22:00:00', "Breaking Down about Presentation :("),
+(7, 4, '2023-11-01 19:00:01', '2023-11-01 22:00:00', "Choose Which Book to Circle");
 
 
 INSERT INTO club_reservations(club_id, reservation_id)
 VALUES
 (2, 6),
 (2, 8);
+
+INSERT INTO adaptations(narrative_id, material_id, material_is_source)
+VALUES
+(1, 16, False);

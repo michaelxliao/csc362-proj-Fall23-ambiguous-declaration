@@ -1,6 +1,6 @@
 <?php
 require 'includes/setup.php';
-require 'includes/format_result.php';
+require 'includes/functions.php';
 
 $conn = setup();
 
@@ -173,11 +173,12 @@ if (isset($_GET["Filter"])) {
 </head>
 
 <body>
-    <a class="link-button" href=login_general.php> Back to Sign-In</a>
     <header>
-        <h2> Welcome, <?=$patron_first_name?>, to the Therpston County Public Library.</h2>
-    </header>
+        <a class="link-button" href=login_general.php> Back to Sign-In</a>
 
+        <h1> Welcome, <?=$patron_first_name?>, to the Therpston County Public Library.</h1>
+    </header>
+    <a href="index_general.php">Back to Main Patron Page</a>
     <h1>The Catalog</h1>
 
     <br>
@@ -221,7 +222,7 @@ if (isset($_GET["Filter"])) {
         </select>
         <button type="submit" name="Filter">Filter</button>
     </form>
-    <?php result_to_clickable_table($result, "material", "details_material.php", true); ?>
+    <?php result_to_clickable_table($result, "material", "session_material_details.php", true); ?>
 </body>
 
 </html>

@@ -1,6 +1,6 @@
 <?php
 require 'includes/setup.php';
-require 'includes/format_result.php';
+require 'includes/functions.php';
 $conn = setup();
 $club_id = $_GET['clubid'];
 $club_name_res = $conn->query("SELECT club_name FROM clubs WHERE club_id = $club_id"); // note all these need to be refactoered into perpared statements
@@ -121,22 +121,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </header>
     <a href="profile_clubs.php">Back to Club Profiles</a>
     <form method=POST>
-        <table>
-            <thead>
-                <th></th>
-            </thead>
-            <tbody>
-            <tr>
-                <td style="text-align: right;">Club Name:</td>
-                <td><input type="text" name="edit_club_name" value = "<?=$club_name?> " $style="height: 70px;" /></td>
-            </tr>
-            <!-- Description -->
-            <tr>
-                <td style="text-align: right;">Club Description:</td>
-                <td><input type="text" name="edit_club_desc" value = "<?=$club_desc_res?> " $style="height: 70px;" /></td>
-            </tr>
-            </tbody>
-        </table>
+        <label for ="edit_club_name">Club Name:</label>
+        <input type="text" name="edit_club_name" value = "<?=$club_name?> " />
+        <br>
+        <label for ="edit_club_desc">Club Description:</label>
+        <textarea name="edit_club_desc" value = "<?=$club_desc_res?> "> </textarea>
+        <br>
         <input type="submit" name="edit_old_club" value="Edit Club" />
     </form>
     <h2>Club Member(s):</h2>

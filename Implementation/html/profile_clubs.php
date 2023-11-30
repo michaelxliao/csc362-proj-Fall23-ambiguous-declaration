@@ -1,6 +1,6 @@
 <?php
 require 'includes/setup.php';
-require 'includes/format_result.php';
+require 'includes/functions.php';
 
 $conn = setup();
 $club_info = $conn->query("SELECT * FROM pretty_clubs_librarian");
@@ -44,24 +44,10 @@ if (isset($_POST["add_club"])) {
     <a href="index_staff.php">Back to Staff</a>
     <h3>Add Clubs</h3>
     <form method=POST>
-        <table>
-            <thead>
-                <th></th>
-            </thead>
-            <tbody>
-                <!-- Name -->
-                <tr>
-                    <td style="text-align: right">Club name:</td>
-                    <td><input type="text" name="club_name" /></td>
-                </tr>
-                <!-- Description -->
-                <tr>
-                    <td style="text-align: right;">Club description:</td>
-                    <td><input type="text" name="add_club_desc" style="height: 70px;" /></td>
-                </tr>
-                <tr>
-            </tbody>
-        </table>
+        <label for="club_name">Club name:</label>
+        <input type="text" name="club_name" /><br>
+        <label for="add_club_desc">Club description:</label>
+        <textarea name="add_club_desc"></textarea><br>
         <input type="submit" name="add_club" value="Add Club" />
 
     </form>

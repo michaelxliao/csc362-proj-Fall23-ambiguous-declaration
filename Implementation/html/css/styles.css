@@ -11,16 +11,41 @@ body {
   background-color: #FAF0CA;
 }
 
-a.link-button {
+nav ul {
+  text-align: center;
+  list-style-position: inside;
+  list-style-type: none;
+}
+
+/* nav li {
+  float: left;
+  border: 1px dotted #0D3B66;
+  margin: 10px;
+} */
+
+/*for unordered list*/
+nav {
   background-color: #EE964B;
   color: inherit;
   border: none;
-  padding: 30px 70px;
+  padding: 30px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 20px;
 }
+
+a.link-button {
+  background-color: #EE964B;
+  border: none;
+  padding: 30px 70px;
+  margin-left: 15px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  float: right;
+} 
+
 
 .librarian_visible { /* this is a class for forms that handle data manipulation */
   border: 1px dotted #0D3B66;

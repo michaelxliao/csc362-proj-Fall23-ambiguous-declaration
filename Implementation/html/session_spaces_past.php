@@ -1,6 +1,6 @@
 <?php
 require 'includes/setup.php';
-require 'includes/format_result.php';
+require 'includes/functions.php';
 $conn = setup();
 session_start();
 
@@ -126,10 +126,10 @@ else{
 </head>
 
 <body>
-<a class="link-button" href=login_general.php> Back to Sign-In</a>
+    <header>
+        <a class="link-button" href=login_general.php> Back to Sign-In</a>
 
-<header>
-        <h2> Welcome, <?=$patron_first_name?>, to the Therpston County Public Library.</h2>
+        <h1> Welcome, <?=$patron_first_name?>, to the Therpston County Public Library.</h1>
     </header>
 
     <a href="session_spaces.php">Back to Spaces Menu</a>

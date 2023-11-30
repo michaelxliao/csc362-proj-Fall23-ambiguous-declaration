@@ -17,9 +17,9 @@ $conn = setup();
 
 <body>
     <header>
-    </header>
     <a class="link-button" href=index.php> Back to Staff</a>
-    <h3>Please enter your library card number.</h3>
+    <h1>Please enter your library card number.</h1>
+    </header>
     <form method="POST" action="index_general.php"> 
         <input type="text" name="patron_login_id">
         <input type="submit" name="login_submit" value="Login">

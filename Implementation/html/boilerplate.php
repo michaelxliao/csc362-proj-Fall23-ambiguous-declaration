@@ -27,10 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <header>
-        <!-- this is where h1s etc. go, any explanatory info -->
-    </header>
-    <form method="POST"> <!-- GENERIC!! action defaults to original page -->
+<header>
+    <a class="link-button" href=index.php> Back to Sign-In</a>
+
+    <h1>Therpston County Public Library</h1>
+    </header>    <form method="POST"> <!-- GENERIC!! action defaults to original page -->
         <!-- labels, inputs -->
         <input type="submit" name="<?= $FORM_NAME ?>">
     </form>

@@ -1,6 +1,6 @@
 <?php
 require 'includes/setup.php';
-require 'includes/format_result.php';
+require 'includes/functions.php';
 $conn = setup();
 session_start();
 
@@ -190,11 +190,13 @@ $loan_res = $patron_loan_stmt->get_result();
 </head>
 
 <body>
+<header>
+
 <a class="link-button" href=login_general.php> Back to Sign-In</a>
-    <header>
-        <h2> Welcome, <?=$patron_first_name?>, to the Therpston County Public Library.</h2>
-    </header>
-    <a href="index_general.php">Back to Main Patron Page</a>
+<h1> Welcome, <?=$patron_first_name?>, to the Therpston County Public Library.</h1>
+</header>
+
+<a href="index_general.php">Back to Main Patron Page</a>
 
     <?php
     if(isset($_GET['increment_error']))
