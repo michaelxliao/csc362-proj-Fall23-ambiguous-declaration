@@ -27,7 +27,7 @@ CREATE OR REPLACE PROCEDURE del_club(id INT) -- NEEDS WORK
  BEGIN
  START TRANSACTION;
    DELETE FROM clubs
-   WHERE club_id = id;
+   WHERE clubs.club_id = id;
 
 COMMIT;
    END

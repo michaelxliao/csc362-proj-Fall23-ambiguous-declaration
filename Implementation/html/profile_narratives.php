@@ -22,6 +22,7 @@ $sql_query = 'SELECT * FROM pretty_narratives_librarian'
         <p> Curious what other versions or adaptations of your favorite media might exist? Look no further. </p>
     </header>
     <a href="index_staff.php">Back to Staff</a>
+    
     <?php result_to_clickable_table($conn->query($sql_query), "narrative", "details_narrative.php", true, 0); ?>
 
 </body>

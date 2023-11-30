@@ -96,6 +96,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $insert_stmt->execute();
     }
 
+    if (isset($_POST['del_club'])){
+        $del_club = $conn->query("CALL del_club(?)");
+        $del_club ->bind_param('i', $club_id);
+        $del_club -> execute();
+        header("Location: profile_clubs.php", true, 303);
+        exit();
+
+    }
     if (isset($_POST['add_space_reservation'])) {
 
     }
@@ -163,6 +171,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
     </form> -->
     <?= result_to_table($club_spaces_reserved_res); ?>
+    <form method=POST>
+        <input type ="submit" name ="del_club" value ="Delete Club?"/>
+    </form>
 </body>
 
 </html>
