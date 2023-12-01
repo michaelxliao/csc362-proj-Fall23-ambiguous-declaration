@@ -5,7 +5,7 @@ require 'includes/functions.php';
 $conn = setup();
 $club_info = $conn->query("SELECT * FROM pretty_clubs_librarian");
 if (isset($_POST["add_club"])) {
-    $changesMade = True;
+    $changes_made = True;
 
     if (isset($_POST["club_name"]) && isset($_POST["add_club_desc"])) {
         # Check for the club already being in database.

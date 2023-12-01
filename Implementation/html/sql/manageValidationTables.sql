@@ -200,3 +200,14 @@ COMMIT;
    END
 //
 DELIMITER ;
+
+DELIMITER //
+CREATE OR REPLACE PROCEDURE add_creator(creator_firstname VARCHAR(256), creator_lastname VARCHAR(256))
+ BEGIN
+ START TRANSACTION;
+       INSERT INTO creators (creator_first_name, creator_last_name)
+       VALUES (creator_firstname, creator_lastname);
+COMMIT;
+   END
+//
+DELIMITER ;

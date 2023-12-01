@@ -4,12 +4,12 @@ require 'includes/functions.php';
 
 $conn = setup();
 
-$changesMade = False;
+$changes_made = False;
 
 # Check if club added
 
 if (isset($_POST["add_club"])) {
-    $changesMade = True;
+    $changes_made = True;
 
     if (isset($_POST["club_name"]) && isset($_POST["add_club_desc"])) {
         # Check for the club already being in database.
@@ -42,7 +42,7 @@ if (isset($_POST["add_club"])) {
 }
 
 if (isset($_POST["edit_club"])) {
-    $changesMade = True;
+    $changes_made = True;
 
     if (isset($_POST["old_club_name"]) && isset($_POST["new_club_name"]) && isset($_POST["edit_club_desc"])) {
         # Check for the club already being in database.
@@ -67,7 +67,7 @@ if (isset($_POST["edit_club"])) {
 }
 
 
-if ($changesMade) {
+if ($changes_made) {
     header("Location:" . $_SERVER['REQUEST_URI'], true, 303);
 }
 ?>
