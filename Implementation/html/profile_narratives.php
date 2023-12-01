@@ -9,7 +9,7 @@ if(isset($_POST["add_narrative"])){
     print($_POST["new_narrative_name"]);
     print($_POST["new_narrative_decs"]);
     $add_stmt = $conn->prepare('INSERT INTO narratives(narrative_name, narrative_description) VALUES (?,?)');
-    $add_stmt -> bind_param('ss', $_POST["new_narrative_name"], $_POST["new_narrative_desc"]);
+    $add_stmt -> bind_param('ss', $_POST["new_narrative_name"], $_POST["new_narrative_decs"]);
     $add_stmt -> execute();
 
     // header("Location: {$_SERVER['REQUEST_URI']}", true, 303);

@@ -159,7 +159,7 @@ CREATE OR REPLACE PROCEDURE del_narrative(narrative_id INT)
  BEGIN
  START TRANSACTION;
        DELETE FROM narratives
-        WHERE Narratives.narrative_id = narrative_id;
+        WHERE narratives.narrative_id = narrative_id;
 COMMIT;
    END
 //
