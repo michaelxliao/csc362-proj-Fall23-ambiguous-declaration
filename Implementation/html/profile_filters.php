@@ -10,7 +10,7 @@ $conn = setup();
 $changes_made = False;
 // adding genres
 if (isset($_POST["add_genre"])) {
-    $changesMade = True;
+    $changes_made = True;
 
     if (isset($_POST["add_genre_id"])) {
         # Check for the genre already being in database.
@@ -30,7 +30,7 @@ if (isset($_POST["add_genre"])) {
 }
 // deleting genres
 if(isset($_POST["delete_genres"])) {
-    $changesMade = True;
+    $changes_made = True;
     #query all instruments
     $result = $conn->query("SELECT genre_name FROM genres");
     $all_ids = $result->fetch_all();
@@ -54,7 +54,7 @@ if(isset($_POST["delete_genres"])) {
 
 // add languages
 if (isset($_POST["add_lang"])) {
-    $changesMade = True;
+    $changes_made = True;
 
     if (isset($_POST["add_lang_id"])) {
         # Check for the genre already being in database.
@@ -74,7 +74,7 @@ if (isset($_POST["add_lang"])) {
 }
 // deleting languages
 if(isset($_POST["delete_languages"])) {
-    $changesMade = True;
+    $changes_made = True;
     #query all instruments
     $result = $conn->query("SELECT language_name FROM languages");
     $all_ids = $result->fetch_all();
@@ -95,7 +95,7 @@ if(isset($_POST["delete_languages"])) {
 
 // add creator roles
 if (isset($_POST["add_role"])) {
-    $changesMade = True;
+    $changes_made = True;
 
     if (isset($_POST["add_role_id"])) {
         # Check for the role already being in database.
@@ -115,7 +115,7 @@ if (isset($_POST["add_role"])) {
 }
 // delete creator roles
 if(isset($_POST["del_roles"])) {
-    $changesMade = True;
+    $changes_made = True;
     #query all instruments
     $result = $conn->query("SELECT creator_role FROM creator_roles");
     $all_ids = $result->fetch_all();
@@ -137,7 +137,7 @@ if(isset($_POST["del_roles"])) {
 
 // add print types
 if (isset($_POST["add_print"])) {
-    $changesMade = True;
+    $changes_made = True;
 
     if (isset($_POST["add_print_id"])) {
         # Check for the genre already being in database.
@@ -157,7 +157,7 @@ if (isset($_POST["add_print"])) {
 }
 // delete print types
 if(isset($_POST["del_prints"])) {
-    $changesMade = True;
+    $changes_made = True;
     #query all instruments
     $result = $conn->query("SELECT print_type FROM print_types");
     $all_ids = $result->fetch_all();
@@ -178,7 +178,7 @@ if(isset($_POST["del_prints"])) {
 
 // add multimedia types
 if (isset($_POST["add_multimedia"])) {
-    $changesMade = True;
+    $changes_made = True;
 
     if (isset($_POST["add_multimedia_id"])) {
         # Check for the genre already being in database.
@@ -198,7 +198,7 @@ if (isset($_POST["add_multimedia"])) {
 }
 // delete multimedia types
 if(isset($_POST["del_multimedias"])) {
-    $changesMade = True;
+    $changes_made = True;
     #query all instruments
     $result = $conn->query("SELECT multimedia_type FROM multimedia_types");
     $all_ids = $result->fetch_all();
@@ -217,13 +217,57 @@ if(isset($_POST["del_multimedias"])) {
     }
 }
 
-//post request get
-if($changes_made)
-{
-    header("Location:" . $_SERVER['REQUEST_URI'], true, 303);
+if (isset($_POST["add_creator"])) {
+    $changes_made = True;
+
+    if ($_POST["add_creator_firstname"] != "") {
+
+        $new_first_name = $_POST['add_creator_firstname'];
+
+        if($_POST["add_creator_lastname"] == "")
+        {
+            $new_last_name = Null;
+        }
+        else
+        {
+            $new_last_name = $_POST["add_creator_lastname"];
+        }
+
+            $insert_stmt = $conn->prepare("CALL add_creator(?, ?)");
+            $insert_stmt->bind_param('ss', $new_first_name, $new_last_name);
+            $result = $insert_stmt->execute();
+
+    }
 }
 
 
+// delete creators UNFINISHED>>
+if(isset($_POST["del_creators"])) {
+    $changes_made = True;
+    #query all instruments
+    $result = $conn->query("SELECT creator_id FROM creators");
+    $all_ids = $result->fetch_all();
+    $num_rows = count($all_ids);
+    $del_stmt = $conn->prepare("DELETE FROM creators WHERE creator_id=?");
+    $del_stmt->bind_param('s', $id);
+    #loop through checkboxes of instruments
+    for($i=0; $i<$num_rows; $i++)
+    {
+        $id = $all_ids[$i][0];
+        echo $id;
+        if(isset($_POST['del_creator_id_' . $id]))
+        {
+            $result = $del_stmt->execute();
+        }
+    }
+}
+
+
+//post request get
+if($changes_made == True)
+{
+    header("Location:" . $_SERVER['REQUEST_URI'], true, 303);
+}
 
 ///
 /// Views for SQL output
@@ -239,6 +283,7 @@ $print_types_res = $conn->query("SELECT print_type
                             FROM print_types;");  
 $multimedia_types_res = $conn->query("SELECT multimedia_type
 FROM multimedia_types;");
+$creators_res = $conn->query("SELECT creator_id, creator_first_name, creator_last_name FROM creators;")
 
 ?>
 <!DOCTYPE html>
@@ -262,7 +307,7 @@ FROM multimedia_types;");
     <h1>Manage Filters For the Selection</h1>
 
     <h2>Genres</h2>
-    <form action="manage_filters.php" method=POST>
+    <form method=POST>
         <table>
             <thead>
                 <th></th>
@@ -291,7 +336,7 @@ FROM multimedia_types;");
         ?>
 
     <h2>Languages</h2>
-    <form action="manage_filters.php" method=POST>
+    <form method=POST>
         <table>
             <thead>
                 <th></th>
@@ -322,7 +367,7 @@ FROM multimedia_types;");
 
 
     <h2>Creator Roles</h2>
-    <form action="manage_filters.php" method=POST>
+    <form method=POST>
         <table>
             <thead>
                 <th></th>
@@ -353,7 +398,7 @@ FROM multimedia_types;");
 
 
     <h2>Print Types</h2>
-    <form action="manage_filters.php" method=POST>
+    <form method=POST>
         <table>
             <thead>
                 <th></th>
@@ -381,7 +426,7 @@ FROM multimedia_types;");
             ?>
 
     <h2>Multimedia Types</h2>
-    <form action="manage_filters.php" method=POST>
+    <form method=POST>
         <table>
             <thead>
                 <th></th>
@@ -407,6 +452,37 @@ FROM multimedia_types;");
                                 "del_multimedias"              // check this at start
                                 )
             ?>
+
+<h2>Creators</h2>
+    <form method=POST>
+        <table>
+            <thead>
+                <th></th>
+            </thead>
+            <tbody>
+                <!-- Name -->
+                <tr>
+                    <td style="text-align: right">Add a Creator:</td>
+                    <td><label>First Name:</label><input type="text" name="add_creator_firstname" /></td>
+                    <td><label>Last Name:</label><input type="text" name="add_creator_lastname" /></td>
+
+                </tr>
+            </tbody>
+        </table>
+        <input type="submit" name="add_creator" value="Add Creator" />
+
+
+
+<h4>Delete Creators</h4>
+    <?php
+            result_to_checkbox_table($creators_res, // query
+                                "Delete Creator",             // string for column
+                                "del_creator_id_",             // e.g. 'del_multimedia_id_podcast'
+                                "Delete Selected Creators",   // value of submit form
+                                "del_creators"              // check this at start
+                                )
+            ?>
+
 </body>
 
 </html>

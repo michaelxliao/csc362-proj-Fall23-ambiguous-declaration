@@ -67,7 +67,7 @@ SOURCE manageReservations.sql;
 SOURCE manageSelection.sql;
 SOURCE manageSpaces.sql;
 
-SOURCE updateValidationTables.sql;
+SOURCE manageValidationTables.sql;
 
 SOURCE enterSampleData.sql;
 

@@ -200,7 +200,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (isset($_POST["edit_material"])) {
         $new_club_name = $_POST["edit_club_name"];
         $new_club_decs = $_POST["edit_club_desc"];
-        $changesMade = True;
+        $changes_made = True;
     
         if (isset($_POST["edit_club_name"]) && isset($_POST["edit_club_desc"])) {
             # Check for the club already being in database.

@@ -5,10 +5,10 @@ CREATE OR REPLACE TABLE selection_creators(
         ON DELETE CASCADE,
     FOREIGN KEY (creator_id)
         REFERENCES creators(creator_id)
-        ON DELETE NO ACTION, -- DENY deletion rule implemented in updateValidationTables.sql
+        ON DELETE CASCADE,
     FOREIGN KEY (creator_role)
         REFERENCES creator_roles(creator_role)
-        ON DELETE NO ACTION, -- DENY deletion rule implemented in updateValidationTables.sql
+        ON DELETE CASCADE,
 
     material_id     INT,
     creator_id      INT,   

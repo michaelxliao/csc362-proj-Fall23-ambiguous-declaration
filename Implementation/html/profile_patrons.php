@@ -4,7 +4,7 @@ require 'includes/functions.php';
 
 $conn = setup();
 if (isset($_POST["add_patron"])) {
-    $changesMade = True;
+    $changes_made = True;
 
     if (isset($_POST["add_patron_first_name"])&& (isset($_POST["add_patron_last_name"]))){
         $first_name = $_POST["add_patron_first_name"];
@@ -49,7 +49,7 @@ if (isset($_POST["add_patron"])) {
             //}
         }
     }
-    if ($changesMade) {
+    if ($changes_made) {
         header("Location:" . $_SERVER['REQUEST_URI'], true, 303);
     }
 }
