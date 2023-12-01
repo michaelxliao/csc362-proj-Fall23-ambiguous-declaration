@@ -1,6 +1,18 @@
 <?php
 require 'includes/setup.php';
+require 'includes/functions.php';
 $conn = setup();
+
+
+$processing_holds_res = $conn->query("SELECT material_id AS 'Material ID',
+                                    patron_id AS 'Patron ID',
+                                    patron_email AS 'Patron Email',
+                                    patron_phone AS 'Patron Phone Number',
+                                    CONCAT(patron_first_name, ' ', patron_last_name) AS 'Patron Name',
+                                    material_title AS 'Title'
+                                    FROM processing_holds;");
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,8 +27,17 @@ $conn = setup();
 
 <body>
     <header>
-        <!-- this is where h1s etc. go, any explanatory info -->
+    <a class="link-button" href=index.php> Back to Sign-In</a>
+
+    <h1>Therpston County Public Library</h1>
+
     </header>
+
+    <h2>Holds to be Checked Out</h2>
+
+    <p>Holds are automatically deleted as a patron checks them out.</p>
+    <?=result_to_table($processing_holds_res)?>
+
 </body>
 
 </html>

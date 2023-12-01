@@ -145,3 +145,20 @@ UPDATE loans
    END
 //
 DELIMITER ;
+
+-- used in profile_holds. Gets relevant fields from holds that are currently being processed!
+CREATE OR REPLACE VIEW processing_holds AS
+SELECT material_id,
+       material_title,
+       patron_id,
+       patron_email,
+       patron_phone,
+       patron_first_name,
+       patron_last_name
+       FROM holds
+    LEFT OUTER JOIN patron_selection_interactions USING (interaction_id)
+    LEFT OUTER JOIN selection USING (material_id)
+    LEFT OUTER JOIN patrons USING (patron_id)
+
+GROUP BY material_id
+ORDER BY hold_date_requested;
