@@ -16,10 +16,13 @@ $conn = setup();
 </head>
 
 <body>
-    <header>
-    <a class="link-button" href=index.php> Back to Staff</a>
-    <h1>Please enter your library card number.</h1>
+<header>
+    <a class="link-button" href=index.php> Back to Sign-In</a>
+
+    <h1>Therpston County Public Library</h1>
     </header>
+
+    <h1>Please enter your library card number.</h1>
     <form method="POST" action="index_general.php"> 
         <input type="text" name="patron_login_id">
         <input type="submit" name="login_submit" value="Login">

@@ -144,8 +144,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 //output stmts
 
 $patron_hold_stmt = $conn->prepare("SELECT interaction_id,
-                                material_title, 
-                                hold_date_requested
+                                material_title AS 'Material Title', 
+                                hold_date_requested AS 'Date of Request'
                                 FROM selection
                                 INNER JOIN patron_selection_interactions
                                 USING (material_id)
@@ -205,9 +205,9 @@ $loan_res = $patron_loan_stmt->get_result();
     }?>
 
     <h2>Checked Out Material(s):</h2>
-    <?php result_to_deletable_table_general($loan_res, [-1], "Renew Material", "Renew Selected Materials", "increment_loans");?>
+    <?php result_to_deletable_table_general($loan_res, [0], "Renew Material", "Renew Selected Materials", "increment_loans");?>
     <h2>Current Hold(s):</h2>
-    <?= result_to_deletable_table_general($hold_res, [-1], "Cancel Hold", "Cancel Selected Holds");?>
+    <?= result_to_deletable_table_general($hold_res, [0], "Cancel Hold", "Cancel Selected Holds");?>
 </body>
 
 </html>

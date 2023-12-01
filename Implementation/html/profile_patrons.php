@@ -65,40 +65,26 @@ if (isset($_POST["add_patron"])) {
         rel="stylesheet">
 </head>
 <body>
-    <a href="index_staff.php">Back to Staff</a>
+<header>
+<a class="link-button" href=index.php> Back to Sign-In</a>
+
+<h1>Therpston County Public Library</h1>
+</header>
+<a href="index_staff.php">Back to Staff</a>
     <h2>Add a Patron</h2>
     <form method=POST>
-        <table>
-            <thead>
-                <th></th>
-            </thead>
-            <tbody>
-                <!-- Name -->
-                <tr>
-                    <td style="text-align: right">Patron First Name:</td>
-                    <td><input type="text" name="add_patron_first_name" /></td>
-                </tr>
-                <tr>
-                    <td style="text-align: right">Patron Last Name:</td>
-                    <td><input type="text" name="add_patron_last_name" /></td>
-                </tr>
-                <!-- Contact Info -->
-                <tr>
-                    <td style="text-align: right;">Patron Email</td>
-                    <td><input type="text" name="add_patron_email" style="height: 70px;" /></td>
-                </tr>
-                <tr>
-                    <td style="text-align: right;">Patron Phone</td>
-                    <td><input type="text" name="add_patron_phone" style="height: 70px;" /></td>
-                </tr>
-                <tr>
-            </tbody>
-        </table>
+        <label for="add_patron_first_name">Patron First Name:</label>
+        <input type="text" name="add_patron_first_name" /><br>
+        <label for="add_patron_last_name">Patron Last Name:</label>
+        <input type="text" name="add_patron_last_name" /><br>
+        <label for="add_patron_email">Patron Email</label>
+        <input type="text" name="add_patron_email" /><br>
+        <label for="add_patron_phone">Patron Phone</label>
+        <input type="text" name="add_patron_phone" max="14" pattern="^\d{3}-\d{3}-\d{4}$" placeholder="XXX-XXX-XXXX" /><br>
         <input type="submit" name="add_patron" value="Add Patron" />
 
     </form>
     <h1>Select a Patron to Examine</h1>
-    <p>To add a patron, use <a href="manage_patrons.php">this link.</a></p>
     <form>
     <?php result_to_clickable_table($conn->query('SELECT * FROM pretty_patron_details_librarian'), "patron", "details_patron.php", true) ?>
     </form>

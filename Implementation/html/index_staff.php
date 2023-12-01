@@ -32,8 +32,6 @@ $_SESSION['mode'] = 'staff';
             <br>
             <a href="profile_narratives.php">Adaptations of a Narrative</a>
             <br>
-            <a href="profile_loans.php">Loans on the Selection</a>
-            <br>
             <a href="profile_spaces.php">Spaces Available to Reserve</a>
             <br>
             <a href="profile_selection.php">The Catalog</a>

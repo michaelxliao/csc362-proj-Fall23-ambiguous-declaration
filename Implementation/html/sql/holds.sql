@@ -15,7 +15,7 @@ CREATE OR REPLACE TRIGGER holds_no_future_requests_insert
 BEFORE INSERT ON holds
 FOR EACH ROW
 BEGIN 
-    IF (NEW.hold_date_requested > CURDATE()) THEN
+    IF (NEW.hold_date_requested > CURRENT_TIMESTAMP()) THEN
        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Hold request date cannot be in the future';
   END IF;
   END
@@ -27,7 +27,7 @@ CREATE OR REPLACE TRIGGER holds_no_future_requests_update
 BEFORE UPDATE ON holds
 FOR EACH ROW
 BEGIN 
-    IF (NEW.hold_date_requested > CURDATE()) THEN
+    IF (NEW.hold_date_requested > CURRENT_TIMESTAMP()) THEN
        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Hold request date cannot be in the future';
   END IF;
   END

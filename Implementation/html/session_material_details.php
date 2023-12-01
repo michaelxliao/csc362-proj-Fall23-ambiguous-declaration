@@ -1,6 +1,7 @@
 <?php
 require 'includes/setup.php';
 require 'includes/functions.php';
+
 $conn = setup();
 
 if (!isset($_GET['materialid'])) {
@@ -82,6 +83,23 @@ $cost = $material_info['Cost'];
 $type = $material_info['Type'];
 $length = $material_info['Length'];
 
+if($_SERVER['REQUEST_METHOD'] === "POST")
+{
+    if(isset($_POST['put_hold']))
+    {
+        $put_hold_stmt = $conn->prepare("CALL add_hold(?, ?, CURRENT_TIMESTAMP())");
+        $put_hold_stmt->bind_param("ii", $curr_material, $login_id);
+        if(!$put_hold_stmt->execute())
+        {
+            print("Bad SQL, bad boy");
+            exit();
+        }
+    } 
+
+    header("Location:" . $_SERVER['REQUEST_URI'], true, 303);
+    exit();
+}
+
 $get_creators_query = "SELECT creator_id,
                               material_id,
                               creator_role,
@@ -104,130 +122,6 @@ $languages_query = "SELECT language_name AS 'Language'
 
 $languages_res = find_result($curr_material, $languages_query);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['delete_creators'])) {
-        $get_relevant_records_stmt = $conn->prepare("SELECT creator_id, material_id, creator_role
-                                                       FROM selection_creators
-                                                      WHERE material_id = ?");
-        $get_relevant_records_stmt->bind_param("i", $curr_material);
-        $get_relevant_records_stmt->execute();
-        $res = $get_relevant_records_stmt->get_result();
-        $data = $res->fetch_all();
-
-        $del_stmt = $conn->prepare("DELETE FROM selection_creators WHERE creator_id = ? AND material_id = ? AND creator_role = ?");
-        $del_stmt->bind_param("iis", $creator_id, $material_id, $creator_role);
-
-        for ($i = 0; $i < $res->num_rows; $i++)
-        {
-            $creator_id = $data[$i][0];
-            $material_id = $data[$i][1];
-            $creator_role = $data[$i][2];
-            if (isset($_POST['checkbox' . $creator_id . ',' . $material_id . ',' . $creator_role])) {
-                $del_stmt->execute();
-            }
-        }
-    } elseif (isset($_POST['add_creator'])) {
-        $add_stmt = $conn->prepare('INSERT INTO selection_creators (creator_id, material_id, creator_role)
-                                    VALUES (?, ?, ?)');
-        $add_stmt->bind_param('iis', $_POST['creator_id'], $curr_material, $_POST['new_role']);
-        if (!$add_stmt->execute()) {
-            echo $add_stmt->error;
-        }
-    } elseif (isset($_POST['delete_genres'])) {
-        $get_relevant_records_stmt = $conn->prepare("SELECT genre_name
-                                                       FROM selection_genres
-                                                      WHERE material_id = ?");
-        $get_relevant_records_stmt->bind_param("i", $curr_material);
-        $get_relevant_records_stmt->execute();
-        $res = $get_relevant_records_stmt->get_result();
-        $data = $res->fetch_all();
-
-        $del_stmt = $conn->prepare("DELETE FROM selection_genres WHERE material_id = ? AND genre_name = ?");
-        $del_stmt->bind_param("is", $curr_material, $genre_name);
-
-        for ($i = 0; $i < $res->num_rows; $i++)
-        {
-            $genre_name = $data[$i][0];
-            if (isset($_POST['checkbox' . $genre_name])) {
-                try { 
-                    $del_stmt->execute();
-                } catch (mysqli_sql_exception $e) {
-                    echo $e->getMessage();
-                }
-            }
-        }
-    } elseif (isset($_POST['add_genre'])) {
-        $add_stmt = $conn->prepare('INSERT INTO selection_genres (material_id, genre_name)
-                                    VALUES (?, ?)');
-        $add_stmt->bind_param('is', $curr_material, $_POST['genre_name']);
-        try { 
-            $add_stmt->execute();
-        } catch (mysqli_sql_exception $e) {
-            echo $e->getMessage();
-        }
-    } elseif (isset($_POST['delete_languages'])) {
-        $get_relevant_records_stmt = $conn->prepare("SELECT language_name
-                                                       FROM selection_languages
-                                                      WHERE material_id = ?");
-        $get_relevant_records_stmt->bind_param("i", $curr_material);
-        $get_relevant_records_stmt->execute();
-        $res = $get_relevant_records_stmt->get_result();
-        $data = $res->fetch_all();
-
-        $del_stmt = $conn->prepare("DELETE FROM selection_languages WHERE material_id = ? AND language_name = ?");
-        $del_stmt->bind_param("is", $curr_material, $language_name);
-
-        for ($i = 0; $i < $res->num_rows; $i++)
-        {
-            $language_name = $data[$i][0];
-            if (isset($_POST['checkbox' . $language_name])) {
-                try { 
-                    $del_stmt->execute();
-                } catch (mysqli_sql_exception $e) {
-                    echo $e->getMessage();
-                }
-            }
-        }
-    } elseif (isset($_POST['add_language'])) {
-        $add_stmt = $conn->prepare('INSERT INTO selection_languages (material_id, language_name)
-                                    VALUES (?, ?)');
-        $add_stmt->bind_param('is', $curr_material, $_POST['language_name']);
-        try { 
-            $add_stmt->execute();
-        } catch (mysqli_sql_exception $e) {
-            echo $e->getMessage();
-        }
-    } elseif (isset($_POST["edit_material"])) {
-        $new_club_name = $_POST["edit_club_name"];
-        $new_club_decs = $_POST["edit_club_desc"];
-        $changes_made = True;
-    
-        if (isset($_POST["edit_club_name"]) && isset($_POST["edit_club_desc"])) {
-            # Check for the club already being in database.
-            echo "GOT HERE";
-            $checkexists = $conn->prepare("SELECT * FROM clubs WHERE club_name = ?");
-            $checkexists->bind_param('s',$club_name);
-            $checkexists->execute();
-    
-            $result = $checkexists->get_result();
-    
-            // this is technically an int but 0 means it does not have that club & 1 means it does
-            $has_value = $result->num_rows;
-    
-            #we update if the club currently exists.
-            if ($has_value) {
-                $update_stmt = $conn->prepare("CALL update_club(?, ?, ?)");
-                $update_stmt->bind_param('iss', $club_id, $new_club_name, $new_club_decs);
-                $update_stmt->execute();
-    
-            }
-        }
-    } 
-
-    header("Location:" . $_SERVER['REQUEST_URI'], true, 303);
-    exit();
-}
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -241,10 +135,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
-    <header>
+<header>
+    <a class="link-button" href=login_general.php> Back to Sign-In</a>
+
+        <h1> Welcome, <?=$patron_first_name?>, to the Therpston County Public Library.</h1>
+    </header>
+    <a href="session_sel_material.php">Back to Catalog</a><br>
+    <a href="session_adaptations.php">Back to Adaptations</a>
+
+
+    
         <h1>
             <?= $material_title ?>
         </h1>
+
+        <!-- show if it's currently on loan! -->
         <?php
         $loan_status_stmt = $conn->prepare('SELECT 1
                                              FROM current_loans
@@ -254,14 +159,74 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo $loan_status_stmt->error;
         }
         $loan_status_res = $loan_status_stmt->get_result();
-        $loan_status = $loan_status_res->fetch_all();
-
+        $loan_status = $loan_status_res->num_rows;
+        // 1 == book checked out currently.
+        // 0 == book available.
         if ($loan_status) {
+        ?><p> Currently checked out!</p>
+
+    <!--We show hold data ONLY if it's checked out.
+        Doesn't have any otherwise. -->
+
+            <!-- HOLDS -->
+            <?php
+            
+            $num_holds_stmt = $conn->prepare(
+                "(SELECT material_id, interaction_id
+                    FROM current_holds
+                    WHERE material_id = ?)"
+            );
+            $num_holds_stmt->bind_param("i", $curr_material);
+            if(!$num_holds_stmt->execute()) {
+                print("SQL Gone WRong");
+                exit();
+            }
+            $num_holds_res = $num_holds_stmt->get_result();
+            $num_holds = $num_holds_res->num_rows;
             ?>
-            <p> Currently checked out! </p>
-        <?php } else { ?>
+
+            <h3>Number of holds on this material: <?=$num_holds?></h3>
+
+            <?php
+            $has_hold_stmt = $conn->prepare(
+                "(SELECT material_id, interaction_id
+                    FROM current_holds
+                    WHERE material_id = ?
+                    AND
+                    patron_id = ?)"
+            );
+            $has_hold_stmt->bind_param("ii", $curr_material, $login_id);
+            if(!$has_hold_stmt->execute()) {
+                print("SQL Gone Wrong");
+                exit();
+            }
+            $has_hold_res = $has_hold_stmt->get_result();
+            $has_hold = $has_hold_res->num_rows;
+
+
+/*<!-- If the patron has a hold on the material, show that.
+    Else, give a button for placing a hold.-->*/
+            
+            if($has_hold){
+                ?><h3>You currently have a hold placed on this material.</h3><?php
+            }
+
+            else{
+
+                
+                ?>    <form method=POST>
+                <input type="submit" name="put_hold" value="Place a Hold on this Material"/>
+            </form>
+        <?php
+            }
+
+
+
+} else { 
+            ?>
             <p> Currently available! </p>
-        <?php } ?>
+        <?php } 
+?>
         <?php
         $is_source_stmt = $conn->prepare('SELECT material_is_source, narrative_name
                                                 FROM adaptations
@@ -289,49 +254,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </p>
             <?php }
         } ?>
-    </header>
 
-    <h2>Update this Material</h2>
-    <form method=POST>
-        <label for ="new_title">Title:</label>
-        <input type="text" name="new_title" value = "<?=$material_title?> " />
-        <br>
-        <label for ="date_selected">Date Selected: </label>
-        <input type="date" name="date_selected" value = "<?=$date_selected?> " />
-        <br>
-        <input type="submit" name="edit_materi" value="Edit Club" />
-    </form>
-    <h2>Holds on this Material</h2>
 
+    <!-- -->
     <h2>Creator(s)</h2>
-    <form method=POST>
-        <label for="creator_id">Creator ID: </label>
-        <input type="number" min="1" name="creator_id" required>
-        <label for="new_role">New Creator Role: </label>
-        <select name="new_role" id="new_role" required>
-            <?php
-            $roles_res = $conn->query('SELECT * FROM creator_roles');
-            $roles_data = $roles_res->fetch_all();
-
-            for ($i = 0; $i < $roles_res->num_rows; $i++) { ?>
-                <option value="<?= $roles_data[$i][0] ?>">
-                    <?= $roles_data[$i][0] ?>
-                </option>
-            <?php } ?>
-        </select>
-        <input type="submit" name="add_creator" value="Add Creator">
-    </form>
-    <form method=POST>
         <?php $creators_data = $creators_res->fetch_all(); ?>
+
+        <?php if($creators_res->num_rows == 0)
+        {
+            ?><p>No creators assigned to this material.</p><?php
+        }
+        else {
+            ?>
         <table>
-            <thead>
-                <tr>
-                    <th>
-                        <?= $creators_res->fetch_fields()[3]->name ?>
-                    </th>
-                    <th> Delete? </th>
-                </tr>
-            </thead>
+
+            <th>
+                <?= $creators_res->fetch_fields()[3]->name ?>
+            </th>
 
             <tbody>
                 <?php for ($i = 0; $i < $creators_res->num_rows; $i++) {
@@ -343,52 +282,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <td>
                             <?= $creators_data[$i][3] ?>
                         </td>
-                        <td>
-                            <input type="checkbox" name="checkbox<?= $id_1 . ',' . $id_2 . ',' . $id_3 ?>"
-                                value="<?= $id_1 . ',' . $id_2 . ',' . $id_3 ?>" />
-                        </td>
                     </tr>
                 <?php } ?>
             </tbody>
         </table>
-        <input type="submit" name="delete_creators" value="Delete Selected Records" />
-    </form>
+        <?php
+        }?>
 
     <h2>Genre(s)</h2>
-    <form method=POST>
-        <label for="genre_name">New Genre: </label>
-        <select name="genre_name" id="genre_name" required>
-            <?php
-            $all_genres_res = $conn->query('SELECT * FROM genres');
-            $all_genres_data = $all_genres_res->fetch_all();
-
-            for ($i = 0; $i < $all_genres_res->num_rows; $i++) { ?>
-                <option value="<?= $all_genres_data[$i][0] ?>">
-                    <?= $all_genres_data[$i][0] ?>
-                </option>
-            <?php } ?>
-        </select>
-        <input type="submit" name="add_genre" value="Add Genre">
-    </form>
-    <?= result_to_deletable_table_general($genres_res, [-1], 'Delete?', 'Delete Genre', 'delete_genres') ?>
+    <?php if($genres_res->num_rows == 0)
+        {
+            ?><p>No genres assigned to this material.</p><?php
+        }
+        else { 
+            result_to_table($genres_res); }?>
 
     <h2>Language(s)</h2>
-    <form method=POST>
-        <label for="genre_name">New Language: </label>
-        <select name="language_name" id="language_name" required>
-            <?php
-            $all_languages_res = $conn->query('SELECT * FROM languages');
-            $all_languages_data = $all_languages_res->fetch_all();
-
-            for ($i = 0; $i < $all_languages_res->num_rows; $i++) { ?>
-                <option value="<?= $all_languages_data[$i][0] ?>">
-                    <?= $all_languages_data[$i][0] ?>
-                </option>
-            <?php } ?>
-        </select>
-        <input type="submit" name="add_language" value="Add Language">
-    </form>
-    <?= result_to_deletable_table_general($languages_res, [-1], 'Delete?', 'Delete Language', 'delete_languages') ?>
+    <?php if($languages_res->num_rows == 0)
+        {
+            ?><p>No languages assigned to this material.</p><?php
+        }
+        else { 
+            result_to_table($languages_res); }?>
 
 
 </body>

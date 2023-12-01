@@ -32,6 +32,7 @@ $processing_holds_res = $conn->query("SELECT material_id AS 'Material ID',
     <h1>Therpston County Public Library</h1>
 
     </header>
+    <a href="index_staff.php">Back to Staff Index</a>
 
     <h2>Holds to be Checked Out</h2>
 

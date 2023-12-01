@@ -273,17 +273,20 @@ if($changes_made == True)
 /// Views for SQL output
 ///
 
-$genres_res = $conn->query("SELECT genre_name 
+$genres_res = $conn->query("SELECT genre_name AS 'Genre Name'
                             FROM genres;");
-$languages_res = $conn->query("SELECT language_name
+$languages_res = $conn->query("SELECT language_name AS 'Language Name'
                             FROM languages;");
-$creator_roles_res = $conn->query("SELECT creator_role
+$creator_roles_res = $conn->query("SELECT creator_role AS 'Creator Role'
                             FROM creator_roles;");
-$print_types_res = $conn->query("SELECT print_type
+$print_types_res = $conn->query("SELECT print_type AS 'Print Type'
                             FROM print_types;");  
-$multimedia_types_res = $conn->query("SELECT multimedia_type
+$multimedia_types_res = $conn->query("SELECT multimedia_type AS 'Multimedia Type'
 FROM multimedia_types;");
-$creators_res = $conn->query("SELECT creator_id, creator_first_name, creator_last_name FROM creators;")
+$creators_res = $conn->query("SELECT creator_id AS 'Creator ID', 
+                                creator_first_name AS 'First Name', 
+                                creator_last_name AS 'Last Name'
+                            FROM creators;")
 
 ?>
 <!DOCTYPE html>
@@ -299,7 +302,8 @@ $creators_res = $conn->query("SELECT creator_id, creator_first_name, creator_las
 
 <body>
     <header>
-        <!-- this is where h1s etc. go, any explanatory info -->
+        <a class="link-button" href=index.php> Back to Sign-In</a>
+
         <h1>Therpston County Public Library</h1>
     </header>
 
@@ -308,20 +312,9 @@ $creators_res = $conn->query("SELECT creator_id, creator_first_name, creator_las
 
     <h2>Genres</h2>
     <form method=POST>
-        <table>
-            <thead>
-                <th></th>
-            </thead>
-            <tbody>
-                <!-- Name -->
-                <tr>
-                    <td style="text-align: right">Add a Genre:</td>
-                    <td><input type="text" name="add_genre_id" /></td>
-                </tr>
-            </tbody>
-        </table>
+        <label for="add_genre_id">Add a Genre:</label>
+        <input type="text" name="add_genre_id" />
         <input type="submit" name="add_genre" value="Add Genre" />
-
     </form>
 
     <h4>Delete Genres</h4>
@@ -337,18 +330,8 @@ $creators_res = $conn->query("SELECT creator_id, creator_first_name, creator_las
 
     <h2>Languages</h2>
     <form method=POST>
-        <table>
-            <thead>
-                <th></th>
-            </thead>
-            <tbody>
-                <!-- Name -->
-                <tr>
-                    <td style="text-align: right">Add a Language:</td>
-                    <td><input type="text" name="add_lang_id" /></td>
-                </tr>
-            </tbody>
-        </table>
+        <label for="add_lang_id">Add a Language:</label>
+        <input type="text" name="add_lang_id" />
         <input type="submit" name="add_lang" value="Add Language" />
 
     </form>
@@ -368,20 +351,9 @@ $creators_res = $conn->query("SELECT creator_id, creator_first_name, creator_las
 
     <h2>Creator Roles</h2>
     <form method=POST>
-        <table>
-            <thead>
-                <th></th>
-            </thead>
-            <tbody>
-                <!-- Name -->
-                <tr>
-                    <td style="text-align: right">Add a Creator Role:</td>
-                    <td><input type="text" name="add_role_id" /></td>
-                </tr>
-            </tbody>
-        </table>
+        <label for="add_role_id">Add a Creator Role:</label>
+        <input type="text" name="add_role_id" />
         <input type="submit" name="add_role" value="Add Creator Role" />
-
     </form>
 
     <h4>Delete Creator Roles</h4>
@@ -399,20 +371,9 @@ $creators_res = $conn->query("SELECT creator_id, creator_first_name, creator_las
 
     <h2>Print Types</h2>
     <form method=POST>
-        <table>
-            <thead>
-                <th></th>
-            </thead>
-            <tbody>
-                <!-- Name -->
-                <tr>
-                    <td style="text-align: right">Add a Print Type:</td>
-                    <td><input type="text" name="add_print_id" /></td>
-                </tr>
-            </tbody>
-        </table>
+        <label for="add_print_id">Add a Print Type:</label>
+        <input type="text" name="add_print_id" />
         <input type="submit" name="add_print" value="Add Print Type" />
-
     </form>
 
     <h4>Delete Print Types</h4>
@@ -427,20 +388,9 @@ $creators_res = $conn->query("SELECT creator_id, creator_first_name, creator_las
 
     <h2>Multimedia Types</h2>
     <form method=POST>
-        <table>
-            <thead>
-                <th></th>
-            </thead>
-            <tbody>
-                <!-- Name -->
-                <tr>
-                    <td style="text-align: right">Add a Multimedia Type:</td>
-                    <td><input type="text" name="add_multimedia_id" /></td>
-                </tr>
-            </tbody>
-        </table>
+        <label for="add_multimedia_id">Add a Multimedia Type:</label>
+        <input type="text" name="add_multimedia_id" />
         <input type="submit" name="add_multimedia" value="Add Multimedia Type" />
-
     </form>
 
     <h4>Delete Multimedias</h4>
@@ -455,20 +405,11 @@ $creators_res = $conn->query("SELECT creator_id, creator_first_name, creator_las
 
 <h2>Creators</h2>
     <form method=POST>
-        <table>
-            <thead>
-                <th></th>
-            </thead>
-            <tbody>
-                <!-- Name -->
-                <tr>
-                    <td style="text-align: right">Add a Creator:</td>
-                    <td><label>First Name:</label><input type="text" name="add_creator_firstname" /></td>
-                    <td><label>Last Name:</label><input type="text" name="add_creator_lastname" /></td>
-
-                </tr>
-            </tbody>
-        </table>
+        <fieldset>
+            <legend>Add a Creator:</legend>
+            <label for="add_creator_firstname">First Name:</label><input type="text" name="add_creator_firstname" />
+            <label for="add_creator_firstname">Last Name:</label><input type="text" name="add_creator_lastname" />
+        </fieldset>
         <input type="submit" name="add_creator" value="Add Creator" />
 
 

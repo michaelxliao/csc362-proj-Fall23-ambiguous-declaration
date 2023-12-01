@@ -41,7 +41,14 @@ if (isset($_POST["add_club"])) {
 </head>
 
 <body>
-    <a href="index_staff.php">Back to Staff</a>
+<header>
+    <a class="link-button" href=index.php> Back to Sign-In</a>
+
+    <h1>Therpston County Public Library</h1>
+
+    </header>
+    <a href="index_staff.php">Back to Staff Index</a>
+
     <h3>Add Clubs</h3>
     <form method=POST>
         <label for="club_name">Club name:</label>

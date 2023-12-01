@@ -85,7 +85,6 @@ CALL add_multimedia_material('The Podcast With No Narrative', '2023-04-30', '190
 CALL add_multimedia_material('Dune Your Mom', '2020-04-20', '2019-04-25', FALSE, 14.99, 'Movie', '00:39:00'); -- 19
 CALL add_print_material('The Adventures of Codey the Coding Cat', '2023-01-15', '1980-01-10', TRUE, 29.99, 'Paperback', 150); -- 20
 
-
 INSERT INTO creators(creator_first_name, creator_last_name)
 VALUES ("Steven", "Spielberg"), -- 1
        ("Steven", "Route"), -- 2
@@ -211,8 +210,8 @@ VALUES  ("Bailey","Williams","xX_madewhentwelve_Xx@gmail.com", "123-456-7809");
 
 -- hold on second space movie. Current loans on space movie
 -- and codey the coding cat.
-CALL add_loan(13, 7, '2023-10-10', NULL, 1);
-CALL add_loan(10, 7, '2023-10-10', NULL, 1);
+CALL add_loan(13, 7, '2023-10-10', NULL, 2);
+CALL add_loan(10, 7, '2023-10-10', NULL, 2);
 CALL add_hold(14, 7, '2023-10-11');
 
 INSERT INTO club_members(patron_id, club_id, member_info, member_is_leader)
@@ -243,3 +242,30 @@ VALUES
 INSERT INTO adaptations(narrative_id, material_id, material_is_source)
 VALUES
 (1, 16, False);
+
+-- librarian-side demo data
+INSERT INTO creators (creator_first_name, creator_last_name)
+VALUES ('Michael', 'Hernandez'); -- 5
+
+CALL add_print_material('Database Design for Mere Mortals: 3rd Edition', '2023-08-01', '2013-10-01', FALSE, 39.42, 'Paperback', 660); -- 21
+
+INSERT INTO selection_creators(creator_id, material_id, creator_role)
+VALUES (5, 21, 'Author');
+
+INSERT INTO genres (genre_name)
+VALUES ('Dry'),
+('Enraging');
+
+INSERT INTO selection_genres(material_id, genre_name) 
+VALUES
+(21, 'Dry'),
+(21, 'Enraging');
+
+INSERT INTO selection_languages (material_id, language_name)
+VALUES (21, 'English');
+
+INSERT INTO narratives(narrative_name, narrative_description)
+VALUES ('Database Design for Mere Mortals', 'The reason you have this book in your hands is to learn how to design a database properly.'); -- 6
+
+INSERT INTO adaptations (narrative_id, material_id, material_is_source)
+VALUES (6, 21, TRUE);

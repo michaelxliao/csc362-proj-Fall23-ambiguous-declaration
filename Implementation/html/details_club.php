@@ -18,7 +18,10 @@ $spaces_info = $spaces_res->fetch_all();
 
 $club_members_res = $conn->query("SELECT patron_id, CONCAT(patron_first_name, ' ', patron_last_name) AS 'Name',
                                      member_info AS 'Details',
-                                     member_is_leader
+                                     (CASE WHEN member_is_leader
+                                      THEN 'Part of Leadership'
+                                      ELSE 'Not Leadership'
+                                      END) AS 'Leadership Status'
                                 FROM patrons
                                      INNER JOIN club_members USING(patron_id)
                                      INNER JOIN clubs USING(club_id)
@@ -125,9 +128,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <header>
-        <h1><?= $club_name ?></h1>
+    <a class="link-button" href=index.php> Back to Sign-In</a>
+
+    <h1>Therpston County Public Library</h1>
     </header>
     <a href="profile_clubs.php">Back to Club Profiles</a>
+    <h1><?= $club_name ?></h1>
+
     <form method=POST>
         <label for ="edit_club_name">Club Name:</label>
         <input type="text" name="edit_club_name" value = "<?=$club_name?> " />

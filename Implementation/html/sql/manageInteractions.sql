@@ -58,6 +58,17 @@ COMMIT;
 DELIMITER ;
 
 DELIMITER //
+CREATE OR REPLACE PROCEDURE return_loan(id INT)
+ BEGIN
+    UPDATE loans
+           SET loans.loan_return_date = CURDATE()
+    WHERE interaction_id = id;
+   END
+//
+DELIMITER ;
+
+
+DELIMITER //
 CREATE OR REPLACE PROCEDURE update_hold(id INT, material_id INT, patron_id INT, hold_date DATETIME)
  BEGIN
  START TRANSACTION;

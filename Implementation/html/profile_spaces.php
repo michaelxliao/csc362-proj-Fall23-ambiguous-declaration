@@ -31,8 +31,12 @@ $where_clauses = [];
 
 <body>
     <header>
-        <!-- this is where h1s etc. go, any explanatory info -->
-    </header>
+<a class="link-button" href=index.php> Back to Sign-In</a>
+
+<h1>Therpston County Public Library</h1>
+</header>
+<a href="index_staff.php">Back to Staff</a>
+
 
     <form method=GET> <!-- NOTE FOR FILTERING: don't freakin forget your quotes -->
         <label for="space-name">Room Name: </label>

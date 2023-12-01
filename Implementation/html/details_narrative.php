@@ -13,7 +13,7 @@ $narrative_desc = $conn->query("SELECT narrative_description
                                 FROM active_narratives
                                 WHERE narrative_name = '$narrative_name'");
 $narrative_desc_res = $narrative_desc->fetch_all()[0][0];
-$sql_query = $conn->query("SELECT material_id, material_title AS 'Title'
+$sql_query = $conn->query("SELECT material_id AS 'Material ID', material_title AS 'Title'
                 FROM active_narratives
                      INNER JOIN adaptations USING(narrative_id)
                      LEFT OUTER JOIN selection USING(material_id)
@@ -91,25 +91,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <header>
-        <?= $narrative_name ?>
+    <a class="link-button" href=index.php> Back to Sign-In</a>
+<h1>Therpston County Public Library</h1>
+
+
     </header>
     <a href="profile_narratives.php">Back to Narrative List</a>
+    <h1><?= $narrative_name ?></h1>
+    <p>A bit more information about this material:<br>
+    <?=$narrative_desc_res?></p>
+
+
     <h2> Update description: </h2>
     <form method=POST>
         <label for="new_desc">Narrative Description:</td>
-            <input type="textarea"  name="new_desc" value = "<?=$narrative_desc_res?> "></input>
+            <textarea type="textarea"  name="new_desc"><?=$narrative_desc_res?></textarea>
         <input type="submit" name="edit_old_description" value="Edit Narrative" />
     </form>
-    <h2> Add another material as an adaptation: </h2>
+    <h2> Material Adapted from This Narrative: </h2>
+
     <form method=POST>
-        <label for="new_material_id">Enter in ID for adding a material:</label>
+        <label for="new_material_id">Enter in barcode or ID for a new material:</label>
         <input type="text" name="new_material_id" /></td>
         <input type="submit" name="new_adaptation" value = "Add Material"/>
     </form>
     <?php result_to_deletable_table($sql_query, true) ?>
-    <form method = POST>
-        <input type="submit" name="del_narrative" value = "Delete Narrative?"/>
-    </form>
 </body>
 
 </html>

@@ -165,28 +165,62 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo $e->getMessage();
         }
     } elseif (isset($_POST["edit_material"])) {
-        $new_club_name = $_POST["edit_club_name"];
-        $new_club_decs = $_POST["edit_club_desc"];
-        $changes_made = True;
+        $checkexists = $conn->prepare("SELECT * FROM pretty_selection_librarian WHERE `ID` = ?");
+        $checkexists->bind_param('s', $curr_material);
+        $checkexists->execute();
 
-        if (isset($_POST["edit_club_name"]) && isset($_POST["edit_club_desc"])) {
-            # Check for the club already being in database.
-            echo "GOT HERE";
-            $checkexists = $conn->prepare("SELECT * FROM clubs WHERE club_name = ?");
-            $checkexists->bind_param('s', $club_name);
-            $checkexists->execute();
+        $result = $checkexists->get_result();
 
-            $result = $checkexists->get_result();
+        // this is technically an int but 0 means it does not have that club & 1 means it does
+        $has_value = $result->num_rows;
 
-            // this is technically an int but 0 means it does not have that club & 1 means it does
-            $has_value = $result->num_rows;
+        // we update if the club currently exists.
+        if ($has_value) {
+            if (isset($_POST["pending"])) {
+                $pending = true;
+            } else {
+                $pending = false;
+            }
+    
+            if ($is_print) {
+                $update_stmt = $conn->prepare("CALL update_print_material(?, ?, ?, ?, ?, ?, ?, ?)");
+                $update_stmt->bind_param('isssidsi', $curr_material, $_POST["new_title"], $_POST["date_received"], $_POST["date_created"], $pending, $_POST["price"], $_POST["type"], $_POST["length"]);
+            } else {
+                $update_stmt = $conn->prepare("CALL update_multimedia_material(?, ?, ?, ?, ?, ?, ?, ?)");
+                $update_stmt->bind_param('isssidss', $curr_material, $_POST["new_title"], $_POST["date_received"], $_POST["date_created"], $pending, $_POST["price"], $_POST["type"], $_POST["length"]);
+            }
+            if (!$update_stmt->execute()) {
+                echo $conn->error;
+            }
+        }
+    } elseif (isset($_POST['add_hold'])) {
+        $add_stmt = $conn->prepare('CALL add_hold(?, ?, CURRENT_TIMESTAMP())');
+        $add_stmt->bind_param('ii', $curr_material, $_POST['new_patron_id']);
+        try {
+            $add_stmt->execute();
+        } catch (mysqli_sql_exception $e) {
+            echo $e->getMessage();
+        }
+    } elseif (isset($_POST['delete_holds'])) {
+        $get_relevant_records_stmt = $conn->prepare("SELECT interaction_id
+                                                       FROM current_holds
+                                                      WHERE material_id = ?");
+        $get_relevant_records_stmt->bind_param("i", $curr_material);
+        $get_relevant_records_stmt->execute();
+        $res = $get_relevant_records_stmt->get_result();
+        $data = $res->fetch_all();
 
-            #we update if the club currently exists.
-            if ($has_value) {
-                $update_stmt = $conn->prepare("CALL update_club(?, ?, ?)");
-                $update_stmt->bind_param('iss', $club_id, $new_club_name, $new_club_decs);
-                $update_stmt->execute();
+        $del_stmt = $conn->prepare("CALL del_interaction(?)");
+        $del_stmt->bind_param("i", $interaction_id);
 
+        for ($i = 0; $i < $res->num_rows; $i++) {
+            $interaction_id = $data[$i][0];
+            if (isset($_POST['checkbox' . $interaction_id])) {
+                try {
+                    $del_stmt->execute();
+                } catch (mysqli_sql_exception $e) {
+                    echo $e->getMessage();
+                }
             }
         }
     }
@@ -209,7 +243,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <header>
-        <h1>
+    <a class="link-button" href=index.php> Back to Sign-In</a>
+<h1>Therpston County Public Library</h1>
+
+    </header>
+
+    <a href="profile_selection.php">Back to Catalog</a>
+
+    <h1>
             <?= $material_title ?>
         </h1>
         <?php
@@ -221,7 +262,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo $loan_status_stmt->error;
         }
         $loan_status_res = $loan_status_stmt->get_result();
-        $loan_status = $loan_status_res->fetch_all();
+        $loan_status = $loan_status_res->num_rows;
 
         if ($loan_status) {
             ?>
@@ -231,16 +272,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php } ?>
 
         <?php
-        $holds_stmt = $conn->prepare("SELECT COUNT(*) FROM current_holds WHERE material_id = ? GROUP BY material_id"); // displaying how many there are; simple enough to convert into a table
-        $holds_stmt->bind_param("i", $curr_material);
-        if (!$holds_stmt->execute()) {
-            echo $holds_stmt->error;
+        $holds_count_stmt = $conn->prepare("SELECT COUNT(*) FROM current_holds WHERE material_id = ? GROUP BY material_id"); // displaying how many there are; simple enough to convert into a table
+        $holds_count_stmt->bind_param("i", $curr_material);
+        if (!$holds_count_stmt->execute()) {
+            echo $holds_count_stmt->error;
         }
-        $holds_res = $holds_stmt->get_result();
-        $holds_data = $holds_res->fetch_all();
-        if ($holds_res->num_rows > 0) { ?>
+        $holds_count_res = $holds_count_stmt->get_result();
+        $holds_count_data = $holds_count_res->fetch_all();
+        if ($holds_count_res->num_rows > 0) { ?>
             <p> There are currently
-                <?= $holds_data[0][0] ?> holds on this material.
+                <?= $holds_count_data[0][0] ?> hold(s) on this material.
             </p>
         <?php } else { ?>
             <p> There are no holds on this material. </p>
@@ -273,27 +314,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </p>
             <?php }
         } ?>
-    </header>
-
     <h2>Update this Material</h2>
     <form method=POST>
         <label for="new_title">Title:</label>
         <input type="text" name="new_title" value="<?= $material_title ?>" required />
         <br>
-        <label for="date_selected">Date Selected: </label>
-        <input type="date" name="date_selected" value="<?= $date_selected ?>" required />
+        <label for="date_received">Date Received: </label>
+        <input type="date" name="date_received" value="<?= $date_selected ?>" required />
         <br>
         <label for="date_created">Date Created: </label>
         <input type="date" name="date_created" value="<?= $date_created ?>" required />
         <br>
         <label for="pending">Pending? </label>
-        <input type="checkbox" name="pending" <?php if ($pending) { ?> checked <?php } ?> required />
+        <input type="checkbox" name="pending" <?php if ($pending) { ?> checked <?php } ?> />
         <br>
-        <label for="cost">Cost: </label>
-        <input type="number" min="0" step="any" name="cost" value="<?= $cost ?>" required />
+        <label for="price">Cost: </label>
+        <input type="number" min="0" step="any" name="price" value="<?= $cost ?>" required />
         <br>
         <label for="type">Type: </label>
-        <select>
+        <select name="type">
             <?php if ($is_print) {
                 $print_types_res = $conn->query("SELECT print_type FROM print_types WHERE print_type_is_active = TRUE");
                 $print_types = $print_types_res->fetch_all();
@@ -321,11 +360,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php if ($is_print) { ?>
             <input type="number" min="1" name="length" value="<?= $length ?>" required />
         <?php } else { ?>
-            <input pattern="^\d{2}:\d{2}:\d{2}$" name="duration" placeholder="HH:MM:SS" value="<?= $length ?>" required>
+            <input pattern="^\d{2}:\d{2}:\d{2}$" name="length" placeholder="HH:MM:SS" value="<?= $length ?>" required>
         <?php } ?>
         <br>
         <input type="submit" name="edit_material" value="Edit Material" />
     </form>
+
+    <h2>Hold(s)</h2>
+    <form method=POST>
+        <label for="new_patron_id">New Patron ID: </label>
+        <input type="number" min="1" required name="new_patron_id" />
+
+        <input type="submit" value="Add Hold" name="add_hold" />
+    </form>
+    <?php
+        $holds_stmt = $conn->prepare("SELECT interaction_id AS 'ID',
+                                             patron_id AS 'Patron ID',
+                                             hold_date_requested AS 'Date Requested'
+                                        FROM current_holds
+                                       WHERE material_id = ?
+                                       ORDER BY hold_date_requested ASC"); // displaying how many there are; simple enough to convert into a table
+        $holds_stmt->bind_param("i", $curr_material);
+        if (!$holds_stmt->execute()) {
+            echo $holds_stmt->error;
+        }
+        $holds_res = $holds_stmt->get_result();
+        if ($holds_res->num_rows > 0) { 
+            result_to_deletable_table_general($holds_res, [-1], 'Delete?', 'Delete Holds', 'delete_holds');
+        } else { ?>
+            <p> There are no holds on this material. </p>
+        <?php } ?>
 
     <h2>Creator(s)</h2>
     <form method=POST>

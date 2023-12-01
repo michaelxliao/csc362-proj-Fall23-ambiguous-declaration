@@ -165,6 +165,13 @@ if (isset($_POST["add_material"])) {
 </head>
 
 <body>
+    <header>
+<a class="link-button" href=index.php> Back to Sign-In</a>
+
+<h1>Therpston County Public Library</h1>
+</header>
+<a href="index_staff.php">Back to Staff</a>
+
     <h1>Catalog</h1>
         <h2>Add a new material</h2>
         <?php if (!isset($_GET["type_chosen"])) { ?>

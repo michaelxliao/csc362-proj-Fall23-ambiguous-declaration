@@ -111,7 +111,7 @@ BEGIN
                 SELECT *
                 FROM loans
                     LEFT OUTER JOIN patron_selection_interactions USING (interaction_id)
-                    LEFT OUTER JOIN print_materials USING (material_id)
+                    INNER JOIN print_materials USING (material_id)
                     
                 WHERE ((patron_id = (SELECT patron_id
                                        FROM patron_selection_interactions
@@ -138,7 +138,7 @@ BEGIN
                 SELECT *
                 FROM loans
                     LEFT OUTER JOIN patron_selection_interactions USING (interaction_id)
-                    LEFT OUTER JOIN print_materials USING (material_id)
+                    INNER JOIN print_materials USING (material_id)
                     
                 WHERE ((patron_id = (SELECT patron_id
                                        FROM patron_selection_interactions
@@ -148,6 +148,20 @@ BEGIN
             ) AS print_loans
         GROUP BY (patron_id) ) > 10)
     THEN
+        -- SELECT COUNT(material_id) FROM
+        --     (
+        --         SELECT *
+        --         FROM loans
+        --             LEFT OUTER JOIN patron_selection_interactions USING (interaction_id)
+        --             INNER JOIN print_materials USING (material_id)
+                    
+        --         WHERE ((patron_id = (SELECT patron_id
+        --                                FROM patron_selection_interactions
+        --                               WHERE interaction_id = NEW.interaction_id)) 
+        --             AND 
+        --             (loan_return_date IS NULL))
+        --     ) AS print_loans
+        -- GROUP BY (patron_id);
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Can only check out max 10 print materials';
 
     END IF;
@@ -166,7 +180,7 @@ BEGIN
                 SELECT *
                 FROM loans
                     LEFT OUTER JOIN patron_selection_interactions USING (interaction_id)
-                    LEFT OUTER JOIN multimedia USING (material_id)
+                    INNER JOIN multimedia USING (material_id)
                     
                 WHERE ((patron_id = (SELECT patron_id
                                        FROM patron_selection_interactions
@@ -193,7 +207,7 @@ BEGIN
                 SELECT *
                 FROM loans
                     LEFT OUTER JOIN patron_selection_interactions USING (interaction_id)
-                    LEFT OUTER JOIN multimedia USING (material_id)
+                    INNER JOIN multimedia USING (material_id)
                     
                 WHERE ((patron_id = (SELECT patron_id
                                        FROM patron_selection_interactions

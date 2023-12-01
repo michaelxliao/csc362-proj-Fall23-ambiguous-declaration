@@ -28,11 +28,15 @@ if(isset($_POST["add_narrative"])){
 </head>
 
 <body>
-    <header>
-        <h1>Narratives</h1>
+<header>
+<a class="link-button" href=index.php> Back to Sign-In</a>
+
+<h1>Therpston County Public Library</h1>
+</header>
+<a href="index_staff.php">Back to Staff</a>
+    <h1>Narratives</h1>
         <p> Curious what other versions or adaptations of your favorite media might exist? Look no further. </p>
-    </header>
-    <a href="index_staff.php">Back to Staff</a>
+
     <h3>Add Narrative</h3>
     <form method=POST>
         <label for="new_narrative_name">Narrative Name:</label>
