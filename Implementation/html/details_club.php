@@ -3,9 +3,9 @@ require 'includes/setup.php';
 require 'includes/functions.php';
 $conn = setup();
 $club_id = $_GET['clubid'];
-$club_name_res = $conn->query("SELECT club_name FROM clubs WHERE club_id = $club_id"); // note all these need to be refactoered into perpared statements
+$club_name_res = $conn->query("SELECT club_name FROM active_clubs WHERE club_id = $club_id"); // note all these need to be refactoered into perpared statements
 $club_name = $club_name_res->fetch_row()[0];
-$club_desc = $conn->query("SELECT club_description FROM clubs WHERE club_id = $club_id");
+$club_desc = $conn->query("SELECT club_description FROM active_clubs WHERE club_id = $club_id");
 $club_desc_res = $club_desc->fetch_all()[0][0];
 
 $patrons_res = $conn->query('SELECT CONCAT(patron_first_name, " ", patron_last_name) AS patron_name,
@@ -24,7 +24,7 @@ $club_members_res = $conn->query("SELECT patron_id, CONCAT(patron_first_name, ' 
                                       END) AS 'Leadership Status'
                                 FROM patrons
                                      INNER JOIN club_members USING(patron_id)
-                                     INNER JOIN clubs USING(club_id)
+                                     INNER JOIN active_clubs USING(club_id)
                                WHERE club_id = $club_id;");
 $club_spaces_reserved_res = $conn->query("SELECT space_name AS 'Space',
                                             CONCAT(patron_first_name, ' ', patron_last_name) AS 'Reserved By', 
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (isset($_POST["edit_club_name"]) && isset($_POST["edit_club_desc"])) {
             # Check for the club already being in database.
             echo "GOT HERE";
-            $checkexists = $conn->prepare("SELECT * FROM clubs WHERE club_name = ?");
+            $checkexists = $conn->prepare("SELECT * FROM active_clubs WHERE club_name = ?");
             $checkexists->bind_param('s',$club_name);
             $checkexists->execute();
     
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $deletable_patron_ids = $conn->query("SELECT patron_id
                                     FROM patrons
                                     INNER JOIN club_members USING(patron_id)
-                                    INNER JOIN clubs USING(club_id)
+                                    INNER JOIN active_clubs USING(club_id)
                                     WHERE club_id = $club_id;");
         $ids_res = $deletable_patron_ids->fetch_all();
         for($_i=0;$_i<$deletable_patron_ids->num_rows;$_i++){
@@ -105,9 +105,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $del_club -> execute();
         header("Location: profile_clubs.php", true, 303);
         exit();
-
-    }
-    if (isset($_POST['add_space_reservation'])) {
 
     }
     

@@ -84,35 +84,39 @@ SELECT club_id AS 'ID',
     ORDER BY club_name;
 
 
--- for session_spaces_find.php
+-- for session_spaces_find.php: shows only spaces + reservations
     CREATE OR REPLACE VIEW pretty_all_upcoming_space_reservations AS
     SELECT reservation_id,
     space_name AS 'Reserved Space', 
     space_room_number AS 'Room Number',
+    space_capacity AS 'Capacity',
     start_reservation AS 'Start Time',
     end_reservation AS 'End Time',
     reservation_notes AS 'Notes'
     FROM space_reservations
-    LEFT OUTER JOIN spaces USING (space_id) 
+    LEFT OUTER JOIN active_spaces USING (space_id) 
     LEFT OUTER JOIN club_reservations USING (reservation_id)
-    LEFT OUTER JOIN clubs USING (club_id)
+    LEFT OUTER JOIN active_clubs USING (club_id)
     WHERE end_reservation > CURRENT_TIMESTAMP()
     ORDER BY start_reservation ASC;
 
-    -- for session_spaces.php
+    -- for session_spaces.php: shows who reserved + for which club
+    -- also for details_space.php
     CREATE OR REPLACE VIEW pretty_upcoming_space_reservations AS
     SELECT reservation_id,
     patron_id,
+    space_id,
     space_name AS 'Reserved Space', 
     space_room_number AS 'Room Number',
+    space_capacity AS 'Capacity',
     start_reservation AS 'Start Time',
     end_reservation AS 'End Time', 
     club_name AS 'Associated Club',
     reservation_notes AS 'Notes'
     FROM space_reservations
-    LEFT OUTER JOIN spaces USING (space_id) 
+    LEFT OUTER JOIN active_spaces USING (space_id) 
     LEFT OUTER JOIN club_reservations USING (reservation_id)
-    LEFT OUTER JOIN clubs USING (club_id)
+    LEFT OUTER JOIN active_clubs USING (club_id)
     WHERE end_reservation > CURRENT_TIMESTAMP()
     ORDER BY start_reservation ASC;
 
@@ -128,11 +132,19 @@ SELECT club_id AS 'ID',
     club_name AS 'Associated Club',
     reservation_notes AS 'Notes'
     FROM space_reservations
-    LEFT OUTER JOIN spaces USING (space_id) 
+    LEFT OUTER JOIN active_spaces USING (space_id) 
     LEFT OUTER JOIN club_reservations USING (reservation_id)
-    LEFT OUTER JOIN clubs USING (club_id)
+    LEFT OUTER JOIN active_clubs USING (club_id)
     ORDER BY start_reservation DESC;
 
+
+-- for profile_spaces.php
+    CREATE OR REPLACE VIEW pretty_spaces_librarian AS
+    SELECT space_id AS 'ID',
+           space_name AS 'Space Name', 
+           space_room_number AS 'Room Number',
+           space_capacity AS 'Capacity'
+      FROM active_spaces;
 
 DELIMITER //
 CREATE OR REPLACE PROCEDURE increment_loan_renewal(reservationid INT)

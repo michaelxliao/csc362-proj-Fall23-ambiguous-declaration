@@ -5,7 +5,7 @@ CREATE OR REPLACE TABLE club_reservations (
         ON DELETE CASCADE,
     FOREIGN KEY (club_id)
         REFERENCES clubs(club_id)
-        ON DELETE NO ACTION, 
+        ON DELETE NO ACTION, -- deny implemented in del_club procedure
 
     reservation_id      INT,
     club_id             INT

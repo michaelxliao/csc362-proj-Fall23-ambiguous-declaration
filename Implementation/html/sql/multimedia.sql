@@ -11,5 +11,3 @@ CREATE OR REPLACE TABLE multimedia (
     multimedia_type     VARCHAR(256),
     duration            TIME            NOT NULL
 );
-
--- implement deny trigger here

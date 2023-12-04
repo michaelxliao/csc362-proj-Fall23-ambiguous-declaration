@@ -9,7 +9,7 @@ if (isset($_POST["add_club"])) {
 
     if (isset($_POST["club_name"]) && isset($_POST["add_club_desc"])) {
         # Check for the club already being in database.
-        $checkexists = $conn->prepare("SELECT * FROM clubs WHERE club_name = ?");
+        $checkexists = $conn->prepare("SELECT * FROM active_clubs WHERE club_name = ?");
         $checkexists->bind_param('s', $_POST["club_name"]);
         $result = $checkexists->execute();
 

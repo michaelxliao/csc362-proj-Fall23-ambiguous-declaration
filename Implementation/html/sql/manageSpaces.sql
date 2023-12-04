@@ -27,11 +27,12 @@ COMMIT;
 DELIMITER ;
 
 DELIMITER //
-CREATE OR REPLACE PROCEDURE del_space(space_id INT) -- NEEDS WORK
+CREATE OR REPLACE PROCEDURE del_space(id INT)
  BEGIN
  START TRANSACTION;
-   DELETE FROM spaces
-   WHERE spaces.space_id = space_id;
+   UPDATE spaces
+      SET space_is_active = FALSE
+   WHERE spaces.space_id = id;
 
 COMMIT;
    END

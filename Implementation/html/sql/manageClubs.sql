@@ -23,10 +23,11 @@ COMMIT;
 DELIMITER ;
 
 DELIMITER //
-CREATE OR REPLACE PROCEDURE del_club(id INT) -- NEEDS WORK
+CREATE OR REPLACE PROCEDURE del_club(id INT)
  BEGIN
  START TRANSACTION;
-   DELETE FROM clubs
+   UPDATE clubs
+      SET club_is_active = FALSE
    WHERE clubs.club_id = id;
 
 COMMIT;
