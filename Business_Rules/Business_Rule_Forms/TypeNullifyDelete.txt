@@ -2,7 +2,7 @@ BUSINESS RULE SPECIFICATIONS
 
 RULE INFORMATION
 
-Statement:  We want to preserve materials in the selection even if we change the type they are associated with.
+Statement:  We want to preserve materials in the selection even if we change/delete the type they are associated with.
 
 Constraint: We need a Nullify deletion rule to maintain material data.
 
