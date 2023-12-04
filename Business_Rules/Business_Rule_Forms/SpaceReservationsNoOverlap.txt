@@ -1,0 +1,55 @@
+BUSINESS RULE SPECIFICATIONS
+
+RULE INFORMATION
+
+Statement:  Reservation times must not overlap for the same resource. This is to say, if a person has reserved a room for some time, someone else should not be able to reserve the room for the same time (for any overlap).
+
+Constraint: Start Reservation and End Reservation for one record cannot have any overlap with another record. This includes record A encompassing record B entirely and vice versa, as well as A overlapping B's Start Reservation but not End Reservation and vice versa, and same for End Reservation but not Start Reservation and vice versa.
+
+Type:     Database Oriented:     X
+          Application Oriented   _ 
+
+Category: Field Specific:        X
+          Relationship Specific: _ 
+
+Test On:  Insert:                X
+          Delete:                X
+          Update:                _
+
+
+STRUCTURES AFFECTED
+
+Field Names: Reservation Start Time, Reservation End Time
+
+Table Names: _
+
+
+FIELD ELEMENTS AFFECTED
+
+Physical Elements: Data Type:           _ 
+                   Length:              _ 
+                   Character Support:   _ 
+
+Logical Elements:  Key Type:            _ 
+                   Key Structure:       _ 
+                   Uniqueness:          _ 
+                   Null Support:        _ 
+                   Values Entered By:   _ 
+                   Range of Values:     X
+                   Edit Rule:           _ 
+
+
+RELATIONSHIP CHARACTERISTICS AFFECTED
+
+    Deletion rule:              _
+    Type of participation:      _
+    Degree of participation:    _
+
+    
+ACTION TAKEN
+
+Implemented WITHOUT OVERLAPS for the period.
+
+
+NOTES: _
+
