@@ -34,7 +34,7 @@ function connectToDB() {
     return $conn;
 }
 
-function setup($enable_errors = true) { // can turn off enable errors by passing false bool
+function setup($enable_errors = false) { // can turn off enable errors by passing false bool
     if ($enable_errors) {
         doErrorReporting();
     }

@@ -3,8 +3,8 @@ USE therpston;
 INSERT INTO spaces(space_name, space_room_number, space_capacity)
 VALUES
 ("The Round Table", 1, 150),
-("The Square Table", 2, 40),
-("The Other Table", 202, 40);
+("Bowser's Cast-le", 2, 40),
+("The Fish Bowl", 202, 40);
 
 INSERT INTO clubs(club_name, club_description, club_is_active)
 VALUES
@@ -220,7 +220,7 @@ VALUES  (7,3,"",FALSE),
 
 INSERT INTO spaces(space_name, space_room_number, space_capacity)
 VALUES
-("Study Room 201", 7, 201);
+("Study Room 404", -1, 405);
 
 
 -- made one as a personal study session, one as a meeting.
@@ -269,3 +269,14 @@ VALUES ('Database Design for Mere Mortals', 'The reason you have this book in yo
 
 INSERT INTO adaptations (narrative_id, material_id, material_is_source)
 VALUES (6, 21, TRUE);
+
+/*
+       VERIFY BUSINESS RULE FOR NO OVERLAPPING SPACES WORKS
+*/
+
+-- INSERT INTO space_reservations(patron_id, space_id, start_reservation, end_reservation, reservation_notes)
+-- VALUES
+-- (8, 1, '2023-12-01 15:00:00', '2023-12-01 18:30:00', "Bad Data One"),
+-- (8, 1, '2023-12-01 18:30:00', '2023-12-01 18:40:00', "Bad Data Two"),
+-- (8, 1, '2023-12-01 16:00:00', '2023-12-01 20:00:00', "Bad Data Three"),
+-- (8, 1, '2023-12-01 18:30:00', '2023-12-01 19:40:00', "Bad Data Four");

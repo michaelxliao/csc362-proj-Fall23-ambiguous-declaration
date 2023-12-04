@@ -13,5 +13,7 @@ CREATE OR REPLACE TABLE space_reservations (
     start_reservation       DATETIME    NOT NULL,
     end_reservation         DATETIME    NOT NULL,
         CHECK (end_reservation > start_reservation), -- Space Reservation End Date Must Be After Start Date business rule
+    PERIOD FOR reserved_time(start_reservation, end_reservation),
+    UNIQUE (space_id, reserved_time WITHOUT OVERLAPS), -- implements business rule
     reservation_notes       VARCHAR(256)
 );
