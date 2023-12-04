@@ -13,8 +13,8 @@ Category: Field Specific:        X
           Relationship Specific: _ 
 
 Test On:  Insert:                X
-          Delete:                X
-          Update:                _
+          Delete:                _
+          Update:                X
 
 
 STRUCTURES AFFECTED
