@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     if (isset($_POST['add_reservation'])) {
         // $login_id is patron id
-        $space_id = $_POST['space_name'];
+        $space_id = $_POST['space_id'];
         $start_time = $_POST['start_date'] . ' '. $_POST['start_time'];
         $end_time = $_POST['end_date'] . ' '. $_POST['end_time'];
         $notes = $_POST['notes'];
@@ -175,8 +175,8 @@ $res = $patron_spaces->get_result();
 
     <form method=POST>
         <!-- Space Name -->
-        <label for="space_name">Space Name: </label>
-        <select name="space_name" id="space_name" required>
+        <label for="space_id">Space Name: </label>
+        <select name="space_id" id="space_id" required>
             <?php for ($i = 0; $i < $space_names_res->num_rows; $i++) { ?>
                 <option value="<?= $space_names[$i][0]?>">
                     <?= $space_names[$i][1] ?>

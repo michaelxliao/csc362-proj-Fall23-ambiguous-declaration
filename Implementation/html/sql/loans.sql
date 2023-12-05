@@ -118,11 +118,62 @@ BEGIN
 //
 DELIMITER ;
 
-/*
 DELIMITER //
-CREATE OR REPLACE TRIGGER no_loan_overlaps_insert
+CREATE OR REPLACE TRIGGER no_loan_overlaps_update
 BEFORE UPDATE ON loans
-*/
+FOR EACH ROW
+BEGIN 
+    DECLARE new_material_id INT;
+    DECLARE start_interval DATETIME;
+    DECLARE end_interval DATETIME;
+
+    SELECT UNIQUE material_id INTO new_material_id
+        FROM patron_selection_interactions
+        WHERE interaction_id = NEW.interaction_id;
+
+    SET start_interval = NEW.loan_start_date;
+
+    -- We want to check overlapping intervals,
+    -- even for loans that are currently checked out (current timestamp being null)
+
+    IF (NEW.loan_return_date IS NULL) THEN 
+        SET end_interval = CURRENT_TIMESTAMP();
+    ELSE
+        SET end_interval = NEW.loan_return_date;
+    END IF;
+
+    IF (new_material_id IN (SELECT material_id 
+                            FROM loans 
+                                LEFT OUTER JOIN patron_selection_interactions USING (interaction_id)
+                            WHERE material_id = new_material_id
+                            AND 
+                            -- NO OVERLAPPING INTERVALS
+                            (
+                            -- start date contained
+                            (loan_start_date > start_interval 
+                            AND loan_start_date < end_interval)
+
+                            OR
+                            -- end date contained 
+                            (loan_return_date > start_interval
+                            AND loan_return_date < end_interval)
+
+                            OR
+                            -- whole thing contained
+                            (loan_start_date < start_interval
+                            AND loan_return_date > end_interval
+                            )
+
+                            )
+                            )
+                            )
+    THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Cannot have overlapping loan times on a single material';
+
+    END IF;
+  END
+//
+DELIMITER ;
 
 
 -- Can Only Renew Loan For Print Material Four Times,

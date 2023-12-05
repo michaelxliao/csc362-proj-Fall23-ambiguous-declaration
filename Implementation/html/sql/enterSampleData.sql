@@ -231,7 +231,11 @@ VALUES
 (7, 1, '2023-12-01 18:00:00', '2023-12-01 19:00:00', "Codey the Coding Cat Book Circle"),
 -- reservation for self at study hall
 (7, 4, '2023-12-01 19:00:01', '2023-12-01 22:00:00', "Breaking Down about Presentation :("),
-(7, 4, '2023-11-01 19:00:01', '2023-11-01 22:00:00', "Choose Which Book to Circle");
+(7, 4, '2023-11-01 19:00:01', '2023-11-01 22:00:00', "Choose Which Book to Circle"),
+(3, 1, TIMESTAMPADD(HOUR, 21, CURRENT_TIMESTAMP()), TIMESTAMPADD(HOUR, 22, CURRENT_TIMESTAMP()), "Hi Mom!"),
+-- reservation for self at study hall
+(1, 4, TIMESTAMPADD(HOUR, 11, CURRENT_TIMESTAMP()), TIMESTAMPADD(HOUR, 12, CURRENT_TIMESTAMP()), "Breaking Down the 4th Wall"),
+(2, 4, TIMESTAMPADD(HOUR, 3, CURRENT_TIMESTAMP()), TIMESTAMPADD(HOUR, 4, CURRENT_TIMESTAMP()), "Discussing Current Events");
 
 
 INSERT INTO club_reservations(club_id, reservation_id)

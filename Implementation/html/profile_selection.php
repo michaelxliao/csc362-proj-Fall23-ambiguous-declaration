@@ -6,20 +6,19 @@ $conn = setup();
 
 //from $_GET request, find what mode to display.
 
-session_start();
+//  session_start();
 
-if($_SESSION['mode'] != 'staff')
-{
-    // kicks you back to login if you're not already set up
-    header('Location:index.php', True, 303);
-}
-
+// if($_SESSION['mode'] != 'staff')
+// {
+//     // kicks you back to login if you're not already set up
+//     header('Location:index.php', True, 303);
+// }
 
 // Later: implement session-specific details
 
 
-$print_types_res = $conn->query("SELECT print_type FROM print_types WHERE print_type_is_active = TRUE");
-$multimedia_types_res = $conn->query("SELECT multimedia_type FROM multimedia_types WHERE multimedia_type_is_active = TRUE");
+$print_types_res = $conn->query("SELECT print_type FROM print_types");
+$multimedia_types_res = $conn->query("SELECT multimedia_type FROM multimedia_types");
 
 $print_types = $print_types_res->fetch_all();
 $multimedia_types = $multimedia_types_res->fetch_all();

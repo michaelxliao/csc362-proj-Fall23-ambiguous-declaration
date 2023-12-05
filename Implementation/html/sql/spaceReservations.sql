@@ -3,9 +3,11 @@ USE therpston;
 CREATE OR REPLACE TABLE space_reservations (
     PRIMARY KEY (reservation_id),
     FOREIGN KEY (patron_id)
-        REFERENCES patrons(patron_id),
+        REFERENCES patrons(patron_id)
+        ON DELETE CASCADE,
     FOREIGN KEY (space_id)
-        REFERENCES spaces(space_id),
+        REFERENCES spaces(space_id)
+        ON DELETE NO ACTION, -- deny deletion implemented by del_space procedure!
 
     reservation_id          INT         AUTO_INCREMENT,
     patron_id               INT         NOT NULL,

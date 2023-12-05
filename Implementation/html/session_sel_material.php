@@ -56,8 +56,8 @@ session_start();
 
 //SELECTION START
 
-$print_types_res = $conn->query("SELECT print_type FROM print_types WHERE print_type_is_active = TRUE");
-$multimedia_types_res = $conn->query("SELECT multimedia_type FROM multimedia_types WHERE multimedia_type_is_active = TRUE");
+$print_types_res = $conn->query("SELECT print_type FROM print_types");
+$multimedia_types_res = $conn->query("SELECT multimedia_type FROM multimedia_types");
 
 $print_types = $print_types_res->fetch_all();
 $multimedia_types = $multimedia_types_res->fetch_all();
