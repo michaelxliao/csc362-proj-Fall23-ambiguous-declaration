@@ -72,3 +72,6 @@ SOURCE manageValidationTables.sql;
 SOURCE enterSampleData.sql;
 
 SOURCE views.sql;
+
+-- need to change timezone to EST
+SET time_zone = '-5:00';
