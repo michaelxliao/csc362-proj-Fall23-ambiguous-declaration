@@ -5,11 +5,8 @@ $conn = setup();
 
 $ALL_SPACES = "All Spaces";
 
-<<<<<<< HEAD
-$space_names_res = $conn->query("SELECT * FROM pretty_spaces_librarian");
-=======
+
 $space_names_res = $conn->query("SELECT space_name FROM active_spaces");
->>>>>>> 8074d2763933dc7495c6dab931c5f787529fbdd0
 $space_names = $space_names_res->fetch_all();
 
 $sql_query = "SELECT *
@@ -107,7 +104,9 @@ if (isset($_GET["Filter"])) {
 <h1>Therpston County Public Library</h1>
 </header>
 <a href="index_staff.php">Back to Staff</a>
+    <h2> Add a New Space</h2>
 
+    we need: space name, space room number, space capacity. (delete this line after implement)
     <h2> All Spaces </h2>
     <form method=GET>
         <label for="space-name">Room Name: </label>
@@ -122,9 +121,6 @@ if (isset($_GET["Filter"])) {
             <?php } ?>
         </select>
 
-<<<<<<< HEAD
-        <?php result_to_clickable_table($space_names_res, "space", "details_space.php", true); ?>
-=======
         <label for="min-capacity">Minimum Capacity: </label>
         <input type="number" min="1" name="min-capacity" />
 
@@ -134,7 +130,6 @@ if (isset($_GET["Filter"])) {
 
     <h2>Reservations Today</h2>
     <?php result_to_table($pretty_result); ?>
->>>>>>> 8074d2763933dc7495c6dab931c5f787529fbdd0
 
 </body>
 

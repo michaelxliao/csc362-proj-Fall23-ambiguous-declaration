@@ -146,6 +146,7 @@ $conn = setup();
     <h1>Details for <?=$space_name?></h1>
 
     <h3>Edit Space Details</h3>
+    we need: space name, space room number, space capacity. (delete this line after implement)
 
 
     <h2>Reserve This Space</h2>
