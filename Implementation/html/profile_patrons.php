@@ -14,41 +14,34 @@ if (isset($_POST["add_patron"])) {
         $empty = NULL;
         if(($_POST["add_patron_email"]!="" && $_POST["add_patron_phone"]!="")) {
         # Check if the patron is already being in database.
-            // $checkexists = $conn->prepare("SELECT * FROM clubs WHERE club_name = ?");
-            // $checkexists->bind_param('s', $_POST["club_name"]);
-            // $result = $checkexists->execute();
-            // $has_value = $checkexists->get_result()->num_rows;
-            // if (!$has_value) {
+            $checkexists = $conn->prepare("SELECT * FROM patrons WHERE patron_email = ?");
+            $checkexists->bind_param('s', $email);
+            $result = $checkexists->execute();
+            $has_value = $checkexists->get_result()->num_rows;
+            if (!$has_value) {
                 $insert_stmt = $conn->prepare("CALL add_patron(?,?,?,?)");
                 $insert_stmt->bind_param('ssss', $first_name, $last_name, $email, $phone);
                 $result = $insert_stmt->execute();
-           // }
+           }
         }
         if(($_POST["add_patron_email"]!="" && $_POST["add_patron_phone"]=="")) {
             # Check if the patron is already being in database.
-            // $checkexists = $conn->prepare("SELECT * FROM clubs WHERE club_name = ?");
-            // $checkexists->bind_param('s', $_POST["club_name"]);
-            // $result = $checkexists->execute();
-            // $has_value = $checkexists->get_result()->num_rows;
-            // if (!$has_value) {
+            $checkexists = $conn->prepare("SELECT * FROM patrons WHERE patron_email = ?");
+            $checkexists->bind_param('s', $email);
+            $result = $checkexists->execute();
+            $has_value = $checkexists->get_result()->num_rows;
+            if (!$has_value) {
                 $insert_stmt = $conn->prepare("CALL add_patron(?,?,?,?)");
                 $insert_stmt->bind_param('ssss', $first_name, $last_name, $email, $empty);
                 $result = $insert_stmt->execute();
-           //}
+           }
         }
         if($_POST["add_patron_email"]=="" && $_POST["add_patron_phone"]!="") {
-            # Check if the patron is already being in database.
-            // $checkexists = $conn->prepare("SELECT * FROM clubs WHERE club_name = ?");
-            // $checkexists->bind_param('s', $_POST["club_name"]);
-            // $result = $checkexists->execute();
-            // $has_value = $checkexists->get_result()->num_rows;
-            // if (!$has_value) {
                 $insert_stmt = $conn->prepare("CALL add_patron(?,?,?,?)");
                 $insert_stmt->bind_param('ssss', $first_name, $last_name, $empty, $phone);
                 $result = $insert_stmt->execute();
-            //}
+            }
         }
-    }
     if ($changes_made) {
         header("Location:" . $_SERVER['REQUEST_URI'], true, 303);
     }

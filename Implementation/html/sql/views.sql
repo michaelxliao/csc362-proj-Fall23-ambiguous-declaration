@@ -71,6 +71,13 @@ SELECT club_id AS 'ID',
          LEFT OUTER JOIN selection USING(material_id)
    WHERE material_is_source;
 
+CREATE OR REPLACE VIEW pretty_spaces_librarian AS
+SELECT DISTINCT space_name as "Space Name"
+    FROM spaces
+WHERE space_is_active = TRUE;
+
+
+
    CREATE OR REPLACE VIEW pretty_clubs_and_roles AS
    SELECT club_id AS 'ID',
        club_name AS 'Name',

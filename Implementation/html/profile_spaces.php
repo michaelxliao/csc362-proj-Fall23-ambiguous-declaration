@@ -5,7 +5,7 @@ $conn = setup();
 
 $ALL_SPACES = "All Spaces";
 
-$space_names_res = $conn->query("SELECT space_name FROM spaces WHERE space_is_active = TRUE");
+$space_names_res = $conn->query("SELECT * FROM pretty_spaces_librarian");
 $space_names = $space_names_res->fetch_all();
 
 $sql_query = 'SELECT * FROM pretty_all_upcoming_space_reservations'; // this by default; can be overridden by filtering
@@ -56,7 +56,7 @@ $where_clauses = [];
             <?php } ?>
         </select>
 
-        <?php result_to_clickable_table($result, "space", "details_space.php", true); ?>
+        <?php result_to_clickable_table($space_names_res, "space", "details_space.php", true); ?>
 
 </body>
 
