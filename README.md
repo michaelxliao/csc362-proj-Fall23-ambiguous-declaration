@@ -1,13 +1,11 @@
 # csc362-proj-Fall23-ambiguous-declaration
-<<<<<<< HEAD
-
-From a librarian of the fabricated Therpston County Public Library, we were asked to do a redesign of the catalog system. This repository is the full-stack implementation of that request, which builds an SQL website that interacts with a PHP database.
+We were asked to design a database for a fictional client, Therpston County Public Library. This repository is the full-stack implementation of that request, which builds an SQL website that interacts with a PHP database.
 
 ### Package Installation and Use
 
-We have implemented the database using MariaDB version 10.5.21 and PHP version 7.4.33. We have implemented this through the LAMP stack, and have run thorough website testing through a virtual machine.
+We have implemented the database using MariaDB version 10.5.21 and PHP version 7.4.33. We have implemented this through the LAMP stack, and have run thorough website testing through a Google Cloud virtual machine using running Debian and using Apache version 2.4.56 as a webhost.
 
-To use this website, please replace the '.ssh/html' directory of your machine with all contents of the "Implementation/html" directory, or create a symbolic link to the directory elsewhere. Then, change your working directory to Implementation/html/sql/ and 
+To use this website, please replace the 'var/www/html' directory of your machine with all contents of the "Implementation/html" directory, or create a symbolic link to the directory. Then, change your working directory to Implementation/html/sql/ and run the setupTherpstonDB.sql file in MariaDB.
 
 ### The Design of the Database
 
@@ -19,7 +17,7 @@ Further, we have implemented the design with particular care for storing "adapta
 
 ### The Client
 
-We were given the following (fake) request from a Rita Booker, of Therpston County:
+We were given the following (fake) request from Rita Booker, Chief Librarian of Therpston County Public Library:
 
 
 
