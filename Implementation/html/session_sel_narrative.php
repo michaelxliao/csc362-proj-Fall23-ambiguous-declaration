@@ -12,6 +12,7 @@ session_start();
     if(!isset($_SESSION['patron_id']))
     {
         header("Location:login_general.php?error=true", true, 303);
+        exit();
     }
 
     $login_id = $_SESSION['patron_id'];

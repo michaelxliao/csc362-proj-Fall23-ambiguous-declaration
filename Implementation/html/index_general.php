@@ -11,6 +11,7 @@ if(isset($_POST['login_submit']))
     if(!is_numeric($_POST['patron_login_id']))
     {   
         header("Location:login_general.php?error=true", true, 303);
+        exit();
     }
     $login_id = $_POST['patron_login_id'];
 
@@ -26,12 +27,13 @@ if(isset($_POST['login_submit']))
     if($id_res->num_rows == 0)
     {
         header("Location:login_general.php?error=true", true, 303);
+        exit();
     }
 
     $_SESSION['patron_id'] = $login_id;
 
     header("Location:" . $_SERVER['REQUEST_URI'], true, 303);
-
+    exit();
 }
 
 
