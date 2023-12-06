@@ -5,8 +5,8 @@ $conn = setup();
 $club_id = $_GET['clubid'];
 $club_name_res = $conn->query("SELECT club_name FROM active_clubs WHERE club_id = $club_id"); // note all these need to be refactoered into perpared statements
 $club_name = $club_name_res->fetch_row()[0];
-$club_desc = $conn->query("SELECT club_description FROM active_clubs WHERE club_id = $club_id");
-$club_desc_res = $club_desc->fetch_all()[0][0];
+$club_desc_res = $conn->query("SELECT club_description FROM active_clubs WHERE club_id = $club_id");
+$club_desc = $club_desc_res->fetch_all()[0][0];
 
 $patrons_res = $conn->query('SELECT CONCAT(patron_first_name, " ", patron_last_name) AS patron_name,
                                     patron_id
@@ -39,14 +39,12 @@ $club_spaces_reserved_res = $conn->query("SELECT space_name AS 'Space',
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST["edit_old_club"])) {
-        print_r("GOT HERE FIRST");
         $new_club_name = $_POST["edit_club_name"];
         $new_club_decs = $_POST["edit_club_desc"];
         $changes_made = True;
     
         if (isset($_POST["edit_club_name"]) && isset($_POST["edit_club_desc"])) {
             # Check for the club already being in database.
-            echo "GOT HERE";
             $checkexists = $conn->prepare("SELECT * FROM active_clubs WHERE club_name = ?");
             $checkexists->bind_param('s',$club_name);
             $checkexists->execute();
@@ -60,7 +58,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($has_value) {
                 $update_stmt = $conn->prepare("CALL update_club(?, ?, ?)");
                 $update_stmt->bind_param('iss', $club_id, $new_club_name, $new_club_decs);
-                $update_stmt->execute();
+                try {
+                    $update_stmt->execute();
+                } catch (mysqli_sql_exception $e) {
+                    print_r($e);
+                }
     
             }
         }
@@ -96,7 +98,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $insert_stmt = $conn->prepare('INSERT INTO club_members (club_id, patron_id, member_info, member_is_leader)
                                        VALUES (?, ?, ?, ?)');
         $insert_stmt->bind_param('iisi', $club_id, $_POST['new_member_id'], $_POST['new_member_desc'], $is_leader);
-        $insert_stmt->execute();
+        try {
+            $insert_stmt->execute();
+        } catch (mysqli_sql_exception $e) {
+            print_r($e);
+        }
     }
 
     if (isset($_POST['del_club'])){
@@ -137,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="text" name="edit_club_name" value = "<?=$club_name?> " />
         <br>
         <label for ="edit_club_desc">Club Description:</label>
-        <textarea name="edit_club_desc" value = "<?=$club_desc_res?> "> </textarea>
+        <textarea name="edit_club_desc"> <?=$club_desc ?></textarea>
         <br>
         <input type="submit" name="edit_old_club" value="Edit Club" />
     </form>

@@ -3,7 +3,7 @@ require 'includes/setup.php';
 require 'includes/functions.php';
 $conn = setup();
 
-$sql_query = 'SELECT narrative_name, narrative_description FROM narratives';
+$sql_query = 'SELECT narrative_name AS "Name", narrative_description AS "Description" FROM narratives';
 
 if(isset($_POST["add_narrative"])){
     if($_POST["new_narrative_name"] != "" && $_POST["new_narrative_decs"]!=""){
