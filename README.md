@@ -1,4 +1,5 @@
 # csc362-proj-Fall23-ambiguous-declaration
+<<<<<<< HEAD
 
 From a librarian of the fabricated Therpston County Public Library, we were asked to do a redesign of the catalog system. This repository is the full-stack implementation of that request, which builds an SQL website that interacts with a PHP database.
 

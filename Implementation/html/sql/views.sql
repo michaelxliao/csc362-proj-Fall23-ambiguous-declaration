@@ -71,11 +71,6 @@ SELECT club_id AS 'ID',
          LEFT OUTER JOIN selection USING(material_id)
    WHERE material_is_source;
 
-CREATE OR REPLACE VIEW pretty_spaces_librarian AS
-SELECT DISTINCT space_name as "Space Name"
-    FROM spaces
-WHERE space_is_active = TRUE;
-
 
 
    CREATE OR REPLACE VIEW pretty_clubs_and_roles AS
@@ -148,7 +143,7 @@ WHERE space_is_active = TRUE;
 -- for profile_spaces.php
     CREATE OR REPLACE VIEW pretty_spaces_librarian AS
     SELECT space_id AS 'ID',
-           space_name AS 'Space Name', 
+           space_name AS 'Reserved Space', -- bad practice. but need for filtering. me grug and i can't code good. ook ook. 
            space_room_number AS 'Room Number',
            space_capacity AS 'Capacity'
       FROM active_spaces;

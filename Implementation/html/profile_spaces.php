@@ -9,9 +9,33 @@ $ALL_SPACES = "All Spaces";
 $space_names_res = $conn->query("SELECT space_name FROM active_spaces");
 $space_names = $space_names_res->fetch_all();
 
-$sql_query = "SELECT *
+$sql_query = "SELECT `ID`, `Reserved Space` AS 'Space Name', `Room Number`, `Capacity`
                 FROM pretty_spaces_librarian";
 $space_id_res = $conn->query($sql_query);
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if(isset($_POST['add_space'])){
+        //check that input is valid, if not then run nothing else.
+        //PHP can't break out of an if statement :(
+        if(($_POST['add_space_name'] != "") &&
+            ($_POST['add_space_capacity'] != "") &&
+            ($_POST['add_space_room_num'] != ""))
+            {
+                $add_space_stmt = $conn->prepare("CALL add_space(?,?,?);");
+                $add_space_stmt->bind_param("sii", 
+                                            $_POST['add_space_name'], 
+                                            $_POST['add_space_room_num'], 
+                                            $_POST['add_space_capacity']);
+                $add_space_stmt->execute();
+            }
+    }
+
+
+    header("Location:" .  $_SERVER['REQUEST_URI'],  true, 303);
+    exit();
+}
+
+
 
 $pretty_sql_query = 'SELECT reservation_id AS "Reservation ID",
                      `Reserved Space` AS "Space Name", -- need to rename because one form filters both tables!
@@ -32,12 +56,12 @@ if (isset($_GET["Filter"])) {
     if ($_GET["space-name"] == $ALL_SPACES) {
         // do nothing (no addnl filter required)
     } elseif (isset($_GET["space-name"])) { // in this case, show only reservations 4 that space
-        $where_clauses[] = '`Space Name` = ?';
+        $where_clauses[] = '`Reserved Space` = ?';
         $need_space = true;
     }
 
     if (isset($_GET["min-capacity"])) {
-        $where_clauses[] = '`Capacity` = ?';
+        $where_clauses[] = '`Capacity` >= ?';
         $need_capacity = true;
     }
 
@@ -57,30 +81,30 @@ if (isset($_GET["Filter"])) {
             $final_reservation_query = $final_reservation_query . ' (' . $where_clauses[$i] . ') AND ';
         }
         $final_sql_query = $final_sql_query . ' (' . $where_clauses[sizeof($where_clauses) - 1] . ')'; // handling the final where clause
-        $final_reservation_query = $final_reservation_query . ' (' . $where_clauses[sizeof($where_clauses) - 1] . ')' . " ORDER BY `Start Time` ASC'"; // handling the final where clause
-        echo $final_sql_query;
-        echo '<br>';
-        echo $final_reservation_query;
+        $final_reservation_query = $final_reservation_query . ' (' . $where_clauses[sizeof($where_clauses) - 1] . ')' . " ORDER BY `Start Time` ASC"; // handling the final where clause
+        // echo $final_sql_query;
+        // echo '<br>';
+        // echo $final_reservation_query;
 
-        $filter_stmt = $conn->prepare($final_sql_query);
-        $filter_reservation_stmt = $conn->prepare($final_reservation_query); // NOTE!!! @Michael - needs to execute prepared stmts sequentially
-        if ($need_space && $need_capacity) { // can alter this later to add more bindable params
-            $filter_stmt->bind_param('si', $_GET["space-name"], $_GET['min-capacity']);
-            $filter_reservation_stmt->bind_param('si', $_GET["space-name"], $_GET['min-capacity']);
-        } elseif ($need_space) {
-            $filter_stmt->bind_param('s', $_GET["space-name"]);
-            $filter_reservation_stmt->bind_param('s', $_GET["space-name"]);
-        } elseif ($need_capacity) {
-            $filter_stmt->bind_param('i', $_GET["min-capacity"]);
-            $filter_reservation_stmt->bind_param('i', $_GET["min-capacity"]);
+        function stmt_execute($sql, $conn, $name, $capacity, $need_space, $need_capacity) {
+            $stmt = $conn->prepare($sql);
+            if ($need_space && $need_capacity) {
+                $stmt->bind_param('si', $name, $capacity);
+            } elseif ($need_space) {
+                $stmt->bind_param('s', $name);
+            } elseif ($need_capacity) {
+                $stmt->bind_param('i', $capacity);
+            }
+            if (!$stmt->execute()) {
+                echo 'failed to filter';
+                exit();
+            } else {
+                return $stmt->get_result();
+            }
         }
-        if (!$filter_stmt->execute() || !$filter_reservation_stmt->execute()) {
-            echo 'failed to filter';
-            exit();
-        } else {
-            $space_id_res = $filter_stmt->get_result();
-            $pretty_result = $filter_reservation_stmt->get_result();
-        }
+
+        $space_id_res = stmt_execute($final_sql_query, $conn, $_GET["space-name"], $_GET['min-capacity'], $need_space, $need_capacity);
+        $pretty_result = stmt_execute($final_reservation_query, $conn, $_GET["space-name"], $_GET['min-capacity'], $need_space, $need_capacity);
     }
 }
 
@@ -106,12 +130,22 @@ if (isset($_GET["Filter"])) {
 <a href="index_staff.php">Back to Staff</a>
     <h2> Add a New Space</h2>
 
-    we need: space name, space room number, space capacity. (delete this line after implement)
+    <form method=POST>
+        <label for="add_space_name">Space Name:</label>
+        <input type="text" name="add_space_name" /><br>
+        <label for="add_space_room_num">Space Room Number:</label>
+        <input type="number" name="add_space_room_num" /><br>
+        <label for="add_space_capacity">Space Capacity</label>
+        <input type="number" name="add_space_capacity" /><br>
+        <input type="submit" name="add_space" value="Add Space" />
+
+    </form>
+
     <h2> All Spaces </h2>
     <form method=GET>
         <label for="space-name">Room Name: </label>
         <select name="space-name" id="space-name" required>
-            <option value=<?=$ALL_SPACES?>> 
+            <option value="<?=$ALL_SPACES?>"> 
             <?=$ALL_SPACES?>
             </option>   
             <?php for ($i = 0; $i < $space_names_res->num_rows; $i++) { ?>
@@ -122,7 +156,7 @@ if (isset($_GET["Filter"])) {
         </select>
 
         <label for="min-capacity">Minimum Capacity: </label>
-        <input type="number" min="1" name="min-capacity" />
+        <input type="number" value="0" name="min-capacity" />
 
         <input type="submit" value="Filter" name="Filter" />
     </form>

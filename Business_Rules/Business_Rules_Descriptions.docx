@@ -9,6 +9,24 @@ Patron cascade delete:
 Space deny delete: 
     If the library is ever renovated and a room is removed or changed, we want to keep hold of the data stored on that room. This allows us to keep track of which clubs and patrons have reserved these rooms. Furthermore, this allows us to keep track of how much each room is getting reserved. 
 
+Type Nullify Delete:
+    We would not want to delete our current data on the selection of materials whenever we reclassify types. Even if we decide that it is incorrect to classify e.g. journals differently from magazines, we would rather leave the type field blank than remove all data on it.
+
+Space Reservations Cannot Overlap:
+    If a patron reserves a space for a given time, we must not allow other patrons to schedule over top of them. We are offering these resources on a first-come-first-serve basis, and to prevent consternation and confusion, we ought to block reservations that interfere with existing ones on the same space.
+
+Loans Cannot Overlap:
+    A material, once checked out to a patron, cannot also be checked out by a different patron (or for that matter, again by the existing patron - that should better be served as a renewal). It would be quite frustrating to check out a book only to find that it has already been promised to another; we should block this case from occurring. Materials cannot be checked out if they have not been returned yet.
+
+Cannot Place Hold on Unloaned Material:
+    We don’t want to allow patrons to “pre-order” materials – they must authentically be ready for their material at the moment they want to check it out. Otherwise, a patron might be able to place holds on too many materials to lock out other patrons who might want the material right away. Therefore, it is best to disallow placing holds on materials that aren’t currently unavailable.
+
+Patron Cannot Place Hold on Their Own Loan:
+    In order to stop patrons from exploiting the hold system, we don’t want to let them place holds on a material they’ve already checked out (in order to immediately get it again after they’ve returned it). 
+
+Patron Cannot Place Multiple Holds on the Same Item:
+    This rule is here to ensure that a patron cannot exploit the hold system - each patron can only place a single hold on a single checked-out loan. We want to prevent the case where a patron can check a material out indefinitely by having multiple holds queued up (since when their first hold resolves and they are made to return the material, their next hold would allow them to re-check out the item).
+
 Space Reservation End Date must be after Start Date:
     This rule is in place to prevent time paradoxes. It wouldn't be of use to any patron if the start of their reservation was tomorrow but the reservation ended yesterday. This rule helps with making a reservations easier as patrons don't have to worry about dates in the past.
 

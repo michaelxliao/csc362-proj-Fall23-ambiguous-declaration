@@ -41,6 +41,8 @@ $conn = setup();
 
 
     $space_name = $space_data[0][1];
+    $space_room_num = $space_data[0][2];
+    $space_capacity = $space_data[0][3];
 
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -56,12 +58,29 @@ $conn = setup();
             exit();
         }
 
+        if(isset($_POST['edit_space'])){
+            //check that input is valid, if not then run nothing else.
+            //PHP can't break out of an if statement :(
+            if(($_POST['edit_space_name'] != "") &&
+                ($_POST['edit_space_capacity'] != "") &&
+                ($_POST['edit_space_room_num'] != ""))
+                {
+                    $edit_space_stmt = $conn->prepare("CALL update_space(?,?,?,?);");
+                    $edit_space_stmt->bind_param("issi",
+                                                $space_id, 
+                                                $_POST['edit_space_name'], 
+                                                $_POST['edit_space_room_num'], 
+                                                $_POST['edit_space_capacity']);
+                    $edit_space_stmt->execute();
+                }
+    
+        }
         if (isset($_POST['add_reservation'])) {
             // $space_id is space id
             $patron_id = $_POST['patron_id'];
             if($patron_id == "")
             {
-                header($_SERVER['REQUEST_URI'], true, 303);
+                header("Location: " . $_SERVER['REQUEST_URI'], true, 303);
             }
             $start_time = $_POST['start_date'] . ' '. $_POST['start_time'];
             $end_time = $_POST['end_date'] . ' '. $_POST['end_time'];
@@ -78,8 +97,14 @@ $conn = setup();
                 $reservation_ins_stmt = $conn->prepare("CALL add_club_reservation(?, ?, ?, ?, ?, ?);");
                 $reservation_ins_stmt->bind_param("iisssi", $patron_id, $space_id, $start_time, $end_time, $notes, $new_club_id);
             }
-    
-            $reservation_ins_stmt->execute();
+            try{
+                $reservation_ins_stmt->execute();
+            }
+            catch(Exception $e)
+            {
+                echo "Could not insert, failed constraint. Check to make sure
+                      your times are consistent and not overlapping.";
+            }
     
         }
 
@@ -100,7 +125,7 @@ $conn = setup();
         }
         
     
-        header($_SERVER['REQUEST_URI'], true, 303);
+        header("Location: " . $_SERVER['REQUEST_URI'], true, 303);
     }
 
     
@@ -145,9 +170,15 @@ $conn = setup();
     <a href="profile_spaces.php">Back to All Spaces</a>
     <h1>Details for <?=$space_name?></h1>
 
-    <h3>Edit Space Details</h3>
-    we need: space name, space room number, space capacity. (delete this line after implement)
-
+    <form method=POST>
+        <label for="edit_space_name">Space Name:</label>
+        <input type="text" name="edit_space_name" value="<?=$space_name?>"/><br>
+        <label for="edit_space_room_num">Space Room Number:</label>
+        <input type="number" name="edit_space_room_num" value="<?=$space_room_num?>"/><br>
+        <label for="edit_space_capacity">Space Capacity</label>
+        <input type="number" name="edit_space_capacity" value="<?=$space_capacity?>"/><br>
+        <input type="submit" name="edit_space" value="Update Space" />
+    </form>
 
     <h2>Reserve This Space</h2>
     <!-- we need:
@@ -162,7 +193,7 @@ $conn = setup();
         <!-- Space Name -->
         <label for="space_name">Space Name: <?=$space_name?></label>
         <br>
-        <label for="patron_name">Patron Name:</label>
+        <label for="patron_id">Patron ID:</label>
         <input type="text" name="patron_id" />
         <br>
         <label>Start Date:</label>
