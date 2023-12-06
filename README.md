@@ -17,22 +17,21 @@ Further, we have implemented the design with particular care for storing "adapta
 
 ### The Client
 
-We were given the following (fake) request from Rita Booker, Chief Librarian of Therpston County Public Library:
+We were tasked with fulfilling the following request from Rita Booker, Chief Librarian of Therpston County Public Library:
 
 
-
-    *Salutations,
-
-    Thank you for your interest in supporting the Therpston County Public Library! We are pleased to accept your bid for redesigning the catalog system. We are looking forward to upgrading our systems to enable deeper exploration of what the library has to offer.
-
-    We are particularly interested in promoting the connections between print and multimedia. Not only audiobooks, film and TV adaptations of books and graphic novels and comics, but also novelizations of films. These connections are often hard to make, because the related items do not always share the same names, and some stories may go by more than one name across different mediums! We feel that this is a powerful way to revitalize the library and bring new members into our book and film clubs.
-
-    In addition to this exciting new initiative, we also need to update our usual operating mechanisms related to loans and renewals, late fees, reservations, and our selection and deselection processes.
-
-    Sincerely,
-
-    Rita Booker Summit
-    Chief Librarian, Therpston Country Public Library*
+> Salutations,
+> 
+> Thank you for your interest in supporting the Therpston County Public Library! We are pleased to accept your bid for redesigning the catalog system. We are looking forward to upgrading our systems to enable deeper exploration of what the library has to offer.
+> 
+> We are particularly interested in promoting the connections between print and multimedia. Not only audiobooks, film and TV adaptations of books and graphic novels and comics, but also novelizations of films. These connections are often hard to make, because the related items do not always share the same names, and some stories may go by more than one name across different mediums! We feel that this is a powerful way to revitalize the library and bring new members into our book and film clubs.
+> 
+> In addition to this exciting new initiative, we also need to update our usual operating mechanisms related to loans and renewals, late fees, reservations, and our selection and deselection processes.
+> 
+> Sincerely,
+>
+> Rita Booker Summit
+> Chief Librarian, Therpston Country Public Library
 
 
 Since that initial contact, we have followed up with Rita Booker extensively to develop and implement this full-stack website to allow for saving and editing of information about our patrons, spaces, clubs, materials, and narratives. 
