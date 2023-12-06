@@ -110,14 +110,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location:profile_patrons.php", true, 303);
         exit();
     }
-    if(isset($_POST["new_email"])){
+    if(isset($_POST["change_email"])){
         $_update_statement=$conn->prepare("CALL update_patron(?,?,?,?,?)");
         $_update_statement->bind_param('issss', $patron_id, $patron_info_res[0][0], $patron_info_res[0][1], $_POST["new_email"], $patron_info_res[0][3]);
         $_update_statement->execute();
     }
-    if(isset($_POST["new_phone"])){
+    if(isset($_POST["change_phone"])){
         $_update_statement=$conn->prepare("CALL update_patron(?,?,?,?,?)");
-        $_update_statement->bind_param('issss',$patron_id, $patron_info_res[0][0], $patron_info_res[0][1], $patron_info_res[0][2], $_POST["new_phone"]);
+        $_update_statement->bind_param('issss', $patron_id, $patron_info_res[0][0], $patron_info_res[0][1], $patron_info_res[0][2], $_POST["new_phone"]);
         $_update_statement->execute();
     }
     if(isset($_POST["new_loan"])){
@@ -184,8 +184,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_update_statement->bind_param('issss',$patron_id,$patron_info_res[0][0],$_POST["new_last_name"], $patron_info_res[0][2], $patron_info_res[0][3]);
         $_update_statement->execute();
     }
-    //header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
-    //exit();
+    header("Location: {$_SERVER['REQUEST_URI']}", true, 303);
+    exit();
 }
 ?>
 <!DOCTYPE html>
