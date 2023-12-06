@@ -57,8 +57,8 @@ session_start();
 
 //SELECTION START
 
-$print_types_res = $conn->query("SELECT print_type FROM print_types WHERE print_type_is_active = TRUE");
-$multimedia_types_res = $conn->query("SELECT multimedia_type FROM multimedia_types WHERE multimedia_type_is_active = TRUE");
+$print_types_res = $conn->query("SELECT print_type FROM print_types");
+$multimedia_types_res = $conn->query("SELECT multimedia_type FROM multimedia_types");
 
 $print_types = $print_types_res->fetch_all();
 $multimedia_types = $multimedia_types_res->fetch_all();
@@ -180,9 +180,8 @@ if (isset($_GET["Filter"])) {
         <h1> Welcome, <?=$patron_first_name?>, to the Therpston County Public Library.</h1>
     </header>
     <a href="index_general.php">Back to Main Patron Page</a>
-
-    <h3>Click on a material to find adapations (e.g. the novel a film was based on).</h3>
-
+    <h1>Find Adaptations</h1>
+    <h3>Click on a material to find its adapations (e.g. the novel a film was based on).</h3>
     <br>
 
     <form method=GET> <!-- NOTE FOR FILTERING: don't freakin forget your quotes -->

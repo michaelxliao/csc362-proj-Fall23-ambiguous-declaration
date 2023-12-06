@@ -207,6 +207,7 @@ $loan_res = $patron_loan_stmt->get_result();
 
     <h2>Checked Out Material(s):</h2>
     <?php result_to_deletable_table_general($loan_res, [0], "Renew Material", "Renew Selected Materials", "increment_loans");?>
+    <!--STRETCH GOAL: get stuff for all past loans-->
     <h2>Current Hold(s):</h2>
     <?= result_to_deletable_table_general($hold_res, [0], "Cancel Hold", "Cancel Selected Holds");?>
 </body>
