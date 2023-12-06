@@ -117,9 +117,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         //execute stmt
         $insert_stmt = $conn->prepare("CALL add_loan(?, ?, CURDATE(), NULL, 0)");
         $insert_stmt->bind_param("ii", $_POST['material_id'], $patron_id);
-        if (!$insert_stmt->execute()) {
-            print("F sql");
-            exit();
+        try {
+            $insert_stmt->execute();
+        } catch (mysqli_sql_exception $e) {
+            $e->getMessage();
         }
     }
 
@@ -198,7 +199,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="submit" name="change_email" value="Update Email">
         <br>
         <label for = "change_phone">Current Phone Number:</label>
-        <input type="text" name="new_phone" value ="<?= $patron_info_res[0][3]?>">
+        <input type="text" name="new_phone" max="14" pattern="^\d{3}-\d{3}-\d{4}$" placeholder="XXX-XXX-XXXX" value ="<?= $patron_info_res[0][3]?>">
         <input type="submit" name="change_phone" value="Update Phone Number">
     </form>
     <h2>Checked Out Material(s):</h2>

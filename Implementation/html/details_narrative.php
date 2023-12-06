@@ -20,8 +20,12 @@ $sql_query = $conn->query("SELECT material_id AS 'Material ID', material_title A
                WHERE narrative_name = '$narrative_name'");
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(isset($_POST["new_adaptation"])){
-        printf($_POST["new_material_id"]);
-        $not_source =0;
+        // printf($_POST["new_material_id"]);
+        if (isset($_POST["is_source"])) {
+            $is_source = 1;
+        } else {
+            $is_source = 0;
+        }
         $checkexists = $conn->prepare("SELECT * FROM adaptations WHERE narrative_id = ? AND material_id = ?");
         $checkexists->bind_param('ii',$real_narrative_id, $_POST["new_material_id"]);
         $checkexists->execute();
@@ -34,9 +38,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!$has_value) {
             $update_stmt = $conn->prepare("INSERT INTO adaptations(narrative_id, material_id, material_is_source)
             VALUES (?, ?, ?)");
-            $update_stmt->bind_param('iii', $real_narrative_id, $_POST["new_material_id"], $not_source);
-            $update_stmt->execute();
-
+            $update_stmt->bind_param('iii', $real_narrative_id, $_POST["new_material_id"], $is_source);
+            try {
+                $update_stmt->execute();
+            } catch (mysqli_sql_exception $e) {
+                $e->getMessage();
+            }
         }
     }
     if(isset($_POST["delete_records"])){
@@ -112,7 +119,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <form method=POST>
         <label for="new_material_id">Enter in barcode or ID for a new material:</label>
-        <input type="text" name="new_material_id" /></td>
+        <input type="text" name="new_material_id" />
+        <label for="is_source">Source of the adaptation?</label>
+        <input type="checkbox" name="is_source" value="1" />
+
         <input type="submit" name="new_adaptation" value = "Add Material"/>
     </form>
     <?php result_to_deletable_table($sql_query, true) ?>

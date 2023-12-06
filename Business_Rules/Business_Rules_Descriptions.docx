@@ -48,6 +48,9 @@ Can only renew a loan for multimedia two times:
 Club name must be unique:
     This rule is in place to prevent two clubs from having the same name. In most circumstances, if two clubs have the same name, they serve the same purpose. So here we want club names to accurately reflect what the club does. This also will prevent confusion amongst patrons when they go to see what clubs are available.
 
+Narrative name must be unique:
+    This rule is in place to prevent two narratives from having the same name. In most circumstances, if two narratives have the same name, they refer to the same one. So here we want narratives to be more specific. This also will prevent confusion amongst patrons when they go to see what narratives are in our database.
+
 Patrons can check out up to 10 print materials at a time:
     This rule is in place to prevent a single patron from checking out too many print materials. While we encourge patrons to read as much as they can, checking out anything over 10 print materials makes it harder for other patrons to find materials that they want. Furthermore, it means there is a higher chance of materials being lost or damaged the longer it takes for materials to be returned.
 
