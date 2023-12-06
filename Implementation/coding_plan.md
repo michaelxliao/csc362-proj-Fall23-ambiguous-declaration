@@ -10,6 +10,7 @@ Stretch Goals:
 - Testing for SQL to ensure tables work properly
 - Testing for PHP to ensure web handles as expected
   - e.g. preventing XSS and other cybersecurity risks
+- Documentation
 
 ## Files
 

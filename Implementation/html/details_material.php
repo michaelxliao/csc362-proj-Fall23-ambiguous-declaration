@@ -99,8 +99,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $add_stmt = $conn->prepare('INSERT INTO selection_creators (creator_id, material_id, creator_role)
                                     VALUES (?, ?, ?)');
         $add_stmt->bind_param('iis', $_POST['creator_id'], $curr_material, $_POST['new_role']);
-        if (!$add_stmt->execute()) {
-            echo $add_stmt->error;
+        try {
+            if (!$add_stmt->execute()) {
+                echo $add_stmt->error;
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage();
         }
     } elseif (isset($_POST['delete_genres'])) {
         $get_relevant_records_stmt = $conn->prepare("SELECT genre_name
@@ -334,7 +338,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="type">Type: </label>
         <select name="type">
             <?php if ($is_print) {
-                $print_types_res = $conn->query("SELECT print_type FROM print_types WHERE print_type_is_active = TRUE");
+                $print_types_res = $conn->query("SELECT print_type FROM print_types");
                 $print_types = $print_types_res->fetch_all();
 
                 for ($i = 0; $i < $print_types_res->num_rows; $i++) { ?>
@@ -344,7 +348,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </option>
                 <?php }
             } else {
-                $multimedia_types_res = $conn->query("SELECT multimedia_type FROM multimedia_types WHERE multimedia_type_is_active = TRUE");
+                $multimedia_types_res = $conn->query("SELECT multimedia_type FROM multimedia_types");
                 $multimedia_types = $multimedia_types_res->fetch_all();
 
                 for ($i = 0; $i < $multimedia_types_res->num_rows; $i++) { ?>

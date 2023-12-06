@@ -163,6 +163,7 @@ if (isset($_GET["Filter"])) {
     <?php result_to_clickable_table($space_id_res, "space", "details_space.php", true); ?>
 
     <h2>Reservations Today</h2>
+    <p>These reservations can be modified through the specific space page.</p>
     <?php result_to_table($pretty_result); ?>
 
 </body>

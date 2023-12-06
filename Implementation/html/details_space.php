@@ -2,6 +2,8 @@
 require 'includes/setup.php';
 require 'includes/functions.php';
 $conn = setup();
+
+$CLUB_NONE = 'None';
 // check patron exists
 
 
@@ -86,7 +88,7 @@ $conn = setup();
             $end_time = $_POST['end_date'] . ' '. $_POST['end_time'];
             $notes = $_POST['notes'];
                 
-            if($_POST['club_id'] == 'None')
+            if($_POST['club_id'] == $CLUB_NONE)
             {
                 $reservation_ins_stmt = $conn->prepare("CALL add_reservation(?, ?, ?, ?, ?);");
                 $reservation_ins_stmt->bind_param("iisss", $patron_id, $space_id, $start_time, $end_time, $notes);
@@ -130,12 +132,21 @@ $conn = setup();
 
     
     $club_spaces_query = $conn->query("SELECT club_id, club_name 
-    FROM clubs");
+    FROM active_clubs");
     $club_spaces_data = $club_spaces_query->fetch_all();
 
     // for reservations of THIS space.
 
-    $this_reservations_stmt = $conn->prepare("SELECT * 
+    $this_reservations_stmt = $conn->prepare("SELECT reservation_id,
+                                                     patron_id AS 'Patron ID',
+                                                     space_id AS 'Space ID',
+                                                     `Reserved Space`, 
+                                                     `Room Number`,
+                                                     `Capacity`,
+                                                     `Start Time`,
+                                                     `End Time`, 
+                                                     `Associated Club`,
+                                                     `Notes`
                                             FROM pretty_upcoming_space_reservations
                                             WHERE space_id = ?;");
     $this_reservations_stmt->bind_param("i", $space_id);
@@ -215,8 +226,8 @@ $conn = setup();
         <!-- FOR CLUB RESERVATION-->
         <label for="club_id">Associated Club: </label>
             <select name="club_id" id="club_id" required>
-                <option value="None">
-                    No Club
+                <option value="<?=$CLUB_NONE?>">
+                    <?=$CLUB_NONE?>
                 </option>   
                 <?php 
                 for ($i = 0; $i < $club_spaces_query->num_rows; $i++) 
@@ -239,7 +250,7 @@ $conn = setup();
         echo "No future reservations for this space at this time!";
     }
     else{
-        result_to_deletable_table_general($this_reservations_res, [-1], "Cancel Reservation", "Cancel Selected Reservations");
+        result_to_deletable_table_general($this_reservations_res, [0], "Cancel Reservation", "Cancel Selected Reservations");
     }
     ?>
     

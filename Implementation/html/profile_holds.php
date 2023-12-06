@@ -37,6 +37,10 @@ $processing_holds_res = $conn->query("SELECT material_id AS 'Material ID',
     <h2>Holds to be Checked Out</h2>
 
     <p>Holds are automatically deleted as a patron checks them out.</p>
+    <p>
+        This is NOT all holds on a material. This is the next person a <br>
+        material should be assigned to after the current lender returns it.
+    </p>
     <?=result_to_table($processing_holds_res)?>
 
 </body>

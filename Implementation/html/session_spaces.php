@@ -76,7 +76,18 @@ $num_clubs_in = count($clubs_patron_in_res);
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['delete_records'])) {
             
-        $patron_spaces = $conn->prepare("SELECT * FROM pretty_upcoming_space_reservations WHERE patron_id = ?;");
+        $patron_spaces = $conn->prepare("SELECT reservation_id,
+                                        patron_id AS 'Patron ID',
+                                        space_id AS 'Space ID',
+                                        `Reserved Space`, 
+                                        `Room Number`,
+                                        `Capacity`,
+                                        `Start Time`,
+                                        `End Time`, 
+                                        `Associated Club`,
+                                        `Notes`
+                                        FROM pretty_upcoming_space_reservations
+                                        WHERE patron_id = ?;");
 
         $patron_spaces->bind_param("i", $login_id);
 
@@ -132,7 +143,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // prepare view of spaces
 
-$patron_spaces = $conn->prepare("SELECT * FROM pretty_upcoming_space_reservations WHERE patron_id = ?;");
+$patron_spaces = $conn->prepare("SELECT reservation_id,
+                                patron_id AS 'Patron ID',
+                                space_id AS 'Space ID',
+                                `Reserved Space`, 
+                                `Room Number`,
+                                `Capacity`,
+                                `Start Time`,
+                                `End Time`, 
+                                `Associated Club`,
+                                `Notes`
+                                FROM pretty_upcoming_space_reservations
+                                WHERE patron_id = ?;");
 
 $patron_spaces->bind_param("i", $login_id);
 
@@ -187,18 +209,18 @@ $res = $patron_spaces->get_result();
 
         
         <label>Start Date:</label>
-        <input type="date" name="start_date" />
+        <input type="date" name="start_date" required />
         <br>
         <label>Start Time:</label>
-        <input type="time" name="start_time" />
+        <input type="time" name="start_time" required />
         <br>
         <label>End Date:</label>
-        <input type="date" name="end_date" />
+        <input type="date" name="end_date" required />
         <br>
         <label>End Time:</label>
-        <input type="time" name="end_time" />
+        <input type="time" name="end_time" required />
         <br>
-        <label>Notes:</label>
+        <label>Optional Notes:</label>
         <textarea type="text" name="notes" value=""></textarea>
         <br>
 

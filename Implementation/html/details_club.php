@@ -3,20 +3,30 @@ require 'includes/setup.php';
 require 'includes/functions.php';
 $conn = setup();
 $club_id = $_GET['clubid'];
-$club_name_res = $conn->query("SELECT club_name FROM active_clubs WHERE club_id = $club_id"); // note all these need to be refactoered into perpared statements
-$club_name = $club_name_res->fetch_row()[0];
-$club_desc_res = $conn->query("SELECT club_description FROM active_clubs WHERE club_id = $club_id");
-$club_desc = $club_desc_res->fetch_all()[0][0];
+$current_club_stmt = $conn->prepare("SELECT club_name,
+                                        club_description
+                                         FROM active_clubs WHERE club_id = ?"); // note all these need to be refactoered into perpared statements
+$current_club_stmt->bind_param("i", $club_id);
+if(!$current_club_stmt->execute())
+{
+    echo "SQL did a bad";
+    exit();
+}
+$current_club_res = $current_club_stmt->get_result();
+$current_club_data = $current_club_res->fetch_all();
+$club_name = $current_club_data[0][0];
+$club_desc = $current_club_data[0][1];
 
-$patrons_res = $conn->query('SELECT CONCAT(patron_first_name, " ", patron_last_name) AS patron_name,
+
+$all_patrons_res = $conn->query('SELECT CONCAT(patron_first_name, " ", patron_last_name) AS patron_name,
                                     patron_id
                                FROM patrons');
-$patron_info = $patrons_res->fetch_all();
+$all_patrons_info = $all_patrons_res->fetch_all();
 
 $spaces_res = $conn->query('SELECT space_id, space_name FROM spaces');
 $spaces_info = $spaces_res->fetch_all();
 
-$club_members_res = $conn->query("SELECT patron_id, CONCAT(patron_first_name, ' ', patron_last_name) AS 'Name',
+$club_members_stmt = $conn->prepare("SELECT patron_id, CONCAT(patron_first_name, ' ', patron_last_name) AS 'Name',
                                      member_info AS 'Details',
                                      (CASE WHEN member_is_leader
                                       THEN 'Part of Leadership'
@@ -25,17 +35,36 @@ $club_members_res = $conn->query("SELECT patron_id, CONCAT(patron_first_name, ' 
                                 FROM patrons
                                      INNER JOIN club_members USING(patron_id)
                                      INNER JOIN active_clubs USING(club_id)
-                               WHERE club_id = $club_id;");
-$club_spaces_reserved_res = $conn->query("SELECT space_name AS 'Space',
-                                            CONCAT(patron_first_name, ' ', patron_last_name) AS 'Reserved By', 
-                                             start_reservation AS 'Reserved From',
-                                             end_reservation AS 'Reserved Until'
-                                        FROM club_reservations
-                                             LEFT OUTER JOIN space_reservations USING (reservation_id)
-                                             LEFT OUTER JOIN patrons USING (patron_id)
-                                             LEFT OUTER JOIN spaces USING (space_id)
-                                             
-                                       WHERE club_id=$club_id;");
+                               WHERE club_id = ?;");
+
+$club_members_stmt->bind_param("i", $club_id);
+if(!$club_members_stmt->execute())
+{
+    echo "SQL did a bad";
+    exit();
+}
+$club_members_res = $club_members_stmt->get_result();
+
+$club_spaces_reserved_stmt = $conn->prepare("SELECT space_name AS 'Space',
+                                          CONCAT(patron_first_name, ' ', patron_last_name) AS 'Reserved By',
+                                          start_reservation AS 'Reserved From',
+                                          end_reservation AS 'Reserved Until'
+                                    FROM
+                                        club_reservations
+                                            LEFT OUTER JOIN space_reservations USING (reservation_id)
+                                            LEFT OUTER JOIN patrons USING (patron_id)
+                                            LEFT OUTER JOIN spaces USING (space_id)
+                                    WHERE club_id = ?;");
+$club_spaces_reserved_stmt->bind_param("i", $club_id);
+if(!$club_spaces_reserved_stmt->execute())
+{
+    echo "SQL did a bad";
+    exit();
+}
+
+
+$club_spaces_reserved_res = $club_spaces_reserved_stmt->get_result();
+$club_spaces_reserved_stmt->close();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST["edit_old_club"])) {
@@ -69,22 +98,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } 
     
     if(isset($_POST["delete_records"])){
-        $deletable_patron_ids = $conn->query("SELECT patron_id
+
+        $deletable_patrons_stmt = $conn->prepare("SELECT patron_id
                                     FROM patrons
                                     INNER JOIN club_members USING(patron_id)
                                     INNER JOIN active_clubs USING(club_id)
-                                    WHERE club_id = $club_id;");
-        $ids_res = $deletable_patron_ids->fetch_all();
-        for($_i=0;$_i<$deletable_patron_ids->num_rows;$_i++){
+                                    WHERE club_id = ?;");
+        $deletable_patrons_stmt->bind_param("i", $club_id);
+        $deletable_patrons_stmt->execute();
+        $deletable_patrons_res = $deletable_patrons_stmt->get_result();
+        $deletable_patrons_data = $deletable_patrons_res->fetch_all();
+
+        $del_stmt=$conn->prepare("DELETE FROM club_members WHERE patron_id=?");
+        $del_stmt->bind_param('i',$id);
+        for($_i=0;$_i<$deletable_patrons_res->num_rows;$_i++){
             
             
-            $id=$ids_res[$_i][0];
+            $id=$deletable_patrons_data[$_i][0];
             
-            $_delete_statement=$conn->prepare("DELETE FROM club_members WHERE patron_id=?");
-            $_delete_statement->bind_param('i',$id);
                 if(isset($_POST["checkbox$id"])){
-                    $_delete_statement->execute();
-                    print_r("Deleted $id");
+                    $del_stmt->execute();
                 }
         }
     }
@@ -151,8 +184,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <form method=POST>
         <label for="new_member_id">Add new member: </label>
         <select name="new_member_id">
-            <?php for ($i = 0; $i <$patrons_res->num_rows; $i++) { ?>
-                <option value='<?= $patron_info[$i][1] ?>'><?= $patron_info[$i][0] ?></option>
+            <?php for ($i = 0; $i <$all_patrons_res->num_rows; $i++) { ?>
+                <option value='<?= $all_patrons_info[$i][1] ?>'><?= $all_patrons_info[$i][0] ?></option>
             <?php } ?>
         </select>
         <label for="new_member_desc">Extra details? </label>

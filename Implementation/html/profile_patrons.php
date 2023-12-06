@@ -67,9 +67,9 @@ if (isset($_POST["add_patron"])) {
     <h2>Add a Patron</h2>
     <form method=POST>
         <label for="add_patron_first_name">Patron First Name:</label>
-        <input type="text" name="add_patron_first_name" /><br>
+        <input type="text" name="add_patron_first_name" required /><br>
         <label for="add_patron_last_name">Patron Last Name:</label>
-        <input type="text" name="add_patron_last_name" /><br>
+        <input type="text" name="add_patron_last_name" required /><br>
         <label for="add_patron_email">Patron Email</label>
         <input type="text" name="add_patron_email" /><br>
         <label for="add_patron_phone">Patron Phone</label>

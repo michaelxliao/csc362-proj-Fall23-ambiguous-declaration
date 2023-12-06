@@ -48,7 +48,7 @@ function generate_insert_form($type_string)
         <label for="pending">Still being processed?</label>
         <input type="checkbox" name="pending">
         <label for="price">Price: $</label>
-        <input type="number" min="0" step="any" name="price">
+        <input type="number" min="0" step="any" name="price" required>
         <?php if ($type_string == $GLOBALS["PRINT"]) { ?>
             <label for="print_type">Print Type:</label>
             <select name="print_type">

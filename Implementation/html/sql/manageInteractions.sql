@@ -2,6 +2,16 @@ DELIMITER //
 CREATE OR REPLACE PROCEDURE add_loan(material_id INT, patron_id INT, loan_start DATE, loan_return DATE, loan_renewal_tally INT)
  BEGIN
  START TRANSACTION;
+   -- Delete from holds first: because of business rules, this is at most 1 hold.
+    DELETE FROM patron_selection_interactions
+    WHERE 
+    interaction_id IN
+    (SELECT interaction_id 
+       FROM holds
+      WHERE material_id = material_id
+        AND patron_id = patron_id);
+         
+   -- then insert into loan
     INSERT INTO patron_selection_interactions (material_id, patron_id)
     VALUES (material_id, patron_id);
 

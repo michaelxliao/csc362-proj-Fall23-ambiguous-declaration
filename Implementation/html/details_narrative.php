@@ -4,20 +4,41 @@ require 'includes/functions.php';
 $conn = setup();
 
 $narrative_name = $_GET['narrativeid'];
-$real_narrative_id_res = $conn->query("SELECT narrative_id
+$narrative_id_stmt = $conn->prepare("SELECT narrative_id
                                     FROM active_narratives
-                                    WHERE narrative_name = '$narrative_name'");
-$real_narrative_id = $real_narrative_id_res->fetch_all()[0][0];
+                                    WHERE narrative_name = ?");
+$narrative_id_stmt->bind_param("s", $narrative_name);
+if (!$narrative_id_stmt->execute()) {
+    echo "oops";
+    header('Location:manage_selection.php', true, 303);
+}
+$narrative_id_res = $narrative_id_stmt->get_result();
+$narrative_id_stmt->close();
+$narrative_id = $narrative_id_res->fetch_all()[0][0];
 
-$narrative_desc = $conn->query("SELECT narrative_description
+// narrative id has been sanitized, can use freely
+
+$narrative_desc_stmt = $conn->prepare("SELECT narrative_description
                                 FROM active_narratives
-                                WHERE narrative_name = '$narrative_name'");
-$narrative_desc_res = $narrative_desc->fetch_all()[0][0];
-$sql_query = $conn->query("SELECT material_id AS 'Material ID', material_title AS 'Title'
+                                WHERE narrative_id = ?");
+$narrative_desc_stmt->bind_param("i", $narrative_id);
+if (!$narrative_desc_stmt->execute()) {
+    echo "oops";
+}
+$narrative_desc_res = $narrative_desc_stmt->get_result();
+$narrative_desc_stmt->close();
+$narrative_desc = $narrative_desc_res->fetch_all()[0][0];
+$adaptations_stmt = $conn->prepare("SELECT material_id AS 'Material ID', material_title AS 'Title'
                 FROM active_narratives
                      INNER JOIN adaptations USING(narrative_id)
                      LEFT OUTER JOIN selection USING(material_id)
-               WHERE narrative_name = '$narrative_name'");
+               WHERE narrative_id = ?");
+$adaptations_stmt->bind_param('i', $narrative_id);
+if (!$adaptations_stmt->execute()) {
+    echo 'err';
+}
+$adaptations_res = $adaptations_stmt->get_result();
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(isset($_POST["new_adaptation"])){
         // printf($_POST["new_material_id"]);
@@ -27,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $is_source = 0;
         }
         $checkexists = $conn->prepare("SELECT * FROM adaptations WHERE narrative_id = ? AND material_id = ?");
-        $checkexists->bind_param('ii',$real_narrative_id, $_POST["new_material_id"]);
+        $checkexists->bind_param('ii',$narrative_id, $_POST["new_material_id"]);
         $checkexists->execute();
 
         $result = $checkexists->get_result();
@@ -38,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!$has_value) {
             $update_stmt = $conn->prepare("INSERT INTO adaptations(narrative_id, material_id, material_is_source)
             VALUES (?, ?, ?)");
-            $update_stmt->bind_param('iii', $real_narrative_id, $_POST["new_material_id"], $is_source);
+            $update_stmt->bind_param('iii', $narrative_id, $_POST["new_material_id"], $is_source);
             try {
                 $update_stmt->execute();
             } catch (mysqli_sql_exception $e) {
@@ -47,17 +68,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
     if(isset($_POST["delete_records"])){
-        print("Got this far");
-        $deletable_narrative_ids = $conn->query("SELECT material_id
+        $deletable_narrative_ids_stmt = $conn->prepare("SELECT material_id
         FROM active_narratives
                 INNER JOIN adaptations USING(narrative_id)
                 LEFT OUTER JOIN selection USING(material_id)
-        WHERE narrative_name = '$narrative_name'");
-        $ids_res = $deletable_narrative_ids->fetch_all();
-        for($_i=0;$_i<$deletable_narrative_ids->num_rows;$_i++){
-            $id=$ids_res[$_i][0];
+        WHERE narrative_id = ?");
+        $deletable_narrative_ids_stmt->bind_param('i', $narrative_id);
+        $deletable_narrative_ids_stmt->execute();
+        $deletable_narrative_ids_res = $deletable_narrative_ids_stmt->get_result();
+        $data = $deletable_narrative_ids_res->fetch_all();
+        for($_i=0;$_i<$deletable_narrative_ids_res->num_rows;$_i++){
+            $id=$data[$_i][0];
             $_delete_statement=$conn->prepare("DELETE FROM adaptations WHERE narrative_id=? AND material_id = ?");
-            $_delete_statement->bind_param('ii',$real_narrative_id,$id);
+            $_delete_statement->bind_param('ii',$narrative_id,$id);
             if(isset($_POST["checkbox$id"])){
                 $_delete_statement->execute();
                 print_r("Deleted $id");
@@ -69,12 +92,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $update_stmt = $conn->prepare("UPDATE narratives
                                         SET narratives.narrative_description = ?
                                         WHERE narratives.narrative_id = ?");
-        $update_stmt->bind_param('si',$_POST["new_desc"] ,$real_narrative_id);
+        $update_stmt->bind_param('si',$_POST["new_desc"] ,$narrative_id);
         $update_stmt->execute();
     }
     if(isset($_POST["del_narrative"])){
         $del_stmt = $conn->prepare("CALL del_narrative(?)");
-        $del_stmt -> bind_param('i', $real_narrative_id);
+        $del_stmt -> bind_param('i', $narrative_id);
         $del_stmt -> execute();
         header("Location: profile_narratives.php", true, 303);
         exit();
@@ -106,13 +129,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <a href="profile_narratives.php">Back to Narrative List</a>
     <h1><?= $narrative_name ?></h1>
     <p>A bit more information about this material:<br>
-    <?=$narrative_desc_res?></p>
+    <?=$narrative_desc?></p>
 
 
     <h2> Update description: </h2>
     <form method=POST>
         <label for="new_desc">Narrative Description:</td>
-            <textarea type="textarea"  name="new_desc"><?=$narrative_desc_res?></textarea>
+            <textarea type="textarea"  name="new_desc"><?=$narrative_desc?></textarea>
         <input type="submit" name="edit_old_description" value="Edit Narrative" />
     </form>
     <h2> Material Adapted from This Narrative: </h2>
@@ -125,7 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <input type="submit" name="new_adaptation" value = "Add Material"/>
     </form>
-    <?php result_to_deletable_table($sql_query, true) ?>
+    <?php result_to_deletable_table($adaptations_res, true) ?>
 </body>
 
 </html>
